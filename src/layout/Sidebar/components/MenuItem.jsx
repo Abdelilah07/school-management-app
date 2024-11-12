@@ -1,5 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import { Home, BookOpen, Users, Calendar, BarChart, FileText, Settings } from 'lucide-react';
+import {
+  Home,
+  BookOpen,
+  Users,
+  Calendar,
+  BarChart,
+  FileText,
+  Settings,
+  BookMarked,
+} from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const ICONS = {
@@ -10,6 +19,7 @@ const ICONS = {
   BarChart,
   FileText,
   Settings,
+  BookMarked,
 };
 
 const MenuItem = ({ item }) => {

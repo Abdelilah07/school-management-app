@@ -1,12 +1,12 @@
 import { ChevronDown, LogOut, MessageSquare, Settings } from 'lucide-react';
-import profilePicture from '../../assets/avatar.png';
+import { Avatar } from '../../../assets';
 
 const UserMenu = () => (
   <div className="dropdown dropdown-bottom dropdown-end">
     <button className="btn btn-ghost flex items-center gap-2">
       <div className="avatar">
         <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src={profilePicture} alt="Profile" />
+          <img src={Avatar} alt="Profile" />
         </div>
       </div>
       <span className="hidden sm:inline-block">Jane Doe</span>

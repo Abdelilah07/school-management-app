@@ -1,9 +1,6 @@
-import NotificationsMenu from './NotificationsMenu';
-import UserMenu from './UserMenu';
-import ThemeToggle from './ThemeToggle';
-import SearchBar from './SearchBar';
-import SidebarToggle from './SidebarToggle';
-import WebsiteLogo from '../../assets/OFPPT-Logo.svg?react';
+import { SearchBar, SidebarToggle, UserMenu, NotificationsMenu, ThemeToggle } from './components';
+import { Logo } from '../../assets/';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -17,12 +14,12 @@ const Navbar = () => {
               <SidebarToggle />
 
               {/* Logo */}
-              <a href="/" className="flex items-center gap-1">
-                <WebsiteLogo className="w-14 h-14 text-primary" />
+              <Link to="/school-management-app/" className="flex items-center gap-1">
+                <Logo className="w-12 h-12 text-primary" />
                 <span className="font-semibold text-xl tracking-tight sm:text-2xl hidden sm:inline-block">
                   OFPPT
                 </span>
-              </a>
+              </Link>
             </div>
 
             {/* Search Section */}

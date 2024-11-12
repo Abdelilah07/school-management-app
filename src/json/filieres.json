@@ -1,0 +1,105 @@
+{
+  "filieres": [
+    {
+      "ordre": 4,
+      "code_filiere": "F02",
+      "intitule_filiere": "Informatique",
+      "secteur": "Technologie",
+      "groupes": [
+        "[object Object]"
+      ],
+      "id": "611e"
+    },
+    {
+      "ordre": 5,
+      "code_filiere": "F05",
+      "intitule_filiere": "Réseaux et Télécommu",
+      "secteur": "Technologie",
+      "groupes": [
+        "[object Object]"
+      ],
+      "id": "dcb8"
+    },
+    {
+      "ordre": 6,
+      "code_filiere": "F06",
+      "intitule_filiere": "Management",
+      "secteur": "Business",
+      "groupes": [
+        {
+          "groupe_id": 1
+        }
+      ],
+      "id": "ff07"
+    },
+    {
+      "ordre": 7,
+      "code_filiere": "F07",
+      "intitule_filiere": "Finance",
+      "secteur": "Busin",
+      "groupes": [
+        "[object Object]"
+      ],
+      "id": "dfe6"
+    },
+    {
+      "ordre": 8,
+      "code_filiere": "F08",
+      "intitule_filiere": "Design Graphique",
+      "secteur": "Arts",
+      "groupes": [
+        {
+          "groupe_id": 1
+        }
+      ],
+      "id": "5d96"
+    },
+    {
+      "ordre": 9,
+      "code_filiere": "F09",
+      "intitule_filiere": "Photographie",
+      "secteur": "Arts",
+      "groupes": [
+        {
+          "groupe_id": 1
+        }
+      ],
+      "id": "7912"
+    },
+    {
+      "ordre": 10,
+      "code_filiere": "F10",
+      "intitule_filiere": "Sciences de la Vie",
+      "secteur": "Sciences",
+      "groupes": [
+        {
+          "groupe_id": 1
+        }
+      ],
+      "id": "791d"
+    },
+    {
+      "ordre": 11,
+      "code_filiere": "F11",
+      "intitule_filiere": "Biotechnologie",
+      "secteur": "Sciences",
+      "groupes": [
+        {
+          "groupe_id": 1
+        }
+      ],
+      "id": "df6b"
+    },
+    {
+      "id": "94fe",
+      "code_filiere": "F01",
+      "intitule_filiere": "Something",
+      "secteur": "Something else else",
+      "groupes": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  ]
+}

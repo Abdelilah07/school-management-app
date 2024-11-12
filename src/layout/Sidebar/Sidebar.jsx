@@ -2,9 +2,7 @@ import { memo, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeSidebar } from '../../features/sidebar/sidebarSlice';
 import { toggleMobile } from '../../features/ui/uiSlice';
-import MenuItem from './MenuItem';
-import UserProfile from './UserProfile';
-import Divider from './Divider';
+import { MenuItem, Divider, UserProfile } from './components';
 import { useLocation } from 'react-router-dom';
 import avatar from '../../assets/avatar.png';
 

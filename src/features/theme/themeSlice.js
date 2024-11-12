@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const THEMES = {
-  light: 'light',
+  light: 'cupcake',
   dark: 'night',
 };
 

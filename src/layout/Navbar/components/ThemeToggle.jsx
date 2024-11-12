@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from '../../features/theme/themeSlice';
+import { toggleTheme } from '../../../features/theme/themeSlice';
 import { Moon, Sun } from 'lucide-react';
 
 const ThemeToggle = () => {

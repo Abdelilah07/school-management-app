@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleSidebar } from '../../features/sidebar/sidebarSlice';
+import { toggleSidebar } from '../../../features/sidebar/sidebarSlice';
 import { Menu, X } from 'lucide-react';
 
 const SidebarToggle = () => {

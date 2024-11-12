@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { markAllAsRead } from '../../features/notifications/notificationsSlice';
+import { markAllAsRead } from '../../../features/notifications/notificationsSlice';
 import { Bell } from 'lucide-react';
 
 const NotificationsMenu = () => {

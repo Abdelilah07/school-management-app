@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Layout from './layout/Layout';
-import { Home, NotFound, Courses } from './pages';
+import { Home, NotFound, Courses, Quizzes, Filieres, Quiz , Modules} from './pages';
 
 function App() {
   const { theme } = useSelector((state) => state.theme);
@@ -15,9 +15,13 @@ function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
+          <Route path="/school-management-app/quizzes" element={<Quizzes />} />
+          <Route path="/school-management-app/quiz/:id" element={<Quiz />} />
+          <Route path="/school-management-app/" element={<Home />} />
+          <Route path="/school-management-app/home" element={<Home />} />
+          <Route path="/school-management-app/courses" element={<Courses />} />
+          <Route path="/school-management-app/spicialisations" element={<Filieres />} />
+          <Route path="/school-management-app/modules" element={<Modules />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

@@ -1,0 +1,285 @@
+{ 
+    "quizzes" : [
+    {
+      "quizID": "QZ101",
+      "courseId": "BIO101",
+      "courseName": "Introduction to Biology",
+      "teacherId": "T001",
+      "teacherName": "Dr. Alice Johnson",
+      "Deadline": "2024-11-30T23:59:59Z",
+      "questions": [
+        {
+          "question": "What is the powerhouse of the cell?",
+          "answers": ["Nucleus", "Mitochondria", "Ribosome", "Endoplasmic Reticulum"],
+          "correctAnswer": "Mitochondria"
+        },
+        {
+          "question": "Which of the following is a photosynthetic pigment?",
+          "answers": ["Chlorophyll", "Carotene", "Hemoglobin", "Collagen"],
+          "correctAnswer": "Chlorophyll"
+        },
+        {
+          "question": "What is the main function of red blood cells?",
+          "answers": ["Oxygen transport", "Fight infections", "Produce insulin", "Store energy"],
+          "correctAnswer": "Oxygen transport"
+        },
+        {
+          "question": "Which organ is responsible for filtering blood in humans?",
+          "answers": ["Heart", "Liver", "Kidneys", "Lungs"],
+          "correctAnswer": "Kidneys"
+        },
+        {
+          "question": "Which process involves the conversion of glucose into energy in cells?",
+          "answers": ["Photosynthesis", "Glycolysis", "Fermentation", "Osmosis"],
+          "correctAnswer": "Glycolysis"
+        }
+      ]
+    },
+    {
+      "quizID": "QZ102",
+      "courseId": "PHYS101",
+      "courseName": "Introduction to Physics",
+      "teacherId": "T002",
+      "teacherName": "Dr. Michael Smith",
+      "Deadline": "2024-12-01T23:59:59Z",
+      "questions": [
+        {
+          "question": "What is the SI unit of force?",
+          "answers": ["Newton", "Joule", "Pascal", "Watt"],
+          "correctAnswer": "Newton"
+        },
+        {
+          "question": "Who formulated the laws of motion?",
+          "answers": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Niels Bohr"],
+          "correctAnswer": "Isaac Newton"
+        },
+        {
+          "question": "What does the term 'velocity' refer to?",
+          "answers": ["Speed", "Speed in a given direction", "Acceleration", "Distance over time"],
+          "correctAnswer": "Speed in a given direction"
+        },
+        {
+          "question": "What is the speed of light in a vacuum?",
+          "answers": ["3 × 10^8 m/s", "1 × 10^8 m/s", "5 × 10^6 m/s", "9 × 10^8 m/s"],
+          "correctAnswer": "3 × 10^8 m/s"
+        },
+        {
+          "question": "What force keeps planets in orbit around the Sun?",
+          "answers": ["Magnetism", "Electromagnetic Force", "Gravity", "Friction"],
+          "correctAnswer": "Gravity"
+        }
+      ]
+    },
+    {
+      "quizID": "QZ103",
+      "courseId": "HIST201",
+      "courseName": "World History",
+      "teacherId": "T003",
+      "teacherName": "Dr. Sarah Davis",
+      "Deadline": "2024-12-05T23:59:59Z",
+      "questions": [
+        {
+          "question": "Who was the first President of the United States?",
+          "answers": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "James Madison"],
+          "correctAnswer": "George Washington"
+        },
+        {
+          "question": "What year did World War II end?",
+          "answers": ["1940", "1945", "1950", "1960"],
+          "correctAnswer": "1945"
+        },
+        {
+          "question": "The French Revolution began in which year?",
+          "answers": ["1789", "1799", "1812", "1701"],
+          "correctAnswer": "1789"
+        },
+        {
+          "question": "What was the name of the ship that brought the Pilgrims to America in 1620?",
+          "answers": ["Mayflower", "Santa Maria", "Titanic", "The Beagle"],
+          "correctAnswer": "Mayflower"
+        },
+        {
+          "question": "Who was the famous leader of the Mongol Empire?",
+          "answers": ["Genghis Khan", "Alexander the Great", "Napoleon Bonaparte", "Julius Caesar"],
+          "correctAnswer": "Genghis Khan"
+        }
+      ]
+    },
+    {
+      "quizID": "QZ104",
+      "courseId": "CHEM101",
+      "courseName": "General Chemistry",
+      "teacherId": "T004",
+      "teacherName": "Dr. Emily Zhang",
+      "Deadline": "2024-12-10T23:59:59Z",
+      "questions": [
+        {
+          "question": "What is the chemical symbol for water?",
+          "answers": ["H2O", "O2", "CO2", "HO2"],
+          "correctAnswer": "H2O"
+        },
+        {
+          "question": "Which element is known as the 'noble gas'?",
+          "answers": ["Oxygen", "Nitrogen", "Neon", "Hydrogen"],
+          "correctAnswer": "Neon"
+        },
+        {
+          "question": "Which acid is found in the stomach?",
+          "answers": ["Acetic acid", "Citric acid", "Hydrochloric acid", "Sulfuric acid"],
+          "correctAnswer": "Hydrochloric acid"
+        },
+        {
+          "question": "What is the pH level of pure water?",
+          "answers": ["5", "6", "7", "8"],
+          "correctAnswer": "7"
+        },
+        {
+          "question": "What is the most abundant element in the Earth's crust?",
+          "answers": ["Oxygen", "Silicon", "Iron", "Aluminum"],
+          "correctAnswer": "Oxygen"
+        }
+      ]
+    },
+    {
+      "quizID": "QZ105",
+      "courseId": "MATH101",
+      "courseName": "Introduction to Mathematics",
+      "teacherId": "T005",
+      "teacherName": "Mr. William Lee",
+      "Deadline": "2024-12-12T23:59:59Z",
+      "questions": [
+        {
+          "question": "What is the square root of 64?",
+          "answers": ["6", "7", "8", "9"],
+          "correctAnswer": "8"
+        },
+        {
+          "question": "What is the value of Pi to two decimal places?",
+          "answers": ["3.14", "3.15", "3.16", "3.13"],
+          "correctAnswer": "3.14"
+        },
+        {
+          "question": "What is the result of 15 ÷ 3?",
+          "answers": ["5", "6", "4", "7"],
+          "correctAnswer": "5"
+        },
+        {
+          "question": "What is the perimeter of a rectangle with length 6 and width 4?",
+          "answers": ["24", "20", "16", "12"],
+          "correctAnswer": "20"
+        },
+        {
+          "question": "What is the formula for the area of a circle?",
+          "answers": ["πr²", "2πr", "r²", "πd"],
+          "correctAnswer": "πr²"
+        }
+      ]
+    },
+    {
+      "quizID": "QZ106",
+      "courseId": "ECON101",
+      "courseName": "Principles of Economics",
+      "teacherId": "T006",
+      "teacherName": "Dr. Rachel Green",
+      "Deadline": "2024-12-15T23:59:59Z",
+      "questions": [
+        {
+          "question": "What does GDP stand for?",
+          "answers": ["Gross Domestic Product", "Gross Debt Product", "Global Debt Price", "General Domestic Product"],
+          "correctAnswer": "Gross Domestic Product"
+        },
+        {
+          "question": "Which of these is considered a scarcity in economics?",
+          "answers": ["Time", "Free goods", "Money", "Labor"],
+          "correctAnswer": "Time"
+        },
+        {
+          "question": "What is inflation?",
+          "answers": ["Decrease in prices", "Increase in prices", "Stability of prices", "Change in production"],
+          "correctAnswer": "Increase in prices"
+        },
+        {
+          "question": "Which of the following is a type of market structure?",
+          "answers": ["Monopoly", "Anarchy", "Oligarchy", "Autocracy"],
+          "correctAnswer": "Monopoly"
+        },
+        {
+          "question": "What is the main purpose of taxation?",
+          "answers": ["Increase government spending", "Reduce public debt", "Provide public services", "Encourage investment"],
+          "correctAnswer": "Provide public services"
+        }
+      ]
+    },
+    {
+      "quizID": "QZ107",
+      "courseId": "PSY101",
+      "courseName": "Introduction to Psychology",
+      "teacherId": "T007",
+      "teacherName": "Dr. James Walker",
+      "Deadline": "2024-12-20T23:59:59Z",
+      "questions": [
+        {
+          "question": "Which of the following is a type of psychological disorder?",
+          "answers": ["Depression", "Anger", "Sadness", "Fear"],
+          "correctAnswer": "Depression"
+        },
+        {
+          "question": "What is the main focus of cognitive psychology?",
+          "answers": ["Memory and thought processes", "Emotions", "Physical behavior", "Social interactions"],
+          "correctAnswer": "Memory and thought processes"
+        },
+        {
+          "question": "What part of the brain controls voluntary movement?",
+          "answers": ["Cerebellum", "Medulla", "Frontal lobe", "Occipital lobe"],
+          "correctAnswer": "Frontal lobe"
+        },
+        {
+          "question": "What does the term 'behaviorism' focus on in psychology?",
+          "answers": ["Mental processes", "Behavioral responses", "Biological factors", "Cultural influences"],
+          "correctAnswer": "Behavioral responses"
+        },
+        {
+          "question": "Who is known as the father of psychoanalysis?",
+          "answers": ["Sigmund Freud", "Carl Jung", "B.F. Skinner", "Ivan Pavlov"],
+          "correctAnswer": "Sigmund Freud"
+        }
+      ]
+    },
+    {
+      "quizID": "QZ108",
+      "courseId": "LIT102",
+      "courseName": "English Literature",
+      "teacherId": "T008",
+      "teacherName": "Dr. Hannah Clark",
+      "Deadline": "2024-12-25T23:59:59Z",
+      "questions": [
+        {
+          "question": "Who wrote the play 'Romeo and Juliet'?",
+          "answers": ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
+          "correctAnswer": "William Shakespeare"
+        },
+        {
+          "question": "What is the main theme of George Orwell's '1984'?",
+          "answers": ["Totalitarianism", "Romance", "Adventure", "Freedom"],
+          "correctAnswer": "Totalitarianism"
+        },
+        {
+          "question": "Which literary device is used in the phrase 'The wind whispered through the trees'?",
+          "answers": ["Simile", "Metaphor", "Personification", "Alliteration"],
+          "correctAnswer": "Personification"
+        },
+        {
+          "question": "Who is the author of 'The Great Gatsby'?",
+          "answers": ["F. Scott Fitzgerald", "Hemingway", "Ernest Hemingway", "William Faulkner"],
+          "correctAnswer": "F. Scott Fitzgerald"
+        },
+        {
+          "question": "In which period was William Shakespeare most active?",
+          "answers": ["Renaissance", "Medieval", "Victorian", "Enlightenment"],
+          "correctAnswer": "Renaissance"
+        }
+      ]
+    }
+  ]
+}
+  
