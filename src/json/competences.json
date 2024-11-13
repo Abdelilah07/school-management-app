@@ -1,0 +1,136 @@
+{
+  "compétences": [
+    {
+      "id": "1",
+      "code_competence": 1,
+      "code_module": "M101_F01",
+      "intitule_module": "M101",
+      "intitule_competence": [
+        "Analyse de données",
+        "Algorithmes de base"
+      ],
+      "cours": "https://fake-link.com/cours/M101",
+      "quiz": "https://fake-link.com/quiz/M101"
+    },
+    {
+      "id": "2",
+      "code_competence": 2,
+      "code_module": "M102_F01",
+      "intitule_module": "M102",
+      "intitule_competence": [
+        "Programmation en C",
+        "Structures de données"
+      ],
+      "cours": "https://fake-link.com/cours/M102",
+      "quiz": "https://fake-link.com/quiz/M102"
+    },
+    {
+      "id": "3",
+      "code_competence": 3,
+      "code_module": "M103_F01",
+      "intitule_module": "M103",
+      "intitule_competence": [
+        "Introduction à la gestion",
+        "Organisation des entreprises"
+      ],
+      "cours": "https://fake-link.com/cours/M103",
+      "quiz": "https://fake-link.com/quiz/M103"
+    },
+    {
+      "id": "4",
+      "code_competence": 4,
+      "code_module": "M104_F01",
+      "intitule_module": "M104",
+      "intitule_competence": [
+        "Bases de données SQL",
+        "Conception de schémas"
+      ],
+      "cours": "https://fake-link.com/cours/M104",
+      "quiz": "https://fake-link.com/quiz/M104"
+    },
+    {
+      "id": "5",
+      "code_competence": 5,
+      "code_module": "M105_F01",
+      "intitule_module": "M105",
+      "intitule_competence": [
+        "Programmation en JavaScript",
+        "DOM manipulation"
+      ],
+      "cours": "https://fake-link.com/cours/M105",
+      "quiz": "https://fake-link.com/quiz/M105"
+    },
+    {
+      "id": "6",
+      "code_competence": 6,
+      "code_module": "M106_F01",
+      "intitule_module": "M106",
+      "intitule_competence": [
+        "Introduction au web",
+        "HTML/CSS"
+      ],
+      "cours": "https://fake-link.com/cours/M106",
+      "quiz": "https://fake-link.com/quiz/M106"
+    },
+    {
+      "id": "7",
+      "code_competence": 7,
+      "code_module": "M107_F01",
+      "intitule_module": "M107",
+      "intitule_competence": [
+        "Réseaux de base",
+        "Modèle OSI"
+      ],
+      "cours": "https://fake-link.com/cours/M107",
+      "quiz": "https://fake-link.com/quiz/M107"
+    },
+    {
+      "id": "8",
+      "code_competence": 8,
+      "code_module": "M108_F01",
+      "intitule_module": "M108",
+      "intitule_competence": [
+        "Sécurité informatique",
+        "Cryptographie"
+      ],
+      "cours": "https://fake-link.com/cours/M108",
+      "quiz": "https://fake-link.com/quiz/M108"
+    },
+    {
+      "id": "9",
+      "code_competence": 9,
+      "code_module": "M109_F01",
+      "intitule_module": "M109",
+      "intitule_competence": [
+        "Design UX/UI",
+        "Prototypage"
+      ],
+      "cours": "https://fake-link.com/cours/M109",
+      "quiz": "https://fake-link.com/quiz/M109"
+    },
+    {
+      "id": "10",
+      "code_competence": 10,
+      "code_module": "M110_F01",
+      "intitule_module": "M110",
+      "intitule_competence": [
+        "Introduction à l'intelligence artificielle",
+        "Machine learning"
+      ],
+      "cours": "https://fake-link.com/cours/M110",
+      "quiz": "https://fake-link.com/quiz/M110"
+    },
+    {
+      "id": "11",
+      "code_competence": 11,
+      "code_module": "M111_F01",
+      "intitule_module": "M111",
+      "intitule_competence": [
+        "Gestion de projet",
+        "Méthodes agiles"
+      ],
+      "cours": "https://fake-link.com/cours/M111",
+      "quiz": "https://fake-link.com/quiz/M111"
+    }
+  ]
+}

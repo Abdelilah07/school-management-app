@@ -46,6 +46,12 @@ const initialState = {
       href: '/school-management-app/spicialisations',
       count: 4,
     },
+    {
+      label: 'Compétences',
+      icon: 'BookMarked ',
+      href: '/school-management-app/competences',
+      count: 4,
+    },
     { type: 'divider' },
     {
       label: 'Documents',
