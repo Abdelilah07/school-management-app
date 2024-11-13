@@ -121,16 +121,32 @@
       "quiz": "https://fake-link.com/quiz/M110"
     },
     {
-      "id": "11",
-      "code_competence": 11,
-      "code_module": "M111_F01",
-      "intitule_module": "M111",
+      "id": "84be",
+      "code_competence": "11",
       "intitule_competence": [
-        "Gestion de projet",
-        "Méthodes agiles"
+        "communication"
       ],
-      "cours": "https://fake-link.com/cours/M111",
-      "quiz": "https://fake-link.com/quiz/M111"
+      "intitule_module": "softskills",
+      "cours": [
+        "https:/softskills.com"
+      ],
+      "quiz": [
+        "https:/softskills.com"
+      ]
+    },
+    {
+      "id": "1cd6",
+      "code_competence": "12",
+      "intitule_competence": [
+        "innovation"
+      ],
+      "intitule_module": "softskills",
+      "cours": [
+        "https:/softskills.com"
+      ],
+      "quiz": [
+        "https:/softskills.com"
+      ]
     }
   ]
 }

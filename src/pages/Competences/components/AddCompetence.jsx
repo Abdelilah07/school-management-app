@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCompetence, editCompetence } from '../../../features/competences/CompetenceSlice';
-import { Code, BookOpen, Building2, Users, Save } from 'lucide-react';
+import { Save } from 'lucide-react';
 import PropTypes from 'prop-types';
 
-const AddCompetence = ({ closeModal, selectedCompetence, onSave }) => {
+const AddCompetence = ({ closeModal, selectedCompetence }) => {
   const dispatch = useDispatch();
   const isEditMode = Boolean(selectedCompetence);
 
@@ -25,10 +25,18 @@ const AddCompetence = ({ closeModal, selectedCompetence, onSave }) => {
     if (selectedCompetence) {
       setFormData({
         code_competence: selectedCompetence.code_competence || '',
-        intitule_competence: selectedCompetence.intitule_competence.join(', ') || '', // Ensure it's a string for display
+        intitule_competence: selectedCompetence.intitule_competence.join(', ') || '',
         intitule_module: selectedCompetence.intitule_module || '',
-        cours: selectedCompetence.cours || '', 
-        quiz: selectedCompetence.quiz || '' 
+        cours: selectedCompetence.cours || '',
+        quiz: selectedCompetence.quiz || ''
+      });
+    } else {
+      setFormData({
+        code_competence: '',
+        intitule_competence: '',
+        intitule_module: '',
+        cours: '',
+        quiz: ''
       });
     }
   }, [selectedCompetence]);
@@ -36,43 +44,31 @@ const AddCompetence = ({ closeModal, selectedCompetence, onSave }) => {
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error message when user starts typing
     if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: '',
-      }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
   // Validate form data
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.code_competence.trim()) {
-      newErrors.code_competence = 'Code Competence is required';
-    }
-    if (!formData.intitule_competence.trim()) {
-      newErrors.intitule_competence = 'Intitulé Competence is required';
-    }
-    if (!formData.intitule_module.trim()) {
-      newErrors.intitule_module = 'Intitulé Module is required';
-    }
+    if (!formData.code_competence.trim()) newErrors.code_competence = 'Code Competence is required';
+    if (!formData.intitule_competence.trim()) newErrors.intitule_competence = 'Intitulé Competence is required';
+    if (!formData.intitule_module.trim()) newErrors.intitule_module = 'Intitulé Module is required';
+    if (!formData.cours.trim()) newErrors.cours = 'Cours is required';
+    if (!formData.quiz.trim()) newErrors.quiz = 'Quiz is required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Submit the form (either add or edit)
+  // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form submitted");
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     const competenceData = {
       code_competence: formData.code_competence,
@@ -84,79 +80,85 @@ const AddCompetence = ({ closeModal, selectedCompetence, onSave }) => {
 
     try {
       if (isEditMode) {
+        console.log("Dispatching editCompetence with data:", competenceData);
         await dispatch(editCompetence({ ...selectedCompetence, ...competenceData }));
       } else {
+        console.log("Dispatching addCompetence with data:", competenceData);
         await dispatch(addCompetence(competenceData)); // Add new competence
       }
-      closeModal();
-      onSave?.(competenceData); // Call onSave if provided
+      closeModal(); // Close modal after successful save
     } catch (error) {
       console.error('Error saving competence:', error.message);
     }
   };
 
-  // Form fields configuration
-  const formFields = [
-    {
-      id: 'code_competence',
-      label: 'Code Competence',
-      icon: <Code className="w-4 h-4" />,
-      placeholder: 'Enter code competence',
-    },
-    {
-      id: 'intitule_competence',
-      label: 'Intitulé Competence',
-      icon: <Building2 className="w-4 h-4" />,
-      placeholder: 'Enter intitulé competence',
-    },
-    {
-      id: 'intitule_module',
-      label: 'Intitulé Module',
-      icon: <BookOpen className="w-4 h-4" />,
-      placeholder: 'Enter intitulé module',
-    },
-    {
-      id: 'cours',
-      label: 'Cours (comma separated)',
-      icon: <Users className="w-4 h-4" />,
-      placeholder: 'Enter cours names',
-    },
-    {
-      id: 'quiz',
-      label: 'Quiz (comma separated)',
-      icon: <Users className="w-4 h-4" />,
-      placeholder: 'Enter quiz names',
-    }
-  ];
-
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {formFields.map((field) => (
-        <div key={field.id} className="relative">
-          <label htmlFor={field.id} className="text-sm font-semibold">{field.label}</label>
-          <div className="flex items-center space-x-2">
-            {field.icon}
-            <input
-              type="text"
-              id={field.id}
-              name={field.id}
-              value={formData[field.id]}
-              onChange={handleChange}
-              placeholder={field.placeholder}
-              className="border p-2 w-full rounded"
-            />
-          </div>
-          {errors[field.id] && (
-            <p className="text-red-600 text-xs">{errors[field.id]}</p>
-          )}
-        </div>
-      ))}
+      <div>
+        <label className="block text-sm font-semibold">Code Competence</label>
+        <input
+          type="text"
+          name="code_competence"
+          value={formData.code_competence}
+          onChange={handleChange}
+          className="mt-1 p-2 w-full border rounded"
+        />
+        {errors.code_competence && <p className="text-red-600 text-xs">{errors.code_competence}</p>}
+      </div>
 
-      <div className="flex justify-end space-x-4">
-        <button type="button" onClick={closeModal} className="bg-gray-300 text-black px-4 py-2 rounded">
+      <div>
+        <label className="block text-sm font-semibold">Intitulé Competence</label>
+        <input
+          type="text"
+          name="intitule_competence"
+          value={formData.intitule_competence}
+          onChange={handleChange}
+          className="mt-1 p-2 w-full border rounded"
+        />
+        {errors.intitule_competence && <p className="text-red-600 text-xs">{errors.intitule_competence}</p>}
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold">Intitulé Module</label>
+        <input
+          type="text"
+          name="intitule_module"
+          value={formData.intitule_module}
+          onChange={handleChange}
+          className="mt-1 p-2 w-full border rounded"
+        />
+        {errors.intitule_module && <p className="text-red-600 text-xs">{errors.intitule_module}</p>}
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold">Cours</label>
+        <input
+          type="text"
+          name="cours"
+          value={formData.cours}
+          onChange={handleChange}
+          className="mt-1 p-2 w-full border rounded"
+        />
+        {errors.cours && <p className="text-red-600 text-xs">{errors.cours}</p>}
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold">Quiz</label>
+        <input
+          type="text"
+          name="quiz"
+          value={formData.quiz}
+          onChange={handleChange}
+          className="mt-1 p-2 w-full border rounded"
+        />
+        {errors.quiz && <p className="text-red-600 text-xs">{errors.quiz}</p>}
+      </div>
+
+      <div className="flex justify-end space-x-4 mt-4">
+        <button type="button" onClick={closeModal} className="px-4 py-2 bg-gray-300 rounded">
           Cancel
         </button>
-        <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded flex items-center space-x-2">
+        <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded flex items-center space-x-2">
           <Save className="w-4 h-4" />
           <span>{isEditMode ? 'Save Changes' : 'Add Competence'}</span>
         </button>
@@ -167,8 +169,7 @@ const AddCompetence = ({ closeModal, selectedCompetence, onSave }) => {
 
 AddCompetence.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  selectedCompetence: PropTypes.object,
-  onSave: PropTypes.func
+  selectedCompetence: PropTypes.object
 };
 
 export default AddCompetence;

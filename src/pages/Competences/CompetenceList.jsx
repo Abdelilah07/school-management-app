@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompetences, deleteCompetence } from '../../features/competences/CompetenceSlice';
-import { Eye, Edit, Trash, Download } from 'lucide-react';
+import { Eye, Edit, Trash } from 'lucide-react';
 import AddCompetence from './components/AddCompetence';
 import ViewCompetence from './components/ViewCompetence';
-import Modal from 'react-bootstrap/Modal';
 import Papa from 'papaparse'; // CSV export functionality
+import './CompetenceList.css';
 
 const CompetenceList = () => {
   const dispatch = useDispatch();
   const { competences = [], loading, error } = useSelector((state) => state.competences);
   const [selectedCompetence, setSelectedCompetence] = useState(null);
   const [viewMode, setViewMode] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchCompetences());
   }, [dispatch]);
 
-  // Delete Competence
   const handleDelete = async (id) => {
     try {
       await dispatch(deleteCompetence(id));
@@ -26,24 +26,23 @@ const CompetenceList = () => {
     }
   };
 
-  // Edit Competence
   const handleEdit = (competence) => {
     setSelectedCompetence(competence);
-    setViewMode(false); // Switch to edit mode
+    setViewMode(false);
+    setIsModalOpen(true);
   };
 
-  // View Competence
   const handleView = (competence) => {
     setSelectedCompetence(competence);
-    setViewMode(true); // Switch to view mode
+    setViewMode(true);
+    setIsModalOpen(true);
   };
 
-  // Close Modal
   const handleCloseModal = () => {
     setSelectedCompetence(null);
+    setIsModalOpen(false);
   };
 
-  // CSV Export
   const handleCSVExport = () => {
     const csv = Papa.unparse(competences);
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -55,36 +54,33 @@ const CompetenceList = () => {
     URL.revokeObjectURL(url);
   };
 
-  // Show loading state
   if (loading) {
     return <div className="text-center">Loading...</div>;
   }
 
-  // Show error message
   if (error) {
     return <div className="text-center text-red-600">Error: {error}</div>;
   }
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4">
-        <div className="mt-4 flex justify-end">
-          <button
-            onClick={handleCSVExport}
-            className="bg-green-600 text-white px-6 py-2 rounded"
-          >
-            <Download className="w-4 h-4" /> Export CSV
-          </button>
-        </div>
-
+      <div className="container flex justify-between items-center mb-4">
         <button
           onClick={() => {
-            setSelectedCompetence(null);
+            setSelectedCompetence(null); // Ensure it's in "Add" mode
             setViewMode(false);
+            setIsModalOpen(true);
           }}
           className="bg-blue-600 text-white px-4 py-2 rounded"
         >
           Add Competence
+        </button>
+        
+        <button
+          onClick={handleCSVExport}
+          className="bg-yellow-600 text-white px-6 py-2 rounded"
+        >
+          Export CSV
         </button>
       </div>
 
@@ -113,13 +109,13 @@ const CompetenceList = () => {
                   <td><a href={competence.cours}>Cours</a></td>
                   <td><a href={competence.quiz}>Quiz</a></td>
                   <td className="flex space-x-2">
-                    <button onClick={() => handleView(competence)}>
+                    <button className="btn btn-info sm" onClick={() => handleView(competence)}>
                       <Eye className="w-5 h-5" />
                     </button>
-                    <button onClick={() => handleEdit(competence)}>
+                    <button className="btn btn-success sm" onClick={() => handleEdit(competence)}>
                       <Edit className="w-5 h-5" />
                     </button>
-                    <button onClick={() => handleDelete(competence.id)}>
+                    <button className="btn btn-error sm" onClick={() => handleDelete(competence.id)}>
                       <Trash className="w-5 h-5" />
                     </button>
                   </td>
@@ -134,14 +130,25 @@ const CompetenceList = () => {
         </table>
       </div>
 
-      {selectedCompetence && (
-        <Modal show={true} onHide={handleCloseModal}>
-          {viewMode ? (
-            <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
-          ) : (
-            <AddCompetence closeModal={handleCloseModal} selectedCompetence={selectedCompetence} />
-          )}
-        </Modal>
+      {/* Tailwind-based modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-lg shadow-lg w-96 p-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-semibold">{viewMode ? 'View Competence' : 'Add Competence'}</h2>
+              <button onClick={handleCloseModal} className="text-gray-500 hover:text-gray-800">
+                X
+              </button>
+            </div>
+            <div className="mt-4">
+              {viewMode ? (
+                <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
+              ) : (
+                <AddCompetence closeModal={handleCloseModal} selectedCompetence={selectedCompetence} />
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

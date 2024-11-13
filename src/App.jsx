@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+
 import Layout from './layout/Layout';
 import { Home, NotFound, Courses, Quizzes, Filieres, Quiz, Competence } from './pages';
 

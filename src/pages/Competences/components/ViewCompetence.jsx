@@ -9,38 +9,18 @@ const ViewCompetence = ({ competence, closeModal }) => {
   // Delete competence handler with confirmation
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this Competence?')) {
-      dispatch(deleteCompetence(competence.id)); // Dispatch the delete action
-      closeModal(); // Close the modal after delete
+      dispatch(deleteCompetence(competence.id));
+      closeModal();
     }
   };
 
-  // Details to be displayed
+  // Details to display
   const detailItems = [
-    {
-      icon: <BookOpen className="w-5 h-5" />,
-      label: 'Intitulé Competence',
-      value: competence.intitule_competence.join(', ') || 'No title provided',
-    },
-    {
-      icon: <Code className="w-5 h-5" />,
-      label: 'Code Competence',
-      value: competence.code_competence || 'No code provided',
-    },
-    {
-      icon: <Building2 className="w-5 h-5" />,
-      label: 'Module',
-      value: competence.intitule_module || 'No module assigned',
-    },
-    {
-      icon: <Users className="w-5 h-5" />,
-      label: 'Cours',
-      value: Array.isArray(competence.cours) ? competence.cours.join(', ') : 'No courses assigned',
-    },
-    {
-      icon: <Users className="w-5 h-5" />,
-      label: 'Quiz',
-      value: Array.isArray(competence.quiz) ? competence.quiz.join(', ') : 'No quizzes assigned',
-    },
+    { icon: <BookOpen className="w-5 h-5" />, label: 'Intitulé Competence', value: competence.intitule_competence.join(', ') || 'No title provided' },
+    { icon: <Code className="w-5 h-5" />, label: 'Code Competence', value: competence.code_competence || 'No code provided' },
+    { icon: <Building2 className="w-5 h-5" />, label: 'Module', value: competence.intitule_module || 'No module assigned' },
+    { icon: <Users className="w-5 h-5" />, label: 'Cours', value: competence.cours || 'No courses assigned' },
+    { icon: <Users className="w-5 h-5" />, label: 'Quiz', value: competence.quiz || 'No quizzes assigned' }
   ];
 
   return (
@@ -49,28 +29,24 @@ const ViewCompetence = ({ competence, closeModal }) => {
         <h2 className="text-2xl font-bold">Competence Details</h2>
       </div>
 
-      <div className="card bg-base-100">
-        <div className="card-body p-4 space-y-6">
-          {detailItems.map((item, index) => (
-            <div key={index} className="flex items-start space-x-4">
-              <div className="text-primary">{item.icon}</div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-base-content opacity-70">{item.label}</h3>
-                <p className="text-lg text-base-content">{item.value}</p>
-              </div>
+      <div className="space-y-6">
+        {detailItems.map((item, index) => (
+          <div key={index} className="flex items-start space-x-4">
+            <div className="text-primary">{item.icon}</div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-base-content opacity-70">{item.label}</h3>
+              <p className="text-lg text-base-content">{item.value}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
-      <div className="modal-action mt-6 flex justify-end gap-2">
-        <button onClick={closeModal} className="btn btn-ghost gap-2">
-          <X className="w-4 h-4" />
-          Close
+      <div className="mt-6 flex justify-end gap-4">
+        <button onClick={closeModal} className="btn btn-ghost">
+          <X className="w-4 h-4" /> Close
         </button>
-        <button onClick={handleDelete} className="btn btn-error gap-2">
-          <Trash2 className="w-4 h-4" />
-          Delete
+        <button onClick={handleDelete} className="btn btn-error">
+          <Trash2 className="w-4 h-4" /> Delete
         </button>
       </div>
     </div>
@@ -78,8 +54,8 @@ const ViewCompetence = ({ competence, closeModal }) => {
 };
 
 ViewCompetence.propTypes = {
-  competence: PropTypes.object.isRequired,  // Ensure competence prop is passed in
-  closeModal: PropTypes.func.isRequired,   // Ensure closeModal function is passed in
+  competence: PropTypes.object.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default ViewCompetence;

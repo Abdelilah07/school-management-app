@@ -16,7 +16,7 @@ export const addCompetence = createAsyncThunk('competences/addCompetence', async
 // Modifier une compétence
 export const editCompetence = createAsyncThunk('competences/editCompetence', async (competence) => {
   const response = await axios.put(`http://localhost:3020/compétences/${competence.id}`, competence);
-  return response.data;
+  return competence;
 });
 
 // Supprimer une compétence

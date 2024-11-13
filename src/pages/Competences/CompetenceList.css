@@ -1,0 +1,101 @@
+/* Style global pour le container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Style pour les boutons principaux */
+.button-export, .button-add {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+.button-export {
+    background-color: #4eb7a8;
+}
+
+.button-add {
+    background-color: #ffcc5c;
+    margin-left: auto;
+}
+
+/* Style pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Style pour les liens dans la colonne "Groupes" */
+.table-link {
+    color: #4eb7a8;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.table-link:hover {
+    text-decoration: underline;
+}
+
+/* Style pour les icônes d'actions */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons .button {
+    padding: 8px;
+    border-radius: 50%;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.button-view {
+    background-color: #3b82f6; /* Bleu pour vue */
+}
+
+.button-edit {
+    background-color: #22c55e; /* Vert pour édition */
+}
+
+.button-delete {
+    background-color: #ef4444; /* Rouge pour suppression */
+}
+
+/* Icônes */
+.button svg {
+    width: 20px;
+    height: 20px;
+}
