@@ -1,0 +1,68 @@
+{
+          "courses": [
+            {
+              "id": 1,
+              "name": "Introduction to Programming",
+              "instructor": "Dr. John Doe",
+              "model": "online",
+              "status": "completed",
+              "progress": 100,
+              "pdfUrl": "https://example.com/introduction-to-programming.pdf"
+            },
+            {
+              "id": 2,
+              "name": "Data Structures and Algorithms",
+              "instructor": "Prof. Jane Smith",
+              "model": "in-person",
+              "status": "active",
+              "progress": 90,
+              "pdfUrl": "https://example.com/data-structures.pdf"
+            },
+            {
+              "id": 3,
+              "name": "Web Development",
+              "instructor": "Mr. Tom Brown",
+              "model": "hybrid",
+              "status": "active",
+              "progress": 60,
+              "pdfUrl": "https://example.com/web-development.pdf"
+            },
+            {
+              "id": 4,
+              "name": "Machine Learning",
+              "instructor": "Dr. Alice Green",
+              "model": "online",
+              "status": "active",
+              "progress": 80,
+              "pdfUrl": "https://example.com/machine-learning.pdf"
+            },
+            {
+              "id": 5,
+              "name": "Cybersecurity Basics",
+              "instructor": "Dr. Lisa White",
+              "model": "in-person",
+              "status": "active",
+              "progress": 75,
+              "pdfUrl": "https://example.com/cybersecurity-basics.pdf"
+            },
+            {
+              "id": 6,
+              "name": "Artificial Intelligence",
+              "instructor": "Dr. Bob Johnson",
+              "model": "online",
+              "status": "active",
+              "progress": 50,
+              "pdfUrl": "https://example.com/artificial-intelligence.pdf"
+            },
+            {
+              "id": 7,
+              "name": "Database Management",
+              "instructor": "Prof. Emily Davis",
+              "model": "in-person",
+              "status": "completed",
+              "progress": 100,
+              "pdfUrl": "https://example.com/database-management.pdf"
+            }
+          ]
+        }
+        
