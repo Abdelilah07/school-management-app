@@ -5,15 +5,23 @@
               "name": "Introduction to Programming",
               "instructor": "Dr. John Doe",
               "model": "online",
+              "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
               "status": "completed",
               "progress": 100,
-              "pdfUrl": "https://example.com/introduction-to-programming.pdf"
+              "pdfUrl": "https://example.com/introduction-to-programming.pdf",
+              "content": [
+                {
+                  "Introduction" :  "Introduction to programming in Python",
+                  "imageurl": "https://example.com/introduction-to-programming.png"
+                }  
+              ]
             },
             {
               "id": 2,
               "name": "Data Structures and Algorithms",
               "instructor": "Prof. Jane Smith",
               "model": "in-person",
+              "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
               "status": "active",
               "progress": 90,
               "pdfUrl": "https://example.com/data-structures.pdf"
@@ -23,6 +31,7 @@
               "name": "Web Development",
               "instructor": "Mr. Tom Brown",
               "model": "hybrid",
+              "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
               "status": "active",
               "progress": 60,
               "pdfUrl": "https://example.com/web-development.pdf"
@@ -32,6 +41,7 @@
               "name": "Machine Learning",
               "instructor": "Dr. Alice Green",
               "model": "online",
+              "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
               "status": "active",
               "progress": 80,
               "pdfUrl": "https://example.com/machine-learning.pdf"
@@ -41,6 +51,7 @@
               "name": "Cybersecurity Basics",
               "instructor": "Dr. Lisa White",
               "model": "in-person",
+              "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
               "status": "active",
               "progress": 75,
               "pdfUrl": "https://example.com/cybersecurity-basics.pdf"
@@ -50,6 +61,7 @@
               "name": "Artificial Intelligence",
               "instructor": "Dr. Bob Johnson",
               "model": "online",
+              "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
               "status": "active",
               "progress": 50,
               "pdfUrl": "https://example.com/artificial-intelligence.pdf"
@@ -59,6 +71,7 @@
               "name": "Database Management",
               "instructor": "Prof. Emily Davis",
               "model": "in-person",
+              "imageurl": "https://wallpapercave.com/wp/wp8661113.jpg",
               "status": "completed",
               "progress": 100,
               "pdfUrl": "https://example.com/database-management.pdf"
