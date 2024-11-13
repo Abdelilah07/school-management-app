@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import {PhotoIcon} from "@heroicons/react/24/solid";
 
-const Document = () => {
+const DocumentComponent = () => {
     const documentList = [
         {
             id: 1,
@@ -93,7 +94,7 @@ const Document = () => {
 
 
     const statusList = [
-        { id: 1, name: "En cours", color: 'yellow' },
+        { id: 1, name: "En cours", color: 'gold' },
         { id: 2, name: "En attente", color: 'blue' },
         { id: 3, name: "Valide", color: 'green' },
         { id: 4, name: "Refus", color: 'red' },
@@ -103,7 +104,7 @@ const Document = () => {
     const [time, setTime] = useState('');
     const [file, setFile] = useState(null);
     const [showDetails, setShowDetails] = useState(false);
-    const [status, setStatus] = useState(1);
+    const [status] = useState(1);
     const [demandes, setDemandes] = useState([]);
 
     const handleDocumentChange = (event) => {
@@ -142,7 +143,7 @@ const Document = () => {
 
     return (
         <div className="mb-10">
-            <h1>Demande de document</h1>
+            <h1 className='text-xl font-bold'>Demande de document</h1>
             <hr className='my-4'/>
             <form className="w-full" onSubmit={handleSubmit}>
                 <div className="flex gap-4">
@@ -171,8 +172,22 @@ const Document = () => {
                                 ))}
                             </ul>
                         </div>
-                        <input type="file" multiple onChange={handleFileChange} accept=".pdf" 
-                            className="w-full px-4 py-2 mt-2 text-base transition duration-150 ease-in-out bg-transparent border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                            <div className="text-center">
+                                <PhotoIcon aria-hidden="true" className="mx-auto size-12 text-gray-300" />
+                                <div className="mt-4 flex text-sm/6 text-gray-600">
+                                    <label
+                                        htmlFor="file-upload"
+                                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                                    >
+                                        <span>Upload a file</span>
+                                        <input id="file-upload" name="file-upload" type="file" onChange={handleFileChange} accept=".pdf" className="sr-only" />
+                                    </label>
+                                    <p className="pl-1">or drag and drop</p>
+                                </div>
+                                <p className="text-xs/5 text-gray-600">PDF up to 10MB</p>
+                            </div>
+                        </div>
                     </>
                 )}
                 {file && file.length > 0 && (
@@ -200,4 +215,6 @@ const Document = () => {
     )
 }
 
-export default Document;
+export default DocumentComponent;
+
+
