@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompetences, deleteCompetence } from '../../features/competences/CompetenceSlice';
-import { Eye, Edit, Trash } from 'lucide-react';
+import { Eye, Edit, Trash, AlertCircle, Download, Plus } from 'lucide-react';
 import AddCompetence from './components/AddCompetence';
 import ViewCompetence from './components/ViewCompetence';
-import Papa from 'papaparse'; // CSV export functionality
-import './CompetenceList.css';
+import Papa from 'papaparse';
 
 const CompetenceList = () => {
   const dispatch = useDispatch();
@@ -13,7 +12,15 @@ const CompetenceList = () => {
   const [selectedCompetence, setSelectedCompetence] = useState(null);
   const [viewMode, setViewMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(competences.length / itemsPerPage);
+  
+  // Search state
+  const [searchTerm, setSearchTerm] = useState('');
+  
   useEffect(() => {
     dispatch(fetchCompetences());
   }, [dispatch]);
@@ -54,41 +61,67 @@ const CompetenceList = () => {
     URL.revokeObjectURL(url);
   };
 
+  // Filter competences based on search term
+  const filteredCompetences = competences.filter((competence) =>
+    competence.intitule_competence.some((name) =>
+      name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  // Slice competences for current page
+  const displayedCompetences = filteredCompetences.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Pagination handlers
+  const goToPreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const goToNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+
   if (loading) {
-    return <div className="text-center">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-center text-red-600">Error: {error}</div>;
+    return (
+      <div className="alert alert-error">
+        <AlertCircle className="h-6 w-6" />
+        <span>{error}</span>
+      </div>
+    );
   }
 
   return (
-    <>
-      <div className="container flex justify-between items-center mb-4">
-        <button
-          onClick={() => {
-            setSelectedCompetence(null); // Ensure it's in "Add" mode
-            setViewMode(false);
-            setIsModalOpen(true);
-          }}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-        >
-          Add Competence
+    <div className="container mx-auto p-6">
+      <h1 className="text-xl font-semibold">Element de Competence</h1>
+      
+      {/* Search Bar */}
+      <div className="mt-4 mb-6">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search competences..."
+          className="input input-bordered w-full"
+        />
+      </div>
+
+      <div className="flex justify-between items-center mb-6">
+        <button onClick={() => { setSelectedCompetence(null); setViewMode(false); setIsModalOpen(true); }} className="btn btn-primary gap-2">
+          <Plus className="w-5 h-5" /> Add Competence
         </button>
-        
-        <button
-          onClick={handleCSVExport}
-          className="bg-yellow-600 text-white px-6 py-2 rounded"
-        >
-          Export CSV
+        <button onClick={handleCSVExport} className="btn btn-accent gap-2">
+          <Download className="w-5 h-5" /> Export CSV
         </button>
       </div>
 
       <hr />
-      <h1 className="text-xl font-semibold">Competences List</h1>
-
-      <div className="overflow-x-auto mt-4">
-        <table className="table-auto w-full">
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
               <th>Code</th>
@@ -100,23 +133,23 @@ const CompetenceList = () => {
             </tr>
           </thead>
           <tbody>
-            {competences.length > 0 ? (
-              competences.map((competence) => (
+            {displayedCompetences.length > 0 ? (
+              displayedCompetences.map((competence) => (
                 <tr key={competence.id}>
                   <td>{competence.code_competence}</td>
-                  <td>{competence.intitule_competence.join(' ,')}</td>
+                  <td>{competence.intitule_competence.join(', ')}</td>
                   <td>{competence.intitule_module}</td>
                   <td><a href={competence.cours}>Cours</a></td>
                   <td><a href={competence.quiz}>Quiz</a></td>
-                  <td className="flex space-x-2">
-                    <button className="btn btn-info sm" onClick={() => handleView(competence)}>
-                      <Eye className="w-5 h-5" />
+                  <td className="flex gap-2">
+                    <button className="btn btn-info btn-sm" onClick={() => handleView(competence)}>
+                      <Eye className="w-4 h-4" />
                     </button>
-                    <button className="btn btn-success sm" onClick={() => handleEdit(competence)}>
-                      <Edit className="w-5 h-5" />
+                    <button className="btn btn-success btn-sm" onClick={() => handleEdit(competence)}>
+                      <Edit className="w-4 h-4" />
                     </button>
-                    <button className="btn btn-error sm" onClick={() => handleDelete(competence.id)}>
-                      <Trash className="w-5 h-5" />
+                    <button className="btn btn-error btn-sm" onClick={() => handleDelete(competence.id)}>
+                      <Trash className="w-4 h-4" />
                     </button>
                   </td>
                 </tr>
@@ -130,15 +163,24 @@ const CompetenceList = () => {
         </table>
       </div>
 
-      {/* Tailwind-based modal */}
+      {/* Pagination Controls */}
+      <div className="flex justify-between items-center mt-4">
+        <button onClick={goToPreviousPage} disabled={currentPage === 1} className="btn btn-secondary">
+          Previous
+        </button>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button onClick={goToNextPage} disabled={currentPage === totalPages} className="btn btn-secondary">
+          Next
+        </button>
+      </div>
+
+      {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-lg shadow-lg w-96 p-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-semibold">{viewMode ? 'View Competence' : 'Add Competence'}</h2>
-              <button onClick={handleCloseModal} className="text-gray-500 hover:text-gray-800">
-                X
-              </button>
+              <button onClick={handleCloseModal} className="text-gray-500 hover:text-gray-800">X</button>
             </div>
             <div className="mt-4">
               {viewMode ? (
@@ -150,7 +192,7 @@ const CompetenceList = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
