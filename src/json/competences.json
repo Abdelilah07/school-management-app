@@ -147,6 +147,21 @@
       "quiz": [
         "https:/softskills.com"
       ]
+    },
+    {
+      "id": "400f",
+      "code_competence": "13",
+      "intitule_competence": [
+        "esprit d'equipe",
+        "hhh"
+      ],
+      "intitule_module": "softskills",
+      "cours": [
+        "https:/cours.com"
+      ],
+      "quiz": [
+        "https:/quiz.com"
+      ]
     }
   ]
 }

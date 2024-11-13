@@ -19,6 +19,9 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
 
   // State to hold validation errors
   const [errors, setErrors] = useState({});
+  
+  // State to handle submission result (success/error)
+  const [submitError, setSubmitError] = useState('');
 
   // Effect to populate form with selected competence data (for editing)
   useEffect(() => {
@@ -27,8 +30,8 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
         code_competence: selectedCompetence.code_competence || '',
         intitule_competence: selectedCompetence.intitule_competence.join(', ') || '',
         intitule_module: selectedCompetence.intitule_module || '',
-        cours: selectedCompetence.cours || '',
-        quiz: selectedCompetence.quiz || ''
+        cours: Array.isArray(selectedCompetence.cours) ? selectedCompetence.cours.join(', ') : selectedCompetence.cours || '',
+        quiz: Array.isArray(selectedCompetence.quiz) ? selectedCompetence.quiz.join(', ') : selectedCompetence.quiz || ''
       });
     } else {
       setFormData({
@@ -40,6 +43,7 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
       });
     }
   }, [selectedCompetence]);
+  
 
   // Handle input changes
   const handleChange = (e) => {
@@ -65,25 +69,24 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
 
   // Submit form
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("Form submitted");
-
+    e.preventDefault();  // Prevent form default submission
+  
+    // Validate the form before submission
     if (!validateForm()) return;
-
+  
     const competenceData = {
       code_competence: formData.code_competence,
       intitule_competence: formData.intitule_competence.split(',').map((item) => item.trim()).filter(Boolean),
       intitule_module: formData.intitule_module,
-      cours: formData.cours.split(',').map((cour) => cour.trim()).filter(Boolean),
-      quiz: formData.quiz.split(',').map((quiz) => quiz.trim()).filter(Boolean)
+      cours: (typeof formData.cours === 'string' ? formData.cours : '').split(',').map((cour) => cour.trim()).filter(Boolean),
+      quiz: (typeof formData.quiz === 'string' ? formData.quiz : '').split(',').map((quiz) => quiz.trim()).filter(Boolean)
     };
-
+  
     try {
+      console.log("Competence data being dispatched:", competenceData);
       if (isEditMode) {
-        console.log("Dispatching editCompetence with data:", competenceData);
         await dispatch(editCompetence({ ...selectedCompetence, ...competenceData }));
       } else {
-        console.log("Dispatching addCompetence with data:", competenceData);
         await dispatch(addCompetence(competenceData)); // Add new competence
       }
       closeModal(); // Close modal after successful save
@@ -91,9 +94,12 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
       console.error('Error saving competence:', error.message);
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {submitError && <p className="text-red-600 text-xs">{submitError}</p>}
+
       <div>
         <label className="block text-sm font-semibold">Code Competence</label>
         <input
@@ -154,11 +160,11 @@ const AddCompetence = ({ closeModal, selectedCompetence }) => {
         {errors.quiz && <p className="text-red-600 text-xs">{errors.quiz}</p>}
       </div>
 
-      <div className="flex justify-end space-x-4 mt-4">
-        <button type="button" onClick={closeModal} className="px-4 py-2 bg-gray-300 rounded">
+      <div className="modal-action">
+        <button type="button" onClick={closeModal} className="btn btn-ghost">
           Cancel
         </button>
-        <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded flex items-center space-x-2">
+        <button type="submit" className="btn btn-primary gap-2">
           <Save className="w-4 h-4" />
           <span>{isEditMode ? 'Save Changes' : 'Add Competence'}</span>
         </button>

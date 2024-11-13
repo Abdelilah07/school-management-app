@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompetences, deleteCompetence } from '../../features/competences/CompetenceSlice';
-import { Eye, Edit, Trash, AlertCircle, Download, Plus } from 'lucide-react';
+import { Eye, Edit, Trash, AlertCircle, Download, Plus, Search } from 'lucide-react';
 import AddCompetence from './components/AddCompetence';
 import ViewCompetence from './components/ViewCompetence';
 import Papa from 'papaparse';
@@ -12,15 +12,13 @@ const CompetenceList = () => {
   const [selectedCompetence, setSelectedCompetence] = useState(null);
   const [viewMode, setViewMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  // Pagination state
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   const totalPages = Math.ceil(competences.length / itemsPerPage);
-  
-  // Search state
+
   const [searchTerm, setSearchTerm] = useState('');
-  
+
   useEffect(() => {
     dispatch(fetchCompetences());
   }, [dispatch]);
@@ -61,20 +59,17 @@ const CompetenceList = () => {
     URL.revokeObjectURL(url);
   };
 
-  // Filter competences based on search term
   const filteredCompetences = competences.filter((competence) =>
     competence.intitule_competence.some((name) =>
       name.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
-  // Slice competences for current page
   const displayedCompetences = filteredCompetences.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Pagination handlers
   const goToPreviousPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
   const goToNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
 
@@ -97,16 +92,17 @@ const CompetenceList = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-xl font-semibold">Element de Competence</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">Element de Competence</h1>
       
       {/* Search Bar */}
-      <div className="mt-4 mb-6">
+      <div className="relative mb-6">
+        <Search className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search competences..."
-          className="input input-bordered w-full"
+          className="input input-bordered w-full pl-10"
         />
       </div>
 
@@ -163,7 +159,6 @@ const CompetenceList = () => {
         </table>
       </div>
 
-      {/* Pagination Controls */}
       <div className="flex justify-between items-center mt-4">
         <button onClick={goToPreviousPage} disabled={currentPage === 1} className="btn btn-secondary">
           Previous
@@ -174,24 +169,25 @@ const CompetenceList = () => {
         </button>
       </div>
 
-      {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg shadow-lg w-96 p-6">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-semibold">{viewMode ? 'View Competence' : 'Add Competence'}</h2>
-              <button onClick={handleCloseModal} className="text-gray-500 hover:text-gray-800">X</button>
-            </div>
-            <div className="mt-4">
-              {viewMode ? (
-                <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
-              ) : (
-                <AddCompetence closeModal={handleCloseModal} selectedCompetence={selectedCompetence} />
-              )}
-            </div>
+      <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+        <div className="bg-white rounded-lg shadow-lg w-80 p-4 max-h-[500px] overflow-y-auto"> 
+          <div className="flex justify-between items-center">
+            <h2 className="text-xl font-semibold">{viewMode ? 'View Competence' : 'Add Competence'}</h2>
+            <button onClick={handleCloseModal} className="text-gray-200 hover:text-gray-300">X</button>
+          </div>
+          <div className="mt-4">
+            {viewMode ? (
+              <ViewCompetence competence={selectedCompetence} closeModal={handleCloseModal} />
+            ) : (
+              <AddCompetence closeModal={handleCloseModal} selectedCompetence={selectedCompetence} />
+            )}
           </div>
         </div>
-      )}
+      </div>
+    )}
+
+
     </div>
   );
 };
