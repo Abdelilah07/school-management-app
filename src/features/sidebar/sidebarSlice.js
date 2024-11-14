@@ -46,6 +46,12 @@ const initialState = {
       href: '/school-management-app/spicialisations',
       count: 4,
     },
+    {
+      label: 'Modules',
+      icon: 'BookMarked',
+      href: '/school-management-app/modules',
+      count: 62,
+    },
     { type: 'divider' },
     {
       label: 'Documents',
