@@ -3,7 +3,7 @@ import { MessageCircleQuestion, Search, X, User, UserPlus, Users } from 'lucide-
 
 const QuickActions = () => {
   const tiles = [
-    { title: 'Quiz', Icon: MessageCircleQuestion },
+    { title: 'Random quiz', Icon: MessageCircleQuestion },
     { title: 'Tile 2', Icon: Users },
     { title: 'Tile 3', Icon: UserPlus },
     { title: 'Tile 4', Icon: Search },

@@ -158,7 +158,7 @@ const QuizCard = ({ quiz, onQuizStart, className = '', loading = false }) => {
         {/* Footer Section - Fixed Height */}
         <div className="h-[40px] mt-4">
           <Link
-            to={`/school-management-app/quiz/${id}`}
+            to={`/quiz/${id}`}
             onClick={handleStartQuiz}
             className={`
               btn btn-block h-10 min-h-0

@@ -1,31 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import {
-  Home,
-  BookOpen,
-  Users,
-  Calendar,
-  BarChart,
-  FileText,
-  Settings,
-  BookMarked,
-  MessageCircleQuestion,
-} from 'lucide-react';
 import PropTypes from 'prop-types';
-
-const ICONS = {
-  Home,
-  BookOpen,
-  MessageCircleQuestion,
-  Users,
-  Calendar,
-  BarChart,
-  FileText,
-  Settings,
-  BookMarked,
-};
+import * as Icons from 'lucide-react';
 
 const MenuItem = ({ item }) => {
-  const IconComponent = ICONS[item.icon] || ICONS.Home;
+  const IconComponent = Icons[item.icon]; // Retrieve the icon component from the Icons object
 
   return (
     <li>
@@ -39,9 +17,11 @@ const MenuItem = ({ item }) => {
       >
         {({ isActive }) => (
           <>
-            <IconComponent
-              className={`w-5 h-5 ${isActive ? 'text-current' : 'text-base-content/70'}`}
-            />
+            {IconComponent && (
+              <IconComponent
+                className={`w-5 h-5 ${isActive ? 'text-current' : 'text-base-content/70'}`}
+              />
+            )}
             <span className="flex-1">{item.label}</span>
             {item.count !== undefined && (
               <span
@@ -71,7 +51,7 @@ MenuItem.propTypes = {
   item: PropTypes.shape({
     label: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
-    icon: PropTypes.oneOf(Object.keys(ICONS)),
+    icon: PropTypes.string,
     count: PropTypes.number,
     badge: PropTypes.string,
   }).isRequired,

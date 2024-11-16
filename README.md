@@ -31,6 +31,7 @@ src/
 
 - `npm run lint`: Lint code
 - `npm run format`: Format code
+- `npm run json-server`: Run json-server
 
 ## Learn More
 

@@ -13,6 +13,13 @@ const Sidebar = memo(() => {
   const { isOpen, items } = useSelector((state) => state.sidebar);
   const { isMobile } = useSelector((state) => state.ui);
 
+  // Get the user data from local storage
+  const user = (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
+    (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) || {
+      name: '',
+      role: '',
+    };
+
   // Handle click outside and escape key
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -95,7 +102,7 @@ const Sidebar = memo(() => {
           </nav>
 
           <div className="p-4 border-t border-base-200">
-            <UserProfile name="Jane Doe" role="Administrator" avatar={avatar} />
+            <UserProfile name={user.name} role={user.role} avatar={avatar} />
           </div>
         </div>
       </aside>
