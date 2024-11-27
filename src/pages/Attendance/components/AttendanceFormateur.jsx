@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FiltersFormateur from './FiltersFormateur';
 import { Save, X, Edit } from 'lucide-react';
-import { BsPersonFillSlash } from "react-icons/bs";
+import { BsPersonFillSlash } from 'react-icons/bs';
 
 export default function AttendanceFormateur() {
   const [secteursData, setSecteursData] = useState([]);
@@ -30,8 +30,6 @@ export default function AttendanceFormateur() {
   };
 
   const [timeSlots, setTimeSlots] = useState(getTimeSlots());
-
-
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -80,10 +78,12 @@ export default function AttendanceFormateur() {
       const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
       if (selectedSecteur) {
         const groupData = selectedSecteur.niveaux[niveau]?.filiere[filiere]?.[annee]?.[groupe];
-        setStudents(groupData?.map((student) => ({
-          ...student,
-          absentHours: timeSlots.reduce((acc, slot) => ({ ...acc, [slot]: false }), {})
-        })) || []);
+        setStudents(
+          groupData?.map((student) => ({
+            ...student,
+            absentHours: timeSlots.reduce((acc, slot) => ({ ...acc, [slot]: false }), {}),
+          })) || []
+        );
       }
     } else {
       setStudents([]);
@@ -97,20 +97,24 @@ export default function AttendanceFormateur() {
 
   const fetchAbsentStudents = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/absentStudents?date=${dateFilter}&niveau=${niveau}&filiere=${filiere}&annee=${annee}&groupe=${groupe}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await fetch(
+        `http://localhost:3000/absentStudents?date=${dateFilter}&niveau=${niveau}&filiere=${filiere}&annee=${annee}&groupe=${groupe}`,
+        {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
       if (!response.ok) throw new Error('Failed to fetch absent students');
       const data = await response.json();
       console.log('Fetched data:', data);
       // Find the matching record in the array
-      const matchingRecord = data.find(record =>
-        record.niveau === niveau &&
-        record.filiere === filiere &&
-        record.annee === annee &&
-        record.groupe === groupe &&
-        record.date === dateFilter
+      const matchingRecord = data.find(
+        (record) =>
+          record.niveau === niveau &&
+          record.filiere === filiere &&
+          record.annee === annee &&
+          record.groupe === groupe &&
+          record.date === dateFilter
       );
       setAbsentStudents(matchingRecord ? [matchingRecord] : []);
     } catch (error) {
@@ -146,7 +150,10 @@ export default function AttendanceFormateur() {
     setStudents((prev) =>
       prev.map((student) =>
         student.id === studentId
-          ? { ...student, absentHours: { ...student.absentHours, [timeSlot]: !student.absentHours[timeSlot] } }
+          ? {
+            ...student,
+            absentHours: { ...student.absentHours, [timeSlot]: !student.absentHours[timeSlot] },
+          }
           : student
       )
     );
@@ -218,9 +225,11 @@ export default function AttendanceFormateur() {
   return (
     <div className="">
       <div className="w-full p-4 mb-[-3%] flex flex-col items-end">
-        <div className='flex space-x-6 bg-base-200 p-3 rounded-t-3xl'>
+        <div className="flex space-x-6 bg-base-200 p-3 rounded-t-3xl">
           <h2 className="text-2xl font-semibold">Current Filiere :</h2>
-          <p className="text-2xl from-neutral-950">{filiere || '-'} {groupe || '-'}</p>
+          <p className="text-2xl from-neutral-950">
+            {filiere || '-'} {groupe || '-'}
+          </p>
         </div>
       </div>
       <div className="w-full p-4">
@@ -244,11 +253,11 @@ export default function AttendanceFormateur() {
         <div className="overflow-x-auto rounded-lg shadow-md mt-4">
           <table className="table table-zebra w-full hover border-collapse border border-gray-300">
             <thead className="bg-base-200">
-              <tr className='text-center font-bold text-black text-[15px]'>
-                <th className='border-r border-gray-300'>ID</th>
-                <th className='border-r border-gray-300'>CEF</th>
-                <th className='border-r border-gray-300'>First Name</th>
-                <th className='border-r border-gray-300'>Last Name</th>
+              <tr className="text-center font-bold text-black text-[15px] border border-gray-300">
+                <th className="border border-gray-300">ID</th>
+                <th className="border border-gray-300">CEF</th>
+                <th className="border border-gray-300">First Name</th>
+                <th className="border border-gray-300">Last Name</th>
                 {timeSlots.map((slot) => (
                   <th key={slot} className="border border-gray-300">
                     {slot}
@@ -256,25 +265,21 @@ export default function AttendanceFormateur() {
                 ))}
               </tr>
             </thead>
-            <tbody className='text-center'>
+            <tbody className="text-center">
               {isDateInPast(dateFilter) ? (
                 absentStudents.length > 0 && absentStudents[0].students ? (
                   absentStudents[0].students.map((student) => {
                     const { firstName, lastName } = separateNames(student.studentName);
                     return (
                       <tr key={student.studentId}>
-                        <td className='border border-gray-300'>{student.studentId}</td>
-                        <td className='border border-gray-300'>{student.studentCef}</td>
-                        <td className='border border-gray-300'>{firstName}</td>
-                        <td className='border border-gray-300'>{lastName}</td>
-                        {[...morningTimeSlots, ...afternoonTimeSlots].map((slot) => (
+                        <td className="border border-gray-300">{student.studentId}</td>
+                        <td className="border border-gray-300">{student.studentCef}</td>
+                        <td className="border border-gray-300">{firstName}</td>
+                        <td className="border border-gray-300">{lastName}</td>
+                        {timeSlots.map((slot) => (
                           <td key={slot} className="text-center border border-gray-300">
                             {student.absentHours[slot] ? (
-                              <BsPersonFillSlash
-                                size={25}
-                                color="red"
-                                className="mx-auto"
-                              />
+                              <BsPersonFillSlash size={25} color="red" className="mx-auto" />
                             ) : (
                               '------'
                             )}
@@ -297,10 +302,10 @@ export default function AttendanceFormateur() {
                     const { firstName, lastName } = separateNames(student.fullname);
                     return (
                       <tr key={student.id}>
-                        <td className='border border-gray-300'>{student.id}</td>
-                        <td className='border border-gray-300'>{student.cef}</td>
-                        <td className='border border-gray-300'>{firstName}</td>
-                        <td className='border border-gray-300'>{lastName}</td>
+                        <td className="border border-gray-300">{student.id}</td>
+                        <td className="border border-gray-300">{student.cef}</td>
+                        <td className="border border-gray-300">{firstName}</td>
+                        <td className="border border-gray-300">{lastName}</td>
                         {timeSlots.map((slot) => (
                           <td key={slot} className="text-center border border-gray-300">
                             <input
@@ -350,7 +355,12 @@ export default function AttendanceFormateur() {
                 className="btn btn-secondary"
                 onClick={() => {
                   setEditing(false);
-                  setStudents((prev) => prev.map((student) => ({ ...student, absentHours: timeSlots.reduce((acc, slot) => ({ ...acc, [slot]: false }), {}) })));
+                  setStudents((prev) =>
+                    prev.map((student) => ({
+                      ...student,
+                      absentHours: timeSlots.reduce((acc, slot) => ({ ...acc, [slot]: false }), {}),
+                    }))
+                  );
                 }}
                 disabled={isSaving}
               >
@@ -372,10 +382,7 @@ export default function AttendanceFormateur() {
             </button>
           )}
         </div>
-
       </div>
     </div>
   );
 }
-
-

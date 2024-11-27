@@ -9,7 +9,11 @@ const QuizzesPage = () => {
   const dispatch = useDispatch();
   // Modify the selector to filter out draft quizzes
   const quizData = useSelector((state) =>
-    state.quizzes.quizzes ? state.quizzes.quizzes.filter((quiz) => quiz.status === 'active' && quiz.questions?.length > 0) : []
+    state.quizzes.quizzes
+      ? state.quizzes.quizzes.filter(
+          (quiz) => quiz.status === 'active' && quiz.questions?.length > 0
+        )
+      : []
   );
   const status = useSelector((state) => state.quizzes.status);
   const error = useSelector((state) => state.quizzes.error);

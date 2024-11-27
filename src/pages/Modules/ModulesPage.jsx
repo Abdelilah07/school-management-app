@@ -1,11 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-  PlusCircle,
-  Edit,
-  RefreshCcw,
-  Trash2,
-  Search,
-} from 'lucide-react';
+import { PlusCircle, Edit, RefreshCcw, Trash2, Search } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchModules,
@@ -44,7 +38,7 @@ function ModulesPage() {
   useEffect(() => {
     dispatch(fetchModules());
     fetchOptions(secteur);
-  }, [dispatch,secteur]);
+  }, [dispatch, secteur]);
 
   const fetchOptions = async () => {
     try {
@@ -56,7 +50,7 @@ function ModulesPage() {
       console.error('Erreur lors du chargement des options:', error);
     }
   };
-  
+
   const filteredModules = modules.filter(
     (module) =>
       module.secteur === filterSecteur &&
@@ -90,7 +84,7 @@ function ModulesPage() {
     });
     setIsModalOpen(true);
   };
-  
+
   const handleModalClose = () => {
     setIsModalOpen(false);
     setFormData({
@@ -113,7 +107,7 @@ function ModulesPage() {
       setSecteur(value);
     }
   };
-  
+
   const handleDelete = (id) => {
     dispatch(deleteModule(id));
   };
@@ -342,21 +336,21 @@ function ModulesPage() {
               </select>
             </div>
             <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Filière</label>
-            <select
-              name="filiere"
-              value={formData.filiere}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-            >
-              <option value=""> Choisir une filière </option>
-              {filieres.map((filiere, index) => (
-                <option key={index} value={filiere}>
-                  {filiere}
-                </option>
-              ))}
-            </select>
-          </div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Filière</label>
+              <select
+                name="filiere"
+                value={formData.filiere}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
+              >
+                <option value=""> Choisir une filière </option>
+                {filieres.map((filiere, index) => (
+                  <option key={index} value={filiere}>
+                    {filiere}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Niveau</label>
               <select
@@ -366,7 +360,7 @@ function ModulesPage() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
                 required
               >
-               <option value=""> Choisir un niveau </option>
+                <option value=""> Choisir un niveau </option>
                 <option value="1A">1ère année</option>
                 <option value="2A">2ème année</option>
               </select>
@@ -384,21 +378,21 @@ function ModulesPage() {
               />
             </div>
             <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Formateur</label>
-            <select
-              name="formateur"
-              value={formData.formateur}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-            >
-              <option value=""> Choisir un formateur </option>
-              {formateur.map((form, index) => (
-                <option key={index} value={form}>
-                  {form}
-                </option>
-              ))}
-            </select>
-          </div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Formateur</label>
+              <select
+                name="formateur"
+                value={formData.formateur}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
+              >
+                <option value=""> Choisir un formateur </option>
+                {formateur.map((form, index) => (
+                  <option key={index} value={form}>
+                    {form}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="flex justify-end space-x-3 mt-6">
               <button type="button" onClick={handleModalClose} className="btn btn-ghos">
                 Cancel

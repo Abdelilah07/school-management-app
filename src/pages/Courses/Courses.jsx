@@ -1,11 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
-import { BookOpen, CheckCircle, Flame,Swords,ChevronRight,BookMarked } from 'lucide-react';
+import { BookOpen, CheckCircle, Flame, Swords, ChevronRight, BookMarked } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCourses } from '../../features/courses/coursesSlice';
 import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
-
-
 
 const Courses = () => {
   const dispatch = useDispatch();
@@ -34,19 +32,19 @@ const Courses = () => {
     for (let i = 0; i < 20; i++) {
       const particle = document.createElement('div');
       particle.classList.add(
-        'absolute', 
-        'rounded-full', 
-        'bg-nether-flame', 
-        'opacity-70', 
+        'absolute',
+        'rounded-full',
+        'bg-nether-flame',
+        'opacity-70',
         'pointer-events-none',
         'animate-nether-particle'
       );
-      
+
       particle.style.width = `${Math.random() * 8}px`;
       particle.style.height = particle.style.width;
       particle.style.left = `${Math.random() * 100}%`;
       particle.style.top = `${Math.random() * 100}%`;
-      
+
       particlesContainer.appendChild(particle);
 
       // Remove particle after animation
@@ -119,7 +117,9 @@ const Courses = () => {
               value={selectedCourseName}
               onChange={(e) => setSelectedCourseName(e.target.value)}
             >
-              <option value="" className="bg-nether-dark-stone">All Courses</option>
+              <option value="" className="bg-nether-dark-stone">
+                All Courses
+              </option>
               {courses.map((course) => (
                 <option key={course.id} value={course.courseName} className="bg-nether-dark-stone">
                   {course.courseName}
@@ -137,7 +137,9 @@ const Courses = () => {
               value={selectedTeacherName}
               onChange={(e) => setSelectedTeacherName(e.target.value)}
             >
-              <option value="" className="bg-nether-dark-stone">All Teachers</option>
+              <option value="" className="bg-nether-dark-stone">
+                All Teachers
+              </option>
               {[...new Set(courses.map((course) => course.teacherName))].map((teacherName) => (
                 <option key={teacherName} value={teacherName} className="bg-nether-dark-stone">
                   {teacherName}
@@ -151,18 +153,17 @@ const Courses = () => {
         </div>
 
         {/* Courses Grid */}
-        <div 
-          ref={courseGridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div ref={courseGridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.length ? (
             filteredCourses.map((course) => (
               <div
                 key={course.id}
                 className={`relative rounded-3xl bg-nether-dark-stone border-2 border-nether-flame overflow-hidden transform transition-all duration-500 
-                  ${activeCard === course.id 
-                    ? 'scale-105 shadow-volcanic-glow' 
-                    : 'hover:scale-105 hover:shadow-nether-glow'}
+                  ${
+                    activeCard === course.id
+                      ? 'scale-105 shadow-volcanic-glow'
+                      : 'hover:scale-105 hover:shadow-nether-glow'
+                  }
                 `}
                 onMouseEnter={(e) => {
                   setActiveCard(course.id);
@@ -216,8 +217,8 @@ const Courses = () => {
                         </>
                       ) : (
                         <>
-                        <ChevronRight className="w-6 h-6 group-hover:animate-pulse" />
-                        <span>Start Course</span>
+                          <ChevronRight className="w-6 h-6 group-hover:animate-pulse" />
+                          <span>Start Course</span>
                         </>
                       )}
                     </button>
@@ -234,7 +235,6 @@ const Courses = () => {
         </div>
       </div>
     </div>
-    
   );
 };
 

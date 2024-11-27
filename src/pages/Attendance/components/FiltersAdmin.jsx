@@ -17,16 +17,16 @@ export default function FiltersAdmin({
   prenom = '',
   selectedMonth = '',
   selectedWeek = '',
-  onNiveauChange = () => { },
-  onFiliereChange = () => { },
-  onAnneeChange = () => { },
-  onGroupeChange = () => { },
-  onCinChange = () => { },
-  onCefChange = () => { },
-  onNomChange = () => { },
-  onPrenomChange = () => { },
-  onMonthChange = () => { },
-  onWeekChange = () => { },
+  onNiveauChange = () => {},
+  onFiliereChange = () => {},
+  onAnneeChange = () => {},
+  onGroupeChange = () => {},
+  onCinChange = () => {},
+  onCefChange = () => {},
+  onNomChange = () => {},
+  onPrenomChange = () => {},
+  onMonthChange = () => {},
+  onWeekChange = () => {},
   filteredStudents = [],
   isWeekAdminPage = false,
   showExport = true,
@@ -135,8 +135,26 @@ export default function FiltersAdmin({
   const exportToPDF = () => {
     const doc = new jsPDF('l', 'mm', 'a4'); // Changed to landscape orientation
     doc.autoTable({
-      head: [['CEF', 'Nom Complet', 'Secteur', 'Niveau', 'Filière', 'Année', 'Groupe', 'AJ', 'ANJ', 'Retards', 'Sanctions Assiduité', 'Observations SA', 'Sanctions Comportement', 'Observations SC', 'Note Discipline']],
-      body: filteredStudents.map(student => [
+      head: [
+        [
+          'CEF',
+          'Nom Complet',
+          'Secteur',
+          'Niveau',
+          'Filière',
+          'Année',
+          'Groupe',
+          'AJ',
+          'ANJ',
+          'Retards',
+          'Sanctions Assiduité',
+          'Observations SA',
+          'Sanctions Comportement',
+          'Observations SC',
+          'Note Discipline',
+        ],
+      ],
+      body: filteredStudents.map((student) => [
         student.cef,
         student.fullname,
         student.secteur,
@@ -174,7 +192,7 @@ export default function FiltersAdmin({
     });
     doc.save('Etat_Absence.pdf');
   };
-  
+
   const exportToCSV = () => {
     const headers = [
       'CEF',
@@ -223,7 +241,6 @@ export default function FiltersAdmin({
       document.body.removeChild(link);
     }
   };
-
 
   if (!Array.isArray(allData)) {
     return <div className="text-red-500">Error: Invalid data format</div>;
@@ -284,30 +301,30 @@ export default function FiltersAdmin({
       </div>
 
       <div className="flex justify-center space-x-2 mt-4">
-      <button className="btn btn-secondary btn-sm" onClick={clearAllFilters}>
-        <X className="mr-2" size={16} />
-        Effacer les filtres
-      </button>
-      {showExport && (
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-primary btn-sm">
-            <Download className="mr-2" size={16} />
-            Exporter
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a onClick={exportToPDF}>Exporter en PDF</a>
-            </li>
-            <li>
-              <a onClick={exportToCSV}>Exporter en CSV</a>
-            </li>
-          </ul>
-        </div>
-      )}
+        <button className="btn btn-secondary btn-sm" onClick={clearAllFilters}>
+          <X className="mr-2" size={16} />
+          Effacer les filtres
+        </button>
+        {showExport && (
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-primary btn-sm">
+              <Download className="mr-2" size={16} />
+              Exporter
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a onClick={exportToPDF}>Exporter en PDF</a>
+              </li>
+              <li>
+                <a onClick={exportToCSV}>Exporter en CSV</a>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 }
