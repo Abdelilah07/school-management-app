@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FiltersFormateur from './FiltersFormateur';
 import { Save, X, Edit } from 'lucide-react';
 import { BsPersonFillSlash } from "react-icons/bs";
- 
+
 export default function AttendanceFormateur() {
   const [secteursData, setSecteursData] = useState([]);
   const [secteur, setSecteur] = useState('');
@@ -20,27 +20,27 @@ export default function AttendanceFormateur() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
   const [checkboxDisabled, setCheckboxDisabled] = useState(false);
- 
+
   const getMorningTimeSlots = () => ['8:30->10:50', '10:50->13.30'];
   const getAfternoonTimeSlots = () => ['13.30->15.50', '15.50->18.30'];
- 
+
   const getTimeSlots = () => {
     const currentHour = new Date().getHours();
     return currentHour < 12 ? getMorningTimeSlots() : getAfternoonTimeSlots();
   };
- 
+
   const [timeSlots, setTimeSlots] = useState(getTimeSlots());
- 
- 
+
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = students.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(students.length / itemsPerPage);
- 
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
- 
+
   useEffect(() => {
     const fetchSecteursData = async () => {
       try {
@@ -57,9 +57,9 @@ export default function AttendanceFormateur() {
     const updateTimeSlots = () => {
       setTimeSlots(getTimeSlots());
     };
- 
+
     const interval = setInterval(updateTimeSlots, 60000); // Update every minute
- 
+
     return () => clearInterval(interval);
   }, []);
   const separateNames = (fullName) => {
@@ -68,7 +68,7 @@ export default function AttendanceFormateur() {
     const firstName = names.join(' ');
     return { firstName, lastName };
   };
- 
+
   useEffect(() => {
     if (secteur && niveau && filiere && annee && groupe) {
       const selectedSecteur = secteursData.find((s) => s.intitule_secteur === secteur);
@@ -83,12 +83,12 @@ export default function AttendanceFormateur() {
       setStudents([]);
     }
   }, [secteur, niveau, filiere, annee, groupe, secteursData]);
- 
+
   const isDateInPast = (selectedDate) => {
     const today = new Date().toISOString().split('T')[0];
     return selectedDate < today;
   };
- 
+
   const fetchAbsentStudents = async () => {
     try {
       const response = await fetch(`http://localhost:3000/absentStudents?date=${dateFilter}&niveau=${niveau}&filiere=${filiere}&annee=${annee}&groupe=${groupe}`, {
@@ -112,7 +112,7 @@ export default function AttendanceFormateur() {
       setError('Failed to fetch absent students. Please try again.');
     }
   };
- 
+
   useEffect(() => {
     if (isDateInPast(dateFilter) && dateFilter && niveau && filiere && annee && groupe) {
       fetchAbsentStudents();
@@ -120,7 +120,7 @@ export default function AttendanceFormateur() {
       setAbsentStudents([]);
     }
   }, [dateFilter, niveau, filiere, annee, groupe]);
- 
+
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
     const parsedDate = new Date(selectedDate);
@@ -128,14 +128,14 @@ export default function AttendanceFormateur() {
       setError('Invalid date selected.');
       return;
     }
- 
+
     const formattedDate = parsedDate.toISOString().split('T')[0];
     setDateFilter(formattedDate);
     setEditing(!isDateInPast(formattedDate));
     setIsSaved(false);
     setAbsentStudents([]); // Reset absentStudents when a new date is selected
   };
- 
+
   const handleCheckboxChange = (studentId, timeSlot) => {
     setStudents((prev) =>
       prev.map((student) =>
@@ -145,15 +145,15 @@ export default function AttendanceFormateur() {
       )
     );
   };
- 
+
   const saveSelectionsToAPI = async (absentStudents) => {
     try {
       const monthInLetters = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
         new Date(dateFilter)
       );
- 
+
       const registrationTime = new Date().toISOString();
- 
+
       const response = await fetch('http://localhost:3000/absentStudents', {
         method: 'POST',
         headers: {
@@ -176,7 +176,7 @@ export default function AttendanceFormateur() {
           })),
         }),
       });
- 
+
       if (!response.ok) {
         throw new Error('Failed to save absent students');
       }
@@ -185,11 +185,11 @@ export default function AttendanceFormateur() {
       setError('Failed to save absent students. Please try again.');
     }
   };
- 
+
   const saveSelections = async () => {
     setIsSaving(true);
     setError(null);
- 
+
     try {
       const absentStudents = students.filter((s) => Object.values(s.absentHours).some(Boolean));
       if (absentStudents.length === 0) {
@@ -197,7 +197,7 @@ export default function AttendanceFormateur() {
         setIsSaving(false);
         return;
       }
- 
+
       await saveSelectionsToAPI(absentStudents);
       setIsSaving(false);
       setIsSaved(true);
@@ -208,7 +208,7 @@ export default function AttendanceFormateur() {
       setIsSaving(false);
     }
   };
- 
+
   return (
     <div className="">
       <div className="w-full p-4 mb-[-3%] flex flex-col items-end">
@@ -233,7 +233,7 @@ export default function AttendanceFormateur() {
           onGroupeChange={setGroupe}
           onDateChange={handleDateChange}
         />
- 
+
         <div className="overflow-x-auto rounded-lg shadow-md mt-4">
           <table className="table table-zebra w-full hover">
             <thead className="bg-base-200">
@@ -316,7 +316,7 @@ export default function AttendanceFormateur() {
             </tbody>
           </table>
         </div>
- 
+
         <div className="flex justify-center gap-4 mt-6">
           <div className="btn-group">
             {Array.from({ length: totalPages }, (_, i) => (
@@ -363,11 +363,10 @@ export default function AttendanceFormateur() {
             </button>
           )}
         </div>
- 
+
       </div>
     </div>
   );
 }
- 
- 
- 
+
+
