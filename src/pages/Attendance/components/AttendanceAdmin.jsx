@@ -417,7 +417,7 @@ export default function AttendanceAdmin() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 px-10">
       <FiltersAdmin
         filteredStudents={filteredStudents}
         allData={data}

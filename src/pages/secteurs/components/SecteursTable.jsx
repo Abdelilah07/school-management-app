@@ -22,13 +22,13 @@ const SecteursTable = ({ secteurs, sortConfig, onSort, onView, onEdit, onDelete 
       mobileTruncate: true,
     },
     {
-      key: 'niveaux.Specialisation.filiere',
+      key: 'filieres',
       label: 'Filières',
       render: (row) => {
-        const filiereCount = Object.keys(row.niveaux?.Specialisation?.filiere || {}).length;
+        const filiereCount = row.filieres ? row.filieres.length : 0;
         return (
           <Link
-            to={`/secteurs/niveaux/specialisation/${row.code_secteur}`}
+            to={`/secteurs/filieres/${row.code_secteur}`}
             className="btn btn-ghost btn-xs gap-2"
           >
             <Users className="w-4 h-4" />
@@ -93,8 +93,8 @@ const SecteursTable = ({ secteurs, sortConfig, onSort, onView, onEdit, onDelete 
       onSort={onSort}
       emptyStateProps={{
         icon: AlertCircle,
-        title: 'Aucune secteur trouvée',
-        description: 'Commencez par ajouter une nouvelle secteur',
+        title: 'Aucun secteur trouvé',
+        description: 'Commencez par ajouter un nouveau secteur',
       }}
     />
   );

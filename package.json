@@ -17,6 +17,7 @@
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
     "express": "^4.21.1",
     "jspdf": "^2.5.2",
@@ -54,6 +55,7 @@
     "json-server": "^1.0.0-beta.3",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
+    "rimraf": "^4.4.1",
     "tailwindcss": "^3.4.14",
     "vite": "^5.4.11",
     "vite-plugin-svgr": "^4.3.0"

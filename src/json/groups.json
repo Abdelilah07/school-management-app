@@ -1,0 +1,48 @@
+{
+  "groups": [
+    {
+      "id": "b44a",
+      "codeGroupe": "1",
+      "niveau": "GR101",
+      "intituleGroupe": "Groupe 1",
+      "filiere": "Digital"
+    },
+    {
+      "codeGroupe": "2",
+      "niveau": "GR102",
+      "intituleGroupe": "Groupe 2",
+      "filiere": "Digital",
+      "modules": [
+        "[object Object]"
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe1.pdf",
+      "liste": [
+        "[object Object]"
+      ],
+      "id": "dd56"
+    },
+    {
+      "codeGroupe": "2",
+      "niveau": "GR102",
+      "intituleGroupe": "Groupe 2",
+      "filiere": "Digital",
+      "modules": [
+        "[object Object]"
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe1.pdf",
+      "liste": [
+        "[object Object]"
+      ],
+      "id": "dd56"
+    },
+    
+    
+    {
+      "id": "1a13",
+      "codeGroupe": "3",
+      "niveau": "GR103",
+      "intituleGroupe": "Groupe 3",
+      "filiere": "Digital"
+    }
+  ]
+}

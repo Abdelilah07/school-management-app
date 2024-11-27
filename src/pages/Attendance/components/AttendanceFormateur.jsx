@@ -21,12 +21,12 @@ export default function AttendanceFormateur() {
   const [itemsPerPage] = useState(10);
   const [checkboxDisabled, setCheckboxDisabled] = useState(false);
 
-  const morningTimeSlots = ['8:30->10:50', '10:50->13.30'];
-  const afternoonTimeSlots = ['13.30->15.50', '15.50->18.30'];
+  const getMorningTimeSlots = () => ['8:30->10:50', '10:50->13.30'];
+  const getAfternoonTimeSlots = () => ['13.30->15.50', '15.50->18.30'];
 
   const getTimeSlots = () => {
     const currentHour = new Date().getHours();
-    return currentHour < 12 ? morningTimeSlots : afternoonTimeSlots;
+    return currentHour < 12 ? getMorningTimeSlots() : getAfternoonTimeSlots();
   };
 
   const [timeSlots, setTimeSlots] = useState(getTimeSlots());
@@ -55,20 +55,13 @@ export default function AttendanceFormateur() {
   }, []);
   useEffect(() => {
     const updateTimeSlots = () => {
-      if (!isDateInPast(dateFilter)) {
-        setTimeSlots(getTimeSlots());
-      } else {
-        setTimeSlots([...morningTimeSlots, ...afternoonTimeSlots]);
-      }
+      setTimeSlots(getTimeSlots());
     };
 
-    updateTimeSlots();
     const interval = setInterval(updateTimeSlots, 60000); // Update every minute
 
     return () => clearInterval(interval);
-  }, [dateFilter]);
-
-
+  }, []);
   const separateNames = (fullName) => {
     const names = fullName.split(' ');
     const lastName = names.pop();
@@ -220,8 +213,8 @@ export default function AttendanceFormateur() {
     <div className="">
       <div className="w-full p-4 mb-[-3%] flex flex-col items-end">
         <div className='flex space-x-6 bg-base-200 p-3 rounded-t-3xl'>
-          <h2 className="text-xl font-semibold">Current Filiere :</h2>
-          <p className="text-xl from-neutral-950">{filiere || '-'} {groupe || '-'}</p>
+          <h2 className="text-2xl font-semibold">Current Filiere :</h2>
+          <p className="text-2xl from-neutral-950">{filiere || '-'} {groupe || '-'}</p>
         </div>
       </div>
       <div className="w-full p-4">
@@ -242,17 +235,15 @@ export default function AttendanceFormateur() {
         />
 
         <div className="overflow-x-auto rounded-lg shadow-md mt-4">
-          <table className="table table-zebra w-full hover border-collapse border border-gray-300">
+          <table className="table table-zebra w-full hover">
             <thead className="bg-base-200">
-              <tr className='text-center font-bold text-black text-[15px]'>
-                <th className='border-r border-gray-300'>ID</th>
-                <th className='border-r border-gray-300'>CEF</th>
-                <th className='border-r border-gray-300'>First Name</th>
-                <th className='border-r border-gray-300'>Last Name</th>
+              <tr className='text-center font-bold text-black text-[15px] border border-gray-300'>
+                <th>ID</th>
+                <th>CEF</th>
+                <th>First Name</th>
+                <th className=''>Last Name</th>
                 {timeSlots.map((slot) => (
-                  <th key={slot} className="border border-gray-300">
-                    {slot}
-                  </th>
+                  <th key={slot}>{slot}</th>
                 ))}
               </tr>
             </thead>
@@ -263,12 +254,12 @@ export default function AttendanceFormateur() {
                     const { firstName, lastName } = separateNames(student.studentName);
                     return (
                       <tr key={student.studentId}>
-                        <td className='border border-gray-300'>{student.studentId}</td>
-                        <td className='border border-gray-300'>{student.studentCef}</td>
-                        <td className='border border-gray-300'>{firstName}</td>
+                        <td>{student.studentId}</td>
+                        <td>{student.studentCef}</td>
+                        <td>{firstName}</td>
                         <td className='border border-gray-300'>{lastName}</td>
-                        {[...morningTimeSlots, ...afternoonTimeSlots].map((slot) => (
-                          <td key={slot} className="text-center border border-gray-300">
+                        {timeSlots.map((slot) => (
+                          <td key={slot} className="text-center">
                             {student.absentHours[slot] ? (
                               <BsPersonFillSlash
                                 size={25}
@@ -285,7 +276,7 @@ export default function AttendanceFormateur() {
                   })
                 ) : (
                   <tr>
-                    <td colSpan={4 + [...morningTimeSlots, ...afternoonTimeSlots].length} className="text-center">
+                    <td colSpan={4 + timeSlots.length} className="text-center">
                       No absent students data available for this date.
                     </td>
                   </tr>
@@ -297,12 +288,12 @@ export default function AttendanceFormateur() {
                     const { firstName, lastName } = separateNames(student.fullname);
                     return (
                       <tr key={student.id}>
-                        <td className='border border-gray-300'>{student.id}</td>
-                        <td className='border border-gray-300'>{student.cef}</td>
-                        <td className='border border-gray-300'>{firstName}</td>
+                        <td>{student.id}</td>
+                        <td>{student.cef}</td>
+                        <td>{firstName}</td>
                         <td className='border border-gray-300'>{lastName}</td>
                         {timeSlots.map((slot) => (
-                          <td key={slot} className="text-center border border-gray-300">
+                          <td key={slot}>
                             <input
                               type="checkbox"
                               className="checkbox checkbox-primary"
@@ -377,4 +368,5 @@ export default function AttendanceFormateur() {
     </div>
   );
 }
+
 
