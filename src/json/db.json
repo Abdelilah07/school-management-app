@@ -2883,6 +2883,40 @@
           }
         }
       ]
+    },
+    {
+      "id": "fbc4",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "1st Year",
+      "groupe": "Group 2",
+      "date": "2024-11-27",
+      "month": "November",
+      "registrationTime": "2024-11-27T07:47:43.219Z",
+      "students": [
+        {
+          "studentId": "4",
+          "studentCef": "10004",
+          "studentName": "Emma Davis",
+          "absentHours": {
+            "8:30->10:50": true,
+            "10:50->13.30": true,
+            "13.30->15.50": true,
+            "15.50->18.30": true
+          }
+        },
+        {
+          "studentId": "3",
+          "studentCef": "10003",
+          "studentName": "Bob Lee",
+          "absentHours": {
+            "8:30->10:50": false,
+            "10:50->13.30": true,
+            "13.30->15.50": true,
+            "15.50->18.30": false
+          }
+        }
+      ]
     }
   ],
   "studentDiscipline": [
