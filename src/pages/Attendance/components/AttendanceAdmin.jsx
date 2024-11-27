@@ -372,7 +372,7 @@ onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <div className="container mx-auto py-8 px-10">
       <FiltersAdmin
         filteredStudents={filteredStudents}
         allData={data}

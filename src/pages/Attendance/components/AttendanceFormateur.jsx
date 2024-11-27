@@ -282,12 +282,13 @@ export default function AttendanceFormateur() {
         <div className="btn-group">
           {Array.from({ length: totalPages }, (_, i) => (
             <button
-              key={i + 1}
-              className={`btn ${currentPage === i + 1 ? 'btn-active' : ''}`}
-              onClick={() => paginate(i + 1)}
-            >
-              {i + 1}
-            </button>
+            key={i + 1}
+            className={`btn ${currentPage === i + 1 ? 'btn-active' : ''}`}
+            onClick={() => paginate(i + 1)}
+          >
+            {i + 1}
+          </button>
+          
           ))}
         </div>
       </div>

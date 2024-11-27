@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { X, Download } from 'lucide-react';
-import { jsPDF } from 'jspdf';
+import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 export default function FiltersAdmin({
@@ -16,6 +16,7 @@ export default function FiltersAdmin({
   nom = '',
   prenom = '',
   selectedMonth = '',
+  selectedWeek = '',
   onNiveauChange = () => { },
   onFiliereChange = () => { },
   onAnneeChange = () => { },
@@ -25,7 +26,10 @@ export default function FiltersAdmin({
   onNomChange = () => { },
   onPrenomChange = () => { },
   onMonthChange = () => { },
+  onWeekChange = () => { },
   filteredStudents = [],
+  isWeekAdminPage = false,
+  showExport = true,
 }) {
   const [filteredFilieres, setFilteredFilieres] = useState([]);
   const [filteredAnnees, setFilteredAnnees] = useState([]);
@@ -120,25 +124,18 @@ export default function FiltersAdmin({
     onCefChange('');
     onNomChange('');
     onPrenomChange('');
-    onMonthChange('');
+    if (!isWeekAdminPage) {
+      onMonthChange('');
+    }
+    if (isWeekAdminPage) {
+      onWeekChange('');
+    }
   };
 
-  const exportToPDF = () => {
-    const doc = new jsPDF('l', 'mm', 'a4'); // Set to landscape mode
-    const pageWidth = doc.internal.pageSize.width;
-    const pageHeight = doc.internal.pageSize.height;
-    const margin = 10;
-    const tableWidth = pageWidth - margin - 5; // 5 is the new right margin
 
-    doc.setFontSize(18);
-    doc.text('Student Attendance and Discipline Report', pageWidth / 2, 20, { align: 'center' });
-    
-    doc.setFontSize(12);
-    doc.text(`Generated on: ${new Date().toLocaleDateString()}`, margin, 30);
-    
+  const exportToPDF = () => {
+    const doc = new jsPDF('l', 'mm', 'a4'); // Changed to landscape orientation
     doc.autoTable({
-      startY: 40,
-      tableWidth: tableWidth,
       head: [['CEF', 'Nom Complet', 'Secteur', 'Niveau', 'Filière', 'Année', 'Groupe', 'AJ', 'ANJ', 'Retards', 'Sanctions Assiduité', 'Observations SA', 'Sanctions Comportement', 'Observations SC', 'Note Discipline']],
       body: filteredStudents.map(student => [
         student.cef,
@@ -157,7 +154,7 @@ export default function FiltersAdmin({
         student.observationSC || '',
         student.disciplineNote || 15
       ]),
-      styles: { fontSize: 8, cellPadding: 2 },
+      styles: { fontSize: 8, cellPadding: 2 }, // Reduced font size and cell padding
       columnStyles: {
         0: { cellWidth: 20 }, // CEF
         1: { cellWidth: 30 }, // Nom Complet
@@ -173,24 +170,12 @@ export default function FiltersAdmin({
         11: { cellWidth: 25 }, // Observations SA
         12: { cellWidth: 25 }, // Sanctions Comportement
         13: { cellWidth: 25 }, // Observations SC
-        14: { cellWidth: 20 }  // Note Discipline
+        14: { cellWidth: 15 }, // Note Discipline
       },
-      headStyles: { fillColor: [41, 128, 185], textColor: 255, fontStyle: 'bold' },
-      alternateRowStyles: { fillColor: [224, 224, 224] },
-      margin: { top: 40, right: 5, bottom: margin, left: margin },
     });
-
-    // Add page numbers
-    const pageCount = doc.internal.getNumberOfPages();
-    for (let i = 1; i <= pageCount; i++) {
-      doc.setPage(i);
-      doc.setFontSize(10);
-      doc.text(`Page ${i} of ${pageCount}`, pageWidth - 20, pageHeight - 10);
-    }
-
-    doc.save('student_attendance_and_discipline.pdf');
+    doc.save('Etat_Absence.pdf');
   };
-
+  
   const exportToCSV = () => {
     const headers = ['CEF', 'Nom Complet', 'Secteur', 'Niveau', 'Filière', 'Année', 'Groupe', 'AJ', 'ANJ', 'Retards', 'Sanctions Assiduité', 'Observations SA', 'Sanctions Comportement', 'Observations SC', 'Note Discipline'];
     const data = filteredStudents.map(student => [
@@ -216,13 +201,14 @@ export default function FiltersAdmin({
     if (link.download !== undefined) {
       const url = URL.createObjectURL(blob);
       link.setAttribute('href', url);
-      link.setAttribute('download', 'student_attendance_and_discipline.csv');
+      link.setAttribute('download', 'Etat_Absence.csv');
       link.style.visibility = 'hidden';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
   };
+
 
   if (!Array.isArray(allData)) {
     return <div className="text-red-500">Error: Invalid data format</div>;
@@ -250,32 +236,44 @@ export default function FiltersAdmin({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        <select
-          className="select select-bordered select-sm w-full"
-          value={selectedMonth}
-          onChange={(e) => onMonthChange(e.target.value)}
-        >
-          <option value="">Tous les mois</option>
-          <option value="Janvier">Janvier</option>
-          <option value="Février">Février</option>
-          <option value="Mars">Mars</option>
-          <option value="Avril">Avril</option>
-          <option value="Mai">Mai</option>
-          <option value="Juin">Juin</option>
-          <option value="Juillet">Juillet</option>
-          <option value="Août">Août</option>
-          <option value="Septembre">Septembre</option>
-          <option value="Octobre">Octobre</option>
-          <option value="Novembre">Novembre</option>
-          <option value="Décembre">Décembre</option>
-        </select>
+        {!isWeekAdminPage && (
+          <select
+            className="select select-bordered select-sm w-full"
+            value={selectedMonth}
+            onChange={(e) => onMonthChange(e.target.value)}
+          >
+            <option value="">Tous les mois</option>
+            <option value="Janvier">Janvier</option>
+            <option value="Février">Février</option>
+            <option value="Mars">Mars</option>
+            <option value="Avril">Avril</option>
+            <option value="Mai">Mai</option>
+            <option value="Juin">Juin</option>
+            <option value="Juillet">Juillet</option>
+            <option value="Août">Août</option>
+            <option value="Septembre">Septembre</option>
+            <option value="Octobre">Octobre</option>
+            <option value="Novembre">Novembre</option>
+            <option value="Décembre">Décembre</option>
+          </select>
+        )}
+
+        {isWeekAdminPage && (
+          <input
+            type="week"
+            className="input input-bordered input-sm w-full"
+            value={selectedWeek}
+            onChange={(e) => onWeekChange(e.target.value)}
+          />
+        )}
       </div>
 
       <div className="flex justify-center space-x-2 mt-4">
-        <button className="btn btn-secondary btn-sm" onClick={clearAllFilters}>
-          <X className="mr-2" size={16} />
-          Effacer les filtres
-        </button>
+      <button className="btn btn-secondary btn-sm" onClick={clearAllFilters}>
+        <X className="mr-2" size={16} />
+        Effacer les filtres
+      </button>
+      {showExport && (
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-primary btn-sm">
             <Download className="mr-2" size={16} />
@@ -286,8 +284,9 @@ export default function FiltersAdmin({
             <li><a onClick={exportToCSV}>Exporter en CSV</a></li>
           </ul>
         </div>
-      </div>
+      )}
     </div>
-  );
+  </div>
+);
 }
 

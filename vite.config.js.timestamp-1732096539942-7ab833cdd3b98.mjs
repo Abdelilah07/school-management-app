@@ -1,0 +1,20 @@
+// vite.config.js
+import { defineConfig } from "file:///C:/Users/hp/Desktop/OfpptApp/node_modules/vite/dist/node/index.js";
+import react from "file:///C:/Users/hp/Desktop/OfpptApp/node_modules/@vitejs/plugin-react/dist/index.mjs";
+import svgr from "file:///C:/Users/hp/Desktop/OfpptApp/node_modules/vite-plugin-svgr/dist/index.js";
+var vite_config_default = defineConfig(({ command }) => {
+  const config = {
+    plugins: [react(), svgr()],
+    build: {
+      outDir: "docs"
+    }
+  };
+  if (command === "build") {
+    config.base = "/school-management-app";
+  }
+  return config;
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJDOlxcXFxVc2Vyc1xcXFxocFxcXFxEZXNrdG9wXFxcXE9mcHB0QXBwXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ZpbGVuYW1lID0gXCJDOlxcXFxVc2Vyc1xcXFxocFxcXFxEZXNrdG9wXFxcXE9mcHB0QXBwXFxcXHZpdGUuY29uZmlnLmpzXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ltcG9ydF9tZXRhX3VybCA9IFwiZmlsZTovLy9DOi9Vc2Vycy9ocC9EZXNrdG9wL09mcHB0QXBwL3ZpdGUuY29uZmlnLmpzXCI7aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAndml0ZSdcclxuaW1wb3J0IHJlYWN0IGZyb20gJ0B2aXRlanMvcGx1Z2luLXJlYWN0J1xyXG5pbXBvcnQgc3ZnciBmcm9tICd2aXRlLXBsdWdpbi1zdmdyJ1xyXG5cclxuLy8gaHR0cHM6Ly92aXRlLmRldi9jb25maWcvXHJcbmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZygoeyBjb21tYW5kIH0pID0+IHtcclxuXHJcbiAgY29uc3QgY29uZmlnID0ge1xyXG4gICAgcGx1Z2luczogW3JlYWN0KCksIHN2Z3IoKV0sXHJcbiAgICBidWlsZDoge1xyXG4gICAgICBvdXREaXI6ICdkb2NzJyxcclxuICAgIH0sXHJcbiAgfVxyXG5cclxuICAvLyBTZXRzIHRoZSBiYXNlIFVSTCBvbmx5IGR1cmluZyB0aGUgYnVpbGQgcHJvY2Vzc1xyXG4gIGlmIChjb21tYW5kID09PSAnYnVpbGQnKSB7XHJcbiAgICBjb25maWcuYmFzZSA9ICcvc2Nob29sLW1hbmFnZW1lbnQtYXBwJ1xyXG4gIH1cclxuXHJcbiAgcmV0dXJuIGNvbmZpZ1xyXG59KSJdLAogICJtYXBwaW5ncyI6ICI7QUFBZ1IsU0FBUyxvQkFBb0I7QUFDN1MsT0FBTyxXQUFXO0FBQ2xCLE9BQU8sVUFBVTtBQUdqQixJQUFPLHNCQUFRLGFBQWEsQ0FBQyxFQUFFLFFBQVEsTUFBTTtBQUUzQyxRQUFNLFNBQVM7QUFBQSxJQUNiLFNBQVMsQ0FBQyxNQUFNLEdBQUcsS0FBSyxDQUFDO0FBQUEsSUFDekIsT0FBTztBQUFBLE1BQ0wsUUFBUTtBQUFBLElBQ1Y7QUFBQSxFQUNGO0FBR0EsTUFBSSxZQUFZLFNBQVM7QUFDdkIsV0FBTyxPQUFPO0FBQUEsRUFDaEI7QUFFQSxTQUFPO0FBQ1QsQ0FBQzsiLAogICJuYW1lcyI6IFtdCn0K

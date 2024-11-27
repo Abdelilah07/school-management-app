@@ -1,0 +1,59 @@
+{
+    "emploi": {
+        "DEV": {
+            "1ere annee": {
+                "Monday": ["Math", "Physics", "Programming", "English"],
+                "Tuesday": ["Database", "Web Dev", "empty", "empty"],
+                "Wednesday": ["Programming", "Math", "Physics", "empty"],
+                "Thursday": ["English", "Web Dev", "Database", "empty"],
+                "Friday": ["Physics", "Programming", "Math", "empty"],
+                "Saturday": ["empty", "empty", "empty", "empty"]
+            },
+            "2eme annee": {
+                "Monday": ["Advanced Programming", "Database Design", "empty", "empty"],
+                "Tuesday": ["Software Engineering", "Web Framework", "empty", "empty"],
+                "Wednesday": ["Project Management", "Advanced Math", "empty", "empty"],
+                "Thursday": ["Network Security", "AI Basics", "empty", "empty"],
+                "Friday": ["Mobile Dev", "Cloud Computing", "empty", "empty"],
+                "Saturday": ["empty", "empty", "empty", "empty"]
+            }
+        },
+        "ID": {
+            "1ere annee": {
+                "Monday": ["Database", "Database", "Programming", "English"],
+                "Tuesday": ["Design", "UI/UX", "Security", "empty"],
+                "Wednesday": ["Programming", "Database", "Network", "empty"],
+                "Thursday": ["English", "Security", "UI/UX", "empty"],
+                "Friday": ["Network", "Programming", "Database", "empty"],
+                "Saturday": ["empty", "empty", "empty", "empty"]
+            },
+            "2eme annee": {
+                "Monday": ["System Design", "Network Security", "empty", "empty"],
+                "Tuesday": ["UX Research", "Advanced Security", "empty", "empty"],
+                "Wednesday": ["Project Design", "User Testing", "empty", "empty"],
+                "Thursday": ["Security Audit", "UX Design", "empty", "empty"],
+                "Friday": ["Interface Design", "System Analysis", "empty", "empty"],
+                "Saturday": ["empty", "empty", "empty", "empty"]
+            }
+        }
+    }
+}
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
