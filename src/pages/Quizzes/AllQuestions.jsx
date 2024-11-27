@@ -1,13 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-  PlusCircle,
-  ArrowLeft,
-  Trash,
-  Upload,
-  X,
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react';
+import { PlusCircle, ArrowLeft, Trash, Upload, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 

@@ -21,13 +21,13 @@ const Course = () => {
   const courseQuizzes = isCourseEnded
     ? quizzes.filter((quiz) => quiz.courseId === courseId || quiz.courseName === course?.courseName)
     : [];
-    
-    const toggleContentDescription = (index) => {
-      setExpandedContent(prev => ({
-        ...prev,
-        [index]: !prev[index]
-      }));
-    };
+
+  const toggleContentDescription = (index) => {
+    setExpandedContent((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   useEffect(() => {
     if (!courseId) return;
@@ -94,7 +94,7 @@ const Course = () => {
             <div className="flex items-center space-x-2">
               <Clock className="w-5 h-5 text-blue-500" />
               <span className="font-medium">
-                Status: 
+                Status:
                 <span className={`ml-2 ${isCourseEnded ? 'text-green-600' : 'text-yellow-600'}`}>
                   {isCourseEnded ? 'Completed' : 'In Progress'}
                 </span>
@@ -123,7 +123,7 @@ const Course = () => {
                 className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <button 
+                <button
                   onClick={() => window.open(course.videoLink, '_blank')}
                   className="bg-white/30 backdrop-blur-sm rounded-full p-6 hover:bg-white/40 transition-all"
                 >
@@ -141,35 +141,35 @@ const Course = () => {
             </div>
 
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-      <div className="p-8">
-        <h2 className="text-2xl font-bold mb-4 text-blue-600">Course Content</h2>
-        <div className="space-y-4">
-          {course.contentOfCourse.map((item, index) => (
-            <div 
-              key={index} 
-              className="border-l-4 border-blue-500 pl-4 py-4 bg-blue-50/50 rounded-r-xl transition-all hover:bg-blue-100/50 hover:shadow-md"
-            >
-              <h3 
-                onClick={() => toggleContentDescription(index)}
-                className="text-lg font-semibold text-blue-700 mb-2 flex items-center cursor-pointer hover:text-blue-900 transition-colors"
-              >
-                <ChevronRight 
-                  className={`w-5 h-5 mr-2 text-blue-500 transform transition-transform ${
-                    expandedContent[index] ? 'rotate-90' : ''
-                  }`} 
-                />
-                {item.contentName}
-              </h3>
-              {expandedContent[index] && (
-                <p className="text-gray-700 leading-relaxed pl-7 mt-2 animate-fade-in">
-                  {item.contentDescription}
-                </p>
-              )}
+              <div className="p-8">
+                <h2 className="text-2xl font-bold mb-4 text-blue-600">Course Content</h2>
+                <div className="space-y-4">
+                  {course.contentOfCourse.map((item, index) => (
+                    <div
+                      key={index}
+                      className="border-l-4 border-blue-500 pl-4 py-4 bg-blue-50/50 rounded-r-xl transition-all hover:bg-blue-100/50 hover:shadow-md"
+                    >
+                      <h3
+                        onClick={() => toggleContentDescription(index)}
+                        className="text-lg font-semibold text-blue-700 mb-2 flex items-center cursor-pointer hover:text-blue-900 transition-colors"
+                      >
+                        <ChevronRight
+                          className={`w-5 h-5 mr-2 text-blue-500 transform transition-transform ${
+                            expandedContent[index] ? 'rotate-90' : ''
+                          }`}
+                        />
+                        {item.contentName}
+                      </h3>
+                      {expandedContent[index] && (
+                        <p className="text-gray-700 leading-relaxed pl-7 mt-2 animate-fade-in">
+                          {item.contentDescription}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
             {/* Quizzes Section with Animated Cards */}
             {isCourseEnded && courseQuizzes.length > 0 && (
               <div className="bg-white rounded-3xl shadow-2xl">
@@ -177,8 +177,8 @@ const Course = () => {
                   <h2 className="text-2xl font-bold mb-6 text-purple-600">Course Quizzes</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {courseQuizzes.map((quiz) => (
-                      <div 
-                        key={quiz.id} 
+                      <div
+                        key={quiz.id}
                         className="transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                       >
                         <QuizCard quiz={quiz} onQuizStart={handleStartQuiz} />

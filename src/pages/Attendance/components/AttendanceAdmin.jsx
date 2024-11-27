@@ -511,11 +511,7 @@ export default function AttendanceAdmin() {
                     <Edit size={20} className="mr-2" />
                     Modifier
                   </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={handleSave}
-                    disabled={!isEditing || !hasChanges}
-                  >
+                  <button className="btn btn-success" onClick={handleSave} disabled={!isEditing}>
                     <Save size={20} className="mr-2" />
                     Enregistrer
                   </button>

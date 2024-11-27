@@ -1915,41 +1915,436 @@
       ]
     },
     {
-      "id": "fbc4",
+      "id": "6603",
       "niveau": "Specialisation",
       "filiere": "Physics",
       "annee": "1st Year",
-      "groupe": "Group 2",
+      "groupe": "Group 1",
       "date": "2024-11-27",
       "month": "November",
-      "registrationTime": "2024-11-27T07:47:43.219Z",
+      "registrationTime": "2024-11-27T09:52:50.306Z",
       "students": [
         {
-          "studentId": "4",
-          "studentCef": "10004",
-          "studentName": "Emma Davis",
+          "studentId": "2",
+          "studentCef": "10002",
+          "studentName": "Alice Brown",
+          "studentCin": "CS1002",
           "absentHours": {
             "8:30->10:50": true,
-            "10:50->13.30": true,
-            "13.30->15.50": true,
-            "15.50->18.30": true
+            "10:50->13.30": true
           }
         },
         {
-          "studentId": "3",
-          "studentCef": "10003",
-          "studentName": "Bob Lee",
+          "studentId": "1",
+          "studentCef": "10001",
+          "studentName": "John Smith",
+          "studentCin": "CS1001",
           "absentHours": {
-            "8:30->10:50": false,
-            "10:50->13.30": true,
-            "13.30->15.50": true,
-            "15.50->18.30": false
+            "8:30->10:50": true,
+            "10:50->13.30": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "49bc",
+      "niveau": "Specialisation",
+      "filiere": "Physics",
+      "annee": "2nd Year",
+      "groupe": "Group 1",
+      "date": "2024-11-27",
+      "month": "November",
+      "registrationTime": "2024-11-27T09:53:44.323Z",
+      "students": [
+        {
+          "studentId": "5",
+          "studentCef": "10005",
+          "studentName": "William Clark",
+          "studentCin": "CS2001",
+          "absentHours": {
+            "8:30->10:50": true,
+            "10:50->13.30": true
+          }
+        },
+        {
+          "studentId": "6",
+          "studentCef": "10006",
+          "studentName": "Sophia Wilson",
+          "studentCin": "CS2002",
+          "absentHours": {
+            "8:30->10:50": true,
+            "10:50->13.30": false
           }
         }
       ]
     }
   ],
-  "studentDiscipline": [],
+  "studentDiscipline": [
+    {
+      "0": {
+        "studentId": "2",
+        "studentCef": "10002",
+        "studentName": "Alice Brown",
+        "studentCin": "CS1002",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "1": {
+        "studentId": "1",
+        "studentCef": "10001",
+        "studentName": "John Smith",
+        "studentCin": "CS1001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "2": {
+        "studentId": "5",
+        "studentCef": "10005",
+        "studentName": "William Clark",
+        "studentCin": "CS2001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "2nd Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "id": "75ee"
+    },
+    {
+      "0": {
+        "studentId": "2",
+        "studentCef": "10002",
+        "studentName": "Alice Brown",
+        "studentCin": "CS1002",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "AJ"
+        },
+        "totalAbsences": 1
+      },
+      "1": {
+        "studentId": "1",
+        "studentCef": "10001",
+        "studentName": "John Smith",
+        "studentCin": "CS1001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "2": {
+        "studentId": "5",
+        "studentCef": "10005",
+        "studentName": "William Clark",
+        "studentCin": "CS2001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "2nd Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "id": "5b6b"
+    },
+    {
+      "0": {
+        "studentId": "2",
+        "studentCef": "10002",
+        "studentName": "Alice Brown",
+        "studentCin": "CS1002",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "absenceType": "AJ",
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "AJ"
+        },
+        "totalAbsences": 1
+      },
+      "1": {
+        "studentId": "1",
+        "studentCef": "10001",
+        "studentName": "John Smith",
+        "studentCin": "CS1001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "2": {
+        "studentId": "5",
+        "studentCef": "10005",
+        "studentName": "William Clark",
+        "studentCin": "CS2001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "2nd Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "id": "544e"
+    },
+    {
+      "0": {
+        "studentId": "2",
+        "studentCef": "10002",
+        "studentName": "Alice Brown",
+        "studentCin": "CS1002",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "1": {
+        "studentId": "1",
+        "studentCef": "10001",
+        "studentName": "John Smith",
+        "studentCin": "CS1001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "absenceType": "AJ",
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "AJ"
+        },
+        "totalAbsences": 1
+      },
+      "2": {
+        "studentId": "5",
+        "studentCef": "10005",
+        "studentName": "William Clark",
+        "studentCin": "CS2001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "2nd Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "id": "8140"
+    },
+    {
+      "0": {
+        "studentId": "2",
+        "studentCef": "10002",
+        "studentName": "Alice Brown",
+        "studentCin": "CS1002",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "absenceType": "AJ",
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "AJ"
+        },
+        "totalAbsences": 1
+      },
+      "1": {
+        "studentId": "1",
+        "studentCef": "10001",
+        "studentName": "John Smith",
+        "studentCin": "CS1001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "2": {
+        "studentId": "5",
+        "studentCef": "10005",
+        "studentName": "William Clark",
+        "studentCin": "CS2001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "2nd Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "id": "cd95"
+    },
+    {
+      "0": {
+        "studentId": "2",
+        "studentCef": "10002",
+        "studentName": "Alice Brown",
+        "studentCin": "CS1002",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "1": {
+        "studentId": "1",
+        "studentCef": "10001",
+        "studentName": "John Smith",
+        "studentCin": "CS1001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "absenceType": "AJ",
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "AJ"
+        },
+        "totalAbsences": 1
+      },
+      "2": {
+        "studentId": "5",
+        "studentCef": "10005",
+        "studentName": "William Clark",
+        "studentCin": "CS2001",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true
+        },
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "2nd Year",
+        "groupe": "Group 1",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-27": "ANJ"
+        },
+        "totalAbsences": 1
+      },
+      "id": "6ddf"
+    }
+  ],
   "courses": [
     {
       "id": "1",

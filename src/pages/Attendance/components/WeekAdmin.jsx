@@ -23,7 +23,7 @@ const WeekAdmin = () => {
   // State for week selection
   const [selectedWeek, setSelectedWeek] = useState('');
   const [startOfWeek, setStartOfWeek] = useState(dayjs().startOf('week'));
-  
+
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(7);
@@ -67,49 +67,81 @@ const WeekAdmin = () => {
 
   const handleAbsenceTypeChange = (studentId, date, absenceType) => {
     setHasChanges(true);
-    
+  
     const newEditedAbsences = {
       ...editedAbsences,
       [studentId]: {
         ...(editedAbsences[studentId] || {}),
-        [date]: absenceType
-      }
+        [date]: absenceType,
+      },
     };
-    
+  
     setEditedAbsences(newEditedAbsences);
-    
+  
     // Save to localStorage
     localStorage.setItem('editedAbsences', JSON.stringify(newEditedAbsences));
+  
+    // Update the allData state to reflect the change immediately
+    setAllData((prevData) =>
+      prevData.map((record) => {
+        if (record.date === date) {
+          return {
+            ...record,
+            students: record.students.map((student) => {
+              if (student.studentId === studentId) {
+                return {
+                  ...student,
+                  absenceType: absenceType, // Update the absenceType
+                };
+              }
+              return student; // Keep other students unchanged
+            }),
+          };
+        }
+        return record; // Keep other records unchanged
+      })
+    );
   };
-
+  
   const processAbsentStudents = () => {
-    const filteredRecords = allData.filter(record => {
+    const filteredRecords = allData.filter((record) => {
       const recordDate = parseISO(record.date);
       const isInSelectedWeek = isWithinInterval(recordDate, {
         start: daysOfWeek[0].toDate(),
         end: daysOfWeek[daysOfWeek.length - 1].toDate(),
       });
-
+  
       const niveauMatch = !niveau || record.niveau === niveau;
       const filiereMatch = !filiere || record.filiere === filiere;
       const anneeMatch = !annee || record.annee === annee;
       const groupeMatch = !groupe || record.groupe === groupe;
-
+  
       return isInSelectedWeek && niveauMatch && filiereMatch && anneeMatch && groupeMatch;
     });
-
+  
+    // Retrieve saved absences from localStorage
+    const savedAbsences = JSON.parse(localStorage.getItem('editedAbsences') || '{}');
+  
     const studentMap = new Map();
-
-    filteredRecords.forEach(record => {
-      record.students.forEach(student => {
+  
+    filteredRecords.forEach((record) => {
+      record.students.forEach((student) => {
         const cinMatch = !cin || student.studentCin.includes(cin);
         const cefMatch = !cef || student.studentCef.includes(cef);
         const nomMatch = !nom || student.studentName.toLowerCase().includes(nom.toLowerCase());
-        const prenomMatch = !prenom || student.studentName.toLowerCase().includes(prenom.toLowerCase());
-
-        if (cinMatch && cefMatch && nomMatch && prenomMatch) {
+        const prenomMatch =
+          !prenom || student.studentName.toLowerCase().includes(prenom.toLowerCase());
+  
+        // Check for full morning and afternoon absences
+        const morningAbsent =
+          student.absentHours['8:30->10:50'] && student.absentHours['10:50->13.30'];
+        const afternoonAbsent =
+          student.absentHours['13.30->15.50'] && student.absentHours['15.50->18.30'];
+        const isFullSessionAbsent = morningAbsent || afternoonAbsent;
+  
+        if (cinMatch && cefMatch && nomMatch && prenomMatch && isFullSessionAbsent) {
           const studentKey = student.studentId;
-          
+  
           if (!studentMap.has(studentKey)) {
             studentMap.set(studentKey, {
               ...student,
@@ -118,51 +150,61 @@ const WeekAdmin = () => {
               annee: record.annee,
               groupe: record.groupe,
               absenceDates: new Set(),
-              absenceDetails: {}
+              absenceDetails: {},
             });
           }
-
+  
           const studentData = studentMap.get(studentKey);
-          
-          // Check for full day absence or specific time slots
-          const morningAbsent = student.absentHours['8:30->10:50'] && student.absentHours['10:50->13.30'];
-          const afternoonAbsent = student.absentHours['13.30->15.50'] && student.absentHours['15.50->18.30'];
-          
-          if (morningAbsent || afternoonAbsent) {
-            studentData.absenceDates.add(record.date);
-            studentData.absenceDetails[record.date] = 'ANJ'; // Default to ANJ
+          studentData.absenceDates.add(record.date);
+  
+          // Prioritize saved absence type from localStorage, default to ANJ
+          const savedStudentAbsences = savedAbsences[studentKey] || {};
+          studentData.absenceDetails[record.date] = savedStudentAbsences[record.date] || 'ANJ';
+  
+          // Increment total absences by 2 if both morning and afternoon are fully absent
+          if (morningAbsent && afternoonAbsent) {
+            // Add another absence entry to reflect both morning and afternoon absence
+            studentData.absenceDates.add(`${record.date}-afternoon`);
+            studentData.absenceDetails[`${record.date}-afternoon`] =
+              savedStudentAbsences[`${record.date}-afternoon`] || 'ANJ';
           }
         }
       });
     });
-
-    return Array.from(studentMap.values()).map(student => ({
+  
+    return Array.from(studentMap.values()).map((student) => ({
       ...student,
       totalAbsences: student.absenceDates.size,
-      absenceDates: student.absenceDates
+      absenceDates: student.absenceDates,
     }));
   };
+  
+
+
+  
 
   const isStudentAbsentOnDay = (student, day) => {
     return student.absenceDates.has(day.format('YYYY-MM-DD'));
   };
 
+
+
   const handleSave = async () => {
     try {
       // Prepare the data to be saved
-      const updatedStudents = processedAbsentStudents.map(student => {
+      const updatedStudents = processedAbsentStudents.map((student) => {
         const studentEditedAbsences = editedAbsences[student.studentId] || {};
-        
+
         // Merge existing absence details with edited absences
         const mergedAbsenceDetails = {
           ...student.absenceDetails,
-          ...studentEditedAbsences
+          ...studentEditedAbsences,
         };
 
         return {
           ...student,
           absenceDetails: mergedAbsenceDetails,
-          totalAbsences: Object.keys(mergedAbsenceDetails).length
+          totalAbsences: Object.keys(mergedAbsenceDetails).length,
         };
       });
 
@@ -251,9 +293,9 @@ const WeekAdmin = () => {
                   <th>
                     {`${startOfWeek.format('DD/MM/YYYY')} - ${endOfWeek.format('DD/MM/YYYY')}`}
                     <div className="grid grid-cols-6 gap-1 mt-2">
-                      {daysOfWeek.map(day => (
+                      {daysOfWeek.map((day) => (
                         <div key={day.toString()} className="text-xs text-center">
-                          {day.format('ddd DD/MM')}
+                          {day.format('dddd')}
                         </div>
                       ))}
                     </div>
@@ -261,66 +303,74 @@ const WeekAdmin = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentItems.map(student => (
-                  <tr key={student.studentId}>
-                    <td>{student.studentCef}</td>
-                    <td>{student.studentCin}</td>
-                    <td>{student.studentName}</td>
-                    <td>{student.totalAbsences || 0}</td>
-                    <td>
-                      <div className="grid grid-cols-6 gap-1">
-                        {daysOfWeek.map(day => (
-                          <div 
-                            key={`${student.studentId}-${day.toString()}`} 
+                {currentItems.map((student) => (
+<tr key={student.studentId}>
+<td>{student.studentCef}</td>
+<td>{student.studentCin}</td>
+<td>{student.studentName}</td>
+<td>{student.totalAbsences || 0}</td>
+<td>
+<div className="grid grid-cols-6 gap-1">
+                        {daysOfWeek.map((day) => (
+<div
+                            key={`${student.studentId}-${day.toString()}`}
                             className="text-center"
-                          >
+>
                             {isStudentAbsentOnDay(student, day) ? (
-                              <div>
-                                <span className="text-red-600 font-bold">Absent</span>
-                                <div className="flex flex-col items-center space-y-1 mt-1">
-                                  <div className="tooltip flex pr-2" data-tip="Absence Justifiée">
-                                    <input
+<div>
+<span className="text-red-600 font-bold">Absent</span>
+<div className="flex flex-col items-center space-y-1 mt-1">
+<div className="tooltip flex pr-2" data-tip="Absence Justifiée">
+<input
                                       type="radio"
                                       name={`absence-${student.studentId}-${day.format('YYYY-MM-DD')}`}
                                       className="radio radio-primary radio-sm mr-1"
                                       disabled={!isEditing}
-                                      checked={editedAbsences[student.studentId]?.[day.format('YYYY-MM-DD')] === 'AJ'}
-                                      onChange={() => handleAbsenceTypeChange(
-                                        student.studentId, 
-                                        day.format('YYYY-MM-DD'), 
-                                        'AJ'
-                                      )}
+                                      checked={
+                                        (editedAbsences[student.studentId]?.[day.format('YYYY-MM-DD')] || student.absenceDetails[day.format('YYYY-MM-DD')]) === 'AJ'
+                                      }
+                                      onChange={() =>
+                                        handleAbsenceTypeChange(
+                                          student.studentId,
+                                          day.format('YYYY-MM-DD'),
+                                          'AJ'
+                                        )
+                                      }
                                     />
-                                    <span className="block text-xs">AJ</span>
-                                  </div>
-                                  <div className="tooltip flex" data-tip="Absence Non Justifiée">
-                                    <input
+<span className="block text-xs">AJ</span>
+</div>
+<div className="tooltip flex" data-tip="Absence Non Justifiée">
+<input
                                       type="radio"
                                       name={`absence-${student.studentId}-${day.format('YYYY-MM-DD')}`}
                                       className="radio radio-error radio-sm mr-1"
                                       disabled={!isEditing}
-                                      checked={editedAbsences[student.studentId]?.[day.format('YYYY-MM-DD')] === 'ANJ'}
-                                      onChange={() => handleAbsenceTypeChange(
-                                        student.studentId, 
-                                        day.format('YYYY-MM-DD'), 
-                                        'ANJ'
-                                      )}
+                                      checked={
+                                        (editedAbsences[student.studentId]?.[day.format('YYYY-MM-DD')] || student.absenceDetails[day.format('YYYY-MM-DD')]) === 'ANJ'
+                                      }
+                                      onChange={() =>
+                                        handleAbsenceTypeChange(
+                                          student.studentId,
+                                          day.format('YYYY-MM-DD'),
+                                          'ANJ'
+                                        )
+                                      }
                                     />
-                                    <span className="block text-xs">ANJ</span>
-                                  </div>
-                                </div>
-                              </div>
+<span className="block text-xs">ANJ</span>
+</div>
+</div>
+</div>
                             ) : (
-                              <span>-</span>
+<span>-</span>
                             )}
-                          </div>
+</div>
                         ))}
-                      </div>
-                    </td>
-                  </tr>
+</div>
+</td>
+</tr>
                 ))}
-              </tbody>
-            </table>
+</tbody>
+</table>
             <div className="flex justify-between mt-4 mb-4 px-4">
               <div className="btn-group">
                 {Array.from({ length: totalPages }, (_, i) => (
@@ -334,11 +384,7 @@ const WeekAdmin = () => {
                 ))}
               </div>
               <div className="space-x-2 flex flex-wrap gap-2 justify-end">
-                <button
-                  className="btn btn-primary"
-                  onClick={handleEdit}
-                  disabled={isEditing}
-                >
+                <button className="btn btn-primary" onClick={handleEdit} disabled={isEditing}>
                   <Edit size={20} className="mr-2" />
                   Modifier
                 </button>
@@ -350,11 +396,7 @@ const WeekAdmin = () => {
                   <Save size={20} className="mr-2" />
                   Enregistrer
                 </button>
-                <button
-                  className="btn btn-error"
-                  onClick={handleCancel}
-                  disabled={!isEditing}
-                >
+                <button className="btn btn-error" onClick={handleCancel} disabled={!isEditing}>
                   <X size={20} className="mr-2" />
                   Annuler
                 </button>
@@ -370,4 +412,3 @@ const WeekAdmin = () => {
 };
 
 export default WeekAdmin;
-
