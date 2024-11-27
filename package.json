@@ -19,6 +19,7 @@
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
+    "exceljs": "^4.4.0",
     "express": "^4.21.1",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.4",
