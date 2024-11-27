@@ -82,6 +82,12 @@ const menuItems = [
     count: 4,
   },
 
+  {
+    label: 'secteurs',
+    icon: 'FolderCog',
+    href: '/secteurs',
+  },
+
   { type: 'divider' },
   {
     label: 'Documents',
@@ -98,11 +104,6 @@ const menuItems = [
     label: 'Settings',
     icon: 'Settings',
     href: '/settings',
-  },
-  {
-    label: 'secteurs',
-    icon: 'FolderCog',
-    href: '/secteurs',
   },
 ];
 

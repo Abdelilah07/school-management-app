@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchQuizzes } from '../../features/quizzes/quizzesSlice';
-import { BookOpen, CheckCircle, FileText, Clock, Award, ChevronRight, Play } from 'lucide-react';
+import { BookOpen, FileText, Clock, Award, ChevronRight, Play } from 'lucide-react';
 import QuizCard from '../Quizzes/QuizCard';
 
 const Course = () => {
@@ -13,33 +13,35 @@ const Course = () => {
   const [isCourseEnded, setIsCourseEnded] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [expandedContent, setExpandedContent] = useState({});
 
-  // Get quizzes from Redux store
   const quizzes = useSelector((state) => state.quizzes.quizzes);
   const quizzesStatus = useSelector((state) => state.quizzes.status);
 
-  // Filter quizzes specific to this course
   const courseQuizzes = isCourseEnded
     ? quizzes.filter((quiz) => quiz.courseId === courseId || quiz.courseName === course?.courseName)
     : [];
+    
+    const toggleContentDescription = (index) => {
+      setExpandedContent(prev => ({
+        ...prev,
+        [index]: !prev[index]
+      }));
+    };
 
-  // Fetch course data and quizzes only when courseId is available
   useEffect(() => {
     if (!courseId) return;
 
     const fetchData = async () => {
       try {
-        // Fetch course data
         const courseResponse = await axios.get(`http://localhost:3000/courses/${courseId}`);
         if (courseResponse.data) {
           setCourse(courseResponse.data);
-          // Set initial course status based on existing status
           setIsCourseEnded(courseResponse.data.status === 'completed');
         } else {
           setError('Course not found');
         }
 
-        // Fetch quizzes if not already fetched
         if (quizzesStatus === 'idle') {
           await dispatch(fetchQuizzes());
         }
@@ -55,7 +57,7 @@ const Course = () => {
   const handleStartQuiz = (quizId) => {
     navigate(`/quiz/${quizId}`);
   };
-  // Handle course completion
+
   const handleEndCourse = async () => {
     try {
       await axios.patch(`http://localhost:3000/courses/${courseId}`, {
@@ -63,7 +65,6 @@ const Course = () => {
       });
 
       setIsCourseEnded(true);
-
       setCourse((prevCourse) => ({
         ...prevCourse,
         status: 'completed',
@@ -76,28 +77,35 @@ const Course = () => {
   if (error) return <div className="p-8 text-red-600">{error}</div>;
   if (!course)
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-purple-100">
+        <div className="animate-pulse rounded-full h-24 w-24 bg-gradient-to-r from-blue-500 to-purple-600"></div>
       </div>
     );
 
   return (
-    <div className="min-h-screen  from-blue-50 to-indigo-50 py-8 px-4">
+    <div className="min-h-screen to-purple-50 py-12 px-4 font-sans">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">{course.courseName}</h1>
-          <div className="flex items-center space-x-4 ">
-            <span className="flex items-center">
-              <Clock className="w-4 h-4 mr-2" />
-              Status: {isCourseEnded ? 'Completed' : 'In Progress'}
-            </span>
+        {/* Header Section with Glassmorphism Effect */}
+        <div className=" rounded-2xl shadow-2xl p-6 mb-10 border border-white/30">
+          <h1 className="text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            {course.courseName}
+          </h1>
+          <div className="flex items-center space-x-6 text-gray-700">
+            <div className="flex items-center space-x-2">
+              <Clock className="w-5 h-5 text-blue-500" />
+              <span className="font-medium">
+                Status: 
+                <span className={`ml-2 ${isCourseEnded ? 'text-green-600' : 'text-yellow-600'}`}>
+                  {isCourseEnded ? 'Completed' : 'In Progress'}
+                </span>
+              </span>
+            </div>
             {course.pdfUrl && (
               <button
                 onClick={() => window.open(course.pdfUrl, '_blank')}
-                className="flex items-center text-blue-600 hover:text-blue-700"
+                className="flex items-center text-purple-600 hover:text-purple-800 transition-colors"
               >
-                <FileText className="w-4 h-4 mr-2" />
+                <FileText className="w-5 h-5 mr-2" />
                 Course Materials
               </button>
             )}
@@ -105,118 +113,113 @@ const Course = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Course Preview and Description */}
-            <div className=" shadow-lg overflow-hidden ">
-              <div className="relative aspect-video rounded-t-lg overflow-hidden">
-                <img
-                  src={course.imageUrl}
-                  alt={course.courseName}
-                  className="w-full h-full object-cover"
-                />
-                <button
+          {/* Main Content with Enhanced Card Design */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Course Preview with Modern Overlay */}
+            <div className="relative group overflow-hidden rounded-3xl shadow-2xl">
+              <img
+                src={course.imageUrl}
+                alt={course.courseName}
+                className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                <button 
                   onClick={() => window.open(course.videoLink, '_blank')}
-                  className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity group"
+                  className="bg-white/30 backdrop-blur-sm rounded-full p-6 hover:bg-white/40 transition-all"
                 >
-                  <div className="transform transition-transform group-hover:scale-110">
-                    <Play className="w-16 h-16 text-white" />
-                  </div>
+                  <Play className="w-16 h-16 text-white" />
                 </button>
               </div>
-              <div className="p-6">
-                <h2 className="text-xl font-semibold mb-4">Course Description</h2>
-                <p className="text-gray-600 leading-relaxed">{course.courseDescription}</p>
+            </div>
+
+            {/* Description and Content Sections with Soft Shadows */}
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+              <div className="p-8">
+                <h2 className="text-2xl font-bold mb-4 text-blue-600">Course Description</h2>
+                <p className="text-gray-700 leading-relaxed">{course.courseDescription}</p>
               </div>
             </div>
 
-            {/* Course Content */}
-            <div className=" rounded-lg shadow-lg overflow-hidden">
-              <div className="border-b border-gray-200 p-6">
-                <h2 className="text-xl font-semibold">Course Content</h2>
-              </div>
-              <div className="p-6">
-                <div className="space-y-4">
-                  {course.contentOfCourse.map((content, index) => (
-                    <div
-                      key={content.contentId}
-                      className="p-4 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white cursor-pointer rounded-lg transition-colors"
-                    >
-                      <div className="flex items-center">
-                        <span className="w-8 h-8 flex items-center justify-center rounded-full mr-4">
-                          {index + 1}
-                        </span>
-                        <div>
-                          <h3 className="font-semibold ">{content.contentName}</h3>
-                          <p className=" mt-1">{content.contentDescription}</p>
-                        </div>
-                        <ChevronRight className="w-5 h-5  ml-auto" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+      <div className="p-8">
+        <h2 className="text-2xl font-bold mb-4 text-blue-600">Course Content</h2>
+        <div className="space-y-4">
+          {course.contentOfCourse.map((item, index) => (
+            <div 
+              key={index} 
+              className="border-l-4 border-blue-500 pl-4 py-4 bg-blue-50/50 rounded-r-xl transition-all hover:bg-blue-100/50 hover:shadow-md"
+            >
+              <h3 
+                onClick={() => toggleContentDescription(index)}
+                className="text-lg font-semibold text-blue-700 mb-2 flex items-center cursor-pointer hover:text-blue-900 transition-colors"
+              >
+                <ChevronRight 
+                  className={`w-5 h-5 mr-2 text-blue-500 transform transition-transform ${
+                    expandedContent[index] ? 'rotate-90' : ''
+                  }`} 
+                />
+                {item.contentName}
+              </h3>
+              {expandedContent[index] && (
+                <p className="text-gray-700 leading-relaxed pl-7 mt-2 animate-fade-in">
+                  {item.contentDescription}
+                </p>
+              )}
             </div>
-
-            {/* Quizzes Section - Only show when course is ended */}
+          ))}
+        </div>
+      </div>
+    </div>
+            {/* Quizzes Section with Animated Cards */}
             {isCourseEnded && courseQuizzes.length > 0 && (
-              <div className=" shadow-lg overflow-hidden">
-                <div className="border-b border-gray-200 p-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Course Quizzes</h2>
-                </div>
-                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {courseQuizzes.map((quiz) => (
-                    <QuizCard key={quiz.id} quiz={quiz} onQuizStart={handleStartQuiz} />
-                  ))}
+              <div className="bg-white rounded-3xl shadow-2xl">
+                <div className="p-8">
+                  <h2 className="text-2xl font-bold mb-6 text-purple-600">Course Quizzes</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {courseQuizzes.map((quiz) => (
+                      <div 
+                        key={quiz.id} 
+                        className="transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                      >
+                        <QuizCard quiz={quiz} onQuizStart={handleStartQuiz} />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Sidebar */}
+          {/* Sidebar with Floating Card Design */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8 shadow-lg rounded-lg border border-gray-200 overflow-hidden">
-              <div className="p-6">
-                {isCourseEnded ? (
-                  <div className="space-y-6">
-                    <div className="flex flex-col items-center p-6 rounded-lg">
-                      <Award className="w-12 h-12  mb-2" />
-                      <h3 className="text-xl font-semibold">Course Completed!</h3>
-                    </div>
-                    {courseQuizzes.length > 0 && (
-                      <button
-                        onClick={() => handleStartQuiz(courseQuizzes[0].id)}
-                        className="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center space-x-2"
-                      >
-                        <span>Start Quiz</span>
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
-                    )}
+            <div className="sticky top-8 bg-white rounded-3xl shadow-2xl p-8 border-2 border-blue-100/50 transform transition-all hover:scale-105 hover:shadow-4xl">
+              {isCourseEnded ? (
+                <div className="text-center">
+                  <Award className="w-24 h-24 mx-auto text-purple-600 mb-4" />
+                  <h3 className="text-2xl font-bold text-blue-600 mb-6">Course Completed!</h3>
+                  {courseQuizzes.length > 0 && (
+                    <button
+                      onClick={() => handleStartQuiz(courseQuizzes[0].id)}
+                      className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all"
+                    >
+                      Start Quiz
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  <div className="bg-blue-50 rounded-xl p-6 text-center">
+                    <BookOpen className="w-12 h-12 mx-auto text-blue-600 mb-4" />
+                    <h3 className="text-xl font-semibold text-blue-800">In Progress</h3>
                   </div>
-                ) : (
-                  <>
-                    <div className="space-y-6">
-                      <div className="p-6 bg-blue-50 rounded-lg">
-                        <h3 className="text-xl font-semibold text-blue-600 mb-2">
-                          Course Progress
-                        </h3>
-                        <div className="flex items-center">
-                          <BookOpen className="w-5 h-5 text-blue-600 mr-2" />
-                          <span className="text-gray-600">In Progress</span>
-                        </div>
-                      </div>
-                      <button
-                        onClick={handleEndCourse}
-                        className="w-full py-4 px-6 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center space-x-2"
-                      >
-                        <span>End Course</span>
-                        <CheckCircle className="w-5 h-5" />
-                      </button>
-                    </div>
-                    {/* sections of the course */}
-                  </>
-                )}
-              </div>
+                  <button
+                    onClick={handleEndCourse}
+                    className="w-full py-4 bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-xl hover:from-green-600 hover:to-teal-700 transition-all"
+                  >
+                    End Course
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

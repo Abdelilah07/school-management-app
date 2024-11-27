@@ -9,7 +9,7 @@ const QuizzesPage = () => {
   const dispatch = useDispatch();
   // Modify the selector to filter out draft quizzes
   const quizData = useSelector((state) =>
-    state.quizzes.quizzes ? state.quizzes.quizzes.filter((quiz) => quiz.status === 'active') : []
+    state.quizzes.quizzes ? state.quizzes.quizzes.filter((quiz) => quiz.status === 'active' && quiz.questions?.length > 0) : []
   );
   const status = useSelector((state) => state.quizzes.status);
   const error = useSelector((state) => state.quizzes.error);
@@ -27,7 +27,7 @@ const QuizzesPage = () => {
   const categories = useMemo(
     () => [
       'all',
-      ...new Set(quizData.filter((quiz) => quiz?.courseId).map((quiz) => quiz.courseId)),
+      ...new Set(quizData.filter((quiz) => quiz?.coursequizID).map((quiz) => quiz.coursequizID)),
     ],
     [quizData]
   );
@@ -39,7 +39,7 @@ const QuizzesPage = () => {
           searchTerm === '' ||
           quiz?.courseName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           quiz?.techerName?.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = categoryFilter === 'all' || quiz?.courseId === categoryFilter;
+        const matchesCategory = categoryFilter === 'all' || quiz?.coursequizID === categoryFilter;
         return matchesSearch && matchesCategory;
       }),
     [quizData, searchTerm, categoryFilter]

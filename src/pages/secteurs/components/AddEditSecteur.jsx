@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
-
+import PropTypes from 'prop-types';
+import { Album, BookOpenText, KeyRound } from 'lucide-react';
 const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
   const [formData, setFormData] = useState({
     id_secteur: '',
     code_secteur: '',
     intitule_secteur: '',
-    secteur: '',
-    groupes: '',
+    filieres: '',
   });
 
   useEffect(() => {
     if (secteur) {
       setFormData({
-        id_secteur: secteur.id_secteur,
+        id_secteur: secteur.id,
         code_secteur: secteur.code_secteur || '',
         intitule_secteur: secteur.intitule_secteur || '',
-        secteur: secteur.secteur || '',
-        groupes: Array.isArray(secteur.groupes) ? secteur.groupes.join(', ') : '',
+        filieres: Array.isArray(secteur.filieres)
+          ? secteur.filieres.join(', ')
+          : secteur.filieres || '',
       });
     }
   }, [secteur]);
@@ -26,7 +27,7 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
     try {
       const secteurData = {
         ...formData,
-        groupes: formData.groupes
+        filieres: formData.filieres
           .split(',')
           .map((g) => g.trim())
           .filter(Boolean),
@@ -45,7 +46,10 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
 
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Code secteur</span>
+          <span className="label-text">
+            <KeyRound color="red" size={15} />
+            Code secteur
+          </span>
         </label>
         <input
           type="text"
@@ -59,7 +63,10 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
 
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Intitulé</span>
+          <span className="label-text">
+            <Album color="red" size={15} />
+            Intitulé
+          </span>
         </label>
         <input
           type="text"
@@ -73,27 +80,16 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
 
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Secteur</span>
-        </label>
-        <input
-          type="text"
-          name="secteur"
-          value={formData.secteur}
-          onChange={(e) => setFormData((prev) => ({ ...prev, secteur: e.target.value }))}
-          className="input input-bordered"
-          required
-        />
-      </div>
-
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Groupes (séparés par des virgules)</span>
+          <span className="label-text">
+            <BookOpenText color="red" size={15} />
+            Filieres (séparés par des virgules)
+          </span>
         </label>
         <input
           type="text"
           name="groupes"
-          value={formData.groupes}
-          onChange={(e) => setFormData((prev) => ({ ...prev, groupes: e.target.value }))}
+          value={formData.filieres}
+          onChange={(e) => setFormData((prev) => ({ ...prev, filieres: e.target.value }))}
           className="input input-bordered"
         />
       </div>
@@ -108,6 +104,17 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
       </div>
     </form>
   );
+};
+
+AddEditSecteur.propTypes = {
+  onSave: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  secteur: PropTypes.shape({
+    id: PropTypes.string,
+    code_secteur: PropTypes.string,
+    intitule_secteur: PropTypes.string,
+    filieres: PropTypes.array,
+  }),
 };
 
 export default AddEditSecteur;
