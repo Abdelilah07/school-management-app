@@ -6,7 +6,7 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
     code_secteur: '',
     intitule_secteur: '',
     secteur: '',
-    groupes: ''
+    groupes: '',
   });
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
           type="text"
           name="code_secteur"
           value={formData.code_secteur}
-          onChange={(e) => setFormData(prev => ({ ...prev, code_secteur: e.target.value }))}
+          onChange={(e) => setFormData((prev) => ({ ...prev, code_secteur: e.target.value }))}
           className="input input-bordered"
           required
         />
@@ -65,7 +65,7 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
           type="text"
           name="intitule_secteur"
           value={formData.intitule_secteur}
-          onChange={(e) => setFormData(prev => ({ ...prev, intitule_secteur: e.target.value }))}
+          onChange={(e) => setFormData((prev) => ({ ...prev, intitule_secteur: e.target.value }))}
           className="input input-bordered"
           required
         />
@@ -79,7 +79,7 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
           type="text"
           name="secteur"
           value={formData.secteur}
-          onChange={(e) => setFormData(prev => ({ ...prev, secteur: e.target.value }))}
+          onChange={(e) => setFormData((prev) => ({ ...prev, secteur: e.target.value }))}
           className="input input-bordered"
           required
         />
@@ -93,7 +93,7 @@ const AddEditSecteur = ({ secteur, onClose, onSave, isEditMode }) => {
           type="text"
           name="groupes"
           value={formData.groupes}
-          onChange={(e) => setFormData(prev => ({ ...prev, groupes: e.target.value }))}
+          onChange={(e) => setFormData((prev) => ({ ...prev, groupes: e.target.value }))}
           className="input input-bordered"
         />
       </div>

@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setShowAddAssignmentModal,
   addAssignment,
   updateAssignment,
   deleteAssignment,
-} from "../../../features/scheduler/schedulerSlice";
-import { Modal } from "../../../components";
-import { Captions, Pause, Play, Plus, Save, Trash2, User, Users } from "lucide-react";
-import AssignmentField from "./AssignmentFields";
+} from '../../../features/scheduler/schedulerSlice';
+import { Modal } from '../../../components';
+import { Captions, Pause, Play, Plus, Save, Trash2, User, Users } from 'lucide-react';
+import AssignmentField from './AssignmentFields';
 
 export default function AssignmentModal() {
   const dispatch = useDispatch();
@@ -30,28 +30,28 @@ export default function AssignmentModal() {
       assignment.day === selectedDay &&
       assignment.startTime === selectedStartTime &&
       assignment.endTime === selectedEndTime &&
-      (assignment.groupe.codeGroupe === selectedGroupe || 
+      (assignment.groupe.codeGroupe === selectedGroupe ||
         assignment.formateur.matricule === selectedFormateur)
   );
 
   const [assignmentData, setAssignmentData] = useState({
-    title: "",
+    title: '',
     formateur: {
-      matricule: "",
-      nom: "",
-      email: "",
-      secteur: "",
+      matricule: '',
+      nom: '',
+      email: '',
+      secteur: '',
     },
     groupe: {
-      codeGroupe: selectedGroupe || "",
-      intituleGroupe: "",
-      filiere: "",
-      secteur: "",
+      codeGroupe: selectedGroupe || '',
+      intituleGroupe: '',
+      filiere: '',
+      secteur: '',
     },
-    salle: "",
-    day: "",
-    startTime: "",
-    endTime: "",
+    salle: '',
+    day: '',
+    startTime: '',
+    endTime: '',
     id: null,
   });
 
@@ -67,8 +67,7 @@ export default function AssignmentModal() {
       .map((assignment) => assignment.formateur)
       .filter(
         (formateur, index, self) =>
-          formateur &&
-          index === self.findIndex((f) => f?.matricule === formateur?.matricule)
+          formateur && index === self.findIndex((f) => f?.matricule === formateur?.matricule)
       );
 
   const getGroupsForFormateur = (formateur) =>
@@ -77,8 +76,7 @@ export default function AssignmentModal() {
       .map((assignment) => assignment.groupe)
       .filter(
         (groupe, index, self) =>
-          groupe &&
-          index === self.findIndex((g) => g?.codeGroupe === groupe?.codeGroupe)
+          groupe && index === self.findIndex((g) => g?.codeGroupe === groupe?.codeGroupe)
       );
 
   useEffect(() => {
@@ -117,7 +115,7 @@ export default function AssignmentModal() {
     e.preventDefault();
     const { title, startTime, endTime, formateur } = assignmentData;
     if (!title || !startTime || !endTime || !formateur.matricule) {
-      alert("Please fill in all required fields.");
+      alert('Please fill in all required fields.');
       return;
     }
 
@@ -148,23 +146,23 @@ export default function AssignmentModal() {
 
   const resetForm = () => {
     setAssignmentData({
-      title: "",
+      title: '',
       formateur: {
-        matricule: "",
-        nom: "",
-        email: "",
-        secteur: "",
+        matricule: '',
+        nom: '',
+        email: '',
+        secteur: '',
       },
       groupe: {
-        codeGroupe: selectedGroupe || "",
-        intituleGroupe: "",
-        filiere: "",
-        secteur: "",
+        codeGroupe: selectedGroupe || '',
+        intituleGroupe: '',
+        filiere: '',
+        secteur: '',
       },
-      salle: "",
-      day: "",
-      startTime: "",
-      endTime: "",
+      salle: '',
+      day: '',
+      startTime: '',
+      endTime: '',
       id: null,
     });
   };
@@ -175,9 +173,9 @@ export default function AssignmentModal() {
     const fieldsConfig = selectedGroupe
       ? [
           {
-            label: "Formateur",
+            label: 'Formateur',
             icon: User,
-            value: assignmentData.formateur?.matricule || "",
+            value: assignmentData.formateur?.matricule || '',
             options: getFormateursForGroup(assignmentData.groupe).map((formateur) => ({
               value: formateur.matricule,
               label: formateur.nom,
@@ -193,9 +191,9 @@ export default function AssignmentModal() {
         ]
       : [
           {
-            label: "Groupe",
+            label: 'Groupe',
             icon: Users,
-            value: assignmentData.groupe?.codeGroupe || "",
+            value: assignmentData.groupe?.codeGroupe || '',
             options: getGroupsForFormateur(assignmentData.formateur).map((groupe) => ({
               value: groupe.codeGroupe,
               label: groupe.intituleGroupe,
@@ -226,7 +224,7 @@ export default function AssignmentModal() {
     <Modal isOpen={showAddAssignmentModal} onClose={handleClose} maxWidth="max-w-xl">
       <div className="p-4">
         <h2 className="text-2xl font-bold mb-6">
-          {assignmentData.id ? "Edit Assignment" : "Add Assignment"}
+          {assignmentData.id ? 'Edit Assignment' : 'Add Assignment'}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="form-control">
@@ -239,9 +237,7 @@ export default function AssignmentModal() {
             <input
               type="text"
               value={assignmentData.title}
-              onChange={(e) =>
-                setAssignmentData({ ...assignmentData, title: e.target.value })
-              }
+              onChange={(e) => setAssignmentData({ ...assignmentData, title: e.target.value })}
               className="input input-bordered w-full"
               required
             />
@@ -255,9 +251,7 @@ export default function AssignmentModal() {
             </label>
             <select
               value={assignmentData.startTime}
-              onChange={(e) =>
-                setAssignmentData({ ...assignmentData, startTime: e.target.value })
-              }
+              onChange={(e) => setAssignmentData({ ...assignmentData, startTime: e.target.value })}
               className="select select-bordered w-full"
               required
             >
@@ -278,9 +272,7 @@ export default function AssignmentModal() {
             </label>
             <select
               value={assignmentData.endTime}
-              onChange={(e) =>
-                setAssignmentData({ ...assignmentData, endTime: e.target.value })
-              }
+              onChange={(e) => setAssignmentData({ ...assignmentData, endTime: e.target.value })}
               className="select select-bordered w-full"
               required
             >
@@ -292,9 +284,9 @@ export default function AssignmentModal() {
               ))}
             </select>
           </div>
-          {(selectedGroupe || selectedFormateur) ? 
-          renderFields() : 
-          (
+          {selectedGroupe || selectedFormateur ? (
+            renderFields()
+          ) : (
             <>
               <div className="form-control">
                 <label className="label">
@@ -312,33 +304,34 @@ export default function AssignmentModal() {
                       formateur: getFormateursForGroup(assignmentData.groupe).find(
                         (f) => f.matricule === matricule
                       ),
-                    })}
+                    })
+                  }
                   className="input input-bordered w-full"
                 />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text flex items-center gap-2">
-                  <Plus className="w-4 h-4" />
-                  Formateur 
-                </span>
-              </label>
-              <input
-                type="text"
-                value={assignmentData.salle}
-                onChange={(codeGroupe) =>
-                  setAssignmentData({
-                    ...assignmentData,
-                    groupe: getGroupsForFormateur(assignmentData.formateur).find(
-                      (g) => g.codeGroupe === codeGroupe
-                    ),
-                  })}
-                className="input input-bordered w-full"
-              />
-            </div>
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text flex items-center gap-2">
+                    <Plus className="w-4 h-4" />
+                    Formateur
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  value={assignmentData.salle}
+                  onChange={(codeGroupe) =>
+                    setAssignmentData({
+                      ...assignmentData,
+                      groupe: getGroupsForFormateur(assignmentData.formateur).find(
+                        (g) => g.codeGroupe === codeGroupe
+                      ),
+                    })
+                  }
+                  className="input input-bordered w-full"
+                />
+              </div>
             </>
-          )
-          }
+          )}
           <div className="form-control">
             <label className="label">
               <span className="label-text flex items-center gap-2">
@@ -349,18 +342,12 @@ export default function AssignmentModal() {
             <input
               type="text"
               value={assignmentData.salle}
-              onChange={(e) =>
-                setAssignmentData({ ...assignmentData, salle: e.target.value })
-              }
+              onChange={(e) => setAssignmentData({ ...assignmentData, salle: e.target.value })}
               className="input input-bordered w-full"
             />
           </div>
           <div className="flex justify-between items-center mt-4">
-            <button
-              type="submit"
-              className="btn btn-primary"
-              aria-label="Save Assignment"
-            >
+            <button type="submit" className="btn btn-primary" aria-label="Save Assignment">
               <Save className="w-4 h-4 mr-2" />
               Save
             </button>

@@ -4,13 +4,13 @@ import {
   setSelectedDay,
   setSelectedEndTime,
   setSelectedStartTime,
-  setShowAddAssignmentModal
+  setShowAddAssignmentModal,
 } from '../../../features/scheduler/schedulerSlice';
 
 const DayRow = ({ day, hours, assignments }) => {
   const dispatch = useDispatch();
-  const selectedFormateur = useSelector(state => state.scheduler.selectedFormateur);
-  const selectedGroupe = useSelector(state => state.scheduler.selectedGroupe);
+  const selectedFormateur = useSelector((state) => state.scheduler.selectedFormateur);
+  const selectedGroupe = useSelector((state) => state.scheduler.selectedGroupe);
 
   useEffect(() => {
     if (!selectedFormateur || !selectedGroupe) {
@@ -19,9 +19,9 @@ const DayRow = ({ day, hours, assignments }) => {
   }, [selectedFormateur, selectedGroupe, dispatch]);
 
   const getSpanCount = (startTime, endTime) => {
-    const flatSubHours = hours.flatMap(hour => hour.subHours);
-    const startIndex = flatSubHours.findIndex(subHour => subHour.startTime === startTime);
-    const endIndex = flatSubHours.findIndex(subHour => subHour.endTime === endTime);
+    const flatSubHours = hours.flatMap((hour) => hour.subHours);
+    const startIndex = flatSubHours.findIndex((subHour) => subHour.startTime === startTime);
+    const endIndex = flatSubHours.findIndex((subHour) => subHour.endTime === endTime);
 
     if (startIndex === -1 || endIndex === -1) {
       return 1;
@@ -40,16 +40,14 @@ const DayRow = ({ day, hours, assignments }) => {
 
   return (
     <tr>
-      <td className="px-1 py-5 border w-25 font-semibold text-gray-700">
-        {day.format('dddd')}
-      </td>
-      {hours.map((hour) => (
+      <td className="px-1 py-5 border w-25 font-semibold text-gray-700">{day.format('dddd')}</td>
+      {hours.map((hour) =>
         hour.subHours.map((subHour, subHourIndex) => {
-          const assignment = assignments.find(
-            (assignment) => isWithinAssignmentRange(assignment, subHour)
+          const assignment = assignments.find((assignment) =>
+            isWithinAssignmentRange(assignment, subHour)
           );
 
-          if (selectedGroupe || selectedFormateur){
+          if (selectedGroupe || selectedFormateur) {
             if (assignment && subHour.startTime === assignment.startTime) {
               const spanCount = getSpanCount(assignment.startTime, assignment.endTime);
               return (
@@ -70,18 +68,22 @@ const DayRow = ({ day, hours, assignments }) => {
             }
 
             const isCellCovered = assignments.some((assignment) => {
-              const flatSubHours = hours.flatMap(hour => hour.subHours);
-              const startIndex = flatSubHours.findIndex(subHour => subHour.startTime === assignment.startTime);
-              const endIndex = flatSubHours.findIndex(subHour => subHour.endTime === assignment.endTime);
-              const currentIndex = flatSubHours.findIndex(s => s.startTime === subHour.startTime);
-  
+              const flatSubHours = hours.flatMap((hour) => hour.subHours);
+              const startIndex = flatSubHours.findIndex(
+                (subHour) => subHour.startTime === assignment.startTime
+              );
+              const endIndex = flatSubHours.findIndex(
+                (subHour) => subHour.endTime === assignment.endTime
+              );
+              const currentIndex = flatSubHours.findIndex((s) => s.startTime === subHour.startTime);
+
               return (
                 assignment.day === day.format('YYYY-MM-DD') &&
                 currentIndex > startIndex &&
                 currentIndex <= endIndex
               );
             });
- 
+
             if (isCellCovered) {
               return null;
             }
@@ -100,7 +102,7 @@ const DayRow = ({ day, hours, assignments }) => {
             ></td>
           );
         })
-      ))}
+      )}
     </tr>
   );
 };

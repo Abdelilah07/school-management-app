@@ -15,28 +15,19 @@ const SecteursHeader = ({ onRefresh, onExport, onAdd, onSearch, onFilterChange }
           <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
         </div>
       </div>
-      
+
       <div className="flex gap-2">
-        <button
-          onClick={onRefresh}
-          className="btn btn-ghost btn-sm"
-        >
+        <button onClick={onRefresh} className="btn btn-ghost btn-sm">
           <RefreshCw className="h-5 w-5" />
           <span className="hidden md:inline">Actualiser</span>
         </button>
-        
-        <button
-          onClick={onExport}
-          className="btn btn-ghost btn-sm"
-        >
+
+        <button onClick={onExport} className="btn btn-ghost btn-sm">
           <Download className="h-5 w-5" />
           <span className="hidden md:inline">Exporter</span>
         </button>
-        
-        <button
-          onClick={onAdd}
-          className="btn btn-primary btn-sm"
-        >
+
+        <button onClick={onAdd} className="btn btn-primary btn-sm">
           <Plus className="h-5 w-5" />
           <span className="hidden md:inline">Nouveau secteur</span>
         </button>

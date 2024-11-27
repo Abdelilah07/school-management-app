@@ -1,6 +1,6 @@
-import { Modal } from "../../../components";
-import ViewSecteur from "./ViewSecteur";
-import AddEditSecteur from "./AddEditSecteur";
+import { Modal } from '../../../components';
+import ViewSecteur from './ViewSecteur';
+import AddEditSecteur from './AddEditSecteur';
 
 const SecteursModal = ({ isOpen, mode, secteur, onClose, onSave, onDelete }) => {
   return (

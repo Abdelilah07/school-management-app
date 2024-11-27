@@ -27,4 +27,3 @@ const AssignmentField = ({ label, icon: Icon, value, options, onChange, isDisabl
 );
 
 export default AssignmentField;
-

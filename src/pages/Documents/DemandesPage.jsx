@@ -165,7 +165,10 @@ const DemandesPage = () => {
                             onClick={() => handleEdit(demande)}
                             className="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-indigo-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                           >
-                            <Edit className="h-5 w-5 text-black dark:text-white" aria-hidden="true" />
+                            <Edit
+                              className="h-5 w-5 text-black dark:text-white"
+                              aria-hidden="true"
+                            />
                           </button>
                           <button
                             type="button"

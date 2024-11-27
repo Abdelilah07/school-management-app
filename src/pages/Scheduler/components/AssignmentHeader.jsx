@@ -1,8 +1,10 @@
-import React from "react";
-import { Plus } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { setShowAddAssignmentModal, toggleEditingMode } from "../../../features/scheduler/schedulerSlice";
-
+import React from 'react';
+import { Plus } from 'lucide-react';
+import { useDispatch } from 'react-redux';
+import {
+  setShowAddAssignmentModal,
+  toggleEditingMode,
+} from '../../../features/scheduler/schedulerSlice';
 
 const AssignmentHeader = () => {
   const dispatch = useDispatch();

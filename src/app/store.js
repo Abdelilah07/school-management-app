@@ -17,7 +17,7 @@ import {
   GroupesSlice,
   demandesReducer,
   formateurReducer,
-  schedulerReducer
+  schedulerReducer,
 } from '../features';
 
 const rootReducer = combineReducers({
@@ -39,7 +39,7 @@ const rootReducer = combineReducers({
   secteur: secteursReducer,
   demandes: demandesReducer,
   formateurs: formateurReducer,
-  scheduler: schedulerReducer
+  scheduler: schedulerReducer,
 });
 
 const store = configureStore({

@@ -1,7 +1,13 @@
 import { Search, Filter } from 'lucide-react';
 import PropTypes from 'prop-types';
 
-const GroupesSearch = ({ searchTerm, filterNiveau, niveaux=[], onSearchChange, onSectorChange }) => (
+const GroupesSearch = ({
+  searchTerm,
+  filterNiveau,
+  niveaux = [],
+  onSearchChange,
+  onSectorChange,
+}) => (
   <div className="flex flex-col sm:flex-row gap-4">
     <div className="relative flex-1">
       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/50 w-4 h-4" />

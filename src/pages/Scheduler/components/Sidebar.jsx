@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedFormateur, setSelectedGroupe } from '../../../features/scheduler/schedulerSlice';
+import {
+  setSelectedFormateur,
+  setSelectedGroupe,
+} from '../../../features/scheduler/schedulerSlice';
 import { User, Users } from 'lucide-react';
-
 
 function Sidebar() {
   const selectedGroupe = useSelector((state) => state.scheduler.selectedGroupe);
@@ -14,8 +16,7 @@ function Sidebar() {
   const uniqueGroups = assignments
     .map((assignment) => assignment.groupe)
     .filter(
-      (groupe, index, self) =>
-        index === self.findIndex((g) => g.codeGroupe === groupe.codeGroupe)
+      (groupe, index, self) => index === self.findIndex((g) => g.codeGroupe === groupe.codeGroupe)
     );
 
   const uniqueFormateurs = assignments
@@ -59,7 +60,7 @@ function Sidebar() {
       const updatedFilieres = filieres
         .filter((filiere) => filiere.secteur === selectedSecteur)
         .map((filiere) => filiere.filiere);
-  
+
       // Only update if the new filtered list is different from the current one
       if (JSON.stringify(updatedFilieres) !== JSON.stringify(filteredFilieres)) {
         setFilteredFilieres(updatedFilieres);
@@ -72,8 +73,6 @@ function Sidebar() {
       }
     }
   }, [selectedSecteur, filieres]); // Trigger on changes to selectedSecteur or filieres
-  
-  
 
   // Automatically update secteur when filiere changes
   useEffect(() => {
@@ -112,7 +111,6 @@ function Sidebar() {
 
   return (
     <div className="w-full bg-50 max-w-sm">
-
       {/* Groups Section */}
       <h3 className="text-lg font-semibold text-[#57a9ad] mb-3 flex items-center gap-2">
         <Users className="w-5 h-5" /> Groups

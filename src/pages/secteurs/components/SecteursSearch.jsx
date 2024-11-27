@@ -1,5 +1,6 @@
 import { SearchFilter } from '../../../components';
 import { Search, Filter } from 'lucide-react';
+import { handleSearch } from '../hooks/useSecteursLogic';
 
 const SecteursSearch = ({ searchTerm, filters, onSearchChange, onFilterChange }) => (
   <SearchFilter

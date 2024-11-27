@@ -148,7 +148,7 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
     },
     {
       id: 'emploiDuTemps',
-      label: "Emploi du temps",
+      label: 'Emploi du temps',
       icon: <Clock className="w-4 h-4" />,
       placeholder: "Entrez l'emploi du temps",
     },

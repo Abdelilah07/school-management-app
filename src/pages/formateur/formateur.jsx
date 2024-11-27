@@ -49,7 +49,7 @@ const Formateur = () => {
 
   const handleSecteurChange = (e) => {
     dispatch(setSelectedSecteur(e.target.value));
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
   const handlePageChange = (newPage) => {

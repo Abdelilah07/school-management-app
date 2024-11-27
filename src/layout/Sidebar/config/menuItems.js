@@ -48,7 +48,7 @@ const menuItems = [
   {
     label: 'Scheduler',
     icon: 'Calendar',
-    href: '/Scheduler'
+    href: '/Scheduler',
   },
 
   {

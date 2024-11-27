@@ -1,71 +1,71 @@
-import React, { useState, useEffect } from 'react'
-import FiltersAdmin from './FiltersAdmin'
-import { Edit, Save, X } from 'lucide-react'
+import React, { useState, useEffect } from 'react';
+import FiltersAdmin from './FiltersAdmin';
+import { Edit, Save, X } from 'lucide-react';
 
 export default function AttendanceAdmin() {
-  const [data, setData] = useState([])
-  const [filteredStudents, setFilteredStudents] = useState([])
-  const [niveau, setNiveau] = useState('')
-  const [filiere, setFiliere] = useState('')
-  const [annee, setAnnee] = useState('')
-  const [groupe, setGroupe] = useState('')
-  const [cin, setCin] = useState('')
-  const [cef, setCef] = useState('')
-  const [nom, setNom] = useState('')
-  const [prenom, setPrenom] = useState('')
-  const [selectedMonth, setSelectedMonth] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage] = useState(7)
-  const [editedAbsences, setEditedAbsences] = useState({})
-  const [isEditing, setIsEditing] = useState(false)
-  const [hasChanges, setHasChanges] = useState(false)
-  const [sanctionsAssiduite, setSanctionsAssiduite] = useState({})
-  const [sanctionsComportement, setSanctionsComportement] = useState({})
-  const [observations, setObservations] = useState({})
-  const [disciplineNotes, setDisciplineNotes] = useState({})
+  const [data, setData] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
+  const [niveau, setNiveau] = useState('');
+  const [filiere, setFiliere] = useState('');
+  const [annee, setAnnee] = useState('');
+  const [groupe, setGroupe] = useState('');
+  const [cin, setCin] = useState('');
+  const [cef, setCef] = useState('');
+  const [nom, setNom] = useState('');
+  const [prenom, setPrenom] = useState('');
+  const [selectedMonth, setSelectedMonth] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(7);
+  const [editedAbsences, setEditedAbsences] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [hasChanges, setHasChanges] = useState(false);
+  const [sanctionsAssiduite, setSanctionsAssiduite] = useState({});
+  const [sanctionsComportement, setSanctionsComportement] = useState({});
+  const [observations, setObservations] = useState({});
+  const [disciplineNotes, setDisciplineNotes] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [secteurResponse, absentResponse] = await Promise.all([
           fetch('http://localhost:3000/secteurs'),
-          fetch('http://localhost:3000/absentStudents')
-        ])
-        if (!secteurResponse.ok || !absentResponse.ok) throw new Error('Failed to fetch data')
-        const secteurResult = await secteurResponse.json()
-        const absentResult = await absentResponse.json()
-        const allStudents = getAllStudents(secteurResult, absentResult)
-        setData(allStudents)
-        setFilteredStudents(allStudents)
+          fetch('http://localhost:3000/absentStudents'),
+        ]);
+        if (!secteurResponse.ok || !absentResponse.ok) throw new Error('Failed to fetch data');
+        const secteurResult = await secteurResponse.json();
+        const absentResult = await absentResponse.json();
+        const allStudents = getAllStudents(secteurResult, absentResult);
+        setData(allStudents);
+        setFilteredStudents(allStudents);
       } catch (error) {
-        console.error('Error fetching data:', error)
+        console.error('Error fetching data:', error);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    filterStudents()
-  }, [niveau, filiere, annee, groupe, cin, cef, nom, prenom, selectedMonth, data])
+    filterStudents();
+  }, [niveau, filiere, annee, groupe, cin, cef, nom, prenom, selectedMonth, data]);
 
   const getAllStudents = (data, absentData) => {
-    let allStudents = []
+    let allStudents = [];
 
-    data.forEach(secteur => {
+    data.forEach((secteur) => {
       Object.entries(secteur.niveaux).forEach(([niveauKey, niveauValue]) => {
         Object.entries(niveauValue.filiere).forEach(([filiereKey, filiereValue]) => {
           Object.entries(filiereValue).forEach(([anneeKey, anneeValue]) => {
             Object.entries(anneeValue).forEach(([groupeKey, students]) => {
-              students.forEach(student => {
-                const absences = absentData.filter(absent =>
-                  absent.students.some(s => s.studentCef === student.cef && s.isAbsent)
-                )
-                const monthlyAbsences = {}
-                absences.forEach(absence => {
-                  const month = new Date(absence.date).toLocaleString('default', { month: 'long' })
-                  monthlyAbsences[month] = (monthlyAbsences[month] || 0) + 1
-                })
+              students.forEach((student) => {
+                const absences = absentData.filter((absent) =>
+                  absent.students.some((s) => s.studentCef === student.cef && s.isAbsent)
+                );
+                const monthlyAbsences = {};
+                absences.forEach((absence) => {
+                  const month = new Date(absence.date).toLocaleString('default', { month: 'long' });
+                  monthlyAbsences[month] = (monthlyAbsences[month] || 0) + 1;
+                });
                 allStudents.push({
                   ...student,
                   niveau: niveauKey,
@@ -81,21 +81,21 @@ export default function AttendanceAdmin() {
                   sanctionComportement: 'aucune',
                   observationSA: '',
                   observationSC: '',
-                  disciplineNote: 15
-                })
-              })
-            })
-          })
-        })
-      })
-    })
-    return allStudents
-  }
+                  disciplineNote: 15,
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+    return allStudents;
+  };
 
   const filterStudents = () => {
-    const filtered = data.filter(student => {
-      const fullname = student.fullname.toLowerCase()
-      const [studentNom, studentPrenom] = fullname.split(' ')
+    const filtered = data.filter((student) => {
+      const fullname = student.fullname.toLowerCase();
+      const [studentNom, studentPrenom] = fullname.split(' ');
 
       return (
         (!niveau || student.niveau === niveau) &&
@@ -106,119 +106,156 @@ export default function AttendanceAdmin() {
         (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
         (!nom || studentNom.includes(nom.toLowerCase())) &&
         (!prenom || studentPrenom.includes(prenom.toLowerCase()))
-      )
-    })
-    setFilteredStudents(filtered)
-    setCurrentPage(1)
-  }
+      );
+    });
+    setFilteredStudents(filtered);
+    setCurrentPage(1);
+  };
 
   const calculateSanctionAssiduite = (absences, delays) => {
-    const totalAbsences = absences + Math.floor(delays / 4)
+    const totalAbsences = absences + Math.floor(delays / 4);
 
-    if (totalAbsences > 10) return 'exclusion definitive'
-    if (totalAbsences >= 7) return 'exclusion temporaire'
-    if (totalAbsences === 6) return 'exclusion de 2j'
-    if (totalAbsences === 5) return 'blame'
-    if (totalAbsences === 4) return '2eme avertissement'
-    if (totalAbsences === 3) return '1er avertissement'
-    if (totalAbsences === 2) return '2eme mise en garde'
-    if (totalAbsences === 1) return '1ere mise en garde'
-    return 'aucune'
-  }
+    if (totalAbsences > 10) return 'exclusion definitive';
+    if (totalAbsences >= 7) return 'exclusion temporaire';
+    if (totalAbsences === 6) return 'exclusion de 2j';
+    if (totalAbsences === 5) return 'blame';
+    if (totalAbsences === 4) return '2eme avertissement';
+    if (totalAbsences === 3) return '1er avertissement';
+    if (totalAbsences === 2) return '2eme mise en garde';
+    if (totalAbsences === 1) return '1ere mise en garde';
+    return 'aucune';
+  };
 
   const calculateDisciplineNote = (sa, sc) => {
-    let saNote = 10
-    let scNote = 5
+    let saNote = 10;
+    let scNote = 5;
 
     // Calculate SA note
     switch (sa) {
-      case '1ere mise en garde': saNote -= 1; break;
-      case '2eme mise en garde': saNote -= 2; break;
-      case '1er avertissement': saNote -= 3; break;
-      case '2eme avertissement': saNote -= 4; break;
-      case 'blame': saNote -= 5; break;
-      case 'exclusion de 2j': saNote -= 6; break;
+      case '1ere mise en garde':
+        saNote -= 1;
+        break;
+      case '2eme mise en garde':
+        saNote -= 2;
+        break;
+      case '1er avertissement':
+        saNote -= 3;
+        break;
+      case '2eme avertissement':
+        saNote -= 4;
+        break;
+      case 'blame':
+        saNote -= 5;
+        break;
+      case 'exclusion de 2j':
+        saNote -= 6;
+        break;
       case 'exclusion temporaire':
         saNote -= 7;
         break;
-      case 'exclusion definitive': saNote = 0; break;
+      case 'exclusion definitive':
+        saNote = 0;
+        break;
     }
 
     // Calculate SC note
     switch (sc) {
-      case 'mise en garde': scNote -= 1; break;
-      case 'avertissement': scNote -= 2; break;
-      case 'blame': scNote -= 3; break;
-      case 'exclusion 2j': scNote -= 4; break;
-      case 'exclusion definitive': scNote = 0; break;
+      case 'mise en garde':
+        scNote -= 1;
+        break;
+      case 'avertissement':
+        scNote -= 2;
+        break;
+      case 'blame':
+        scNote -= 3;
+        break;
+      case 'exclusion 2j':
+        scNote -= 4;
+        break;
+      case 'exclusion definitive':
+        scNote = 0;
+        break;
     }
 
-    return Math.max(saNote + scNote, 0)
-  }
+    return Math.max(saNote + scNote, 0);
+  };
 
   const handleInputChange = (studentId, field, value, month = null) => {
-    setHasChanges(true)
-    const updatedStudents = filteredStudents.map(student => {
+    setHasChanges(true);
+    const updatedStudents = filteredStudents.map((student) => {
       if (student.cef === studentId) {
-        let updatedStudent = { ...student }
+        let updatedStudent = { ...student };
         if (field === 'anj') {
           if (month) {
-            updatedStudent.anj = { ...updatedStudent.anj, [month]: parseInt(value, 10) || 0 }
+            updatedStudent.anj = { ...updatedStudent.anj, [month]: parseInt(value, 10) || 0 };
           } else {
-            updatedStudent.totalANJ = parseInt(value, 10) || 0
+            updatedStudent.totalANJ = parseInt(value, 10) || 0;
           }
         } else if (field === 'retards' || field === 'aj') {
-          updatedStudent[field] = parseInt(value, 10) || 0
+          updatedStudent[field] = parseInt(value, 10) || 0;
         }
-        const totalEditedAbsences = updatedStudent.totalANJ + Math.floor(updatedStudent.retards / 4)
-        setEditedAbsences(prev => ({ ...prev, [studentId]: totalEditedAbsences }))
+        const totalEditedAbsences =
+          updatedStudent.totalANJ + Math.floor(updatedStudent.retards / 4);
+        setEditedAbsences((prev) => ({ ...prev, [studentId]: totalEditedAbsences }));
 
-        const calculatedSA = calculateSanctionAssiduite(totalEditedAbsences, updatedStudent.retards)
-        setSanctionsAssiduite(prev => ({ ...prev, [studentId]: calculatedSA }))
+        const calculatedSA = calculateSanctionAssiduite(
+          totalEditedAbsences,
+          updatedStudent.retards
+        );
+        setSanctionsAssiduite((prev) => ({ ...prev, [studentId]: calculatedSA }));
 
-        const disciplineNote = calculateDisciplineNote(calculatedSA, sanctionsComportement[studentId] || 'aucune')
-        setDisciplineNotes(prev => ({ ...prev, [studentId]: disciplineNote }))
+        const disciplineNote = calculateDisciplineNote(
+          calculatedSA,
+          sanctionsComportement[studentId] || 'aucune'
+        );
+        setDisciplineNotes((prev) => ({ ...prev, [studentId]: disciplineNote }));
 
-        return updatedStudent
+        return updatedStudent;
       }
-      return student
-    })
-    setFilteredStudents(updatedStudents)
-  }
+      return student;
+    });
+    setFilteredStudents(updatedStudents);
+  };
 
   const handleSAChange = (studentId, sanction) => {
-    setHasChanges(true)
-    setSanctionsAssiduite(prev => ({ ...prev, [studentId]: sanction }))
+    setHasChanges(true);
+    setSanctionsAssiduite((prev) => ({ ...prev, [studentId]: sanction }));
 
-    const disciplineNote = calculateDisciplineNote(sanction, sanctionsComportement[studentId] || 'aucune')
-    setDisciplineNotes(prev => ({ ...prev, [studentId]: disciplineNote }))
-  }
+    const disciplineNote = calculateDisciplineNote(
+      sanction,
+      sanctionsComportement[studentId] || 'aucune'
+    );
+    setDisciplineNotes((prev) => ({ ...prev, [studentId]: disciplineNote }));
+  };
 
   const handleSCChange = (studentId, sanction) => {
-    setHasChanges(true)
-    setSanctionsComportement(prev => ({ ...prev, [studentId]: sanction }))
+    setHasChanges(true);
+    setSanctionsComportement((prev) => ({ ...prev, [studentId]: sanction }));
 
-    const disciplineNote = calculateDisciplineNote(sanctionsAssiduite[studentId] || 'aucune', sanction)
-    setDisciplineNotes(prev => ({ ...prev, [studentId]: disciplineNote }))
-  }
+    const disciplineNote = calculateDisciplineNote(
+      sanctionsAssiduite[studentId] || 'aucune',
+      sanction
+    );
+    setDisciplineNotes((prev) => ({ ...prev, [studentId]: disciplineNote }));
+  };
 
   const handleObservationChange = (studentId, observation, type) => {
-    setHasChanges(true)
-    setObservations(prev => ({
+    setHasChanges(true);
+    setObservations((prev) => ({
       ...prev,
-      [studentId]: { ...prev[studentId], [type]: observation }
-    }))
-  }
+      [studentId]: { ...prev[studentId], [type]: observation },
+    }));
+  };
 
   const handleSave = async () => {
-    const updatedStudents = filteredStudents.map(student => ({
+    const updatedStudents = filteredStudents.map((student) => ({
       ...student,
       sanctionAssiduite: sanctionsAssiduite[student.cef] || 'aucune',
       sanctionComportement: sanctionsComportement[student.cef] || 'aucune',
       observationSA: observations[student.cef]?.SA || '',
       observationSC: observations[student.cef]?.SC || '',
-      disciplineNote: disciplineNotes[student.cef] || 15
-    }))
+      disciplineNote: disciplineNotes[student.cef] || 15,
+    }));
 
     try {
       const response = await fetch('http://localhost:3000/studentDiscipline', {
@@ -227,49 +264,54 @@ export default function AttendanceAdmin() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(updatedStudents),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error('Failed to update students')
+        throw new Error('Failed to update students');
       }
 
-      setData(prevData => prevData.map(s => updatedStudents.find(us => us.cef === s.cef) || s))
-      setFilteredStudents(updatedStudents)
-      setIsEditing(false)
-      setHasChanges(false)
-      setSanctionsAssiduite({})
-      setSanctionsComportement({})
-      setObservations({})
-      setDisciplineNotes({})
-      alert('Changes saved successfully!')
+      setData((prevData) =>
+        prevData.map((s) => updatedStudents.find((us) => us.cef === s.cef) || s)
+      );
+      setFilteredStudents(updatedStudents);
+      setIsEditing(false);
+      setHasChanges(false);
+      setSanctionsAssiduite({});
+      setSanctionsComportement({});
+      setObservations({});
+      setDisciplineNotes({});
+      alert('Changes saved successfully!');
     } catch (error) {
-      console.error('Error saving changes:', error)
-      alert('Failed to save changes. Please try again.')
+      console.error('Error saving changes:', error);
+      alert('Failed to save changes. Please try again.');
     }
-  }
+  };
 
   const handleCancel = () => {
-    setFilteredStudents(data.filter(student =>
-      (!niveau || student.niveau === niveau) &&
-      (!filiere || student.filiere === filiere) &&
-      (!annee || student.annee === annee) &&
-      (!groupe || student.groupe === groupe) &&
-      (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
-      (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
-      (!nom || student.fullname.toLowerCase().includes(nom.toLowerCase())) &&
-      (!prenom || student.fullname.toLowerCase().includes(prenom.toLowerCase()))
-    ))
-    setIsEditing(false)
-    setHasChanges(false)
-    setSanctionsAssiduite({})
-    setSanctionsComportement({})
-    setObservations({})
-    setDisciplineNotes({})
-  }
+    setFilteredStudents(
+      data.filter(
+        (student) =>
+          (!niveau || student.niveau === niveau) &&
+          (!filiere || student.filiere === filiere) &&
+          (!annee || student.annee === annee) &&
+          (!groupe || student.groupe === groupe) &&
+          (!cin || student.cin.toLowerCase().includes(cin.toLowerCase())) &&
+          (!cef || student.cef.toLowerCase().includes(cef.toLowerCase())) &&
+          (!nom || student.fullname.toLowerCase().includes(nom.toLowerCase())) &&
+          (!prenom || student.fullname.toLowerCase().includes(prenom.toLowerCase()))
+      )
+    );
+    setIsEditing(false);
+    setHasChanges(false);
+    setSanctionsAssiduite({});
+    setSanctionsComportement({});
+    setObservations({});
+    setDisciplineNotes({});
+  };
 
   const handleEdit = () => {
-    setIsEditing(true)
-  }
+    setIsEditing(true);
+  };
 
   const renderAdminTableCells = (student) => (
     <>
@@ -289,7 +331,11 @@ export default function AttendanceAdmin() {
           type="number"
           min="0"
           className="input input-bordered w-full"
-          value={selectedMonth ? (student.anj[selectedMonth] || 0) : (editedAbsences[student.cef] || student.totalANJ)}
+          value={
+            selectedMonth
+              ? student.anj[selectedMonth] || 0
+              : editedAbsences[student.cef] || student.totalANJ
+          }
           onChange={(e) => handleInputChange(student.cef, 'anj', e.target.value, selectedMonth)}
           disabled={!isEditing}
         />
@@ -327,8 +373,7 @@ export default function AttendanceAdmin() {
           type="text"
           className="input input-bordered w-full"
           value={observations[student.cef]?.SA || student.observationSA || ''}
-          
-onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
+          onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
           disabled={!isEditing}
           placeholder="Observations SA"
         />
@@ -362,14 +407,14 @@ onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
         {disciplineNotes[student.cef] || student.disciplineNote || 15}/15
       </td>
     </>
-  )
+  );
 
-  const indexOfLastItem = currentPage * itemsPerPage
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredStudents.slice(indexOfFirstItem, indexOfLastItem)
-  const totalPages = Math.ceil(filteredStudents.length / itemsPerPage)
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredStudents.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="container mx-auto py-8 px-10">
@@ -410,7 +455,7 @@ onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
                   <th className="px-4 py-2">Année</th>
                   <th className="px-4 py-2">Groupe</th>
                   <th colSpan="8" className="px-4 py-2">
-                    {selectedMonth ? `Mois : ${selectedMonth}` : "État Total :"}
+                    {selectedMonth ? `Mois : ${selectedMonth}` : 'État Total :'}
                   </th>
                 </tr>
                 <tr>
@@ -462,11 +507,7 @@ onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
               </div>
               {selectedMonth && (
                 <div className="space-x-2 flex flex-wrap gap-2 justify-end">
-                  <button
-                    className="btn btn-primary"
-                    onClick={handleEdit}
-                    disabled={isEditing}
-                  >
+                  <button className="btn btn-primary" onClick={handleEdit} disabled={isEditing}>
                     <Edit size={20} className="mr-2" />
                     Modifier
                   </button>
@@ -478,11 +519,7 @@ onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
                     <Save size={20} className="mr-2" />
                     Enregistrer
                   </button>
-                  <button
-                    className="btn btn-error"
-                    onClick={handleCancel}
-                    disabled={!isEditing}
-                  >
+                  <button className="btn btn-error" onClick={handleCancel} disabled={!isEditing}>
                     <X size={20} className="mr-2" />
                     Annuler
                   </button>
@@ -495,7 +532,5 @@ onChange={(e) => handleObservationChange(student.cef, e.target.value, 'SA')}
         )}
       </div>
     </div>
-  )
+  );
 }
-
-

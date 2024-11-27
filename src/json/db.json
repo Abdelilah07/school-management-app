@@ -2818,167 +2818,34 @@
   ],
   "absentStudents": [
     {
-      "id": "358b",
+      "id": "d042",
       "niveau": "Specialisation",
       "filiere": "Physics",
       "annee": "1st Year",
       "groupe": "Group 1",
-      "date": "2024-11-23",
+      "date": "2024-11-27",
       "month": "November",
+      "registrationTime": "2024-11-27T08:41:55.217Z",
       "students": [
-        {
-          "studentId": "1",
-          "studentCef": "10001",
-          "studentName": "John Smith",
-          "studentDateN": "2000-03-01",
-          "studentCin": "CS1001",
-          "isAbsent": true
-        }
-      ]
-    },
-    {
-      "id": "a5b4",
-      "niveau": "Specialisation",
-      "filiere": "Physics",
-      "annee": "1st Year",
-      "groupe": "Group 1",
-      "date": "2024-11-23",
-      "month": "November",
-      "students": [
-        {
-          "studentId": "1",
-          "studentCef": "10001",
-          "studentName": "John Smith",
-          "studentDateN": "2000-03-01",
-          "studentCin": "CS1001",
-          "isAbsent": true
-        }
-      ]
-    },
-    {
-      "id": "1003",
-      "niveau": "Specialisation",
-      "filiere": "Physics",
-      "annee": "1st Year",
-      "groupe": "Group 1",
-      "date": "2024-11-25",
-      "month": "November",
-      "students": [
-        {
-          "studentId": "1",
-          "studentCef": "10001",
-          "studentName": "John Smith",
-          "studentDateN": "2000-03-01",
-          "studentCin": "CS1001",
-          "isAbsent": true
-        },
         {
           "studentId": "2",
           "studentCef": "10002",
           "studentName": "Alice Brown",
-          "studentDateN": "2000-04-15",
           "studentCin": "CS1002",
-          "isAbsent": true
-        }
-      ]
-    },
-    {
-      "id": "ce69",
-      "niveau": "Qualifant",
-      "filiere": "Gestion Hôtelière",
-      "annee": "2nd Year",
-      "groupe": "Group 2",
-      "date": "2024-11-26",
-      "month": "November",
-      "students": [
-        {
-          "studentId": "23",
-          "studentCef": "30007",
-          "studentName": "Noah Brown",
-          "studentDateN": "1997-12-20",
-          "studentCin": "GH4003",
-          "isAbsent": true
+          "absentHours": {
+            "8:30->10:50": true,
+            "10:50->13.30": true
+          }
         },
-        {
-          "studentId": "24",
-          "studentCef": "30008",
-          "studentName": "Sophia Green",
-          "studentDateN": "1998-01-05",
-          "studentCin": "GH4004",
-          "isAbsent": true
-        }
-      ]
-    },
-    {
-      "id": "bc48",
-      "niveau": "Qualifant",
-      "filiere": "Gestion Hôtelière",
-      "annee": "2nd Year",
-      "groupe": "Group 2",
-      "date": "2024-11-27",
-      "month": "November",
-      "students": [
-        {
-          "studentId": "23",
-          "studentCef": "30007",
-          "studentName": "Noah Brown",
-          "studentDateN": "1997-12-20",
-          "studentCin": "GH4003",
-          "isAbsent": true
-        },
-        {
-          "studentId": "24",
-          "studentCef": "30008",
-          "studentName": "Sophia Green",
-          "studentDateN": "1998-01-05",
-          "studentCin": "GH4004",
-          "isAbsent": true
-        }
-      ]
-    },
-    {
-      "id": "290f",
-      "niveau": "Specialisation",
-      "filiere": "Physics",
-      "annee": "1st Year",
-      "groupe": "Group 1",
-      "date": "2024-11-26",
-      "month": "November",
-      "students": [
         {
           "studentId": "1",
           "studentCef": "10001",
           "studentName": "John Smith",
-          "studentDateN": "2000-03-01",
           "studentCin": "CS1001",
-          "isAbsent": true
-        }
-      ]
-    },
-    {
-      "id": "52a4",
-      "niveau": "Specialisation",
-      "filiere": "Biology",
-      "annee": "1st Year",
-      "groupe": "Group 1",
-      "date": "2024-11-26",
-      "month": "November",
-      "students": [
-        {
-          "studentId": "9",
-          "studentCef": "20001",
-          "studentName": "Sophia Turner",
-          "studentDateN": "1999-09-10",
-          "studentCin": "BIO2001",
-          "isAbsent": true
-        },
-        {
-          "studentId": "10",
-          "studentCef": "20002",
-          "studentName": "Liam Walker",
-          "studentDateN": "1999-10-05",
-          "studentCin": "BIO2002",
-          "isAbsent": true
+          "absentHours": {
+            "8:30->10:50": true,
+            "10:50->13.30": true
+          }
         }
       ]
     }
@@ -7562,19 +7429,19 @@
   ],
   "modules": [
     {
-      "id": "2",
       "code": "M102_F01",
       "intitule": "M102",
       "masseHoraire": 50,
       "filiere": "Développement Logiciel",
       "niveau": "1A",
       "competences": "Programmation en C, Structures de données",
-      "etat": "Affecté",
       "secteur": "Digital",
-      "formateur": "Sophie Bernard"
+      "formateur": "Sophie Bernard",
+      "id": "2",
+      "etat": "Affecté"
     },
     {
-      "id": "4",
+      "id": "3",
       "code": "M104_F01",
       "intitule": "M104",
       "masseHoraire": 70,
@@ -7931,7 +7798,7 @@
       "competences": "Analyse des données marketing, Gestion de la marque",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Clara Dupuis"
     },
     {
       "id": "41",
@@ -7943,7 +7810,7 @@
       "competences": "Analyse des marchés financiers, Stratégies de fidélisation",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Clara Dupuis"
     },
     {
       "id": "42",
@@ -7955,7 +7822,7 @@
       "competences": "Branding, Gest Comportement du consommateur",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Clara Dupuis"
     },
     {
       "id": "43",
@@ -7979,7 +7846,7 @@
       "competences": "Marketing relationnel, Stratégies de fidélisation",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Clara Dupuis"
     },
     {
       "id": "45",
@@ -8015,7 +7882,7 @@
       "competences": "Publicité traditionnelle, Études de marché",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Pierre Lefevre"
     },
     {
       "id": "48",
@@ -8027,7 +7894,7 @@
       "competences": "Stratégies de fidélisation, Marketing d'influence",
       "etat": "Affecté",
       "secteur": "Marketing",
-      "formateur": "Jean Dupont"
+      "formateur": "Pierre Lefevre"
     },
     {
       "id": "49",
@@ -8268,6 +8135,20 @@
       "secteur": "Agro-ali",
       "formateur": "Laurent Boucher",
       "etat": "Affecté"
+    },
+    {
+      "id": "69",
+      "code": "",
+      "intitule": "",
+      "masseHoraire": "",
+      "filiere": "",
+      "niveau": "",
+      "competences": [
+        ""
+      ],
+      "secteur": "",
+      "formateur": "",
+      "etat": "Non Affecté"
     }
   ],
   "assignments": [

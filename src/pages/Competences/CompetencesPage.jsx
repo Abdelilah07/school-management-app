@@ -18,26 +18,26 @@ import Papa from 'papaparse';
 const CompetencesPage = () => {
   const dispatch = useDispatch();
   const { competences = [], loading, error } = useSelector((state) => state.competences);
-  
+
   const [modalState, setModalState] = useState({
     isOpen: false,
     viewMode: false,
-    selectedCompetence: null
+    selectedCompetence: null,
   });
-  
+
   const [deleteState, setDeleteState] = useState({
     isOpen: false,
-    competenceToDelete: null
+    competenceToDelete: null,
   });
-  
+
   const [filterState, setFilterState] = useState({
     searchTerm: '',
     selectedFiliere: '',
     selectedModule: '',
     filieres: [],
-    modules: []
+    modules: [],
   });
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 4;
 
@@ -46,19 +46,23 @@ const CompetencesPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const uniqueFilieres = [...new Set(competences.map(comp => comp.filiere).filter(Boolean))];
-    
+    const uniqueFilieres = [...new Set(competences.map((comp) => comp.filiere).filter(Boolean))];
+
     const filteredModules = filterState.selectedFiliere
-      ? [...new Set(competences
-          .filter(comp => comp.filiere === filterState.selectedFiliere)
-          .map(comp => comp.intitule_module)
-          .filter(Boolean))]
+      ? [
+          ...new Set(
+            competences
+              .filter((comp) => comp.filiere === filterState.selectedFiliere)
+              .map((comp) => comp.intitule_module)
+              .filter(Boolean)
+          ),
+        ]
       : [];
 
-    setFilterState(prev => ({
+    setFilterState((prev) => ({
       ...prev,
       filieres: uniqueFilieres,
-      modules: filteredModules
+      modules: filteredModules,
     }));
   }, [competences, filterState.selectedFiliere]);
 
@@ -66,7 +70,7 @@ const CompetencesPage = () => {
     setModalState({
       isOpen: true,
       viewMode,
-      selectedCompetence: competence
+      selectedCompetence: competence,
     });
   };
 
@@ -74,14 +78,14 @@ const CompetencesPage = () => {
     setModalState({
       isOpen: false,
       viewMode: false,
-      selectedCompetence: null
+      selectedCompetence: null,
     });
   };
 
   const handleDeleteClick = (competence) => {
     setDeleteState({
       isOpen: true,
-      competenceToDelete: competence
+      competenceToDelete: competence,
     });
   };
 
@@ -90,7 +94,7 @@ const CompetencesPage = () => {
       await dispatch(deleteCompetence(deleteState.competenceToDelete.id));
       setDeleteState({
         isOpen: false,
-        competenceToDelete: null
+        competenceToDelete: null,
       });
     } catch (error) {
       console.error('Error deleting competence:', error);
@@ -128,7 +132,7 @@ const CompetencesPage = () => {
   };
 
   const handleFilterChange = (key, value) => {
-    setFilterState(prev => {
+    setFilterState((prev) => {
       const newState = { ...prev, [key]: value };
       if (key === 'selectedFiliere') {
         newState.selectedModule = '';
@@ -139,17 +143,17 @@ const CompetencesPage = () => {
   };
 
   // Fixed filtering logic
-  const filteredCompetences = competences.filter(competence => {
+  const filteredCompetences = competences.filter((competence) => {
     const { searchTerm, selectedFiliere, selectedModule } = filterState;
-    
+
     // Safely convert competence title to string and lowercase
     const title = String(competence?.intitule_competence || '').toLowerCase();
     const searchTermLower = searchTerm.toLowerCase();
-    
+
     const matchesSearch = !searchTerm || title.includes(searchTermLower);
     const matchesFiliere = !selectedFiliere || competence?.filiere === selectedFiliere;
     const matchesModule = !selectedModule || competence?.intitule_module === selectedModule;
-    
+
     return matchesSearch && matchesFiliere && matchesModule;
   });
 
@@ -190,14 +194,14 @@ const CompetencesPage = () => {
             key: 'selectedFiliere',
             value: filterState.selectedFiliere,
             options: filterState.filieres,
-            placeholder: 'Select Filiere'
+            placeholder: 'Select Filiere',
           },
           {
             key: 'selectedModule',
             value: filterState.selectedModule,
             options: filterState.modules,
-            placeholder: 'Select Module'
-          }
+            placeholder: 'Select Module',
+          },
         ]}
         onSearchChange={(term) => handleFilterChange('searchTerm', term)}
         onFilterChange={handleFilterChange}
@@ -222,9 +226,7 @@ const CompetencesPage = () => {
 
       <CompetencesModal
         isOpen={modalState.isOpen}
-        mode={modalState.selectedCompetence 
-          ? (modalState.viewMode ? 'view' : 'edit')
-          : 'add'}
+        mode={modalState.selectedCompetence ? (modalState.viewMode ? 'view' : 'edit') : 'add'}
         competence={modalState.selectedCompetence}
         onClose={handleModalClose}
         onSave={handleSaveCompetence}

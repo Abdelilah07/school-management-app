@@ -132,7 +132,6 @@ export default function FiltersAdmin({
     }
   };
 
-
   const exportToPDF = () => {
     const doc = new jsPDF('l', 'mm', 'a4'); // Changed to landscape orientation
     doc.autoTable({
@@ -146,13 +145,13 @@ export default function FiltersAdmin({
         student.annee,
         student.groupe,
         student.aj || 0,
-        selectedMonth ? (student.anj[selectedMonth] || 0) : student.totalANJ,
+        selectedMonth ? student.anj[selectedMonth] || 0 : student.totalANJ,
         student.retards || 0,
         student.sanctionAssiduite || 'aucune',
         student.observationSA || '',
         student.sanctionComportement || 'aucune',
         student.observationSC || '',
-        student.disciplineNote || 15
+        student.disciplineNote || 15,
       ]),
       styles: { fontSize: 8, cellPadding: 2 }, // Reduced font size and cell padding
       columnStyles: {
@@ -170,15 +169,31 @@ export default function FiltersAdmin({
         11: { cellWidth: 25 }, // Observations SA
         12: { cellWidth: 25 }, // Sanctions Comportement
         13: { cellWidth: 25 }, // Observations SC
-        14: { cellWidth: 15 }, // Note Discipline
+        14: { cellWidth: 20 }, // Note Discipline
       },
     });
     doc.save('Etat_Absence.pdf');
   };
   
   const exportToCSV = () => {
-    const headers = ['CEF', 'Nom Complet', 'Secteur', 'Niveau', 'Filière', 'Année', 'Groupe', 'AJ', 'ANJ', 'Retards', 'Sanctions Assiduité', 'Observations SA', 'Sanctions Comportement', 'Observations SC', 'Note Discipline'];
-    const data = filteredStudents.map(student => [
+    const headers = [
+      'CEF',
+      'Nom Complet',
+      'Secteur',
+      'Niveau',
+      'Filière',
+      'Année',
+      'Groupe',
+      'AJ',
+      'ANJ',
+      'Retards',
+      'Sanctions Assiduité',
+      'Observations SA',
+      'Sanctions Comportement',
+      'Observations SC',
+      'Note Discipline',
+    ];
+    const data = filteredStudents.map((student) => [
       student.cef,
       student.fullname,
       student.secteur,
@@ -187,15 +202,15 @@ export default function FiltersAdmin({
       student.annee,
       student.groupe,
       student.aj || 0,
-      selectedMonth ? (student.anj[selectedMonth] || 0) : student.totalANJ,
+      selectedMonth ? student.anj[selectedMonth] || 0 : student.totalANJ,
       student.retards || 0,
       student.sanctionAssiduite || 'aucune',
       student.observationSA || '',
       student.sanctionComportement || 'aucune',
       student.observationSC || '',
-      student.disciplineNote || 15
+      student.disciplineNote || 15,
     ]);
-    const csvContent = [headers, ...data].map(row => row.join(',')).join('\n');
+    const csvContent = [headers, ...data].map((row) => row.join(',')).join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     if (link.download !== undefined) {
@@ -279,9 +294,16 @@ export default function FiltersAdmin({
             <Download className="mr-2" size={16} />
             Exporter
           </label>
-          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-            <li><a onClick={exportToPDF}>Exporter en PDF</a></li>
-            <li><a onClick={exportToCSV}>Exporter en CSV</a></li>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a onClick={exportToPDF}>Exporter en PDF</a>
+            </li>
+            <li>
+              <a onClick={exportToCSV}>Exporter en CSV</a>
+            </li>
           </ul>
         </div>
       )}
@@ -289,4 +311,3 @@ export default function FiltersAdmin({
   </div>
 );
 }
-

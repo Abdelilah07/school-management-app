@@ -1,8 +1,8 @@
-import React from "react";
-import Week from "./components/Week";
-import AssignmentModal from "./components/AssignmentModal";
-import Sidebar from "./components/Sidebar";
-import SchedulerHeader from "./components/SchedulerHeader";
+import React from 'react';
+import Week from './components/Week';
+import AssignmentModal from './components/AssignmentModal';
+import Sidebar from './components/Sidebar';
+import SchedulerHeader from './components/SchedulerHeader';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <SchedulerHeader />
         <div className="flex-grow p-4">
           <Week />
-          <AssignmentModal/>
+          <AssignmentModal />
         </div>
       </div>
 

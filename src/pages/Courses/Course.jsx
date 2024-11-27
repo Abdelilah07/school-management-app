@@ -214,7 +214,6 @@ const Course = () => {
                       </button>
                     </div>
                     {/* sections of the course */}
-                    
                   </>
                 )}
               </div>

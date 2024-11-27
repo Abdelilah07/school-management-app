@@ -5,8 +5,6 @@ import {
   RefreshCcw,
   Trash2,
   Search,
-  ChevronLeft,
-  ChevronRight,
 } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -15,12 +13,16 @@ import {
   addModule,
   editModule,
 } from '../../features/modules/moduleSlice';
+import Pagination from '../../components/shared/Pagination';
 import Modal from './components/Modal';
 
 function ModulesPage() {
   const dispatch = useDispatch();
   const modules = useSelector((state) => state.modules.list);
   const status = useSelector((state) => state.modules.status);
+  const [filieres, setFilieres] = useState([]);
+  const [secteur, setSecteur] = useState('');
+  const [formateur, setFormateur] = useState([]);
   const [filterSecteur, setfilterSecteur] = useState('Digital');
   const [filterNiveau, setFilterNiveau] = useState('1A');
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,8 +43,20 @@ function ModulesPage() {
 
   useEffect(() => {
     dispatch(fetchModules());
-  }, [dispatch]);
+    fetchOptions(secteur);
+  }, [dispatch,secteur]);
 
+  const fetchOptions = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/modules?secteur=${secteur}`);
+      const data = await response.json();
+      setFilieres([...new Set(data.map((module) => module.filiere))]);
+      setFormateur([...new Set(data.map((module) => module.formateur).filter(Boolean))]);
+    } catch (error) {
+      console.error('Erreur lors du chargement des options:', error);
+    }
+  };
+  
   const filteredModules = modules.filter(
     (module) =>
       module.secteur === filterSecteur &&
@@ -57,18 +71,6 @@ function ModulesPage() {
   const indexOfFirstItem = indexOfLastItem - itemsParPage;
   const currentItems = filteredModules.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
-
-  const handleNextPage = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
-
   const handleUpdateModule = () => {
     setEditingModuleId(null);
     setIsModalOpen(true);
@@ -80,34 +82,38 @@ function ModulesPage() {
       code: module.code,
       intitule: module.intitule,
       masseHoraire: module.masseHoraire,
+      secteur: module.secteur,
       filiere: module.filiere,
       niveau: module.niveau,
       competences: module.competences,
-      secteur: module.secteur,
       formateur: module.formateur,
     });
     setIsModalOpen(true);
   };
-
+  
   const handleModalClose = () => {
     setIsModalOpen(false);
     setFormData({
       code: '',
       intitule: '',
       masseHoraire: '',
+      secteur: '',
       filiere: '',
       niveau: '',
       competences: '',
-      secteur: '',
       formateur: '',
     });
     setEditingModuleId(null);
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === 'secteur') {
+      setSecteur(value);
+    }
   };
-
+  
   const handleDelete = (id) => {
     dispatch(deleteModule(id));
   };
@@ -122,7 +128,7 @@ function ModulesPage() {
       const newId = modules.length > 0 ? Math.max(...modules.map((mod) => mod.id)) + 1 : 1;
       const newModule = {
         ...formData,
-        id: newId.toString,
+        id: newId.toString(),
         competences: formData.competences.toString(),
         etat,
       };
@@ -234,21 +240,21 @@ function ModulesPage() {
               <th className="flex items-center gap-1 pl-2">Actions</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-600">
             {currentItems.map((module, index) => (
-              <tr key={index}>
-                <td className="hover">{module.code}</td>
-                <td className="hover">{module.intitule}</td>
-                <td className="hover">{module.masseHoraire}</td>
-                <td className="hover">{module.filiere}</td>
-                <td className="hover">{module.niveau}</td>
-                <td className="hover">{module.competences}</td>
+              <tr key={index} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                <td className="hover text-gray-900 dark:text-white">{module.code}</td>
+                <td className="hover text-gray-900 dark:text-white">{module.intitule}</td>
+                <td className="hover text-gray-900 dark:text-white">{module.masseHoraire}</td>
+                <td className="hover text-gray-900 dark:text-white">{module.filiere}</td>
+                <td className="hover text-gray-900 dark:text-white">{module.niveau}</td>
+                <td className="hover text-gray-900 dark:text-white">{module.competences}</td>
                 <td className="hover">
                   <div
                     className={`${
                       module.etat === 'Affecté'
-                        ? 'bg-green-500 text-white'
-                        : 'bg-red-500 text-white'
+                        ? 'bg-green-500 text-white dark:bg-green-700'
+                        : 'bg-red-500 text-white dark:bg-red-700'
                     } inline-block px-2 py-1 rounded`}
                   >
                     {module.etat}
@@ -256,13 +262,13 @@ function ModulesPage() {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button
-                    className="text-gray-600 hover:text-gray-900 mr-3"
+                    className="text-gray-600 hover:text-gray-900 mr-3 dark:text-gray-400 dark:hover:text-gray-200"
                     onClick={() => handleEditModule(module)}
                   >
                     <Edit className="w-4 h-4" />
                   </button>
                   <button
-                    className="text-orange-600 hover:text-red-900"
+                    className="text-orange-600 hover:text-red-900 dark:text-orange-400 dark:hover:text-red-500"
                     onClick={() => handleDelete(module.id)}
                   >
                     <Trash2 className="w-4 h-4" />
@@ -275,48 +281,11 @@ function ModulesPage() {
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6 mt-4">
-        <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-          <nav
-            className="isolate inline-flex -space-x-px rounded-md shadow-sm"
-            aria-label="Pagination"
-          >
-            <button
-              onClick={handlePrevPage}
-              disabled={currentPage === 1}
-              className={`relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 ${
-                currentPage === 1 ? 'cursor-not-allowed' : 'hover:bg-gray-50'
-              }`}
-            >
-              <span className="sr-only">Previous</span>
-              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-            </button>
-            {[...Array(totalPages)].map((_, index) => (
-              <button
-                key={index + 1}
-                onClick={() => handlePageChange(index + 1)}
-                className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
-                  currentPage === index + 1
-                    ? 'z-10 bg-gray-600 text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 '
-                    : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'
-                }`}
-              >
-                {index + 1}
-              </button>
-            ))}
-            <button
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-              className={`relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 ${
-                currentPage === totalPages ? 'cursor-not-allowed' : 'hover:bg-gray-50'
-              }`}
-            >
-              <span className="sr-only">Next</span>
-              <ChevronRight className="h-5 w-5" aria-hidden="true" />
-            </button>
-          </nav>
-        </div>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+      />
 
       {/* Add Module Modal */}
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
@@ -358,30 +327,36 @@ function ModulesPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Filiere</label>
-              <input
-                type="text"
-                name="filiere"
-                value={formData.filiere}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-              />
-            </div>
-            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Secteur</label>
               <select
                 name="secteur"
                 value={formData.secteur}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                required
               >
+                <option value=""> Choisir un secteur </option>
                 <option value="Digital">Digital</option>
                 <option value="Agro-ali">Agro-ali</option>
                 <option value="Finance">Finance</option>
                 <option value="Marketing">Marketing</option>
               </select>
             </div>
+            <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Filière</label>
+            <select
+              name="filiere"
+              value={formData.filiere}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
+            >
+              <option value=""> Choisir une filière </option>
+              {filieres.map((filiere, index) => (
+                <option key={index} value={filiere}>
+                  {filiere}
+                </option>
+              ))}
+            </select>
+          </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Niveau</label>
               <select
@@ -391,6 +366,7 @@ function ModulesPage() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
                 required
               >
+               <option value=""> Choisir un niveau </option>
                 <option value="1A">1ère année</option>
                 <option value="2A">2ème année</option>
               </select>
@@ -408,15 +384,21 @@ function ModulesPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Formateur</label>
-              <input
-                type="text"
-                name="formateur"
-                value={formData.formateur}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-              />
-            </div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Formateur</label>
+            <select
+              name="formateur"
+              value={formData.formateur}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
+            >
+              <option value=""> Choisir un formateur </option>
+              {formateur.map((form, index) => (
+                <option key={index} value={form}>
+                  {form}
+                </option>
+              ))}
+            </select>
+          </div>
             <div className="flex justify-end space-x-3 mt-6">
               <button type="button" onClick={handleModalClose} className="btn btn-ghos">
                 Cancel

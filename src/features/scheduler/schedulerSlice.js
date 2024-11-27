@@ -54,9 +54,11 @@ const handleAsyncCases = (builder, thunk, operation, onSuccess) => {
 
 const initialState = {
   assignments: [],
-  startOfWeek: dayjs().startOf("week").add(1, "day").format('YYYY-MM-DD'),
+  startOfWeek: dayjs().startOf('week').add(1, 'day').format('YYYY-MM-DD'),
   hours: Array.from({ length: 10 }, (_, i) => {
-    const startTime = dayjs().hour(8 + i).minute(30);
+    const startTime = dayjs()
+      .hour(8 + i)
+      .minute(30);
     return {
       startTime: startTime.format('HH:mm'),
       endTime: startTime.add(1, 'hour').format('HH:mm'),
@@ -68,7 +70,7 @@ const initialState = {
         {
           startTime: startTime.add(30, 'minute').format('HH:mm'),
           endTime: startTime.add(1, 'hour').format('HH:mm'),
-        }
+        },
       ],
     };
   }),
@@ -85,10 +87,10 @@ const schedulerSlice = createSlice({
   initialState,
   reducers: {
     nextWeek: (state) => {
-      state.startOfWeek = dayjs(state.startOfWeek).add(1, "week").format('YYYY-MM-DD');
+      state.startOfWeek = dayjs(state.startOfWeek).add(1, 'week').format('YYYY-MM-DD');
     },
     prevWeek: (state) => {
-      state.startOfWeek = dayjs(state.startOfWeek).subtract(1, "week").format('YYYY-MM-DD');
+      state.startOfWeek = dayjs(state.startOfWeek).subtract(1, 'week').format('YYYY-MM-DD');
     },
     setSelectedDay: (state, action) => {
       state.selectedDay = action.payload;
@@ -129,14 +131,18 @@ const schedulerSlice = createSlice({
     });
 
     handleAsyncCases(builder, updateAssignment, 'update', (state, action) => {
-      const index = state.assignments.findIndex((assignment) => assignment.id === action.payload.id);
+      const index = state.assignments.findIndex(
+        (assignment) => assignment.id === action.payload.id
+      );
       if (index !== -1) {
         state.assignments[index] = action.payload;
       }
     });
 
     handleAsyncCases(builder, deleteAssignment, 'delete', (state, action) => {
-      state.assignments = state.assignments.filter((assignment) => assignment.id !== action.payload);
+      state.assignments = state.assignments.filter(
+        (assignment) => assignment.id !== action.payload
+      );
     });
   },
 });
@@ -150,7 +156,7 @@ export const {
   setShowAddAssignmentModal,
   setSelectedGroupe,
   setSelectedFormateur,
-  setAddAssignmentButtonClicked 
+  setAddAssignmentButtonClicked,
 } = schedulerSlice.actions;
 
 export default schedulerSlice.reducer;

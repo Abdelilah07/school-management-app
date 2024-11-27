@@ -18,10 +18,9 @@ export default function Week() {
     dispatch(fetchAssignments());
   }, [dispatch]);
 
-  const filteredAssignments =
-    selectedGroupe
-      ? assignments.filter((assignment) => assignment.groupe.codeGroupe === selectedGroupe)
-      : selectedFormateur
+  const filteredAssignments = selectedGroupe
+    ? assignments.filter((assignment) => assignment.groupe.codeGroupe === selectedGroupe)
+    : selectedFormateur
       ? assignments.filter((assignment) => assignment.formateur.matricule === selectedFormateur)
       : assignments;
 
@@ -33,11 +32,7 @@ export default function Week() {
             <tr>
               <th className="px-1 py-1 border rounded-tl-lg w-24 h-12">Day</th>
               {hours.map((hour, index) => (
-                <th
-                  key={index}
-                  colSpan={2}
-                  className="px-1 py-1 border font-semibold w-24 h-12"
-                >
+                <th key={index} colSpan={2} className="px-1 py-1 border font-semibold w-24 h-12">
                   {hour.startTime} - {hour.endTime}
                 </th>
               ))}
@@ -45,12 +40,7 @@ export default function Week() {
           </thead>
           <tbody>
             {daysOfWeek.map((day, dayIndex) => (
-              <DayRow
-                key={dayIndex}
-                day={day}
-                hours={hours}
-                assignments={filteredAssignments}
-              />
+              <DayRow key={dayIndex} day={day} hours={hours} assignments={filteredAssignments} />
             ))}
           </tbody>
         </table>

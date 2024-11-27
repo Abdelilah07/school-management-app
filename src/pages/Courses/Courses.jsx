@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BookOpen, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,10 +41,8 @@ const Courses = () => {
 
   // Filtered courses based on user selections
   const filteredCourses = courses.filter((course) => {
-    const matchesCourseName =
-      !selectedCourseName || course.courseName === selectedCourseName;
-    const matchesTeacherName =
-      !selectedTeacherName || course.teacherName === selectedTeacherName;
+    const matchesCourseName = !selectedCourseName || course.courseName === selectedCourseName;
+    const matchesTeacherName = !selectedTeacherName || course.teacherName === selectedTeacherName;
     return matchesCourseName && matchesTeacherName;
   });
 
@@ -72,7 +70,7 @@ const Courses = () => {
           >
             <option value="">All Courses</option>
             {courses.map((course) => (
-              <option key={course.id} value={course.courseName} >
+              <option key={course.id} value={course.courseName}>
                 {course.courseName}
               </option>
             ))}
@@ -83,10 +81,8 @@ const Courses = () => {
             onChange={(e) => setSelectedTeacherName(e.target.value)}
           >
             <option value="">All Teachers</option>
-            {[
-              ...new Set(courses.map((course) => course.teacherName)),
-            ].map((teacherName) => (
-              <option key={teacherName} value={teacherName} >
+            {[...new Set(courses.map((course) => course.teacherName))].map((teacherName) => (
+              <option key={teacherName} value={teacherName}>
                 {teacherName}
               </option>
             ))}

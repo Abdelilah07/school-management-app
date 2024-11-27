@@ -8,8 +8,8 @@ const AddStagiaire = () => {
   const [cefid, setCefid] = useState('');
   const [filiere, setFiliere] = useState('');
   const [groupe, setGroupe] = useState('');
-  const [loading, setLoading] = useState(false);  
-  const [error, setError] = useState(null);  
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // Fonction pour gérer l'ajout d'un stagiaire
   const handleAddStagiaire = async (e) => {
@@ -20,14 +20,14 @@ const AddStagiaire = () => {
     setError(null);
 
     try {
-      await dispatch(addStagiaireAPI(stagiaire));  // Envoi à l'API via Redux
+      await dispatch(addStagiaireAPI(stagiaire)); // Envoi à l'API via Redux
       // Réinitialisation du formulaire
       setNom('');
       setCefid('');
       setFiliere('');
       setGroupe('');
     } catch (err) {
-      setError('Erreur lors de l\'ajout du stagiaire');
+      setError("Erreur lors de l'ajout du stagiaire");
     } finally {
       setLoading(false);
     }
@@ -37,10 +37,34 @@ const AddStagiaire = () => {
     <div>
       <h2>Ajouter un Stagiaire</h2>
       <form onSubmit={handleAddStagiaire}>
-        <input type="text" value={cefid} onChange={(e) => setCefid(e.target.value)} placeholder="Cef" required />
-        <input type="text" value={nom} onChange={(e) => setNom(e.target.value)} placeholder="Nom" required />
-        <input type="text" value={filiere} onChange={(e) => setFiliere(e.target.value)} placeholder="Filière" required />
-        <input type="text" value={groupe} onChange={(e) => setGroupe(e.target.value)} placeholder="Groupe" required />
+        <input
+          type="text"
+          value={cefid}
+          onChange={(e) => setCefid(e.target.value)}
+          placeholder="Cef"
+          required
+        />
+        <input
+          type="text"
+          value={nom}
+          onChange={(e) => setNom(e.target.value)}
+          placeholder="Nom"
+          required
+        />
+        <input
+          type="text"
+          value={filiere}
+          onChange={(e) => setFiliere(e.target.value)}
+          placeholder="Filière"
+          required
+        />
+        <input
+          type="text"
+          value={groupe}
+          onChange={(e) => setGroupe(e.target.value)}
+          placeholder="Groupe"
+          required
+        />
         <button type="submit" disabled={loading}>
           {loading ? 'Ajout en cours...' : 'Ajouter'}
         </button>

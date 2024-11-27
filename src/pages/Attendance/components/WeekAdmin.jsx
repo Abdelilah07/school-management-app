@@ -83,7 +83,6 @@ const WeekAdmin = () => {
   };
 
   const processAbsentStudents = () => {
-    // First, filter the records based on the selected week and other criteria
     const filteredRecords = allData.filter(record => {
       const recordDate = parseISO(record.date);
       const isInSelectedWeek = isWithinInterval(recordDate, {
@@ -99,10 +98,8 @@ const WeekAdmin = () => {
       return isInSelectedWeek && niveauMatch && filiereMatch && anneeMatch && groupeMatch;
     });
 
-    // Create a map to store unique students and their absence dates
     const studentMap = new Map();
 
-    // Process each record and combine absence dates for the same student
     filteredRecords.forEach(record => {
       record.students.forEach(student => {
         const cinMatch = !cin || student.studentCin.includes(cin);
@@ -114,28 +111,31 @@ const WeekAdmin = () => {
           const studentKey = student.studentId;
           
           if (!studentMap.has(studentKey)) {
-            // Initialize the student entry with their basic info
             studentMap.set(studentKey, {
               ...student,
               niveau: record.niveau,
               filiere: record.filiere,
               annee: record.annee,
               groupe: record.groupe,
-              absenceDates: new Set([record.date]),
-              absenceDetails: {
-                [record.date]: record.absenceType || 'ANJ' // Use the actual absence type if available
-              }
+              absenceDates: new Set(),
+              absenceDetails: {}
             });
-          } else {
-            // Add the absence date to the existing student's record
-            studentMap.get(studentKey).absenceDates.add(record.date);
-            studentMap.get(studentKey).absenceDetails[record.date] = record.absenceType || 'ANJ';
+          }
+
+          const studentData = studentMap.get(studentKey);
+          
+          // Check for full day absence or specific time slots
+          const morningAbsent = student.absentHours['8:30->10:50'] && student.absentHours['10:50->13.30'];
+          const afternoonAbsent = student.absentHours['13.30->15.50'] && student.absentHours['15.50->18.30'];
+          
+          if (morningAbsent || afternoonAbsent) {
+            studentData.absenceDates.add(record.date);
+            studentData.absenceDetails[record.date] = 'ANJ'; // Default to ANJ
           }
         }
       });
     });
 
-    // Convert the map back to an array and format the data
     return Array.from(studentMap.values()).map(student => ({
       ...student,
       totalAbsences: student.absenceDates.size,
@@ -247,7 +247,6 @@ const WeekAdmin = () => {
                   <th>CEF</th>
                   <th>CIN</th>
                   <th>Full Name</th>
-                  <th>Date of Birth</th>
                   <th>Total Absences</th>
                   <th>
                     {`${startOfWeek.format('DD/MM/YYYY')} - ${endOfWeek.format('DD/MM/YYYY')}`}
@@ -267,7 +266,6 @@ const WeekAdmin = () => {
                     <td>{student.studentCef}</td>
                     <td>{student.studentCin}</td>
                     <td>{student.studentName}</td>
-                    <td>{student.studentDateN}</td>
                     <td>{student.totalAbsences || 0}</td>
                     <td>
                       <div className="grid grid-cols-6 gap-1">

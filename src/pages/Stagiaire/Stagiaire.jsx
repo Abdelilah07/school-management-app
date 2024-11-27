@@ -71,7 +71,7 @@ const Stagiaire = () => {
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
-    setPagination(prev => ({ ...prev, currentPage: 1 }));
+    setPagination((prev) => ({ ...prev, currentPage: 1 }));
 
     if (filterType === 'filiere') {
       dispatch(setFiliereFilter(value));
@@ -98,7 +98,7 @@ const Stagiaire = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setModalState(prev => ({
+    setModalState((prev) => ({
       ...prev,
       stagiaire: { ...prev.stagiaire, [name]: value },
     }));
@@ -108,7 +108,7 @@ const Stagiaire = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { stagiaire } = modalState;
-    
+
     try {
       if (stagiaire.cef) {
         await dispatch(updateStagiaireAPI(stagiaire)).unwrap();
@@ -145,14 +145,14 @@ const Stagiaire = () => {
     doc.text('Liste des Stagiaires', 10, 10);
     displayedStagiaires.forEach((stagiaire, index) => {
       const text = `${stagiaire.cef} - ${stagiaire.nom} ${stagiaire.prenom}`;
-      doc.text(text, 10, 20 + (index * 10));
+      doc.text(text, 10, 20 + index * 10);
     });
     doc.save('stagiaires.pdf');
   };
 
   // Pagination handlers
   const handlePageChange = (page) => {
-    setPagination(prev => ({ ...prev, currentPage: page }));
+    setPagination((prev) => ({ ...prev, currentPage: page }));
   };
 
   if (status === 'loading') {
@@ -161,15 +161,13 @@ const Stagiaire = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-4 space-y-4">
-      {error && (
-        console.error('Error:', error),
-        alert('Une erreur s\'est produite lors de l\'opération.')
-      )}
+      {error &&
+        (console.error('Error:', error), alert("Une erreur s'est produite lors de l'opération."))}
 
       {/* Header Actions */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-        <button 
-          onClick={() => handleModalOpen()} 
+        <button
+          onClick={() => handleModalOpen()}
           className="btn btn-primary flex items-center gap-2"
         >
           <Plus size={16} /> Ajouter Stagiaire
@@ -191,7 +189,9 @@ const Stagiaire = () => {
           >
             <option value="">Toutes les filières</option>
             {filiereOptions.map((filiere) => (
-              <option key={filiere} value={filiere}>{filiere}</option>
+              <option key={filiere} value={filiere}>
+                {filiere}
+              </option>
             ))}
           </select>
           <select
@@ -201,23 +201,19 @@ const Stagiaire = () => {
           >
             <option value="">Tous les groupes</option>
             {GROUP_OPTIONS.map((groupe) => (
-              <option key={groupe} value={groupe}>{groupe}</option>
+              <option key={groupe} value={groupe}>
+                {groupe}
+              </option>
             ))}
           </select>
         </div>
 
         {/* Export buttons */}
         <div className="flex gap-2">
-          <button 
-            onClick={exportToExcel}
-            className="btn btn-outline flex items-center gap-2"
-          >
+          <button onClick={exportToExcel} className="btn btn-outline flex items-center gap-2">
             <FileSpreadsheet size={16} /> Excel
           </button>
-          <button 
-            onClick={exportToPDF}
-            className="btn btn-outline flex items-center gap-2"
-          >
+          <button onClick={exportToPDF} className="btn btn-outline flex items-center gap-2">
             <Download size={16} /> PDF
           </button>
         </div>
@@ -247,16 +243,10 @@ const Stagiaire = () => {
                 <td className="px-4 py-2">{stagiaire.filiere}</td>
                 <td className="px-4 py-2">{stagiaire.groupe}</td>
                 <td className="px-4 py-2 space-x-2">
-                  <button
-                    onClick={() => handleModalOpen(stagiaire)}
-                    className="btn btn-warning"
-                  >
+                  <button onClick={() => handleModalOpen(stagiaire)} className="btn btn-warning">
                     <Edit size={16} />
                   </button>
-                  <button
-                    onClick={() => handleDelete(stagiaire.cef)}
-                    className="btn btn-danger"
-                  >
+                  <button onClick={() => handleDelete(stagiaire.cef)} className="btn btn-danger">
                     <Trash2 size={16} />
                   </button>
                 </td>
@@ -325,17 +315,10 @@ const Stagiaire = () => {
           ))}
 
           <div className="flex justify-end space-x-2 mt-4">
-            <button
-              type="button"
-              onClick={handleModalClose}
-              className="btn btn-secondary"
-            >
+            <button type="button" onClick={handleModalClose} className="btn btn-secondary">
               Annuler
             </button>
-            <button
-              type="submit"
-              className="btn btn-primary"
-            >
+            <button type="submit" className="btn btn-primary">
               {modalState.stagiaire.cef ? 'Modifier' : 'Ajouter'}
             </button>
           </div>
@@ -350,7 +333,8 @@ function getFilteredStagiaires(stagiaires, filters) {
   return stagiaires.filter((stagiaire) => {
     const isFiliereMatch = !filters.filiere || stagiaire.filiere === filters.filiere;
     const isGroupeMatch = !filters.groupe || stagiaire.groupe === filters.groupe;
-    const isSearchMatch = !filters.searchTerm || 
+    const isSearchMatch =
+      !filters.searchTerm ||
       stagiaire.nom.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
       stagiaire.prenom.toLowerCase().includes(filters.searchTerm.toLowerCase());
     return isFiliereMatch && isGroupeMatch && isSearchMatch;
