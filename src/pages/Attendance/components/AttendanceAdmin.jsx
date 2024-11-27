@@ -259,7 +259,7 @@ export default function AttendanceAdmin() {
 
     try {
       const response = await fetch('http://localhost:3000/studentDiscipline', {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
