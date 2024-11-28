@@ -89,6 +89,7 @@ const GroupesPage = () => {
         onClose={handleModalClose}
         onSave={handleSave}
         onDelete={handleDeleteClick}
+        groupCount={groups.length}
       />
 
       <ConfirmModal

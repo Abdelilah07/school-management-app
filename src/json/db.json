@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "users": [
     {
       "id": "1",
@@ -64,6 +65,8 @@
       "joinedDate": "2024-11-23T10:32:16.835Z"
     }
   ],
+=======
+>>>>>>> ad5f60b0aab84a7f0ae81e6c1d5270c736e01416
   "emploi": {
     "DEV": {
       "1ere annee": {
@@ -687,7 +690,7 @@
           "correctAnswer": "Inca Empire"
         }
       ],
-      "id": "f4dc"
+      "id": "f5dc"
     },
     {
       "id": "ca42",
@@ -732,7 +735,7 @@
       "status": "active"
     },
     {
-      "id": "f044",
+      "id": "a8d4",
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
@@ -750,6 +753,439 @@
           "correctAnswer": "fff",
           "id": "1732647826453"
         },
+        {
+          "id": "1",
+          "question": "What is the atomic number of Carbon?",
+          "answers": [
+            "4",
+            "6",
+            "8",
+            "12",
+            "14"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "4d",
+          "question": "What is the main type of bond in sodium chloride (NaCl)?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Metallic bond"
+          ],
+          "correctAnswer": "Ionic bond"
+        },
+        {
+          "id": "5e",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "O2H",
+            "H2O2",
+            "HO2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "6f",
+          "question": "What is the pH of a neutral solution at 25°C?",
+          "answers": [
+            "7",
+            "0",
+            "14",
+            "1"
+          ],
+          "correctAnswer": "7"
+        },
+        {
+          "id": "7g",
+          "question": "Which gas is most abundant in the Earth's atmosphere?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon dioxide",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Nitrogen"
+        },
+        {
+          "id": "8h",
+          "question": "What is the name of the process by which a liquid turns into a gas?",
+          "answers": [
+            "Melting",
+            "Condensation",
+            "Evaporation",
+            "Sublimation"
+          ],
+          "correctAnswer": "Evaporation"
+        },
+        {
+          "id": "9i",
+          "question": "Which of the following is an example of a covalent compound?",
+          "answers": [
+            "NaCl",
+            "H2O",
+            "CaO",
+            "MgBr2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "10j",
+          "question": "What is the term for a reaction that absorbs heat?",
+          "answers": [
+            "Exothermic",
+            "Endothermic",
+            "Combustion",
+            "Neutralization"
+          ],
+          "correctAnswer": "Endothermic"
+        },
+        {
+          "id": "11k",
+          "question": "What is Avogadro's number?",
+          "answers": [
+            "6.022 × 10^23",
+            "3.14",
+            "9.8 m/s^2",
+            "1.6 × 10^-19"
+          ],
+          "correctAnswer": "6.022 × 10^23"
+        },
+        {
+          "id": "12l",
+          "question": "Which element is a noble gas?",
+          "answers": [
+            "Oxygen",
+            "Neon",
+            "Nitrogen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Neon"
+        },
+        {
+          "id": "13m",
+          "question": "What is the molar mass of H2O?",
+          "answers": [
+            "16 g/mol",
+            "18 g/mol",
+            "20 g/mol",
+            "24 g/mol"
+          ],
+          "correctAnswer": "18 g/mol"
+        },
+        {
+          "id": "14n",
+          "question": "What is the shape of a methane (CH4) molecule?",
+          "answers": [
+            "Linear",
+            "Bent",
+            "Tetrahedral",
+            "Trigonal planar"
+          ],
+          "correctAnswer": "Tetrahedral"
+        },
+        {
+          "id": "15o",
+          "question": "What is the oxidation state of oxygen in most compounds?",
+          "answers": [
+            "-1",
+            "-2",
+            "+1",
+            "+2"
+          ],
+          "correctAnswer": "-2"
+        },
+        {
+          "id": "16p",
+          "question": "What is the term for the ability of an atom to attract electrons in a bond?",
+          "answers": [
+            "Ionization energy",
+            "Electronegativity",
+            "Atomic radius",
+            "Electron affinity"
+          ],
+          "correctAnswer": "Electronegativity"
+        },
+        {
+          "id": "17q",
+          "question": "What is the process of a solid turning directly into a gas?",
+          "answers": [
+            "Condensation",
+            "Sublimation",
+            "Melting",
+            "Deposition"
+          ],
+          "correctAnswer": "Sublimation"
+        },
+        {
+          "id": "18r",
+          "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
+          "answers": [
+            "Solvent",
+            "Catalyst",
+            "Reactant",
+            "Inhibitor"
+          ],
+          "correctAnswer": "Catalyst"
+        },
+        {
+          "id": "19s",
+          "question": "Which law states that pressure and volume of a gas are inversely proportional?",
+          "answers": [
+            "Charles's Law",
+            "Boyle's Law",
+            "Avogadro's Law",
+            "Ideal Gas Law"
+          ],
+          "correctAnswer": "Boyle's Law"
+        },
+        {
+          "id": "20t",
+          "question": "What is the product of a neutralization reaction?",
+          "answers": [
+            "Salt and water",
+            "Gas and salt",
+            "Acid and base",
+            "Heat and gas"
+          ],
+          "correctAnswer": "Salt and water"
+        },
+        {
+          "id": "21u",
+          "question": "Which subatomic particle has a positive charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Photon"
+          ],
+          "correctAnswer": "Proton"
+        },
+        {
+          "id": "22v",
+          "question": "Which element is the most abundant in the Earth's crust?",
+          "answers": [
+            "Oxygen",
+            "Silicon",
+            "Aluminum",
+            "Iron"
+          ],
+          "correctAnswer": "Oxygen"
+        },
+        {
+          "id": "23w",
+          "question": "What is the main component of an acid?",
+          "answers": [
+            "Hydroxide ions",
+            "Hydrogen ions",
+            "Chloride ions",
+            "Carbonate ions"
+          ],
+          "correctAnswer": "Hydrogen ions"
+        },
+        {
+          "id": "24x",
+          "question": "What is the standard temperature in Kelvin for STP?",
+          "answers": [
+            "0 K",
+            "273 K",
+            "298 K",
+            "100 K"
+          ],
+          "correctAnswer": "273 K"
+        },
+        {
+          "id": "25y",
+          "question": "What is the common name for HCl in aqueous form?",
+          "answers": [
+            "Sulfuric acid",
+            "Hydrochloric acid",
+            "Nitric acid",
+            "Acetic acid"
+          ],
+          "correctAnswer": "Hydrochloric acid"
+        }
+      ],
+      "questionsSelected": [
+        {
+          "id": "21u",
+          "question": "Which subatomic particle has a positive charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Photon"
+          ],
+          "correctAnswer": "Proton"
+        },
+        {
+          "id": "1a",
+          "question": "What is the smallest unit of an element that retains its chemical properties?",
+          "answers": [
+            "Atom",
+            "Molecule",
+            "Ion",
+            "Proton"
+          ],
+          "correctAnswer": "Atom"
+        },
+        {
+          "id": "2b",
+          "question": "What is the chemical symbol for gold?",
+          "answers": [
+            "Au",
+            "Ag",
+            "Go",
+            "Gd"
+          ],
+          "correctAnswer": "Au"
+        },
+        {
+          "id": "3c",
+          "question": "What is the atomic number of carbon?",
+          "answers": [
+            "6",
+            "8",
+            "12",
+            "14"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "4d",
+          "question": "What is the main type of bond in sodium chloride (NaCl)?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Metallic bond"
+          ],
+          "correctAnswer": "Ionic bond"
+        },
+        {
+          "id": "5e",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "O2H",
+            "H2O2",
+            "HO2"
+          ],
+          "correctAnswer": "H2O"
+        }
+      ]
+    },
+    {
+      "quizID": "a123",
+      "courseName": "Introduction to Physics",
+      "coursequizID": "PHYS101",
+      "teacherName": "Dr. Michael Smith",
+      "Deadline": "2024-11-20T23:59",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "1abdd",
+          "question": "What is the SI unit of force?",
+          "answers": [
+            "Newton",
+            "Pascal",
+            "Joule",
+            "Watt"
+          ],
+          "correctAnswer": "Newton"
+        },
+        {
+          "id": "2bbbbbsb",
+          "question": "What is the acceleration due to gravity on Earth?",
+          "answers": [
+            "9.8 m/s²",
+            "10 m/s²",
+            "9.8 m/s",
+            "10 m/s"
+          ],
+          "correctAnswer": "9.8 m/s²"
+        },
+        {
+          "id": "3cccz",
+          "question": "What is the formula for velocity?",
+          "answers": [
+            "Distance ÷ Time",
+            "Force ÷ Mass",
+            "Mass × Acceleration",
+            "Work ÷ Distance"
+          ],
+          "correctAnswer": "Distance ÷ Time"
+        },
+        {
+          "id": "4dddddd",
+          "question": "Which law states that an object in motion stays in motion unless acted upon?",
+          "answers": [
+            "Newton's First Law",
+            "Newton's Second Law",
+            "Newton's Third Law",
+            "Law of Gravitation"
+          ],
+          "correctAnswer": "Newton's First Law"
+        },
+        {
+          "id": "5eeeeeeee",
+          "question": "What is the kinetic energy formula?",
+          "answers": [
+            "1/2 mv²",
+            "mgh",
+            "mv²",
+            "1/2 gh"
+          ],
+          "correctAnswer": "1/2 mv²"
+        }
+      ],
+      "id": "238b"
+    },
+    {
+      "quizID": "c345",
+      "courseName": "Principles of Economics",
+      "coursequizID": "ECON101",
+      "teacherName": "Dr. Emily Johnson",
+      "Deadline": "2024-12-13T23:59",
+      "status": "draft",
+      "questions": [],
+      "id": "f11a",
+      "questionsSelected": []
+    },
+    {
+      "id": "b979",
+      "courseName": "General Chemistry",
+      "coursequizID": "CHEM101",
+      "teacherName": "khba",
+      "Deadline": "2024-11-14T23:26",
+      "status": "active"
+    },
+    {
+      "id": "ffee",
+      "courseName": "Principles of Economics",
+      "coursequizID": "106",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-12-05T12:02",
+      "status": "active"
+    },
+    {
+      "id": "8381",
+      "courseName": "Introduction to Mathematics",
+      "coursequizID": "105",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-11-24T12:05",
+      "status": "active"
+    },
+    {
+      "id": "199a",
+      "courseName": "General Chemistry",
+      "coursequizID": "104",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-12-07T12:09",
+      "status": "active",
+      "questions": [
         {
           "id": "1",
           "question": "What is the atomic number of Carbon?",
@@ -1204,6 +1640,456 @@
           "id": "1732647826453"
         }
       ]
+    },
+    {
+      "id": "ae42",
+      "courseName": "World History",
+      "coursequizID": "HIST201",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-12-04T12:40",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "1",
+          "question": "What is the atomic number of Carbon?",
+          "answers": [
+            "4",
+            "6",
+            "8",
+            "12"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "2",
+          "question": "Which planet is known as the Red Planet?",
+          "answers": [
+            "Venus",
+            "Mars",
+            "Jupiter",
+            "Saturn"
+          ],
+          "correctAnswer": "Mars"
+        },
+        {
+          "id": "3",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "CO2",
+            "NaCl",
+            "O2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "4",
+          "question": "Which vitamin is produced when skin is exposed to sunlight?",
+          "answers": [
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
+          ],
+          "correctAnswer": "Vitamin D"
+        },
+        {
+          "id": "5",
+          "question": "What is the largest organ in the human body?",
+          "answers": [
+            "Brain",
+            "Heart",
+            "Skin",
+            "Liver"
+          ],
+          "correctAnswer": "Skin"
+        },
+        {
+          "id": "6",
+          "question": "Which gas makes up the majority of Earth's atmosphere?",
+          "answers": [
+            "Oxygen",
+            "Carbon Dioxide",
+            "Nitrogen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Nitrogen"
+        },
+        {
+          "id": "7",
+          "question": "What is the speed of light in vacuum?",
+          "answers": [
+            "299792 km/s",
+            "300000 km/s",
+            "199792 km/s",
+            "200000 km/s"
+          ],
+          "correctAnswer": "299792 km/s"
+        },
+        {
+          "id": "8",
+          "question": "Which element has the chemical symbol 'Fe'?",
+          "answers": [
+            "Iron",
+            "Gold",
+            "Silver",
+            "Copper"
+          ],
+          "correctAnswer": "Iron"
+        },
+        {
+          "id": "9",
+          "question": "What is the unit of electrical resistance?",
+          "answers": [
+            "Volt",
+            "Ampere",
+            "Ohm",
+            "Watt"
+          ],
+          "correctAnswer": "Ohm"
+        },
+        {
+          "id": "10",
+          "question": "Which blood type is known as the universal donor?",
+          "answers": [
+            "A+",
+            "B+",
+            "AB+",
+            "O-"
+          ],
+          "correctAnswer": "O-"
+        },
+        {
+          "id": "11",
+          "question": "What is the smallest unit of life?",
+          "answers": [
+            "Cell",
+            "Atom",
+            "Molecule",
+            "Protein"
+          ],
+          "correctAnswer": "Cell"
+        },
+        {
+          "id": "12",
+          "question": "Which gas do plants release during photosynthesis?",
+          "answers": [
+            "Carbon Dioxide",
+            "Nitrogen",
+            "Oxygen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Oxygen"
+        },
+        {
+          "id": "13",
+          "question": "What is the normal human body temperature in Celsius?",
+          "answers": [
+            "35.5",
+            "36.6",
+            "37.5",
+            "38.5"
+          ],
+          "correctAnswer": "36.6"
+        },
+        {
+          "id": "14",
+          "question": "Which element is most abundant in the universe?",
+          "answers": [
+            "Oxygen",
+            "Helium",
+            "Carbon",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Hydrogen"
+        },
+        {
+          "id": "15",
+          "question": "What is the hardest material on the Mohs scale?",
+          "answers": [
+            "Ruby",
+            "Diamond",
+            "Topaz",
+            "Quartz"
+          ],
+          "correctAnswer": "Diamond"
+        },
+        {
+          "id": "16",
+          "question": "Which planet is closest to the Sun?",
+          "answers": [
+            "Mercury",
+            "Venus",
+            "Earth",
+            "Mars"
+          ],
+          "correctAnswer": "Mercury"
+        },
+        {
+          "id": "17",
+          "question": "What is the main component of natural gas?",
+          "answers": [
+            "Methane",
+            "Ethane",
+            "Propane",
+            "Butane"
+          ],
+          "correctAnswer": "Methane"
+        },
+        {
+          "id": "18",
+          "question": "Which bone is the longest in the human body?",
+          "answers": [
+            "Skull",
+            "Femur",
+            "Tibia",
+            "Humerus"
+          ],
+          "correctAnswer": "Femur"
+        },
+        {
+          "id": "19",
+          "question": "What is the pH of pure water?",
+          "answers": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "correctAnswer": "7"
+        },
+        {
+          "id": "20",
+          "question": "Which galaxy contains our solar system?",
+          "answers": [
+            "Andromeda",
+            "Milky Way",
+            "Triangulum",
+            "Centaurus A"
+          ],
+          "correctAnswer": "Milky Way"
+        },
+        {
+          "id": "21",
+          "question": "What is the chemical symbol for silver?",
+          "answers": [
+            "Au",
+            "Ag",
+            "Cu",
+            "Pt"
+          ],
+          "correctAnswer": "Ag"
+        },
+        {
+          "id": "22",
+          "question": "Which element is essential for human blood?",
+          "answers": [
+            "Iron",
+            "Calcium",
+            "Potassium",
+            "Sodium"
+          ],
+          "correctAnswer": "Iron"
+        },
+        {
+          "id": "23",
+          "question": "What is the unit of force?",
+          "answers": [
+            "Pascal",
+            "Newton",
+            "Joule",
+            "Watt"
+          ],
+          "correctAnswer": "Newton"
+        },
+        {
+          "id": "24",
+          "question": "Which particle has a negative charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Positron"
+          ],
+          "correctAnswer": "Electron"
+        },
+        {
+          "id": "25",
+          "question": "What is the largest organ inside the human body?",
+          "answers": [
+            "Heart",
+            "Liver",
+            "Lung",
+            "Brain"
+          ],
+          "correctAnswer": "Liver"
+        },
+        {
+          "id": "26",
+          "question": "Which gas is used in fire extinguishers?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon Dioxide",
+            "Helium"
+          ],
+          "correctAnswer": "Carbon Dioxide"
+        },
+        {
+          "id": "27",
+          "question": "What is the atomic number of oxygen?",
+          "answers": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "correctAnswer": "8"
+        },
+        {
+          "id": "28",
+          "question": "Which vitamin is found abundantly in citrus fruits?",
+          "answers": [
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
+          ],
+          "correctAnswer": "Vitamin C"
+        },
+        {
+          "id": "29",
+          "question": "What is the chemical symbol for potassium?",
+          "answers": [
+            "P",
+            "K",
+            "Po",
+            "Ka"
+          ],
+          "correctAnswer": "K"
+        },
+        {
+          "id": "30",
+          "question": "Which blood type is the universal recipient?",
+          "answers": [
+            "A+",
+            "B+",
+            "AB+",
+            "O-"
+          ],
+          "correctAnswer": "AB+"
+        },
+        {
+          "id": "31",
+          "question": "What is the speed of sound in air?",
+          "answers": [
+            "330 m/s",
+            "343 m/s",
+            "350 m/s",
+            "360 m/s"
+          ],
+          "correctAnswer": "343 m/s"
+        },
+        {
+          "id": "32",
+          "question": "Which element is a noble gas?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Neon",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Neon"
+        },
+        {
+          "id": "33",
+          "question": "What is the unit of electric current?",
+          "answers": [
+            "Volt",
+            "Ampere",
+            "Ohm",
+            "Watt"
+          ],
+          "correctAnswer": "Ampere"
+        },
+        {
+          "id": "34",
+          "question": "Which planet has the most moons?",
+          "answers": [
+            "Jupiter",
+            "Saturn",
+            "Uranus",
+            "Neptune"
+          ],
+          "correctAnswer": "Saturn"
+        },
+        {
+          "id": "35",
+          "question": "What is the chemical formula for table salt?",
+          "answers": [
+            "NaCl",
+            "KCl",
+            "MgCl",
+            "CaCl"
+          ],
+          "correctAnswer": "NaCl"
+        },
+        {
+          "id": "36",
+          "question": "Which bone protects the brain?",
+          "answers": [
+            "Femur",
+            "Skull",
+            "Ribs",
+            "Spine"
+          ],
+          "correctAnswer": "Skull"
+        },
+        {
+          "id": "37",
+          "question": "What is the atomic number of gold?",
+          "answers": [
+            "77",
+            "79",
+            "81",
+            "83"
+          ],
+          "correctAnswer": "79"
+        },
+        {
+          "id": "38",
+          "question": "Which gas is responsible for the greenhouse effect?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon Dioxide",
+            "Helium"
+          ],
+          "correctAnswer": "Carbon Dioxide"
+        },
+        {
+          "id": "39",
+          "question": "What is the unit of power?",
+          "answers": [
+            "Joule",
+            "Newton",
+            "Watt",
+            "Pascal"
+          ],
+          "correctAnswer": "Watt"
+        },
+        {
+          "id": "40",
+          "question": "Which element is liquid at room temperature?",
+          "answers": [
+            "Iron",
+            "Mercury",
+            "Copper",
+            "Gold"
+          ],
+          "correctAnswer": "Mercury"
+        }
+      ]
     }
   ],
   "filieres": [
@@ -1321,8 +2207,19 @@
       "filiere": "Développement Digital",
       "modules": [
         {
+          "idModule": "m101",
           "nomModule": "HTML & CSS",
           "professeur": "Mme Laila"
+        },
+        {
+          "idModule": "m102",
+          "nomModule": "JavaScript",
+          "professeur": "M. Rachid"
+        },
+        {
+          "idModule": "m103",
+          "nomModule": "Développement Web",
+          "professeur": "Mme Zineb"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe1.pdf",
@@ -1345,8 +2242,19 @@
       "filiere": "Marketing Digital",
       "modules": [
         {
+          "idModule": "m201",
           "nomModule": "SEO & SEA",
           "professeur": "M. Youssef"
+        },
+        {
+          "idModule": "m202",
+          "nomModule": "Publicité en ligne",
+          "professeur": "Mme Khadija"
+        },
+        {
+          "idModule": "m203",
+          "nomModule": "Stratégies de contenu",
+          "professeur": "M. Walid"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe2.pdf",
@@ -1366,7 +2274,24 @@
       "codeGroupe": "3",
       "niveau": "GR103",
       "intituleGroupe": "Groupe 3",
-      "filiere": "Réseaux et Sécurité "
+      "filiere": "Réseaux et Sécurité",
+      "modules": [
+        {
+          "idModule": "m301",
+          "nomModule": "Sécurité des réseaux",
+          "professeur": "M. Hassan"
+        },
+        {
+          "idModule": "m302",
+          "nomModule": "Administration des systèmes",
+          "professeur": "Mme Jamila"
+        },
+        {
+          "idModule": "m303",
+          "nomModule": "Cryptographie",
+          "professeur": "M. Nabil"
+        }
+      ]
     },
     {
       "id": "2b67",
@@ -1376,8 +2301,19 @@
       "filiere": "Big Data et Intelligence Artificielle",
       "modules": [
         {
+          "idModule": "m401",
           "nomModule": "Data Science",
           "professeur": "M. Karim"
+        },
+        {
+          "idModule": "m402",
+          "nomModule": "Machine Learning",
+          "professeur": "Mme Salma"
+        },
+        {
+          "idModule": "m403",
+          "nomModule": "Analyse de données massives",
+          "professeur": "M. Anas"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe4.pdf",
@@ -1400,8 +2336,19 @@
       "filiere": "Gestion des Systèmes d'Information",
       "modules": [
         {
+          "idModule": "m501",
           "nomModule": "ERP & CRM",
           "professeur": "Mme Khadija"
+        },
+        {
+          "idModule": "m502",
+          "nomModule": "Gestion de projet",
+          "professeur": "M. Hassan"
+        },
+        {
+          "idModule": "m503",
+          "nomModule": "Bases de données",
+          "professeur": "Mme Latifa"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe5.pdf",
@@ -1424,8 +2371,19 @@
       "filiere": "Ingénierie Logicielle",
       "modules": [
         {
+          "idModule": "m601",
           "nomModule": "Architecture Logicielle",
           "professeur": "M. Anouar"
+        },
+        {
+          "idModule": "m602",
+          "nomModule": "Développement Java",
+          "professeur": "Mme Hanan"
+        },
+        {
+          "idModule": "m603",
+          "nomModule": "Analyse et conception logicielle",
+          "professeur": "M. Yassir"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe6.pdf",
@@ -1448,8 +2406,19 @@
       "filiere": "Commerce International",
       "modules": [
         {
+          "idModule": "m701",
           "nomModule": "Négociation Internationale",
           "professeur": "Mme Hajar"
+        },
+        {
+          "idModule": "m702",
+          "nomModule": "Logistique Internationale",
+          "professeur": "M. Ahmed"
+        },
+        {
+          "idModule": "m703",
+          "nomModule": "Marketing International",
+          "professeur": "Mme Rachida"
         }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe7.pdf",
@@ -1469,14 +2438,104 @@
       "codeGroupe": "8",
       "niveau": "GR108",
       "intituleGroupe": "Groupe 8",
-      "filiere": "Multimédia et Design Graphique ",
+      "filiere": "Multimédia et Design Graphique",
       "modules": [
-        "[object Object]"
+        {
+          "idModule": "m801",
+          "nomModule": "Design graphique",
+          "professeur": "M. Tarik"
+        },
+        {
+          "idModule": "m802",
+          "nomModule": "Animation 3D",
+          "professeur": "Mme Leila"
+        },
+        {
+          "idModule": "m803",
+          "nomModule": "Photoshop et Illustrator",
+          "professeur": "M. Abdelkader"
+        }
       ],
       "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe8.pdf",
       "liste": [
-        "[object Object]",
-        "[object Object]"
+        {
+          "nomEtudiant": "Rachid Mansouri",
+          "idEtudiant": "202315"
+        },
+        {
+          "nomEtudiant": "Salma Kadi",
+          "idEtudiant": "202316"
+        }
+      ]
+    },
+    {
+      "id": "abc9",
+      "codeGroupe": "9",
+      "niveau": "GR109",
+      "intituleGroupe": "Groupe 9",
+      "filiere": "Intelligence Artificielle",
+      "modules": [
+        {
+          "idModule": "m901",
+          "nomModule": "Introduction à l'IA",
+          "professeur": "M. Rami"
+        },
+        {
+          "idModule": "m902",
+          "nomModule": "Deep Learning",
+          "professeur": "Mme Nadia"
+        },
+        {
+          "idModule": "m903",
+          "nomModule": "Robotique",
+          "professeur": "M. Fadi"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe9.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Yassir Amrani",
+          "idEtudiant": "202317"
+        },
+        {
+          "nomEtudiant": "Leila Benali",
+          "idEtudiant": "202318"
+        }
+      ]
+    },
+    {
+      "id": "xyz8",
+      "codeGroupe": "10",
+      "niveau": "GR110",
+      "intituleGroupe": "Groupe 10",
+      "filiere": "Technologies de l'Information",
+      "modules": [
+        {
+          "idModule": "m1001",
+          "nomModule": "Cloud Computing",
+          "professeur": "M. Omar"
+        },
+        {
+          "idModule": "m1002",
+          "nomModule": "Blockchain",
+          "professeur": "Mme Zahra"
+        },
+        {
+          "idModule": "m1003",
+          "nomModule": "Programmation avancée",
+          "professeur": "M. Nizar"
+        }
+      ],
+      "emploiDuTemps": "https://example.com/emploiDuTemps/Groupe10.pdf",
+      "liste": [
+        {
+          "nomEtudiant": "Ayman Laaroussi",
+          "idEtudiant": "202319"
+        },
+        {
+          "nomEtudiant": "Khalil Oufkir",
+          "idEtudiant": "202320"
+        }
       ]
     }
   ],
@@ -2724,7 +3783,7 @@
       "code": "M115_F01",
       "intitule": "M115",
       "masseHoraire": 95,
-      "filiere": "FINANCE",
+      "filiere": "Finance",
       "niveau": "1A",
       "competences": "Architecture des ordinateurs, Organisation mémoire",
       "secteur": "Finance",
@@ -3702,26 +4761,15 @@
       "processingTime": "3-5 jours"
     }
   ],
-  "stagiaires": [
+  "trainees": [
     {
-      "cef": "100001",
-      "nom": "Mohammed",
-      "prenom": "Ahmed",
-      "email": "ahmed@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "infrastructure digital ",
-      "groupe": "G101",
-      "id": "8bc8"
-    },
-    {
-      "cef": "100009",
-      "nom": "Fatima",
+      "cef": "100780",
+      "nom": "najat",
       "prenom": "Hassan",
       "email": "fatima.hassan@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "infrastructure digital ",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G101",
       "id": "3ff4"
     },
@@ -3732,7 +4780,7 @@
       "email": "nadia.jamal@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "infrastructure digital ",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G101",
       "id": "b37a"
     },
@@ -3743,18 +4791,18 @@
       "email": "sara@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "infrastructure digital ",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G102",
       "id": "c6ec"
     },
     {
       "cef": "235466",
       "nom": "Sara",
-      "prenom": "Mohammed",
+      "prenom": "amine",
       "email": "sara@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "infrastructure digital ",
+      "filiere": "Infrastructures Digitale ",
       "groupe": "G102",
       "id": "882b"
     },
@@ -3765,7 +4813,7 @@
       "email": "youssef@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G101",
       "id": "e109"
     },
@@ -3776,7 +4824,7 @@
       "email": "khadija@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G101",
       "id": "a0fd"
     },
@@ -3787,20 +4835,9 @@
       "email": "omar@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G101",
       "id": "0de6"
-    },
-    {
-      "cef": "100008",
-      "nom": "Mariam",
-      "prenom": "Karim",
-      "email": "mariam@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "dev digital",
-      "groupe": "G102",
-      "id": "9539"
     },
     {
       "cef": "565689",
@@ -3809,7 +4846,7 @@
       "email": "ibrahim@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G102",
       "id": "24ac"
     },
@@ -3820,20 +4857,9 @@
       "email": "mariam@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "dev digital",
+      "filiere": "Développement Digital",
       "groupe": "G102",
       "id": "3536"
-    },
-    {
-      "cef": "45665",
-      "nom": "Mariam",
-      "prenom": "Karim",
-      "email": "mariam@example.com",
-      "annee": "1A",
-      "niveau": "TS",
-      "filiere": "dev digital",
-      "groupe": "G102",
-      "id": "0f76"
     },
     {
       "cef": "456788",
@@ -3842,7 +4868,7 @@
       "email": "iman@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G101",
       "id": "e8cc"
     },
@@ -3853,7 +4879,7 @@
       "email": "leila.sami@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G101",
       "id": "9167"
     },
@@ -3864,7 +4890,7 @@
       "email": "yassir.mounir@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G101",
       "id": "d667"
     },
@@ -3875,7 +4901,7 @@
       "email": "kenza.amine@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G101",
       "id": "97b5"
     },
@@ -3886,7 +4912,7 @@
       "email": "hassan.nadia@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "4d8c"
     },
@@ -3897,7 +4923,7 @@
       "email": "salim.lina@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "f5d8"
     },
@@ -3908,7 +4934,7 @@
       "email": "hassan.nadia@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "7281"
     },
@@ -3919,7 +4945,7 @@
       "email": "salim.lina@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "2f25"
     },
@@ -3930,7 +4956,7 @@
       "email": "hassan.nadia@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "eadb"
     },
@@ -3941,7 +4967,7 @@
       "email": "salim.lina@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "batiment",
+      "filiere": "Bâtiment",
       "groupe": "G102",
       "id": "b36d"
     },
@@ -3952,7 +4978,7 @@
       "email": "maya.farid@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G101",
       "id": "0eff"
     },
@@ -3963,7 +4989,7 @@
       "email": "imane.tariq@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G101",
       "id": "0629"
     },
@@ -3974,7 +5000,7 @@
       "email": "rania.adil@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G101",
       "id": "a1a8"
     },
@@ -3985,7 +5011,7 @@
       "email": "youssef.salwa@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G101",
       "id": "3dda"
     },
@@ -3996,18 +5022,18 @@
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "d254"
     },
     {
-      "cef": "23456",
+      "cef": "234567",
       "nom": "Nour",
       "prenom": "Ali",
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "8424"
     },
@@ -4018,7 +5044,7 @@
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "009d"
     },
@@ -4029,7 +5055,7 @@
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "5081"
     },
@@ -4040,7 +5066,7 @@
       "email": "nour.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "commerce",
+      "filiere": "Commerce",
       "groupe": "G102",
       "id": "4599"
     },
@@ -4139,7 +5165,7 @@
       "email": "amine.karim@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "8e17"
     },
@@ -4150,7 +5176,7 @@
       "email": "lina.yasmine@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "7b10"
     },
@@ -4161,7 +5187,7 @@
       "email": "khalil.ranya@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "dab9"
     },
@@ -4172,7 +5198,7 @@
       "email": "samira.omar@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "278f"
     },
@@ -4183,7 +5209,7 @@
       "email": "nabil.rima@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G101",
       "id": "1c85"
     },
@@ -4194,7 +5220,7 @@
       "email": "zaynab.ali@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G102",
       "id": "30ec"
     },
@@ -4205,7 +5231,7 @@
       "email": "anwar.siham@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G102",
       "id": "fa64"
     },
@@ -4216,7 +5242,7 @@
       "email": "fatima.hassan@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G102",
       "id": "41fa"
     },
@@ -4227,9 +5253,86 @@
       "email": "nadia.jamal@example.com",
       "annee": "1A",
       "niveau": "TS",
-      "filiere": "comptebilite",
+      "filiere": "Comptabilité",
       "groupe": "G102",
       "id": "c412"
+    },
+    {
+      "id": "e366",
+      "cef": "1111111",
+      "nom": "gtgt",
+      "prenom": "gtgt",
+      "email": "gtgt@gmail.com",
+      "annee": "1A",
+      "niveau": "T",
+      "filiere": "Développement Digital",
+      "groupe": "G102"
+    },
+    {
+      "id": "2763",
+      "cef": "123456789",
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "email": "jean.dupont@example.com",
+      "annee": "2A",
+      "niveau": "T",
+      "filiere": "Développement Digital",
+      "groupe": "G101"
+    },
+    {
+      "id": "35af",
+      "cef": "456789123",
+      "nom": "Durand",
+      "prenom": "Marc",
+      "email": "marc.durand@example.com",
+      "annee": "2A",
+      "niveau": "TS",
+      "filiere": "Bâtiment",
+      "groupe": "G101"
+    },
+    {
+      "id": "3897",
+      "cef": "789123456",
+      "nom": "Lopez",
+      "prenom": "Emma",
+      "email": "emma.lopez@example.com",
+      "annee": "2A",
+      "niveau": "TS",
+      "filiere": "Commerce",
+      "groupe": "G102"
+    },
+    {
+      "id": "f16e",
+      "cef": "654321987",
+      "nom": "Pierre",
+      "prenom": "Sophie",
+      "email": "sophie.pierre@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Finance",
+      "groupe": "G101"
+    },
+    {
+      "id": "d82d",
+      "cef": "321987654",
+      "nom": "Robert",
+      "prenom": "Lucie",
+      "email": "lucie.robert@example.com",
+      "annee": "1A",
+      "niveau": "TS",
+      "filiere": "Comptabilité",
+      "groupe": "G102"
+    },
+    {
+      "id": "68b0",
+      "cef": "456680",
+      "nom": "abouzakaria",
+      "prenom": "yassmine",
+      "email": "yassmineabouzakaria@gmail.com",
+      "annee": "2A",
+      "niveau": "TS",
+      "filiere": "Développement Digital",
+      "groupe": "G101"
     }
   ],
   "scheduler": [

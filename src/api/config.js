@@ -6,7 +6,6 @@ const config = {
     baseUrl: 'http://localhost:3000',
     timeout: 10000,
     endpoints: {
-      users: '/users',
       emploi: '/emploi',
       filieres: '/filieres',
       groups: '/groups',

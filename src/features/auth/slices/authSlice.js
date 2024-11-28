@@ -1,17 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import config, { apiService } from '../../../api/config';
+import { supabase } from '../../../services/supabaseClient';
 
 // Constants
 const STORAGE_KEYS = {
   TOKEN: 'token',
   REFRESH_TOKEN: 'refresh_token',
   USER: 'user',
-  LOGIN_ATTEMPTS: 'login_attempts',
+  REMEMBER_ME: 'remember_me',
 };
 
-const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 minutes
-const MAX_LOGIN_ATTEMPTS = 5;
-
+// Utility Functions
 const validatePassword = (password) => {
   const errors = [];
   if (!password || typeof password !== 'string') {
@@ -49,9 +47,9 @@ const validateEmail = (email) => {
   return null;
 };
 
-const getStorageItem = (key) => {
+const getStorageItem = (key, storage = localStorage) => {
   try {
-    return JSON.parse(localStorage.getItem(key) || sessionStorage.getItem(key));
+    return JSON.parse(storage.getItem(key));
   } catch (error) {
     console.error(`Error retrieving ${key} from storage:`, error);
     return null;
@@ -66,191 +64,194 @@ const setStorageItem = (key, value, storage = localStorage) => {
   }
 };
 
-const isLockedOut = (email) => {
-  try {
-    const attempts = getStorageItem(`${STORAGE_KEYS.LOGIN_ATTEMPTS}-${email}`) || {
-      count: 0,
-      timestamp: null,
-    };
-
-    if (attempts.count >= MAX_LOGIN_ATTEMPTS) {
-      const timePassed = Date.now() - attempts.timestamp;
-      if (timePassed < LOCKOUT_DURATION) {
-        return true;
-      }
-      localStorage.removeItem(`${STORAGE_KEYS.LOGIN_ATTEMPTS}-${email}`);
-    }
-    return false;
-  } catch (error) {
-    console.error('Error checking lockout status:', error);
-    return false;
-  }
-};
-
-const recordLoginAttempt = (email) => {
-  try {
-    const attempts = getStorageItem(`${STORAGE_KEYS.LOGIN_ATTEMPTS}-${email}`) || {
-      count: 0,
-      timestamp: null,
-    };
-
-    attempts.count += 1;
-    attempts.timestamp = Date.now();
-    setStorageItem(`${STORAGE_KEYS.LOGIN_ATTEMPTS}-${email}`, attempts);
-
-    return attempts.count;
-  } catch (error) {
-    console.error('Error recording login attempt:', error);
-    return 0;
-  }
-};
-
-// Thunks
-export const login = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
-  try {
-    const emailError = validateEmail(credentials.email);
-    if (emailError) {
-      throw new Error(emailError);
-    }
-
-    if (!credentials.password) {
-      throw new Error('Password is required');
-    }
-
-    if (isLockedOut(credentials.email)) {
-      const remainingTime = Math.ceil(
-        (LOCKOUT_DURATION -
-          (Date.now() -
-            getStorageItem(`${STORAGE_KEYS.LOGIN_ATTEMPTS}-${credentials.email}`).timestamp)) /
-          60000
-      );
-      throw new Error(`Account temporarily locked. Please try again in ${remainingTime} minutes.`);
-    }
-
-    const users = await apiService.get(`/users?email=${encodeURIComponent(credentials.email)}`);
-    const user = users[0];
-
-    if (!user) {
-      // Use a generic error message to prevent user enumeration
-      throw new Error('Invalid email or password');
-    }
-
-    if (user.password !== credentials.password) {
-      const attempts = recordLoginAttempt(credentials.email);
-      const remainingAttempts = MAX_LOGIN_ATTEMPTS - attempts;
-
-      if (remainingAttempts > 0) {
-        throw new Error(`Invalid email or password. ${remainingAttempts} attempts remaining.`);
-      } else {
-        throw new Error('Account temporarily locked. Please try again later.');
-      }
-    }
-
-    // Generate tokens (in real app these would come from the server)
-    const token = `dummy-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-    const refreshToken = `dummy-refresh-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-
-    const storage = credentials.rememberMe ? localStorage : sessionStorage;
-    const userData = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      photo: user.photo,
-    };
-
-    setStorageItem(STORAGE_KEYS.TOKEN, token, storage);
-    setStorageItem(STORAGE_KEYS.REFRESH_TOKEN, refreshToken, storage);
-    setStorageItem(STORAGE_KEYS.USER, userData, storage);
-
-    return {
-      token,
-      refreshToken,
-      user: userData,
-    };
-  } catch (error) {
-    return rejectWithValue(error.message || 'Login failed');
-  }
-});
-
+// Authentication Thunks
 export const signup = createAsyncThunk('auth/signup', async (userData, { rejectWithValue }) => {
   try {
-    const emailError = validateEmail(userData.email);
+    const { email, password, name, role, profilePicture } = userData;
+
+    // Validate email and password
+    const emailError = validateEmail(email);
     if (emailError) {
       throw new Error(emailError);
     }
 
-    const passwordErrors = validatePassword(userData.password);
+    const passwordErrors = validatePassword(password);
     if (passwordErrors.length > 0) {
       throw new Error(passwordErrors.join('. '));
     }
 
     // Check if user exists
-    const existingUsers = await apiService.get(
-      `/users?email=${encodeURIComponent(userData.email)}`
-    );
+    const { data: existingUsers, error: checkError } = await supabase
+      .from('users')
+      .select('*')
+      .eq('email', email);
+
+    if (checkError) {
+      throw checkError;
+    }
+
     if (existingUsers.length > 0) {
       throw new Error('Email already registered');
     }
 
-    // Create new user
-    const newUser = {
-      ...userData,
-      createdAt: new Date().toISOString(),
-      status: 'active',
-    };
+    // Create new user in Supabase users table
+    const { data: newUserResponse, error: insertError } = await supabase
+      .from('users')
+      .insert({
+        email,
+        password,
+        name,
+        role,
+        created_at: new Date().toISOString(),
+        status: 'active',
+      })
+      .select()
+      .single();
 
-    const response = await apiService.post('/users', newUser);
+    if (insertError) {
+      throw insertError;
+    }
 
-    // Generate tokens
-    const token = `dummy-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-    const refreshToken = `dummy-refresh-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-
+    // Prepare user data for storage
     const userDataToStore = {
-      id: response.id,
-      name: response.name,
-      email: response.email,
-      role: response.role,
-      photo: response.photo,
+      id: newUserResponse.id,
+      name: newUserResponse.name,
+      email: newUserResponse.email,
+      role: newUserResponse.role,
     };
 
-    setStorageItem(STORAGE_KEYS.TOKEN, token);
-    setStorageItem(STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
+    // Store in localStorage (default for signup)
+    localStorage.setItem(STORAGE_KEYS.REMEMBER_ME, 'true');
     setStorageItem(STORAGE_KEYS.USER, userDataToStore);
+    setStorageItem(STORAGE_KEYS.TOKEN, `dummy-token-${Date.now()}`);
 
     return {
-      token,
-      refreshToken,
       user: userDataToStore,
+      token: `dummy-token-${Date.now()}`,
+      rememberMe: true,
     };
   } catch (error) {
     return rejectWithValue(error.message || 'Signup failed');
   }
 });
 
+export const login = createAsyncThunk('auth/login', async (credentials, { rejectWithValue }) => {
+  try {
+    const { email, password, rememberMe = false } = credentials;
+    const emailError = validateEmail(email);
+
+    if (emailError) {
+      throw new Error(emailError);
+    }
+
+    if (!password) {
+      throw new Error('Password is required');
+    }
+
+    // Fetch user from Supabase users table
+    const { data: users, error: fetchError } = await supabase
+      .from('users')
+      .select('*, roles(name)')
+      .eq('email', email)
+      .limit(1);
+
+    if (fetchError) {
+      throw fetchError;
+    }
+
+    const user = users[0];
+
+    if (!user) {
+      throw new Error('Invalid email or password');
+    }
+
+    if (user.password !== password) {
+      throw new Error('Invalid email or password');
+    }
+
+    // Choose storage based on remember me
+    const storage = rememberMe ? localStorage : sessionStorage;
+
+    // Store remember me preference
+    localStorage.setItem(STORAGE_KEYS.REMEMBER_ME, JSON.stringify(rememberMe));
+
+    // Clear inconsistent storage
+    if (!rememberMe) {
+      localStorage.removeItem(STORAGE_KEYS.TOKEN);
+      localStorage.removeItem(STORAGE_KEYS.USER);
+    }
+
+
+    // Prepare user data
+    const userData = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.roles.name,
+      profilePicture: user.profile_picture,
+      status: user.status,
+      created_at: user.created_at,
+      lastLogin: user.last_login,
+      phoneNumber: user.phone_number,
+      bio: user.bio,
+      website: user.website,
+      address: user.address,
+    };
+
+    // Generate token (dummy in this example)
+    const token = `dummy-token-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+
+    // Store tokens and user data
+    setStorageItem(STORAGE_KEYS.TOKEN, token, storage);
+    setStorageItem(STORAGE_KEYS.USER, userData, storage);
+
+    return {
+      token,
+      user: userData,
+      rememberMe,
+    };
+  } catch (error) {
+    return rejectWithValue(error.message || 'Login failed');
+  }
+});
+
+// Determine initial authentication state
+const getInitialAuthState = () => {
+  const rememberMe = JSON.parse(localStorage.getItem(STORAGE_KEYS.REMEMBER_ME) || 'false');
+
+  // If remember me is true, check localStorage, else check sessionStorage
+  const storage = rememberMe ? localStorage : sessionStorage;
+
+  const user = getStorageItem(STORAGE_KEYS.USER, storage);
+  const token = storage.getItem(STORAGE_KEYS.TOKEN);
+
+  return {
+    user,
+    token,
+    isAuthenticated: !!token,
+    rememberMe,
+  };
+};
+
 // Initial state
 const initialState = {
-  user: getStorageItem(STORAGE_KEYS.USER),
-  token: localStorage.getItem(STORAGE_KEYS.TOKEN) || sessionStorage.getItem(STORAGE_KEYS.TOKEN),
-  isAuthenticated: !!(
-    localStorage.getItem(STORAGE_KEYS.TOKEN) || sessionStorage.getItem(STORAGE_KEYS.TOKEN)
-  ),
+  ...getInitialAuthState(),
   status: 'idle',
   error: null,
 };
 
-// Slice
+// Auth Slice
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     logout: (state) => {
       try {
+        // Remove from both local and session storage
         localStorage.removeItem(STORAGE_KEYS.TOKEN);
-        localStorage.removeItem(STORAGE_KEYS.REFRESH_TOKEN);
         localStorage.removeItem(STORAGE_KEYS.USER);
+        localStorage.removeItem(STORAGE_KEYS.REMEMBER_ME);
         sessionStorage.removeItem(STORAGE_KEYS.TOKEN);
-        sessionStorage.removeItem(STORAGE_KEYS.REFRESH_TOKEN);
         sessionStorage.removeItem(STORAGE_KEYS.USER);
       } catch (error) {
         console.error('Error during logout:', error);
@@ -261,6 +262,7 @@ const authSlice = createSlice({
         user: null,
         token: null,
         isAuthenticated: false,
+        rememberMe: false,
       };
     },
     clearError: (state) => {
@@ -269,6 +271,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Login cases
       .addCase(login.pending, (state) => {
         state.status = 'loading';
         state.error = null;
@@ -278,11 +281,13 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isAuthenticated = true;
+        state.rememberMe = action.payload.rememberMe;
       })
       .addCase(login.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
       })
+      // Signup cases
       .addCase(signup.pending, (state) => {
         state.status = 'loading';
         state.error = null;
@@ -292,6 +297,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isAuthenticated = true;
+        state.rememberMe = action.payload.rememberMe;
       })
       .addCase(signup.rejected, (state, action) => {
         state.status = 'failed';

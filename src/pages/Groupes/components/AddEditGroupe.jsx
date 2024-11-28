@@ -11,8 +11,28 @@ import {
   SquareStack,
 } from 'lucide-react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
+const AddEditGroupe = ({ group, groupCount, onClose, onSave, isEditMode }) => {
+  const { groups } = useSelector((state) => state.groups);
+  
+  // Assuming a map of filiere to their associated modules
+  const filiereModulesMap = groups.reduce((acc, group) => {
+    // If the filiere doesn't exist in the map, initialize it with an empty array
+    if (!acc[group.filiere]) {
+      acc[group.filiere] = new Set();
+    }
+  
+    // Add each module's name to the respective filiere
+    group.modules.forEach((module) => {
+      acc[group.filiere].add(module.nomModule);
+    });
+  
+    return acc;
+  }, {});
+
+  const filieres = [...new Set(groups.map((group) => group.filiere))];
+
   const [formData, setFormData] = useState({
     codeGroupe: '',
     niveau: '',
@@ -28,18 +48,37 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
 
   useEffect(() => {
     if (group) {
+      // Populate form for edit mode
       setFormData({
         id: group.id || '',
         codeGroupe: group.codeGroupe || '',
         niveau: group.niveau || '',
         intituleGroupe: group.intituleGroupe || '',
         filiere: group.filiere || '',
-        modules: Array.isArray(group.modules) ? group.modules.join(', ') : '',
+        modules: group.modules ? group.modules.join(', ') : '',
         emploiDuTemps: group.emploiDuTemps || '',
         liste: Array.isArray(group.liste) ? group.liste.join(', ') : '',
       });
+    } else {
+      // Set default codeGroupe for add mode
+      setFormData((prev) => ({
+        ...prev,
+        codeGroupe: String(groupCount + 1),
+      }));
     }
-  }, [group]);
+  }, [group, groupCount]);
+
+  useEffect(() => {
+    if (formData.filiere) {
+      // Get the modules for the selected filiere (from the map)
+      const selectedModules = Array.from(filiereModulesMap[formData.filiere] || []);
+      setFormData((prev) => ({
+        ...prev,
+        modules: selectedModules.join(', '),
+      }));
+    }
+  }, [formData.filiere]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +86,6 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
       ...prev,
       [name]: value,
     }));
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -100,7 +138,6 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
       };
 
       if (isEditMode) {
-        // Ensure we keep the id for editing
         groupeData.id = group.id;
       }
 
@@ -121,6 +158,7 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
       label: 'Code Groupe',
       icon: <Code className="w-4 h-4" />,
       placeholder: 'Entrez le code du groupe',
+      readOnly: true, // Make this field read-only
     },
     {
       id: 'niveau',
@@ -138,13 +176,16 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
       id: 'filiere',
       label: 'Filière',
       icon: <Building2 className="w-4 h-4" />,
-      placeholder: 'Entrez la filière',
+      placeholder: 'Choisissez une filière',
+      type: 'select',
+      options: filieres,
     },
     {
       id: 'modules',
       label: 'Modules',
       icon: <Component className="w-4 h-4" />,
-      placeholder: 'Entrez les modules (séparés par des virgules)',
+      placeholder: 'Modules associés',
+      readOnly: true, // Make this field read-only
     },
     {
       id: 'emploiDuTemps',
@@ -176,15 +217,33 @@ const AddEditGroupe = ({ group, onClose, onSave, isEditMode }) => {
                 {field.label}
               </span>
             </label>
-            <input
-              type="text"
-              name={field.id}
-              value={formData[field.id]}
-              onChange={handleChange}
-              placeholder={field.placeholder}
-              className={`input input-bordered w-full ${errors[field.id] ? 'input-error' : ''}`}
-              disabled={isSubmitting}
-            />
+            {field.type === 'select' ? (
+              <select
+                name={field.id}
+                value={formData[field.id]}
+                onChange={handleChange}
+                className={`select select-bordered w-full ${errors[field.id] ? 'select-error' : ''}`}
+                disabled={isSubmitting || !field.options.length} // Disable if no options
+              >
+                <option value="">{field.placeholder}</option>
+                {filieres.map((filiere, index) => (
+                  <option key={index} value={filiere}>
+                    {filiere}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <input
+                type="text"
+                name={field.id}
+                value={formData[field.id]}
+                onChange={handleChange}
+                placeholder={field.placeholder}
+                className={`input input-bordered w-full ${errors[field.id] ? 'input-error' : ''}`}
+                disabled={isSubmitting || field.readOnly}
+                readOnly={field.readOnly}
+              />
+            )}
             {errors[field.id] && (
               <label className="label">
                 <span className="label-text-alt text-error">{errors[field.id]}</span>
@@ -231,6 +290,7 @@ AddEditGroupe.propTypes = {
     emploiDuTemps: PropTypes.string,
     liste: PropTypes.array,
   }),
+  groupCount: PropTypes.number.isRequired,
   isEditMode: PropTypes.bool,
 };
 

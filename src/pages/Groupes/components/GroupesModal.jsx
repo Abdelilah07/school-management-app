@@ -1,10 +1,10 @@
 import Modal from '../../../components/shared/Modal';
 
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 import ViewGroupes from './ViewGroupes';
 import AddEditGroupe from './AddEditGroupe';
 
-const GroupesModal = ({ isOpen, mode, group, onClose, onSave, onDelete }) => {
+const GroupesModal = ({ isOpen,groupCount, mode, group, onClose, onSave, onDelete }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       {mode === 'view' ? (
@@ -15,6 +15,8 @@ const GroupesModal = ({ isOpen, mode, group, onClose, onSave, onDelete }) => {
           onClose={onClose}
           onSave={onSave}
           isEditMode={Boolean(group)}
+          groupCount={groupCount}
+
         />
       )}
     </Modal>
@@ -28,6 +30,7 @@ GroupesModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  groupCount : PropTypes.number.isRequired,
 };
 
 export default GroupesModal;

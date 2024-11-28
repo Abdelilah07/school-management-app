@@ -21,7 +21,6 @@ import {
   SchedulePage,
   TraineesPage,
   CompetencesPage,
-  Stagiaire,
   ModulesPage,
   Course,
   GroupesPage,
@@ -29,7 +28,6 @@ import {
   AllQuestions,
   QuizQuestions,
   TeacherQuizzes,
-  RoleBasedQuizRoute,
   SecteursPage,
   SchedulerPage,
 } from '../pages';
@@ -68,15 +66,17 @@ const RouteConfig = () => {
         <Route
           path="/home"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'admin', 'trainer', 'trainee']}>
               <HomePage />
             </ProtectedRoute>
           }
         />
+
+        {/* Courses routes */}
         <Route
           path="/courses"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'trainer', 'trainee']}>
               <CoursesPage />
             </ProtectedRoute>
           }
@@ -84,16 +84,17 @@ const RouteConfig = () => {
         <Route
           path="/courses/:id"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'trainer', 'trainee']}>
               <Course />
             </ProtectedRoute>
           }
         />
 
+        {/* Quizzes routes */}
         <Route
           path="/quiz/:id"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'trainer', 'trainee']}>
               <Quiz />
             </ProtectedRoute>
           }
@@ -101,24 +102,15 @@ const RouteConfig = () => {
         <Route
           path="/attendance"
           element={
-            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+            <ProtectedRoute allowedRoles={['super user', 'trainer', 'admin']}>
               <AttendancePage />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/stagiaire"
-          element={
-            <ProtectedRoute>
-              <Stagiaire />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
           path="/documents"
           element={
-            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+            <ProtectedRoute allowedRoles={['super user', 'admin', 'trainer', 'trainee']}>
               <DocumentsPage />
             </ProtectedRoute>
           }
@@ -126,7 +118,7 @@ const RouteConfig = () => {
         <Route
           path="/demandes"
           element={
-            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+            <ProtectedRoute allowedRoles={['super user', 'admin']}>
               <DemandesPage />
             </ProtectedRoute>
           }
@@ -134,7 +126,7 @@ const RouteConfig = () => {
         <Route
           path="/schedule"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'trainer', 'trainee']}>
               <SchedulePage />
             </ProtectedRoute>
           }
@@ -142,7 +134,7 @@ const RouteConfig = () => {
         <Route
           path="/scheduler"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'admin']}>
               <SchedulerPage />
             </ProtectedRoute>
           }
@@ -150,7 +142,7 @@ const RouteConfig = () => {
         <Route
           path="/trainees"
           element={
-            <ProtectedRoute allowedRoles={['trainer', 'admin']}>
+            <ProtectedRoute allowedRoles={['super user', 'trainer', 'admin']}>
               <TraineesPage />
             </ProtectedRoute>
           }
@@ -158,7 +150,7 @@ const RouteConfig = () => {
         <Route
           path="/specializations"
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['super user', 'admin']}>
               <FilieresPage />
             </ProtectedRoute>
           }
@@ -166,7 +158,7 @@ const RouteConfig = () => {
         <Route
           path="/groups"
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['super user', 'admin']}>
               <GroupesPage />
             </ProtectedRoute>
           }
@@ -174,7 +166,7 @@ const RouteConfig = () => {
         <Route
           path="/competences"
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['super user', 'admin']}>
               <CompetencesPage />
             </ProtectedRoute>
           }
@@ -182,7 +174,7 @@ const RouteConfig = () => {
         <Route
           path="/formateur"
           element={
-            <ProtectedRoute allowedRoles={['admin']}>
+            <ProtectedRoute allowedRoles={['super user', 'admin']}>
               <Formateur />
             </ProtectedRoute>
           }
@@ -190,7 +182,7 @@ const RouteConfig = () => {
         <Route
           path="/user-profile"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'admin', 'trainer', 'trainee']}>
               <UserProfilePage />
             </ProtectedRoute>
           }
@@ -198,7 +190,7 @@ const RouteConfig = () => {
         <Route
           path="/modules"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'trainer', 'admin']}>
               <ModulesPage />
             </ProtectedRoute>
           }
@@ -206,16 +198,8 @@ const RouteConfig = () => {
         <Route
           path="/settings"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user']}>
               <SettingsPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/quizzes"
-          element={
-            <ProtectedRoute>
-              <RoleBasedQuizRoute />
             </ProtectedRoute>
           }
         />
@@ -236,9 +220,19 @@ const RouteConfig = () => {
           }
         />
         <Route
+          path="/quizzes"
+          element={
+            <ProtectedRoute allowedRoles={['trainer', 'trainee']}>
+              {({ role }) =>
+                role === 'trainer' ? <TeacherQuizzes /> : <QuizzesPage />
+              }
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/secteurs"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={['super user', 'admin']}>
               <SecteursPage />
             </ProtectedRoute>
           }

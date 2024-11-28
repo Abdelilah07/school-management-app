@@ -9,8 +9,7 @@ import {
   coursesReducer,
   competencesSlice,
   scheduleReducer,
-  stagiairesReducer,
-  profileSlice,
+  traineesReducer,
   documentsReducer,
   moduleReducer,
   secteursReducer,
@@ -30,10 +29,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   courses: coursesReducer,
   schedule: scheduleReducer,
-
-  stagiaires: stagiairesReducer,
-
-  profile: profileSlice,
+  trainees: traineesReducer,
   documents: documentsReducer,
   modules: moduleReducer,
   secteur: secteursReducer,
