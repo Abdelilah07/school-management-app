@@ -474,12 +474,11 @@ export default function AttendanceAdmin() {
                 {currentItems.map((student) => (
                   <tr
                     key={student.cef}
-                    className={`${
-                      sanctionsComportement[student.cef] === 'exclusion definitive' ||
-                      student.sanctionComportement === 'exclusion definitive'
+                    className={`${sanctionsComportement[student.cef] === 'exclusion definitive' ||
+                        student.sanctionComportement === 'exclusion definitive'
                         ? 'line-through'
                         : ''
-                    }`}
+                      }`}
                   >
                     <td className="px-4 py-2">{student.cef}</td>
                     <td className="px-4 py-2">{student.fullname}</td>
