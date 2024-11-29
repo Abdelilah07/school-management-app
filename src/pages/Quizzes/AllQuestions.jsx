@@ -150,13 +150,12 @@ export default function AllQuestions() {
     const selectedCount = selectedQuestions.length;
     if (selectedCount === 0) return;
 
-    const confirmationMessage = `Are you sure you want to delete ${
-      selectedCount === 1
-        ? 'this question'
-        : selectedCount === questions.length
-          ? 'all questions'
-          : `these ${selectedCount} questions`
-    }?`;
+    const confirmationMessage = `Are you sure you want to delete ${selectedCount === 1
+      ? 'this question'
+      : selectedCount === questions.length
+        ? 'all questions'
+        : `these ${selectedCount} questions`
+      }?`;
 
     if (!window.confirm(confirmationMessage)) return;
 
@@ -183,12 +182,11 @@ export default function AllQuestions() {
       setSelectAll(false);
 
       alert(
-        `Successfully deleted ${
-          selectedCount === 1
-            ? 'the question'
-            : selectedCount === questions.length
-              ? 'all questions'
-              : `${selectedCount} questions`
+        `Successfully deleted ${selectedCount === 1
+          ? 'the question'
+          : selectedCount === questions.length
+            ? 'all questions'
+            : `${selectedCount} questions`
         }`
       );
     } catch (error) {
@@ -375,13 +373,13 @@ export default function AllQuestions() {
       // Handle both semicolon and comma separated answers
       const answers = rawAnswers.includes(';')
         ? rawAnswers
-            .split(';')
-            .map((a) => a.trim())
-            .filter(Boolean)
+          .split(';')
+          .map((a) => a.trim())
+          .filter(Boolean)
         : rawAnswers
-            .split(',')
-            .map((a) => a.trim())
-            .filter(Boolean);
+          .split(',')
+          .map((a) => a.trim())
+          .filter(Boolean);
 
       // Only add if all required fields are present and valid
       if (id && question && answers.length > 0 && correctAnswer) {
@@ -746,7 +744,7 @@ export default function AllQuestions() {
                 ))}
               </select>
               {newQuestion.question.trim() === '' ||
-              newQuestion.answers.some((answer) => answer.trim() === '') ? (
+                newQuestion.answers.some((answer) => answer.trim() === '') ? (
                 <p className="text-red-500">Please fill in all fields</p>
               ) : null}
               <div className="flex justify-end">

@@ -259,7 +259,7 @@ export default function AttendanceAdmin() {
 
     try {
       const response = await fetch('http://localhost:3000/studentDiscipline', {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -417,7 +417,7 @@ export default function AttendanceAdmin() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 px-10">
       <FiltersAdmin
         filteredStudents={filteredStudents}
         allData={data}
@@ -474,12 +474,11 @@ export default function AttendanceAdmin() {
                 {currentItems.map((student) => (
                   <tr
                     key={student.cef}
-                    className={`${
-                      sanctionsComportement[student.cef] === 'exclusion definitive' ||
-                      student.sanctionComportement === 'exclusion definitive'
+                    className={`${sanctionsComportement[student.cef] === 'exclusion definitive' ||
+                        student.sanctionComportement === 'exclusion definitive'
                         ? 'line-through'
                         : ''
-                    }`}
+                      }`}
                   >
                     <td className="px-4 py-2">{student.cef}</td>
                     <td className="px-4 py-2">{student.fullname}</td>
@@ -511,11 +510,7 @@ export default function AttendanceAdmin() {
                     <Edit size={20} className="mr-2" />
                     Modifier
                   </button>
-                  <button
-                    className="btn btn-success"
-                    onClick={handleSave}
-                    disabled={!isEditing || !hasChanges}
-                  >
+                  <button className="btn btn-success" onClick={handleSave} disabled={!isEditing}>
                     <Save size={20} className="mr-2" />
                     Enregistrer
                   </button>

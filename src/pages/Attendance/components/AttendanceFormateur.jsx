@@ -21,7 +21,15 @@ export default function AttendanceFormateur() {
   const [itemsPerPage] = useState(10);
   const [checkboxDisabled, setCheckboxDisabled] = useState(false);
 
-  const timeSlots = ['8:30->10:50', '10:50->13.30', '13.30->15.50', '15.50->18.30'];
+  const morningTimeSlots = ['8:30->10:50', '10:50->13.30'];
+  const afternoonTimeSlots = ['13.30->15.50', '15.50->18.30'];
+
+  const getTimeSlots = () => {
+    const currentHour = new Date().getHours();
+    return currentHour < 12 ? morningTimeSlots : afternoonTimeSlots;
+  };
+
+  const [timeSlots, setTimeSlots] = useState(getTimeSlots());
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -32,6 +40,20 @@ export default function AttendanceFormateur() {
     setCurrentPage(pageNumber);
   };
 
+  useEffect(() => {
+    const updateTimeSlots = () => {
+      if (!isDateInPast(dateFilter)) {
+        setTimeSlots(getTimeSlots());
+      } else {
+        setTimeSlots([...morningTimeSlots, ...afternoonTimeSlots]);
+      }
+    };
+
+    updateTimeSlots();
+    const interval = setInterval(updateTimeSlots, 60000); // Update every minute
+
+    return () => clearInterval(interval);
+  }, [dateFilter]);
   useEffect(() => {
     const fetchSecteursData = async () => {
       try {
@@ -44,6 +66,12 @@ export default function AttendanceFormateur() {
     };
     fetchSecteursData();
   }, []);
+  const separateNames = (fullName) => {
+    const names = fullName.split(' ');
+    const lastName = names.pop();
+    const firstName = names.join(' ');
+    return { firstName, lastName };
+  };
 
   useEffect(() => {
     if (secteur && niveau && filiere && annee && groupe) {
@@ -123,9 +151,9 @@ export default function AttendanceFormateur() {
       prev.map((student) =>
         student.id === studentId
           ? {
-              ...student,
-              absentHours: { ...student.absentHours, [timeSlot]: !student.absentHours[timeSlot] },
-            }
+            ...student,
+            absentHours: { ...student.absentHours, [timeSlot]: !student.absentHours[timeSlot] },
+          }
           : student
       )
     );
@@ -156,6 +184,7 @@ export default function AttendanceFormateur() {
             studentId: student.id,
             studentCef: student.cef,
             studentName: student.fullname,
+            studentCin: student.cin,
             absentHours: student.absentHours,
           })),
         }),
@@ -218,42 +247,50 @@ export default function AttendanceFormateur() {
           onAnneeChange={setAnnee}
           onGroupeChange={setGroupe}
           onDateChange={handleDateChange}
+          students={students}
         />
 
         <div className="overflow-x-auto rounded-lg shadow-md mt-4">
-          <table className="table table-zebra w-full hover">
+          <table className="table table-zebra w-full hover border-collapse border border-gray-300">
             <thead className="bg-base-200">
-              <tr className="text-center font-bold text-black text-[15px]">
-                <th>ID</th>
-                <th>CEF</th>
-                <th>Full Name</th>
+              <tr className="text-center font-bold text-black text-[15px] border border-gray-300">
+                <th className="border border-gray-300">ID</th>
+                <th className="border border-gray-300">CEF</th>
+                <th className="border border-gray-300">First Name</th>
+                <th className="border border-gray-300">Last Name</th>
                 {timeSlots.map((slot) => (
-                  <th key={slot}>{slot}</th>
+                  <th key={slot} className="border border-gray-300">
+                    {slot}
+                  </th>
                 ))}
               </tr>
             </thead>
             <tbody className="text-center">
               {isDateInPast(dateFilter) ? (
                 absentStudents.length > 0 && absentStudents[0].students ? (
-                  absentStudents[0].students.map((student) => (
-                    <tr key={student.studentId}>
-                      <td>{student.studentId}</td>
-                      <td>{student.studentCef}</td>
-                      <td>{student.studentName}</td>
-                      {timeSlots.map((slot) => (
-                        <td key={slot} className="text-center">
-                          {student.absentHours[slot] ? (
-                            <BsPersonFillSlash size={25} color="red" className="mx-auto" />
-                          ) : (
-                            '------'
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))
+                  absentStudents[0].students.map((student) => {
+                    const { firstName, lastName } = separateNames(student.studentName);
+                    return (
+                      <tr key={student.studentId}>
+                        <td className="border border-gray-300">{student.studentId}</td>
+                        <td className="border border-gray-300">{student.studentCef}</td>
+                        <td className="border border-gray-300">{firstName}</td>
+                        <td className="border border-gray-300">{lastName}</td>
+                        {timeSlots.map((slot) => (
+                          <td key={slot} className="text-center border border-gray-300">
+                            {student.absentHours[slot] ? (
+                              <BsPersonFillSlash size={25} color="red" className="mx-auto" />
+                            ) : (
+                              '------'
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })
                 ) : (
                   <tr>
-                    <td colSpan={3 + timeSlots.length} className="text-center">
+                    <td colSpan={4 + [...morningTimeSlots, ...afternoonTimeSlots].length} className="text-center">
                       No absent students data available for this date.
                     </td>
                   </tr>
@@ -261,27 +298,31 @@ export default function AttendanceFormateur() {
               ) : students.length > 0 ? (
                 students
                   .sort((a, b) => a.fullname.split(' ')[1].localeCompare(b.fullname.split(' ')[1]))
-                  .map((student) => (
-                    <tr key={student.id}>
-                      <td>{student.id}</td>
-                      <td>{student.cef}</td>
-                      <td>{student.fullname}</td>
-                      {timeSlots.map((slot) => (
-                        <td key={slot}>
-                          <input
-                            type="checkbox"
-                            className="checkbox checkbox-primary"
-                            checked={student.absentHours[slot]}
-                            onChange={() => handleCheckboxChange(student.id, slot)}
-                            disabled={checkboxDisabled}
-                          />
-                        </td>
-                      ))}
-                    </tr>
-                  ))
+                  .map((student) => {
+                    const { firstName, lastName } = separateNames(student.fullname);
+                    return (
+                      <tr key={student.id}>
+                        <td className="border border-gray-300">{student.id}</td>
+                        <td className="border border-gray-300">{student.cef}</td>
+                        <td className="border border-gray-300">{firstName}</td>
+                        <td className="border border-gray-300">{lastName}</td>
+                        {timeSlots.map((slot) => (
+                          <td key={slot} className="text-center border border-gray-300">
+                            <input
+                              type="checkbox"
+                              className="checkbox checkbox-primary"
+                              checked={student.absentHours[slot]}
+                              onChange={() => handleCheckboxChange(student.id, slot)}
+                              disabled={checkboxDisabled}
+                            />
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })
               ) : (
                 <tr>
-                  <td colSpan={3 + timeSlots.length} className="text-center">
+                  <td colSpan={4 + timeSlots.length} className="text-center">
                     No students available for this selection.
                   </td>
                 </tr>

@@ -1,5 +1,5 @@
-import AttendanceFormateur from './AttendanceFormateur';
-import AttendanceAdmin from './AttendanceAdmin';
+import AttendanceFormateur from './components/AttendanceFormateur';
+import AttendanceAdmin from './components/WeekAdmin';
 import { useState, useEffect } from 'react';
 function AttendancePage() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -7,9 +7,9 @@ function AttendancePage() {
   useEffect(() => {
     const user = (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) ||
       (sessionStorage.getItem('user') && JSON.parse(sessionStorage.getItem('user'))) || {
-        name: '',
-        role: '',
-      };
+      name: '',
+      role: '',
+    };
 
     // Ensure role is either 'admin' or 'trainer', fallback to empty string
     if (user && (user.role === 'admin' || user.role === 'trainer')) {

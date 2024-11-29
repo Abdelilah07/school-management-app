@@ -29,6 +29,9 @@ const UserProfilePage = () => {
     const file = e.target.files[0];
     if (file) {
       try {
+        const imageUrl = await uploadImage(file);
+        setEditableUser((u) => ({ ...u, profilePicture: imageUrl }));
+        setImageUrl(imageUrl);
         const uploadedImageUrl = await uploadImage(file);
         setEditableUser((prev) => ({ ...prev, profile_picture: uploadedImageUrl }));
         setImageUrl(uploadedImageUrl);
@@ -114,9 +117,9 @@ const UserProfilePage = () => {
                     >
                       <div className="relative">
                         <img
-                          src={imageUrl || ''}
+                          src={user?.photo || avatar}
                           alt="Profile"
-                          className={`object-cover transition-all duration-300 ${imageHovered ? 'scale-105' : ''}`}
+                          className={`object-cover transition-all duration-300 ${isLoading ? 'opacity-50' : ''} ${imageHovered ? 'scale-105' : ''}`}
                         />
                         {isEditing && imageHovered && (
                           <div className="absolute inset-0 bg-base-content/30 backdrop-blur-sm flex items-center justify-center rounded-full transition-all duration-300">
@@ -139,7 +142,7 @@ const UserProfilePage = () => {
                       {user?.profile_picture && (
                         <button
                           className="btn btn-circle btn-error btn-sm hover:btn-secondary tooltip tooltip-top"
-                          data-tip="Remove profile picture"
+                          data-tip="Remove photo"
                           onClick={handleDeletePhoto}
                         >
                           <Trash2 className="w-4 m-auto " />

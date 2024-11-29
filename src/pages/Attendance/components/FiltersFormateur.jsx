@@ -16,6 +16,7 @@ export default function FiltersFormateur({
   onGroupeChange,
   onDateChange,
   onClearFilters,
+  showExport = true,
 }) {
   const [availableNiveaux, setAvailableNiveaux] = useState([]);
   const [availableFilieres, setAvailableFilieres] = useState([]);
@@ -73,7 +74,7 @@ export default function FiltersFormateur({
     onFiliereChange('');
     onAnneeChange('');
     onGroupeChange('');
-    onDateChange('');
+    onDateChange({ target: { value: '' } });
   };
 
   const renderSelect = (value, onChange, options, placeholder) => (
