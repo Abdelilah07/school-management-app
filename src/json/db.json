@@ -2909,10 +2909,6 @@
       "id_secteur": "1",
       "code_secteur": "S01",
       "intitule_secteur": "Sciences",
-      "filieres": [
-        "Math",
-        "Physic"
-      ],
       "niveaux": {
         "Specialisation": {
           "filiere": {
@@ -3081,10 +3077,6 @@
       "id_secteur": "2",
       "code_secteur": "S02",
       "intitule_secteur": "Tourisme",
-      "filieres": [
-        "Hôtelière",
-        "Francais"
-      ],
       "niveaux": {
         "Qualifant": {
           "filiere": {
@@ -3168,66 +3160,7 @@
             }
           }
         }
-      },
-      "id": "731d"
-    },
-    {
-      "id": "b29c",
-      "id_secteur": "",
-      "code_secteur": "S03",
-      "intitule_secteur": "Économie",
-      "filieres": [
-        "Microéconomie",
-        "Finance",
-        "Anglais"
-      ]
-    },
-    {
-      "id": "7df9",
-      "id_secteur": "",
-      "code_secteur": "S04",
-      "intitule_secteur": "Santé",
-      "filieres": [
-        "Médecine",
-        "Pharmacie",
-        "Infirmier"
-      ]
-    },
-    {
-      "id": "057e",
-      "id_secteur": "",
-      "code_secteur": "S05",
-      "intitule_secteur": "Arts",
-      "filieres": [
-        "Peinture",
-        "Sculpture",
-        "Photographie"
-      ]
-    },
-    {
-      "id": "fcf7",
-      "id_secteur": "",
-      "code_secteur": "S06",
-      "intitule_secteur": "Informatique",
-      "filieres": [
-        "Développement",
-        "Web",
-        "Data Science",
-        "Sécurité Informatique"
-      ]
-    },
-    {
-      "id": "1b6f",
-      "id_secteur": "",
-      "code_secteur": "S07",
-      "intitule_secteur": "Génie Civil",
-      "filieres": [
-        "Génie Civil",
-        "Génie Structure",
-        "Urbanisme",
-        "Génie Géotechnique"
-      ]
-    }
+      }}
   ],
   "absentStudents": [
     {
@@ -5980,6 +5913,30 @@
         "disciplineNote": 15
       },
       "id": "d77b"
+    },
+    {
+      "0": {
+        "studentId": "4",
+        "studentCef": "10004",
+        "studentName": "Emma Davis",
+        "absentHours": {
+          "8:30->10:50": true,
+          "10:50->13.30": true,
+          "13.30->15.50": false,
+          "15.50->18.30": false
+        },
+        "absenceType": "AJ",
+        "niveau": "Specialisation",
+        "filiere": "Physics",
+        "annee": "1st Year",
+        "groupe": "Group 2",
+        "absenceDates": {},
+        "absenceDetails": {
+          "2024-11-26": "AJ"
+        },
+        "totalAbsences": 1
+      },
+      "id": "6fbd"
     }
   ],
   "courses": [
