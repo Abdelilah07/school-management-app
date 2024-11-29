@@ -1,7 +1,17 @@
 import { useState, useEffect } from 'react';
-import { PlusCircle, ArrowLeft, Trash, Upload, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  PlusCircle,
+  ArrowLeft,
+  Trash,
+  Upload,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Brain,
+} from 'lucide-react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -140,13 +150,12 @@ export default function AllQuestions() {
     const selectedCount = selectedQuestions.length;
     if (selectedCount === 0) return;
 
-    const confirmationMessage = `Are you sure you want to delete ${
-      selectedCount === 1
-        ? 'this question'
-        : selectedCount === questions.length
-          ? 'all questions'
-          : `these ${selectedCount} questions`
-    }?`;
+    const confirmationMessage = `Are you sure you want to delete ${selectedCount === 1
+      ? 'this question'
+      : selectedCount === questions.length
+        ? 'all questions'
+        : `these ${selectedCount} questions`
+      }?`;
 
     if (!window.confirm(confirmationMessage)) return;
 
@@ -173,12 +182,11 @@ export default function AllQuestions() {
       setSelectAll(false);
 
       alert(
-        `Successfully deleted ${
-          selectedCount === 1
-            ? 'the question'
-            : selectedCount === questions.length
-              ? 'all questions'
-              : `${selectedCount} questions`
+        `Successfully deleted ${selectedCount === 1
+          ? 'the question'
+          : selectedCount === questions.length
+            ? 'all questions'
+            : `${selectedCount} questions`
         }`
       );
     } catch (error) {
@@ -365,13 +373,13 @@ export default function AllQuestions() {
       // Handle both semicolon and comma separated answers
       const answers = rawAnswers.includes(';')
         ? rawAnswers
-            .split(';')
-            .map((a) => a.trim())
-            .filter(Boolean)
+          .split(';')
+          .map((a) => a.trim())
+          .filter(Boolean)
         : rawAnswers
-            .split(',')
-            .map((a) => a.trim())
-            .filter(Boolean);
+          .split(',')
+          .map((a) => a.trim())
+          .filter(Boolean);
 
       // Only add if all required fields are present and valid
       if (id && question && answers.length > 0 && correctAnswer) {
@@ -405,6 +413,122 @@ export default function AllQuestions() {
     setSelectedQuestions(selectedRandomQuestions.map((q) => q.id));
   };
 
+  const [topic, setTopic] = useState(quiz?.courseName || '');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const apiKey = 'AIzaSyAcdlS5nhIFfLN_hYjdk5g14ZwDgREmduI';
+  const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+  const generateQuestionId = (index) => {
+    return `${index + 1}`;
+  };
+
+  const parseGeneratedText = (responseText) => {
+    const questionBlocks = responseText.split('\n\n');
+
+    return questionBlocks
+      .map((block) => {
+        const lines = block.split('\n').filter((line) => line.trim());
+        if (lines.length < 6) return null;
+
+        const question = lines[0].trim().replace(/^\d+\.\s*/, '');
+
+        // Get all non-empty answers and remove alphabetic prefixes
+        const answers = lines
+          .slice(1, 5)
+          .map((line) => line.trim())
+          .map((line) => line.replace(/^[A-Z]\.\s*/i, '')) // Remove "A.", "B.", etc.
+          .filter((answer) => answer !== '' && answer.length > 0);
+
+        // Get correct answer and clean it
+        const correctAnswer = lines[5]
+          .trim()
+          .replace(/^Correct Answer:\s*/i, '')
+          .replace(/^[A-Z]\.\s*/i, ''); // Remove alphabetic prefix from correct answer
+
+        // If we don't have enough answers, add some default ones
+        while (answers.length < 4) {
+          answers.push(`Option ${answers.length + 1}`);
+        }
+
+        return {
+          question,
+          answers: answers.slice(0, 4),
+          correctAnswer,
+        };
+      })
+      .filter((q) => q !== null);
+  };
+
+  const generateQuestions = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const generationConfig = {
+        temperature: 1,
+        topP: 0.95,
+        topK: 40,
+        maxOutputTokens: 8192,
+      };
+
+      const prompt = `Generate a concise multiple-choice of 10 questions about ${topic}. 
+            Ensure the question is clear, professional, and suitable for an academic quiz.
+            Format the response with:
+            [Your question here]
+            [First option]
+            [Second option]
+            [Third option]
+            [Fourth option]
+            Correct Answer: [Correct option text, matching one of the above options exactly]
+
+            Separate each question with a blank line.`;
+
+      const chatSession = model.startChat({
+        generationConfig,
+        history: [],
+      });
+
+      const result = await chatSession.sendMessage(prompt);
+      const responseText = await result.response.text();
+
+      console.log('API Response:', responseText);
+
+      const parsedQuestions = parseGeneratedText(responseText);
+
+      if (parsedQuestions && parsedQuestions.length > 0) {
+        const newQuestions = parsedQuestions.map((parsedData, index) => ({
+          id: generateQuestionId(questions.length + index),
+          question: parsedData.question,
+          answers: parsedData.answers,
+          correctAnswer: parsedData.correctAnswer,
+        }));
+
+        const updatedQuestions = [...questions, ...newQuestions];
+
+        await axios.patch(`${BASE_URL}/quizzes/${quizId}`, {
+          questions: updatedQuestions,
+        });
+
+        setQuestions(updatedQuestions);
+        console.log('Generated Questions:', newQuestions);
+
+        // Clear topic input after generation
+        setTopic(quiz?.courseName || '');
+      } else {
+        setError('Failed to parse the generated text. Please try again.');
+      }
+    } catch (err) {
+      console.error('Error generating questions:', err);
+      setError('An error occurred while generating questions. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold text-center mb-2">All Questions</h1>
@@ -421,6 +545,14 @@ export default function AllQuestions() {
           Delete Selected
         </button>
         <div className="flex justify-end">
+          <button
+            onClick={generateQuestions}
+            className="btn btn-outline btn-secondary btn-sm gap-2 mr-2"
+          >
+            <Brain className="w-4 h-4" /> {loading ? 'Generating...' : 'Generate AI Questions'}
+          </button>
+          {error && <p className="text-red-500 mt-2">{error}</p>}
+
           <button
             onClick={handleUploadQuestions}
             className="btn btn-outline btn-success btn-sm gap-2 mr-2"
@@ -612,7 +744,7 @@ export default function AllQuestions() {
                 ))}
               </select>
               {newQuestion.question.trim() === '' ||
-              newQuestion.answers.some((answer) => answer.trim() === '') ? (
+                newQuestion.answers.some((answer) => answer.trim() === '') ? (
                 <p className="text-red-500">Please fill in all fields</p>
               ) : null}
               <div className="flex justify-end">

@@ -2,50 +2,58 @@ import { memo, useEffect, useRef, useContext, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { LayoutContext } from '../context/LayoutContext';
 import { MenuItem, Divider, UserProfile } from './components';
-import { avatar } from '../../assets';
 import menuItems from './config/menuItems';
+import { getUserFromStorage } from '../../utils';
 
-const STORAGE_KEYS = {
-  LOCAL_USER: 'user',
-  SESSION_USER: 'user',
+const rolePermissions = {
+  'super user': [
+    'Home',
+    'Courses',
+    'Quizzes',
+    'Attendance',
+    'Schedule',
+    'Documents',
+    'Demandes',
+    'Scheduler',
+    'Specializations',
+    'Competences',
+    'Secteurs',
+    'Groups',
+    'Modules',
+    'Settings',
+    'Trainees',
+    'Formateurs',
+  ],
+  admin: [
+    'Home',
+    'Courses',
+    'Attendance',
+    'Schedule',
+    'Documents',
+    'Demandes',
+    'Scheduler',
+    'Specializations',
+    'Competences',
+    'Secteurs',
+    'Groups',
+    'Modules',
+    'Trainees',
+    'Formateurs',
+  ],
+  trainer: ['Home', 'Courses', 'Quizzes', 'Trainees', 'Attendance', 'Schedule', 'Documents'],
+  trainee: ['Home', 'Courses', 'Quizzes', 'Schedule', 'Documents'],
+};
+
+const getFilteredMenuItems = (role) => {
+  const allowedLabels = rolePermissions[role] || [];
+  return menuItems.filter(
+    (item, index, array) =>
+      (item.type === 'divider' && index === array.length - 1) ||
+      (item.label && allowedLabels.includes(item.label))
+  );
 };
 
 const TRANSITION_DURATION = 300; // matches duration in classes
-
-// Custom hook for handling user data with better error handling and types
-const useUserData = () => {
-  const getStoredUser = () => {
-    try {
-      const localUser = localStorage.getItem(STORAGE_KEYS.LOCAL_USER);
-      const sessionUser = sessionStorage.getItem(STORAGE_KEYS.SESSION_USER);
-
-      let parsedUser = null;
-      if (localUser) {
-        parsedUser = JSON.parse(localUser);
-      } else if (sessionUser) {
-        parsedUser = JSON.parse(sessionUser);
-      }
-
-      // Validate user data structure
-      if (parsedUser && typeof parsedUser === 'object') {
-        return parsedUser;
-      }
-      return null;
-    } catch (error) {
-      console.error('Error parsing user data:', error);
-      return null;
-    }
-  };
-
-  const storedUser = getStoredUser();
-
-  return {
-    name: storedUser?.name ?? '',
-    role: storedUser?.role ?? '',
-    photo: storedUser?.photo ?? avatar,
-    isAuthenticated: !!storedUser,
-  };
-};
 
 // Custom hook for handling sidebar close events with cleanup
 const useSidebarCloseHandlers = (sidebarRef, context) => {
@@ -137,10 +145,9 @@ const SidebarContent = memo(({ menuItems, location, userData }) => (
 
     <div className="p-4 border-t border-base-200">
       <UserProfile
-        name={userData.name}
-        role={userData.role}
-        profilePhoto={userData.photo}
-        isAuthenticated={userData.isAuthenticated}
+        name={userData?.name ?? 'Guest'}
+        role={userData?.role ?? 'User'}
+        profile_picture={userData?.profile_picture ?? ''}
       />
     </div>
   </>
@@ -151,8 +158,9 @@ SidebarContent.displayName = 'SidebarContent';
 const Sidebar = memo(() => {
   const sidebarRef = useRef(null);
   const layoutContext = useContext(LayoutContext);
-  const userData = useUserData();
+  const userData = getUserFromStorage('user');
   const location = useLocation();
+  const filteredMenuItems = getFilteredMenuItems(userData?.role ?? 'user');
 
   if (!layoutContext) {
     console.error('Sidebar: LayoutContext is missing');
@@ -196,7 +204,7 @@ const Sidebar = memo(() => {
         onKeyDown={handleKeyDown}
       >
         <div className="h-full flex flex-col">
-          <SidebarContent menuItems={menuItems} location={location} userData={userData} />
+          <SidebarContent menuItems={filteredMenuItems} location={location} userData={userData} />
         </div>
       </aside>
     </>

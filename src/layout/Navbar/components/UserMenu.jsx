@@ -13,7 +13,7 @@ const UserMenu = () => {
     <div className="dropdown dropdown-bottom dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost avatar">
         <div className="w-7 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-          <img src={user?.profilePicture || 'path/to/default/avatar'} alt="Profile" />
+          <img src={user?.profile_picture || 'path/to/default/avatar'} alt="Profile" />
         </div>
         <span className="hidden lg:inline-block ml-2">{user?.name || 'Guest'}</span>
         <ChevronDown className="hidden lg:inline-block w-4 h-4 ml-2" />

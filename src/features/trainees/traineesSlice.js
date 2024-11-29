@@ -1,4 +1,3 @@
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -91,9 +90,7 @@ const traineesSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(updateTraineeAPI.fulfilled, (state, action) => {
-        const index = state.trainees.findIndex(
-          (trainee) => trainee.id === action.payload.id
-        );
+        const index = state.trainees.findIndex((trainee) => trainee.id === action.payload.id);
         if (index !== -1) {
           state.trainees[index] = action.payload;
         }
@@ -102,9 +99,7 @@ const traineesSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(deleteTraineeAPI.fulfilled, (state, action) => {
-        state.trainees = state.trainees.filter(
-          (trainee) => trainee.id !== action.payload
-        );
+        state.trainees = state.trainees.filter((trainee) => trainee.id !== action.payload);
       })
       .addCase(deleteTraineeAPI.rejected, (state, action) => {
         state.error = action.payload;

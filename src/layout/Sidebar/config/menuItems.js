@@ -43,7 +43,7 @@ const menuItems = [
     href: '/specializations',
   },
   {
-    label: 'Groupes',
+    label: 'Groups',
     icon: 'Users',
     href: '/groups',
   },
@@ -62,9 +62,8 @@ const menuItems = [
     icon: 'UserRound',
     href: '/formateur',
   },
-
   {
-    label: 'secteurs',
+    label: 'Secteurs',
     icon: 'FolderCog',
     href: '/secteurs',
   },
@@ -87,4 +86,3 @@ const menuItems = [
 ];
 
 export default menuItems;
-

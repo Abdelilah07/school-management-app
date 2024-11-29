@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -10,7 +9,17 @@ import {
   selectStatus,
   selectError,
 } from '../../features/trainees/traineesSlice';
-import { Plus, Edit, Trash2, Download, FileSpreadsheet, AlertCircle, CheckCircle, X, Upload } from 'lucide-react';
+import {
+  Plus,
+  Edit,
+  Trash2,
+  Download,
+  FileSpreadsheet,
+  AlertCircle,
+  CheckCircle,
+  X,
+  Upload,
+} from 'lucide-react';
 import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
@@ -57,9 +66,7 @@ const TraineesPage = () => {
     const { trainee } = modalState;
 
     try {
-      const isDuplicate = trainees.some(s =>
-        s.cef === trainee.cef && s.id !== trainee.id
-      );
+      const isDuplicate = trainees.some((s) => s.cef === trainee.cef && s.id !== trainee.id);
       if (isDuplicate) {
         setAlerts({ success: null, error: 'Un trainee avec ce CEF existe déjà.' });
         return;
@@ -142,7 +149,6 @@ const TraineesPage = () => {
     };
   };
 
-
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -163,8 +169,8 @@ const TraineesPage = () => {
             });
 
             // Check for duplication
-            const isDuplicate = trainees.some(s =>
-              (trainee.id && s.id === trainee.id) || s.cef === trainee.cef
+            const isDuplicate = trainees.some(
+              (s) => (trainee.id && s.id === trainee.id) || s.cef === trainee.cef
             );
 
             if (isDuplicate) {
@@ -183,10 +189,13 @@ const TraineesPage = () => {
           if (duplicates.length > 0) {
             setAlerts({
               success: `${newTrainees.length} trainees imported successfully. ${duplicates.length} duplicates were skipped.`,
-              error: `Skipped duplicates: ${duplicates.join(', ')}`
+              error: `Skipped duplicates: ${duplicates.join(', ')}`,
             });
           } else {
-            setAlerts({ success: `${newTrainees.length} trainees imported successfully`, error: null });
+            setAlerts({
+              success: `${newTrainees.length} trainees imported successfully`,
+              error: null,
+            });
           }
 
           dispatch(fetchTrainees());
@@ -199,13 +208,16 @@ const TraineesPage = () => {
   };
 
   const filteredTrainees = useMemo(() => {
-    return Array.isArray(trainees) ? trainees.filter(s =>
-      (s.nom?.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-        s.prenom?.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-        s.cef?.toLowerCase().includes(filters.searchTerm.toLowerCase())) &&
-      (!filters.filiere || s.filiere === filters.filiere) &&
-      (!filters.groupe || s.groupe === filters.groupe)
-    ) : [];
+    return Array.isArray(trainees)
+      ? trainees.filter(
+          (s) =>
+            (s.nom?.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+              s.prenom?.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
+              s.cef?.toLowerCase().includes(filters.searchTerm.toLowerCase())) &&
+            (!filters.filiere || s.filiere === filters.filiere) &&
+            (!filters.groupe || s.groupe === filters.groupe)
+        )
+      : [];
   }, [trainees, filters]);
 
   const totalPages = Math.ceil(filteredTrainees.length / ITEMS_PER_PAGE);
@@ -215,11 +227,11 @@ const TraineesPage = () => {
   );
 
   const uniqueFilieres = useMemo(() => {
-    return Array.from(new Set(trainees.map(s => s.filiere))).filter(Boolean);
+    return Array.from(new Set(trainees.map((s) => s.filiere))).filter(Boolean);
   }, [trainees]);
 
   const uniqueGroupes = useMemo(() => {
-    return Array.from(new Set(trainees.map(s => s.groupe))).filter(Boolean);
+    return Array.from(new Set(trainees.map((s) => s.groupe))).filter(Boolean);
   }, [trainees]);
 
   return (
@@ -230,7 +242,10 @@ const TraineesPage = () => {
         <div className="alert alert-success mb-4">
           <CheckCircle className="w-6 h-6" />
           <span>{alerts.success}</span>
-          <button onClick={() => setAlerts({ ...alerts, success: null })} className="btn btn-circle btn-outline btn-sm">
+          <button
+            onClick={() => setAlerts({ ...alerts, success: null })}
+            className="btn btn-circle btn-outline btn-sm"
+          >
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -240,7 +255,10 @@ const TraineesPage = () => {
         <div className="alert alert-error mb-4">
           <AlertCircle className="w-6 h-6" />
           <span>{alerts.error}</span>
-          <button onClick={() => setAlerts({ ...alerts, error: null })} className="btn btn-circle btn-outline btn-sm">
+          <button
+            onClick={() => setAlerts({ ...alerts, error: null })}
+            className="btn btn-circle btn-outline btn-sm"
+          >
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -289,7 +307,9 @@ const TraineesPage = () => {
         >
           <option value="">All Filières</option>
           {uniqueFilieres.map((filiere) => (
-            <option key={filiere} value={filiere}>{filiere}</option>
+            <option key={filiere} value={filiere}>
+              {filiere}
+            </option>
           ))}
         </select>
         <select
@@ -299,7 +319,9 @@ const TraineesPage = () => {
         >
           <option value="">All Groupes</option>
           {uniqueGroupes.map((groupe) => (
-            <option key={groupe} value={groupe}>{groupe}</option>
+            <option key={groupe} value={groupe}>
+              {groupe}
+            </option>
           ))}
         </select>
       </div>
@@ -353,11 +375,13 @@ const TraineesPage = () => {
       {modalState.isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg w-96">
-            <h2 className="text-xl font-bold mb-4">{modalState.trainee.id ? 'Edit' : 'Add'} Trainee</h2>
+            <h2 className="text-xl font-bold mb-4">
+              {modalState.trainee.id ? 'Edit' : 'Add'} Trainee
+            </h2>
             <form onSubmit={handleSubmit}>
               {Object.keys(INITIAL_STAGIAIRE).map((key) => {
-                if (key === "filiere" || key === "groupe") {
-                  const options = key === "filiere" ? uniqueFilieres : uniqueGroupes;
+                if (key === 'filiere' || key === 'groupe') {
+                  const options = key === 'filiere' ? uniqueFilieres : uniqueGroupes;
                   return (
                     <div key={key} className="mb-4">
                       <label className="block text-sm font-medium text-gray-700">{key}</label>
@@ -400,8 +424,12 @@ const TraineesPage = () => {
               })}
 
               <div className="flex justify-end">
-                <button type="button" onClick={handleModalClose} className="btn btn-ghost mr-2">Cancel</button>
-                <button type="submit" className="btn btn-primary">Save</button>
+                <button type="button" onClick={handleModalClose} className="btn btn-ghost mr-2">
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
               </div>
             </form>
           </div>

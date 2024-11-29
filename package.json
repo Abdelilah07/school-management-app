@@ -12,6 +12,7 @@
     "json-server": "json-server --watch src/json/db.json --port 3000"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@react-spring/web": "^9.7.5",
     "@reduxjs/toolkit": "^2.3.0",
     "@supabase/auth-ui-react": "^0.4.7",

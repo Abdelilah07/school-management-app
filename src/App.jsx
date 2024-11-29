@@ -7,7 +7,6 @@ const isProduction = process.env.NODE_ENV === 'production';
 const basename = isProduction ? '/school-management-app' : '/';
 
 function App() {
-
   const { theme } = useSelector((state) => state.theme);
 
   useEffect(() => {

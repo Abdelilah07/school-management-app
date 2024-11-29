@@ -223,9 +223,7 @@ const RouteConfig = () => {
           path="/quizzes"
           element={
             <ProtectedRoute allowedRoles={['trainer', 'trainee']}>
-              {({ role }) =>
-                role === 'trainer' ? <TeacherQuizzes /> : <QuizzesPage />
-              }
+              {({ role }) => (role === 'trainer' ? <TeacherQuizzes /> : <QuizzesPage />)}
             </ProtectedRoute>
           }
         />

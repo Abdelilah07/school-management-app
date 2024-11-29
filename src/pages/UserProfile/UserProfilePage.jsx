@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { updateUser } from '../../services/userService';
+import { uploadImage } from '../../services/uploadService';
+import { getUserFromStorage, updateUserInStorage } from '../../utils'; // Add updateUserInStorage
 import {
   Camera,
   Mail,
@@ -14,58 +16,25 @@ import {
   User,
   Edit3,
 } from 'lucide-react';
-import avatar from '../../assets/avatar.png';
-import defaultImage from '../../assets/default.png';
-import {
-  Camera, Mail, Phone, Globe, MapPin, Building,
-  Check, X, Calendar, Trash2, User, Edit3
-} from 'lucide-react';
 
 const UserProfilePage = () => {
-  const dispatch = useDispatch();
-  const { user, isLoading } = useSelector((state) => state.profile);
+  const user = getUserFromStorage('user');
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [imageHovered, setImageHovered] = useState(false);
-  const [editableUser, setEditableUser] = useState({
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    phone_number: user.phone_number,
-    status: user.status,
-    bio: user.bio,
-    website: user.website,
-    address: user.address,
-  });
-  const [imageUrl, setImageUrl] = useState(user.profilePicture);
+  const [editableUser, setEditableUser] = useState(user);
+  const [imageUrl, setImageUrl] = useState(user.profile_picture);
 
-  useEffect(() => {
-    const storedUserId = JSON.parse(
-      localStorage.getItem('user') || sessionStorage.getItem('user')
-    )?.id;
-    if (storedUserId) {
-      dispatch(fetchUserProfile(storedUserId));
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (user && !user.joinedDate) {
-      dispatch(updateUserField({ joinedDate: new Date().toISOString() }));
-      setIsDirty(true);
-    }
-  }, [user, dispatch]);
-
-  const formattedJoinedDate = user?.joinedDate
-    ? new Date(user.joinedDate).toLocaleDateString()
-    : new Date().toLocaleDateString();
-
-  const handlePhotoUpload = (event) => {
-    const file = event.target.files[0];
+  const handlePhotoUpload = async (e) => {
+    const file = e.target.files[0];
     if (file) {
       try {
         const imageUrl = await uploadImage(file);
         setEditableUser((u) => ({ ...u, profilePicture: imageUrl }));
         setImageUrl(imageUrl);
+        const uploadedImageUrl = await uploadImage(file);
+        setEditableUser((prev) => ({ ...prev, profile_picture: uploadedImageUrl }));
+        setImageUrl(uploadedImageUrl);
         setIsDirty(true);
         console.log('Photo uploaded successfully');
       } catch (error) {
@@ -75,33 +44,49 @@ const UserProfilePage = () => {
   };
 
   const handleDeletePhoto = () => {
-    setEditableUser({ ...editableUser, profilePicture: '' });
+    setEditableUser((prev) => ({ ...prev, profile_picture: null }));
+    setImageUrl(null);
     setIsDirty(true);
     console.log('Photo removed successfully');
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEditableUser({ ...editableUser, [name]: value });
+    if (name.startsWith('address.')) {
+      const field = name.split('.')[1];
+      setEditableUser((prev) => ({
+        ...prev,
+        address: { ...prev.address, [field]: value },
+      }));
+    } else {
+      setEditableUser((prev) => ({ ...prev, [name]: value }));
+    }
     setIsDirty(true);
   };
+
   const handleCancel = () => {
     setIsEditing(false);
     setIsDirty(false);
-    setEditableUser(null); // Discard local changes
+    setEditableUser(user);
+    setImageUrl(user.profile_picture);
   };
 
   const handleEdit = () => {
-    setEditableUser({ ...user }); // Copy current user data to editable state
     setIsEditing(true);
     setIsDirty(false);
   };
 
   const handleSave = async () => {
     try {
-      await updateUser(editableUser);
-      setIsEditing(false);
-      setIsDirty(false);
+      const { id, role, ...editableFields } = editableUser;
+      const updatedUser = await updateUser(user.id, editableFields);
+      if (updatedUser) {
+        setEditableUser(updatedUser);
+        updateUserInStorage(editableUser); // Synchronize local storage
+        setIsEditing(false);
+        setIsDirty(false);
+        console.log('User updated successfully');
+      }
     } catch (error) {
       console.error('Error updating user:', error);
     }
@@ -154,19 +139,7 @@ const UserProfilePage = () => {
                   </div>
                   {isEditing && (
                     <div className="absolute -bottom-2 right-0 flex gap-2 scale-90 opacity-90 hover:scale-100 hover:opacity-100 transition-all duration-200">
-                      <label
-                        className="btn btn-circle btn-primary btn-sm hover:btn-secondary tooltip tooltip-top"
-                        data-tip="Upload photo"
-                      >
-                        <Camera className="w-4 m-auto mt-1" />
-                        <input
-                          type="file"
-                          accept="image/*"
-                          className="hidden"
-                          onChange={handlePhotoUpload}
-                        />
-                      </label>
-                      {user?.photo && user.photo !== defaultImage && (
+                      {user?.profile_picture && (
                         <button
                           className="btn btn-circle btn-error btn-sm hover:btn-secondary tooltip tooltip-top"
                           data-tip="Remove photo"
@@ -206,7 +179,8 @@ const UserProfilePage = () => {
                       </div>
                       <div className="badge badge-ghost gap-2 p-3 badge-lg">
                         <Calendar className="w-4 h-4" />
-                        Joined {formattedJoinedDate}
+                        Joined{' '}
+                        {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
                       </div>
                     </div>
                   </div>
@@ -261,8 +235,8 @@ const UserProfilePage = () => {
                   {
                     icon: Phone,
                     label: 'Phone',
-                    value: isEditing ? editableUser?.phoneNumber : user?.phoneNumber,
-                    name: 'phoneNumber',
+                    value: isEditing ? editableUser?.phone_number : user?.phone_number,
+                    name: 'phone_number',
                     type: 'tel',
                   },
                   {

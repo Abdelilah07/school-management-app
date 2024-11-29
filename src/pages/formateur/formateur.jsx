@@ -4,6 +4,7 @@ import { FaRegFileExcel, FaFilePdf } from 'react-icons/fa';
 import { FaDownload } from 'react-icons/fa6';
 import { setFormateurs, setSelectedSecteur } from '../../features/formateur/formateurSlice';
 import jsPDF from 'jspdf';
+import Pagination from '../../components/shared/Pagination';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 
@@ -15,9 +16,9 @@ const Formateur = () => {
   const [selectedFormateur, setSelectedFormateur] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modules, setModules] = useState([]);
+  
   const [currentPage, setCurrentPage] = useState(1);
-
-  const itemsPerPage = 3;
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +29,9 @@ const Formateur = () => {
         }
         const data = await response.json();
         dispatch(setFormateurs(data.formateurs));
+        
+        const itemsParPage = 21; 
+        setTotalPages(Math.ceil(data.formateurs.length / itemsParPage));
       } catch (error) {
         console.error('Error fetching data:', error.message);
         alert('Erreur lors du chargement des données des formateurs.');
@@ -40,20 +44,9 @@ const Formateur = () => {
     ? formateurs.filter((formateur) => formateur.secteur === selectedSecteur)
     : [];
 
-  const totalPages = Math.ceil(filteredFormateurs.length / itemsPerPage);
-
-  const paginatedFormateurs = filteredFormateurs.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
   const handleSecteurChange = (e) => {
     dispatch(setSelectedSecteur(e.target.value));
     setCurrentPage(1);
-  };
-
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
   };
 
   const handleToggleModal = (formateur) => {
@@ -62,21 +55,41 @@ const Formateur = () => {
     setShowModal(!showModal);
   };
 
-  const exportToPDF = (modules, formateurName) => {
+  const exportToPDF = async (modules, formateurName) => {
     const doc = new jsPDF();
-    doc.text(`Modules de ${formateurName}`, 10, 10);
-    autoTable(doc, {
-      head: [['Code', 'Intitulé', 'MH Synthese', 'MH P', 'MH Total']],
-      body: modules.map((module) => [
-        module.code,
-        module.intitule,
-        module.mhSynthese,
-        module.mhP,
-        module.mhTotal,
-      ]),
-    });
-    doc.save(`Modules_${formateurName}.pdf`);
+    const logoURL =
+      "https://th.bing.com/th/id/OIP.Sb1FiwDyjsY5DePGcoEAwwHaHa?rs=1&pid=ImgDetMain"; 
+    const label = "Liste des Modules"; 
+  
+    const img = new Image();
+    img.src = logoURL;
+  
+    img.onload = () => {
+      const imgWidth = 20; 
+      const imgHeight = (img.height * imgWidth) / img.width; 
+      doc.addImage(img, "PNG", 10, 10, imgWidth, imgHeight); 
+  
+      doc.setFontSize(18);
+      doc.text(label, imgWidth + 30, 25); 
+  
+      doc.setFontSize(12);
+  
+      autoTable(doc, {
+        startY: 40, 
+        head: [["Code", "Intitulé", "MH Synthese", "MH P", "MH Total"]],
+        body: modules.map((module) => [
+          module.code,
+          module.intitule,
+          module.mhSynthese,
+          module.mhP,
+          module.mhTotal,
+        ]),
+      });
+  
+      doc.save(`Modules_${formateurName}.pdf`);
+    };
   };
+  
 
   const exportToExcel = (modules, formateurName) => {
     const worksheet = XLSX.utils.json_to_sheet(modules);
@@ -99,8 +112,13 @@ const Formateur = () => {
     setShareMenuVisible(false);
   };
 
+  const itemsPerPage = 3;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentFormateurs = filteredFormateurs.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
-    <div className="p-4 mx-auto min-h-screen bg-white text-black">
+    <div className="p-4 mx-auto min-h-screen bg-white text-black  dark:bg-gray-900 dark:text-white">
       <h1 className="text-center text-xl font-bold">FORMATEURS :</h1>
 
       <div className="mb-4">
@@ -108,9 +126,10 @@ const Formateur = () => {
           Secteur :
         </label>
         <select
-          value={selectedSecteur}
+          id="secteur"
+          value={selectedSecteur || ''}
           onChange={handleSecteurChange}
-          className="block w-full px-3 py-2 border rounded-lg text-lg"
+          className="block w-full px-3 py-2 border rounded-lg text-lg dark:bg-gray-800 dark:text-white"
         >
           <option value="">-- Sélectionnez un secteur --</option>
           <option value="Digital">Digital</option>
@@ -121,14 +140,14 @@ const Formateur = () => {
       </div>
 
       {selectedSecteur === '' ? (
-        <div className="p-4 rounded-md text-center bg-yellow-100 text-yellow-700">
+        <div className="p-4 rounded-md text-center bg-yellow-100 text-yellow-700 dark:bg-yellow-800 dark:text-yellow-300">
           Veuillez sélectionner un secteur pour afficher les formateurs.
         </div>
       ) : (
         <>
-          <table className="min-w-full mb-4 rounded-lg shadow-md bg-white text-gray-700 border-gray-300">
+          <table className="min-w-full mb-4 rounded-lg shadow-md bg-white text-gray-700 border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-600">
             <thead>
-              <tr className="bg-gray-100 text-gray-700">
+              <tr className="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-white">
                 <th className="px-6 py-3 border-b">ID</th>
                 <th className="px-6 py-3 border-b">Nom</th>
                 <th className="px-6 py-3 border-b">Prénom</th>
@@ -138,8 +157,8 @@ const Formateur = () => {
               </tr>
             </thead>
             <tbody>
-              {paginatedFormateurs.map((formateur) => (
-                <tr key={formateur.id} className="bg-white text-gray-700">
+              {currentFormateurs.map((formateur) => (
+                <tr key={formateur.id} className="bg-white text-gray-700 dark:bg-gray-800 dark:text-white">
                   <td className="px-6 py-3 border-b">{formateur.id}</td>
                   <td className="px-6 py-3 border-b">{formateur.nom}</td>
                   <td className="px-6 py-3 border-b">{formateur.prenom}</td>
@@ -147,7 +166,7 @@ const Formateur = () => {
                   <td className="px-6 py-3 border-b text-center">
                     <button
                       onClick={() => handleToggleModal(formateur)}
-                      className="btn btn-primary px-4 py-2 rounded-md text-white"
+                      className="btn btn-primary px-4 py-2 rounded-md text-white dark:bg-blue-600 dark:hover:bg-blue-700"
                     >
                       Voir Modules
                     </button>
@@ -155,7 +174,7 @@ const Formateur = () => {
                   <td className="px-6 py-3 border-b text-center">
                     <button
                       onClick={() => handleShareClick(formateur)}
-                      className="px-4 py-2 rounded-md text-white bg-yellow-500 hover:bg-yellow-600"
+                      className="px-4 py-2 rounded-md text-white bg-yellow-500 hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700"
                     >
                       <FaDownload className="text-xl" />
                     </button>
@@ -165,25 +184,18 @@ const Formateur = () => {
             </tbody>
           </table>
 
-          {/* Pagination */}
-          <div className="flex justify-center mt-4">
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                className={`px-4 py-2 mx-1 rounded ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
         </>
       )}
 
       {/* Modal */}
       {showModal && selectedFormateur && modules.length > 0 && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full dark:bg-gray-800 dark:text-white">
             <h2 className="text-lg font-bold mb-4">Modules de {selectedFormateur.nom}</h2>
             <table className="min-w-full mb-4">
               <thead>
@@ -221,10 +233,10 @@ const Formateur = () => {
 
       {/* Share Menu */}
       {isShareMenuVisible && selectedFormateur && (
-        <div className="absolute right-10 top-1/4 bg-white shadow-md p-4 rounded-md w-48">
+        <div className="absolute right-10 top-1/4 bg-white shadow-md p-4 rounded-md w-48 z-50 dark:bg-gray-800">
           <button
             onClick={() => handleExportOption('pdf')}
-            className="flex items-center px-4 py-2 w-full text-black hover:bg-gray-200"
+            className="flex items-center px-4 py-2 w-full text-black hover:bg-gray-200 "
           >
             <FaFilePdf className="mr-2" /> PDF
           </button>
@@ -239,5 +251,6 @@ const Formateur = () => {
     </div>
   );
 };
+
 
 export default Formateur;

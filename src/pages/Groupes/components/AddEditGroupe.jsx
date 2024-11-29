@@ -15,19 +15,19 @@ import { useSelector } from 'react-redux';
 
 const AddEditGroupe = ({ group, groupCount, onClose, onSave, isEditMode }) => {
   const { groups } = useSelector((state) => state.groups);
-  
+
   // Assuming a map of filiere to their associated modules
   const filiereModulesMap = groups.reduce((acc, group) => {
     // If the filiere doesn't exist in the map, initialize it with an empty array
     if (!acc[group.filiere]) {
       acc[group.filiere] = new Set();
     }
-  
+
     // Add each module's name to the respective filiere
     group.modules.forEach((module) => {
       acc[group.filiere].add(module.nomModule);
     });
-  
+
     return acc;
   }, {});
 
@@ -78,7 +78,6 @@ const AddEditGroupe = ({ group, groupCount, onClose, onSave, isEditMode }) => {
       }));
     }
   }, [formData.filiere]);
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;

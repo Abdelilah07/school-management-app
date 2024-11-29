@@ -67,7 +67,7 @@ const setStorageItem = (key, value, storage = localStorage) => {
 // Authentication Thunks
 export const signup = createAsyncThunk('auth/signup', async (userData, { rejectWithValue }) => {
   try {
-    const { email, password, name, role, profilePicture } = userData;
+    const { email, password, name, role, profile_picture } = userData;
 
     // Validate email and password
     const emailError = validateEmail(email);
@@ -181,18 +181,17 @@ export const login = createAsyncThunk('auth/login', async (credentials, { reject
       localStorage.removeItem(STORAGE_KEYS.USER);
     }
 
-
     // Prepare user data
     const userData = {
       id: user.id,
       name: user.name,
       email: user.email,
       role: user.roles.name,
-      profilePicture: user.profile_picture,
+      profile_picture: user.profile_picture,
       status: user.status,
       created_at: user.created_at,
-      lastLogin: user.last_login,
-      phoneNumber: user.phone_number,
+      last_login: user.last_login,
+      phone_number: user.phone_number,
       bio: user.bio,
       website: user.website,
       address: user.address,
