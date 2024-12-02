@@ -2,6 +2,7 @@ export { default as HomePage } from './Home/HomePage';
 export { default as AboutPage } from './About/AboutPage';
 export { default as NotFoundPage } from './NotFound/NotFoundPage';
 export { default as CoursesPage } from './Courses/CoursesPage';
+export { default as CoursesFormateur } from './CoursesFormateur/CoursesFormateur';
 export { default as FilieresPage } from './Filieres/FilieresPage';
 export { default as QuizzesPage } from './Quizzes/QuizzesPage';
 export { default as Quiz } from './Quizzes/Quiz';

@@ -151,9 +151,9 @@ export default function AttendanceFormateur() {
       prev.map((student) =>
         student.id === studentId
           ? {
-            ...student,
-            absentHours: { ...student.absentHours, [timeSlot]: !student.absentHours[timeSlot] },
-          }
+              ...student,
+              absentHours: { ...student.absentHours, [timeSlot]: !student.absentHours[timeSlot] },
+            }
           : student
       )
     );
@@ -290,7 +290,10 @@ export default function AttendanceFormateur() {
                   })
                 ) : (
                   <tr>
-                    <td colSpan={4 + [...morningTimeSlots, ...afternoonTimeSlots].length} className="text-center">
+                    <td
+                      colSpan={4 + [...morningTimeSlots, ...afternoonTimeSlots].length}
+                      className="text-center"
+                    >
                       No absent students data available for this date.
                     </td>
                   </tr>

@@ -159,66 +159,66 @@
   },
   "quizzes": [
     {
-      "quizID": "QZ201",
-      "coursequizID": "FIN101",
-      "courseName": "Introduction to Finance",
+      "quizID": "QZ101",
+      "coursequizID": "BIO101",
+      "courseName": "Introduction to Biology",
       "teacherId": "T001",
-      "teacherName": "Dr. John Smith",
-      "Deadline": "2024-12-01T23:59",
-      "status": "active",
+      "teacherName": "Dr. Alice Johnson",
+      "Deadline": "2024-11-30T23:59:59Z",
+      "status": "draft",
       "questions": [
         {
           "id": "1a",
-          "question": "What is the main purpose of financial statements?",
+          "question": "What is the basic unit of life?",
           "answers": [
-            "To calculate taxes owed",
-            "To provide an overview of a company's financial health",
-            "To track employee performance",
-            "To determine the cost of goods sold"
+            "Atom",
+            "Molecule",
+            "Cell",
+            "Tissue"
           ],
-          "correctAnswer": "To provide an overview of a company's financial health"
+          "correctAnswer": "Cell"
         },
         {
           "id": "2b",
-          "question": "What does 'ROI' stand for in financial terms?",
+          "question": "Which macromolecule is the main source of energy for living organisms?",
           "answers": [
-            "Return on Investment",
-            "Rate of Interest",
-            "Risk of Investment",
-            "Reinvestment Option"
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
           ],
-          "correctAnswer": "Return on Investment"
+          "correctAnswer": "Carbohydrates"
         },
         {
           "id": "3c",
-          "question": "Which of the following is a liability?",
+          "question": "What is the process by which plants convert sunlight into chemical energy?",
           "answers": [
-            "Accounts receivable",
-            "Accounts payable",
-            "Cash",
-            "Inventory"
+            "Respiration",
+            "Fermentation",
+            "Photosynthesis",
+            "Digestion"
           ],
-          "correctAnswer": "Accounts payable"
+          "correctAnswer": "Photosynthesis"
         },
         {
           "id": "4d",
-          "question": "What is the formula for calculating net profit?",
+          "question": "Which organelle is known as the powerhouse of the cell?",
           "answers": [
-            "Revenue - Expenses",
-            "Revenue + Expenses",
-            "Revenue - Cost of Goods Sold",
-            "Total Assets - Liabilities"
+            "Nucleus",
+            "Chloroplast",
+            "Mitochondria",
+            "Ribosome"
           ],
-          "correctAnswer": "Revenue - Expenses"
+          "correctAnswer": "Mitochondria"
         },
         {
           "id": "5e",
-          "question": "What is a balance sheet used to show?",
+          "question": "Which molecule carries genetic information in most living organisms?",
           "answers": [
-            "A company's expenses over a period",
-            "A company's assets, liabilities, and equity at a point in time",
-            "The company's profit or loss for a quarter",
-            "A company's market share"
+            "RNA",
+            "DNA",
+            "Protein",
+            "ATP"
           ],
           "correctAnswer": "A company's assets, liabilities, and equity at a point in time"
         },
@@ -335,24 +335,24 @@
       ],
       "questionsSelected": [
         {
-          "id": "1a",
-          "question": "What is the main purpose of financial statements?",
+          "id": "8h",
+          "question": "What is the main pigment involved in photosynthesis?",
           "answers": [
-            "To calculate taxes owed",
-            "To provide an overview of a company's financial health",
-            "To track employee performance",
-            "To determine the cost of goods sold"
+            "Chlorophyll",
+            "Carotene",
+            "Xanthophyll",
+            "Hemoglobin"
           ],
-          "correctAnswer": "To provide an overview of a company's financial health"
+          "correctAnswer": "Chlorophyll"
         },
         {
-          "id": "2b",
-          "question": "What does 'ROI' stand for in financial terms?",
+          "id": "9i",
+          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
           "answers": [
-            "Return on Investment",
-            "Rate of Interest",
-            "Risk of Investment",
-            "Reinvestment Option"
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
           ],
           "correctAnswer": "Return on Investment"
         },
@@ -457,276 +457,336 @@
       "status": "active",
       "questions": [
         {
-          "id": "1a",
-          "question": "What does '4P' in marketing refer to?",
+          "id": "12l",
+          "question": "What type of bond forms between two water molecules?",
           "answers": [
-            "Price, Product, Place, Promotion",
-            "Price, People, Process, Publicity",
-            "Place, Product, Profit, Promotion",
-            "People, Product, Price, Process"
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Peptide bond"
           ],
-          "correctAnswer": "Price, Product, Place, Promotion"
+          "correctAnswer": "Hydrogen bond"
+        },
+        {
+          "id": "13m",
+          "question": "What is the primary function of ribosomes?",
+          "answers": [
+            "Energy production",
+            "Protein synthesis",
+            "DNA replication",
+            "Transport of molecules"
+          ],
+          "correctAnswer": "Protein synthesis"
+        },
+        {
+          "id": "14n",
+          "question": "Which domain of life includes humans?",
+          "answers": [
+            "Bacteria",
+            "Archaea",
+            "Eukarya",
+            "Prokaryota"
+          ],
+          "correctAnswer": "Eukarya"
+        },
+        {
+          "id": "15o",
+          "question": "Which process results in two identical daughter cells?",
+          "answers": [
+            "Meiosis",
+            "Mitosis",
+            "Binary fission",
+            "Budding"
+          ],
+          "correctAnswer": "Mitosis"
+        },
+        {
+          "id": "16p",
+          "question": "What is the building block of proteins?",
+          "answers": [
+            "Nucleotides",
+            "Fatty acids",
+            "Amino acids",
+            "Monosaccharides"
+          ],
+          "correctAnswer": "Amino acids"
+        },
+        {
+          "id": "17q",
+          "question": "What is the term for organisms that produce their own food?",
+          "answers": [
+            "Heterotrophs",
+            "Autotrophs",
+            "Decomposers",
+            "Parasites"
+          ],
+          "correctAnswer": "Autotrophs"
+        },
+        {
+          "id": "18r",
+          "question": "Which type of RNA carries the genetic code from DNA to the ribosome?",
+          "answers": [
+            "tRNA",
+            "mRNA",
+            "rRNA",
+            "snRNA"
+          ],
+          "correctAnswer": "mRNA"
+        },
+        {
+          "id": "19s",
+          "question": "Which organ system is responsible for transporting nutrients and oxygen to cells?",
+          "answers": [
+            "Digestive system",
+            "Nervous system",
+            "Circulatory system",
+            "Respiratory system"
+          ],
+          "correctAnswer": "Circulatory system"
+        },
+        {
+          "id": "20t",
+          "question": "What is the main component of the cell membrane?",
+          "answers": [
+            "Proteins",
+            "Carbohydrates",
+            "Lipids",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Lipids"
+        }
+      ],
+      "id": "ecb9",
+      "questionsSelected": [
+        {
+          "id": "5e",
+          "question": "Which molecule carries genetic information in most living organisms?",
+          "answers": [
+            "RNA",
+            "DNA",
+            "Protein",
+            "ATP"
+          ],
+          "correctAnswer": "DNA"
+        },
+        {
+          "id": "6f",
+          "question": "What is the term for a group of similar cells that perform a specific function?",
+          "answers": [
+            "Organ",
+            "Tissue",
+            "System",
+            "Organism"
+          ],
+          "correctAnswer": "Tissue"
+        },
+        {
+          "id": "7g",
+          "question": "Which process describes the movement of water across a selectively permeable membrane?",
+          "answers": [
+            "Diffusion",
+            "Osmosis",
+            "Active transport",
+            "Endocytosis"
+          ],
+          "correctAnswer": "Osmosis"
+        },
+        {
+          "id": "8h",
+          "question": "What is the main pigment involved in photosynthesis?",
+          "answers": [
+            "Chlorophyll",
+            "Carotene",
+            "Xanthophyll",
+            "Hemoglobin"
+          ],
+          "correctAnswer": "Chlorophyll"
+        },
+        {
+          "id": "9i",
+          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
+          "answers": [
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Proteins"
+        },
+        {
+          "id": "10j",
+          "question": "Which level of biological organization comes immediately after 'organism'?",
+          "answers": [
+            "Population",
+            "Community",
+            "Ecosystem",
+            "Biosphere"
+          ],
+          "correctAnswer": "Population"
+        },
+        {
+          "id": "11k",
+          "question": "What is the term for the process by which organisms maintain a stable internal environment?",
+          "answers": [
+            "Evolution",
+            "Homeostasis",
+            "Adaptation",
+            "Metabolism"
+          ],
+          "correctAnswer": "Homeostasis"
+        },
+        {
+          "id": "12l",
+          "question": "What type of bond forms between two water molecules?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Peptide bond"
+          ],
+          "correctAnswer": "Hydrogen bond"
+        },
+        {
+          "id": "13m",
+          "question": "What is the primary function of ribosomes?",
+          "answers": [
+            "Energy production",
+            "Protein synthesis",
+            "DNA replication",
+            "Transport of molecules"
+          ],
+          "correctAnswer": "Protein synthesis"
+        },
+        {
+          "id": "14n",
+          "question": "Which domain of life includes humans?",
+          "answers": [
+            "Bacteria",
+            "Archaea",
+            "Eukarya",
+            "Prokaryota"
+          ],
+          "correctAnswer": "Eukarya"
+        },
+        {
+          "id": "15o",
+          "question": "Which process results in two identical daughter cells?",
+          "answers": [
+            "Meiosis",
+            "Mitosis",
+            "Binary fission",
+            "Budding"
+          ],
+          "correctAnswer": "Mitosis"
+        },
+        {
+          "id": "16p",
+          "question": "What is the building block of proteins?",
+          "answers": [
+            "Nucleotides",
+            "Fatty acids",
+            "Amino acids",
+            "Monosaccharides"
+          ],
+          "correctAnswer": "Amino acids"
+        },
+        {
+          "id": "17q",
+          "question": "What is the term for organisms that produce their own food?",
+          "answers": [
+            "Heterotrophs",
+            "Autotrophs",
+            "Decomposers",
+            "Parasites"
+          ],
+          "correctAnswer": "Autotrophs"
+        },
+        {
+          "id": "18r",
+          "question": "Which type of RNA carries the genetic code from DNA to the ribosome?",
+          "answers": [
+            "tRNA",
+            "mRNA",
+            "rRNA",
+            "snRNA"
+          ],
+          "correctAnswer": "mRNA"
+        },
+        {
+          "id": "19s",
+          "question": "Which organ system is responsible for transporting nutrients and oxygen to cells?",
+          "answers": [
+            "Digestive system",
+            "Nervous system",
+            "Circulatory system",
+            "Respiratory system"
+          ],
+          "correctAnswer": "Circulatory system"
+        },
+        {
+          "id": "20t",
+          "question": "What is the main component of the cell membrane?",
+          "answers": [
+            "Proteins",
+            "Carbohydrates",
+            "Lipids",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Lipids"
+        },
+        {
+          "id": "1a",
+          "question": "What is the basic unit of life?",
+          "answers": [
+            "Atom",
+            "Molecule",
+            "Cell",
+            "Tissue"
+          ],
+          "correctAnswer": "Cell"
         },
         {
           "id": "2b",
-          "question": "Which of the following is a type of market segmentation?",
+          "question": "Which macromolecule is the main source of energy for living organisms?",
           "answers": [
-            "Demographic segmentation",
-            "Behavioral segmentation",
-            "Geographic segmentation",
-            "All of the above"
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
           ],
-          "correctAnswer": "All of the above"
+          "correctAnswer": "Carbohydrates"
         },
         {
           "id": "3c",
-          "question": "What is the definition of a 'brand'?",
+          "question": "What is the process by which plants convert sunlight into chemical energy?",
           "answers": [
-            "A logo or symbol",
-            "A company's products and services",
-            "A set of marketing strategies",
-            "The perception of a company or product in the eyes of the consumer"
+            "Respiration",
+            "Fermentation",
+            "Photosynthesis",
+            "Digestion"
           ],
-          "correctAnswer": "The perception of a company or product in the eyes of the consumer"
+          "correctAnswer": "Photosynthesis"
         },
         {
           "id": "4d",
-          "question": "Which of the following is a digital marketing strategy?",
+          "question": "Which organelle is known as the powerhouse of the cell?",
           "answers": [
-            "Social media advertising",
-            "Television commercials",
-            "Billboards",
-            "Direct mail"
+            "Nucleus",
+            "Chloroplast",
+            "Mitochondria",
+            "Ribosome"
           ],
-          "correctAnswer": "Social media advertising"
-        },
-        {
-          "id": "5e",
-          "question": "What is the goal of content marketing?",
-          "answers": [
-            "To sell products directly",
-            "To engage and inform an audience",
-            "To gather personal data from customers",
-            "To focus solely on advertising"
-          ],
-          "correctAnswer": "To engage and inform an audience"
+          "correctAnswer": "Mitochondria"
         }
-      ],
-      "questionsSelected": [
-        {
-          "id": "1a",
-          "question": "What does '4P' in marketing refer to?",
-          "answers": [
-            "Price, Product, Place, Promotion",
-            "Price, People, Process, Publicity",
-            "Place, Product, Profit, Promotion",
-            "People, Product, Price, Process"
-          ],
-          "correctAnswer": "Price, Product, Place, Promotion"
-        },
-        {
-          "id": "2b",
-          "question": "Which of the following is a type of market segmentation?",
-          "answers": [
-            "Demographic segmentation",
-            "Behavioral segmentation",
-            "Geographic segmentation",
-            "All of the above"
-          ],
-          "correctAnswer": "All of the above"
-        }
-      ],
-      "id": "a2bc"
+      ]
     },
     {
-      "quizID": "QZ203",
-      "coursequizID": "LAW301",
-      "courseName": "Business Law",
-      "teacherId": "T003",
-      "teacherName": "Dr. Lisa Brown",
-      "Deadline": "2024-12-10T17:00",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1a",
-          "question": "What is a contract?",
-          "answers": [
-            "A legal document outlining the terms of a transaction",
-            "An agreement between two parties",
-            "A type of insurance policy",
-            "A set of regulations"
-          ],
-          "correctAnswer": "A legal document outlining the terms of a transaction"
-        },
-        {
-          "id": "2b",
-          "question": "Which of the following is required for a contract to be legally binding?",
-          "answers": [
-            "Written agreement",
-            "Mutual consent and consideration",
-            "Witnesses",
-            "Public notarization"
-          ],
-          "correctAnswer": "Mutual consent and consideration"
-        },
-        {
-          "id": "3c",
-          "question": "What is 'intellectual property'?",
-          "answers": [
-            "A business's physical assets",
-            "Creative work protected by law",
-            "A company's financial records",
-            "An employee's work performance"
-          ],
-          "correctAnswer": "Creative work protected by law"
-        },
-        {
-          "id": "4d",
-          "question": "What does 'breach of contract' mean?",
-          "answers": [
-            "Violation of a law",
-            "Failure to fulfill a contractual obligation",
-            "A type of criminal offense",
-            "A verbal agreement"
-          ],
-          "correctAnswer": "Failure to fulfill a contractual obligation"
-        },
-        {
-          "id": "5e",
-          "question": "Which of the following is an example of a tort?",
-          "answers": [
-            "Breach of contract",
-            "Negligence resulting in injury",
-            "Failure to pay taxes",
-            "Theft"
-          ],
-          "correctAnswer": "Negligence resulting in injury"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "1a",
-          "question": "What is a contract?",
-          "answers": [
-            "A legal document outlining the terms of a transaction",
-            "An agreement between two parties",
-            "A type of insurance policy",
-            "A set of regulations"
-          ],
-          "correctAnswer": "A legal document outlining the terms of a transaction"
-        },
-        {
-          "id": "2b",
-          "question": "Which of the following is required for a contract to be legally binding?",
-          "answers": [
-            "Written agreement",
-            "Mutual consent and consideration",
-            "Witnesses",
-            "Public notarization"
-          ],
-          "correctAnswer": "Mutual consent and consideration"
-        }
-      ],
-      "id": "c3de"
-    },
-    {
-      "quizID": "QZ204",
-      "coursequizID": "IT101",
-      "courseName": "Introduction to Information Technology",
-      "teacherId": "T004",
-      "teacherName": "Prof. Tom Harris",
-      "Deadline": "2024-12-15T23:59",
-      "status": "active",
-      "questions": [
-        {
-          "id": "1a",
-          "question": "What is an operating system?",
-          "answers": [
-            "A computer program for managing hardware and software resources",
-            "A type of programming language",
-            "A hardware component of a computer",
-            "A file storage device"
-          ],
-          "correctAnswer": "A computer program for managing hardware and software resources"
-        },
-        {
-          "id": "2b",
-          "question": "Which of the following is an example of a programming language?",
-          "answers": [
-            "Windows",
-            "Python",
-            "Linux",
-            "Google Chrome"
-          ],
-          "correctAnswer": "Python"
-        },
-        {
-          "id": "3c",
-          "question": "What is the primary purpose of a database?",
-          "answers": [
-            "To store and retrieve data",
-            "To process transactions",
-            "To provide internet access",
-            "To manage computer hardware"
-          ],
-          "correctAnswer": "To store and retrieve data"
-        },
-        {
-          "id": "4d",
-          "question": "What does 'URL' stand for?",
-          "answers": [
-            "Uniform Resource Locator",
-            "Universal Resource Locator",
-            "Uniform Retrieval Link",
-            "User Retrieval Locator"
-          ],
-          "correctAnswer": "Uniform Resource Locator"
-        },
-        {
-          "id": "5e",
-          "question": "Which of the following is a common input device for a computer?",
-          "answers": [
-            "Printer",
-            "Monitor",
-            "Keyboard",
-            "Speaker"
-          ],
-          "correctAnswer": "Keyboard"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "1a",
-          "question": "What is an operating system?",
-          "answers": [
-            "A computer program for managing hardware and software resources",
-            "A type of programming language",
-            "A hardware component of a computer",
-            "A file storage device"
-          ],
-          "correctAnswer": "A computer program for managing hardware and software resources"
-        },
-        {
-          "id": "2b",
-          "question": "Which of the following is an example of a programming language?",
-          "answers": [
-            "Windows",
-            "Python",
-            "Linux",
-            "Google Chrome"
-          ],
-          "correctAnswer": "Python"
-        }
-      ],
-      "id": "d4fg"
-    },
-    {
-      "quizID": "QZ205",
-      "coursequizID": "HIST101",
+      "quizID": "QZ103",
+      "coursequizID": "HIST201",
       "courseName": "World History",
-      "teacherId": "T005",
+      "teacherId": "T003",
       "teacherName": "Dr. Sarah Davis",
-      "Deadline": "2024-12-20T22:31",
+      "Deadline": "2024-11-17T22:31",
       "status": "active",
       "questions": [
         {
@@ -783,9 +843,163 @@
             "Napoleon's rise to power"
           ],
           "correctAnswer": "Storming of the Bastille"
+        },
+        {
+          "id": "6f",
+          "question": "Which treaty ended World War I?",
+          "answers": [
+            "Treaty of Versailles",
+            "Treaty of Tordesillas",
+            "Treaty of Paris",
+            "Treaty of Ghent"
+          ],
+          "correctAnswer": "Treaty of Versailles"
+        },
+        {
+          "id": "7g",
+          "question": "Who was the first emperor of unified China?",
+          "answers": [
+            "Liu Bang",
+            "Wu Zetian",
+            "Qin Shi Huang",
+            "Confucius"
+          ],
+          "correctAnswer": "Qin Shi Huang"
+        },
+        {
+          "id": "8h",
+          "question": "Which event initiated the Protestant Reformation?",
+          "answers": [
+            "Council of Trent",
+            "The posting of the 95 Theses",
+            "English Civil War",
+            "Establishment of the Anglican Church"
+          ],
+          "correctAnswer": "The posting of the 95 Theses"
+        },
+        {
+          "id": "9i",
+          "question": "What was the primary goal of the Marshall Plan after World War II?",
+          "answers": [
+            "To prevent the spread of communism",
+            "To rebuild Europe's economy",
+            "To establish NATO",
+            "To create the European Union"
+          ],
+          "correctAnswer": "To rebuild Europe's economy"
+        },
+        {
+          "id": "10j",
+          "question": "Which civilization is credited with creating the first known system of writing?",
+          "answers": [
+            "Ancient Egyptians",
+            "Sumerians",
+            "Indus Valley Civilization",
+            "Phoenicians"
+          ],
+          "correctAnswer": "Sumerians"
         }
       ],
       "questionsSelected": [
+        {
+          "id": "1a",
+          "question": "What was the primary goal of the Silk Road?",
+          "answers": [
+            "Religious conversion",
+            "Trade and cultural exchange",
+            "Military expansion",
+            "Agricultural development"
+          ],
+          "correctAnswer": "Trade and cultural exchange"
+        },
+        {
+          "id": "2b",
+          "question": "Which empire was known for building an extensive road system in South America?",
+          "answers": [
+            "Aztec Empire",
+            "Inca Empire",
+            "Mayan Empire",
+            "Olmec Civilization"
+          ],
+          "correctAnswer": "Inca Empire"
+        },
+        {
+          "id": "3c",
+          "question": "Who was the leader of the Mongol Empire at its peak?",
+          "answers": [
+            "Kublai Khan",
+            "Genghis Khan",
+            "Timur",
+            "Attila the Hun"
+          ],
+          "correctAnswer": "Genghis Khan"
+        },
+        {
+          "id": "4d",
+          "question": "What was the primary cause of the fall of the Roman Empire?",
+          "answers": [
+            "Economic instability and invasions",
+            "Overpopulation",
+            "Discovery of the New World",
+            "Rise of the Ottoman Empire"
+          ],
+          "correctAnswer": "Economic instability and invasions"
+        },
+        {
+          "id": "6f",
+          "question": "Which treaty ended World War I?",
+          "answers": [
+            "Treaty of Versailles",
+            "Treaty of Tordesillas",
+            "Treaty of Paris",
+            "Treaty of Ghent"
+          ],
+          "correctAnswer": "Treaty of Versailles"
+        },
+        {
+          "id": "7g",
+          "question": "Who was the first emperor of unified China?",
+          "answers": [
+            "Liu Bang",
+            "Wu Zetian",
+            "Qin Shi Huang",
+            "Confucius"
+          ],
+          "correctAnswer": "Qin Shi Huang"
+        },
+        {
+          "id": "8h",
+          "question": "Which event initiated the Protestant Reformation?",
+          "answers": [
+            "Council of Trent",
+            "The posting of the 95 Theses",
+            "English Civil War",
+            "Establishment of the Anglican Church"
+          ],
+          "correctAnswer": "The posting of the 95 Theses"
+        },
+        {
+          "id": "9i",
+          "question": "What was the primary goal of the Marshall Plan after World War II?",
+          "answers": [
+            "To prevent the spread of communism",
+            "To rebuild Europe's economy",
+            "To establish NATO",
+            "To create the European Union"
+          ],
+          "correctAnswer": "To rebuild Europe's economy"
+        },
+        {
+          "id": "10j",
+          "question": "Which civilization is credited with creating the first known system of writing?",
+          "answers": [
+            "Ancient Egyptians",
+            "Sumerians",
+            "Indus Valley Civilization",
+            "Phoenicians"
+          ],
+          "correctAnswer": "Sumerians"
+        },
         {
           "id": "1a",
           "question": "What was the primary goal of the Silk Road?",
@@ -812,45 +1026,548 @@
       "id": "f5dc"
     },
     {
-      "id": "ca42",
+      "quizID": "b906",
       "courseName": "World History",
       "coursequizID": "HIST201",
-      "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-29T20:34",
+      "teacherName": "werek",
+      "Deadline": "2024-11-16T09:41",
       "status": "active",
       "questions": [
         {
-          "question": "3+3 =?",
+          "id": "6f",
+          "question": "Which treaty ended World War I?",
           "answers": [
-            "3",
-            "4",
-            "1",
-            "6"
+            "Treaty of Versailles",
+            "Treaty of Tordesillas",
+            "Treaty of Paris",
+            "Treaty of Ghent"
           ],
-          "correctAnswer": "6",
-          "id": "1732563347872"
+          "correctAnswer": "Treaty of Versailles"
+        },
+        {
+          "id": "7g",
+          "question": "Who was the first emperor of unified China?",
+          "answers": [
+            "Liu Bang",
+            "Wu Zetian",
+            "Qin Shi Huang",
+            "Confucius"
+          ],
+          "correctAnswer": "Qin Shi Huang"
+        },
+        {
+          "id": "8h",
+          "question": "Which event initiated the Protestant Reformation?",
+          "answers": [
+            "Council of Trent",
+            "The posting of the 95 Theses",
+            "English Civil War",
+            "Establishment of the Anglican Church"
+          ],
+          "correctAnswer": "The posting of the 95 Theses"
+        },
+        {
+          "id": "9i",
+          "question": "What was the primary goal of the Marshall Plan after World War II?",
+          "answers": [
+            "To prevent the spread of communism",
+            "To rebuild Europe's economy",
+            "To establish NATO",
+            "To create the European Union"
+          ],
+          "correctAnswer": "To rebuild Europe's economy"
         }
       ],
+      "id": "3951",
       "questionsSelected": [
         {
-          "question": "3+3 =?",
+          "id": "7g",
+          "question": "Who was the first emperor of unified China?",
           "answers": [
-            "3",
-            "4",
-            "1",
-            "6"
+            "Liu Bang",
+            "Wu Zetian",
+            "Qin Shi Huang",
+            "Confucius"
           ],
-          "correctAnswer": "6",
-          "id": "1732563347872"
+          "correctAnswer": "Qin Shi Huang"
+        },
+        {
+          "id": "8h",
+          "question": "Which event initiated the Protestant Reformation?",
+          "answers": [
+            "Council of Trent",
+            "The posting of the 95 Theses",
+            "English Civil War",
+            "Establishment of the Anglican Church"
+          ],
+          "correctAnswer": "The posting of the 95 Theses"
+        },
+        {
+          "id": "9i",
+          "question": "What was the primary goal of the Marshall Plan after World War II?",
+          "answers": [
+            "To prevent the spread of communism",
+            "To rebuild Europe's economy",
+            "To establish NATO",
+            "To create the European Union"
+          ],
+          "correctAnswer": "To rebuild Europe's economy"
         }
       ]
     },
     {
-      "id": "ed87",
-      "courseName": "Introduction to Biology",
-      "coursequizID": "BIO101",
+      "quizID": "6db7",
+      "courseName": "General Chemistry",
+      "coursequizID": "CHEM101",
+      "teacherName": "qqqqq",
+      "Deadline": "2024-11-13T01:59",
+      "status": "active",
+      "questions": [
+        {
+          "id": "1a",
+          "question": "What is the smallest unit of an element that retains its chemical properties?",
+          "answers": [
+            "Atom",
+            "Molecule",
+            "Ion",
+            "Proton"
+          ],
+          "correctAnswer": "Atom"
+        },
+        {
+          "id": "2b",
+          "question": "What is the chemical symbol for gold?",
+          "answers": [
+            "Au",
+            "Ag",
+            "Go",
+            "Gd"
+          ],
+          "correctAnswer": "Au"
+        },
+        {
+          "id": "3c",
+          "question": "What is the atomic number of carbon?",
+          "answers": [
+            "6",
+            "8",
+            "12",
+            "14"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "4d",
+          "question": "What is the main type of bond in sodium chloride (NaCl)?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Metallic bond"
+          ],
+          "correctAnswer": "Ionic bond"
+        },
+        {
+          "id": "5e",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "O2H",
+            "H2O2",
+            "HO2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "6f",
+          "question": "What is the pH of a neutral solution at 25°C?",
+          "answers": [
+            "7",
+            "0",
+            "14",
+            "1"
+          ],
+          "correctAnswer": "7"
+        },
+        {
+          "id": "7g",
+          "question": "Which gas is most abundant in the Earth's atmosphere?",
+          "answers": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon dioxide",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Nitrogen"
+        },
+        {
+          "id": "8h",
+          "question": "What is the name of the process by which a liquid turns into a gas?",
+          "answers": [
+            "Melting",
+            "Condensation",
+            "Evaporation",
+            "Sublimation"
+          ],
+          "correctAnswer": "Evaporation"
+        },
+        {
+          "id": "9i",
+          "question": "Which of the following is an example of a covalent compound?",
+          "answers": [
+            "NaCl",
+            "H2O",
+            "CaO",
+            "MgBr2"
+          ],
+          "correctAnswer": "H2O"
+        },
+        {
+          "id": "10j",
+          "question": "What is the term for a reaction that absorbs heat?",
+          "answers": [
+            "Exothermic",
+            "Endothermic",
+            "Combustion",
+            "Neutralization"
+          ],
+          "correctAnswer": "Endothermic"
+        },
+        {
+          "id": "11k",
+          "question": "What is Avogadro's number?",
+          "answers": [
+            "6.022 × 10^23",
+            "3.14",
+            "9.8 m/s^2",
+            "1.6 × 10^-19"
+          ],
+          "correctAnswer": "6.022 × 10^23"
+        },
+        {
+          "id": "12l",
+          "question": "Which element is a noble gas?",
+          "answers": [
+            "Oxygen",
+            "Neon",
+            "Nitrogen",
+            "Hydrogen"
+          ],
+          "correctAnswer": "Neon"
+        },
+        {
+          "id": "13m",
+          "question": "What is the molar mass of H2O?",
+          "answers": [
+            "16 g/mol",
+            "18 g/mol",
+            "20 g/mol",
+            "24 g/mol"
+          ],
+          "correctAnswer": "18 g/mol"
+        },
+        {
+          "id": "14n",
+          "question": "What is the shape of a methane (CH4) molecule?",
+          "answers": [
+            "Linear",
+            "Bent",
+            "Tetrahedral",
+            "Trigonal planar"
+          ],
+          "correctAnswer": "Tetrahedral"
+        },
+        {
+          "id": "15o",
+          "question": "What is the oxidation state of oxygen in most compounds?",
+          "answers": [
+            "-1",
+            "-2",
+            "+1",
+            "+2"
+          ],
+          "correctAnswer": "-2"
+        },
+        {
+          "id": "16p",
+          "question": "What is the term for the ability of an atom to attract electrons in a bond?",
+          "answers": [
+            "Ionization energy",
+            "Electronegativity",
+            "Atomic radius",
+            "Electron affinity"
+          ],
+          "correctAnswer": "Electronegativity"
+        },
+        {
+          "id": "17q",
+          "question": "What is the process of a solid turning directly into a gas?",
+          "answers": [
+            "Condensation",
+            "Sublimation",
+            "Melting",
+            "Deposition"
+          ],
+          "correctAnswer": "Sublimation"
+        },
+        {
+          "id": "18r",
+          "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
+          "answers": [
+            "Solvent",
+            "Catalyst",
+            "Reactant",
+            "Inhibitor"
+          ],
+          "correctAnswer": "Catalyst"
+        },
+        {
+          "id": "19s",
+          "question": "Which law states that pressure and volume of a gas are inversely proportional?",
+          "answers": [
+            "Charles's Law",
+            "Boyle's Law",
+            "Avogadro's Law",
+            "Ideal Gas Law"
+          ],
+          "correctAnswer": "Boyle's Law"
+        },
+        {
+          "id": "20t",
+          "question": "What is the product of a neutralization reaction?",
+          "answers": [
+            "Salt and water",
+            "Gas and salt",
+            "Acid and base",
+            "Heat and gas"
+          ],
+          "correctAnswer": "Salt and water"
+        },
+        {
+          "id": "21u",
+          "question": "Which subatomic particle has a positive charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Photon"
+          ],
+          "correctAnswer": "Proton"
+        },
+        {
+          "id": "22v",
+          "question": "Which element is the most abundant in the Earth's crust?",
+          "answers": [
+            "Oxygen",
+            "Silicon",
+            "Aluminum",
+            "Iron"
+          ],
+          "correctAnswer": "Oxygen"
+        },
+        {
+          "id": "23w",
+          "question": "What is the main component of an acid?",
+          "answers": [
+            "Hydroxide ions",
+            "Hydrogen ions",
+            "Chloride ions",
+            "Carbonate ions"
+          ],
+          "correctAnswer": "Hydrogen ions"
+        },
+        {
+          "id": "24x",
+          "question": "What is the standard temperature in Kelvin for STP?",
+          "answers": [
+            "0 K",
+            "273 K",
+            "298 K",
+            "100 K"
+          ],
+          "correctAnswer": "273 K"
+        },
+        {
+          "id": "25y",
+          "question": "What is the common name for HCl in aqueous form?",
+          "answers": [
+            "Sulfuric acid",
+            "Hydrochloric acid",
+            "Nitric acid",
+            "Acetic acid"
+          ],
+          "correctAnswer": "Hydrochloric acid"
+        }
+      ],
+      "questionsSelected": [
+        {
+          "id": "21u",
+          "question": "Which subatomic particle has a positive charge?",
+          "answers": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Photon"
+          ],
+          "correctAnswer": "Proton"
+        },
+        {
+          "id": "1a",
+          "question": "What is the smallest unit of an element that retains its chemical properties?",
+          "answers": [
+            "Atom",
+            "Molecule",
+            "Ion",
+            "Proton"
+          ],
+          "correctAnswer": "Atom"
+        },
+        {
+          "id": "2b",
+          "question": "What is the chemical symbol for gold?",
+          "answers": [
+            "Au",
+            "Ag",
+            "Go",
+            "Gd"
+          ],
+          "correctAnswer": "Au"
+        },
+        {
+          "id": "3c",
+          "question": "What is the atomic number of carbon?",
+          "answers": [
+            "6",
+            "8",
+            "12",
+            "14"
+          ],
+          "correctAnswer": "6"
+        },
+        {
+          "id": "4d",
+          "question": "What is the main type of bond in sodium chloride (NaCl)?",
+          "answers": [
+            "Ionic bond",
+            "Covalent bond",
+            "Hydrogen bond",
+            "Metallic bond"
+          ],
+          "correctAnswer": "Ionic bond"
+        },
+        {
+          "id": "5e",
+          "question": "What is the chemical formula for water?",
+          "answers": [
+            "H2O",
+            "O2H",
+            "H2O2",
+            "HO2"
+          ],
+          "correctAnswer": "H2O"
+        }
+      ],
+      "id": "a8d4"
+    },
+    {
+      "quizID": "a123",
+      "courseName": "Introduction to Physics",
+      "coursequizID": "PHYS101",
+      "teacherName": "Dr. Michael Smith",
+      "Deadline": "2024-11-20T23:59",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "1abdd",
+          "question": "What is the SI unit of force?",
+          "answers": [
+            "Newton",
+            "Pascal",
+            "Joule",
+            "Watt"
+          ],
+          "correctAnswer": "Newton"
+        },
+        {
+          "id": "2bbbbbsb",
+          "question": "What is the acceleration due to gravity on Earth?",
+          "answers": [
+            "9.8 m/s²",
+            "10 m/s²",
+            "9.8 m/s",
+            "10 m/s"
+          ],
+          "correctAnswer": "9.8 m/s²"
+        },
+        {
+          "id": "3cccz",
+          "question": "What is the formula for velocity?",
+          "answers": [
+            "Distance ÷ Time",
+            "Force ÷ Mass",
+            "Mass × Acceleration",
+            "Work ÷ Distance"
+          ],
+          "correctAnswer": "Distance ÷ Time"
+        },
+        {
+          "id": "4dddddd",
+          "question": "Which law states that an object in motion stays in motion unless acted upon?",
+          "answers": [
+            "Newton's First Law",
+            "Newton's Second Law",
+            "Newton's Third Law",
+            "Law of Gravitation"
+          ],
+          "correctAnswer": "Newton's First Law"
+        },
+        {
+          "id": "5eeeeeeee",
+          "question": "What is the kinetic energy formula?",
+          "answers": [
+            "1/2 mv²",
+            "mgh",
+            "mv²",
+            "1/2 gh"
+          ],
+          "correctAnswer": "1/2 mv²"
+        }
+      ],
+      "id": "238b"
+    },
+    {
+      "quizID": "c345",
+      "courseName": "Principles of Economics",
+      "coursequizID": "ECON101",
+      "teacherName": "Dr. Emily Johnson",
+      "Deadline": "2024-12-13T23:59",
+      "status": "draft",
+      "questions": [],
+      "id": "f11a",
+      "questionsSelected": []
+    },
+    {
+      "id": "b979",
+      "courseName": "General Chemistry",
+      "coursequizID": "CHEM101",
+      "teacherName": "khba",
+      "Deadline": "2024-11-14T23:26",
+      "status": "active"
+    },
+    {
+      "id": "70b2",
+      "courseName": "Introduction to Physics",
+      "coursequizID": "PHYS101",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-30T20:45",
+      "Deadline": "2024-10-31T11:57",
+      "status": "draft"
+    },
+    {
+      "id": "ffee",
+      "courseName": "Principles of Economics",
+      "coursequizID": "106",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-12-05T12:02",
       "status": "active"
     },
     {
@@ -858,7 +1575,15 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
-      "Deadline": "2024-11-29T20:03",
+      "Deadline": "2024-11-24T12:05",
+      "status": "active"
+    },
+    {
+      "id": "199a",
+      "courseName": "General Chemistry",
+      "coursequizID": "104",
+      "teacherName": "Jim Halpert",
+      "Deadline": "2024-12-07T12:09",
       "status": "active",
       "questions": [
         {
@@ -1748,7 +2473,8 @@
       ],
       "questionsSelected": [
         {
-          "question": "dff",
+          "id": "3",
+          "question": "What is the chemical formula for water?",
           "answers": [
             "ff",
             "fff",
@@ -1770,149 +2496,28 @@
       "questions": [
         {
           "id": "1",
-          "question": "Which of the following is NOT a core principle of object-oriented programming?",
+          "question": "Which empire is credited with the construction of the Great Wall of China?",
           "answers": [
-            "Encapsulation",
-            "Polymorphism",
-            "Sequential Processing",
-            "Inheritance"
+            "Qin",
+            "Han",
+            "Sui",
+            "Tang"
           ],
-          "correctAnswer": "Sequential Processing"
+          "correctAnswer": "Qin"
         },
         {
           "id": "2",
-          "question": "What does the acronym \"OOP\" stand for in the context of programming?",
+          "question": "The Renaissance is generally considered to have begun in which region of Europe?",
           "answers": [
-            "Out Of Place",
-            "Object-Oriented Programming",
-            "Open-ended Procedure",
-            "Ordered Output Protocol"
+            "Northern Europe",
+            "Iberian Peninsula",
+            "Italy",
+            "France"
           ],
-          "correctAnswer": "Object-Oriented Programming"
+          "correctAnswer": "Italy"
         },
         {
           "id": "3",
-          "question": "A class is defined as:",
-          "answers": [
-            "An instance of an object",
-            "A blueprint for creating objects",
-            "A specific type of data structure",
-            "A method within an object"
-          ],
-          "correctAnswer": "A blueprint for creating objects"
-        },
-        {
-          "id": "4",
-          "question": "What is method overloading?",
-          "answers": [
-            "Defining multiple methods with the same name but different return types.",
-            "Defining multiple methods with the same name and the same parameters.",
-            "Defining multiple methods with the same name but different parameter lists.",
-            "Defining multiple methods with different names but the same functionality."
-          ],
-          "correctAnswer": "Defining multiple methods with the same name but different parameter lists."
-        },
-        {
-          "id": "5",
-          "question": "Inheritance in OOP allows for:",
-          "answers": [
-            "Data hiding",
-            "Code reusability",
-            "Polymorphic errors",
-            "Overloading methods"
-          ],
-          "correctAnswer": "Code reusability"
-        },
-        {
-          "id": "6",
-          "question": "Encapsulation is achieved through:",
-          "answers": [
-            "Publicly accessible data members",
-            "Private and protected access modifiers",
-            "Inheritance mechanisms",
-            "Polymorphic functions"
-          ],
-          "correctAnswer": "Private and protected access modifiers"
-        },
-        {
-          "id": "7",
-          "question": "Polymorphism allows:",
-          "answers": [
-            "Objects of different classes to be treated as objects of a common type.",
-            "Objects to have multiple inheritance simultaneously.",
-            "Methods to have only one implementation.",
-            "Data to be freely accessed from any part of the program."
-          ],
-          "correctAnswer": "Objects of different classes to be treated as objects of a common type."
-        },
-        {
-          "id": "8",
-          "question": "What is an abstract class?",
-          "answers": [
-            "A class that cannot be instantiated.",
-            "A class that has only abstract methods.",
-            "A class that has no methods.",
-            "A class that cannot be inherited from."
-          ],
-          "correctAnswer": "A class that cannot be instantiated."
-        },
-        {
-          "id": "9",
-          "question": "What is the purpose of a constructor in a class?",
-          "answers": [
-            "To destroy an object",
-            "To initialize an object",
-            "To define the class's methods",
-            "To inherit from another class"
-          ],
-          "correctAnswer": "To initialize an object"
-        },
-        {
-          "id": "10",
-          "question": "Which concept describes the ability of a single method to handle different types of objects?",
-          "answers": [
-            "Encapsulation",
-            "Abstraction",
-            "Polymorphism",
-            "Inheritance"
-          ],
-          "correctAnswer": "Polymorphism"
-        },
-        {
-          "id": "11",
-          "question": "Which empire is credited with the construction of the Great Wall of China?",
-          "answers": [
-            "Qin Dynasty",
-            "Han Dynasty",
-            "Sui Dynasty",
-            "Tang Dynasty"
-          ],
-          "correctAnswer": "Qin Dynasty"
-        },
-        {
-          "id": "12",
-          "question": "The Renaissance is considered to have begun in which Italian city-state?",
-          "answers": [
-            "Venice",
-            "Florence",
-            "Rome",
-            "Milan"
-          ],
-          "correctAnswer": "Florence"
-        },
-        {
-          "id": "13",
-          "question": "The Protestant Reformation is most associated with which historical figure?",
-          "answers": [
-            "Leonardo da Vinci",
-            "Martin Luther",
-            "Michelangelo",
-            "Niccolò Machiavelli"
-          ],
-          "correctAnswer": "Martin Luther"
-        },
-        {
-          "id": "14",
           "question": "Which treaty officially ended World War I?",
           "answers": [
             "Treaty of Versailles",
@@ -1923,402 +2528,193 @@
           "correctAnswer": "Treaty of Versailles"
         },
         {
-          "id": "15",
+          "id": "4",
           "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
           "answers": [
-            "United States and China",
-            "Soviet Union and Great Britain",
+            "United States and Britain",
+            "Soviet Union and Germany",
             "United States and Soviet Union",
-            "Great Britain and France"
+            "China and Japan"
           ],
           "correctAnswer": "United States and Soviet Union"
         },
         {
-          "id": "16",
-          "question": "The Neolithic Revolution is characterized by the development of:",
+          "id": "5",
+          "question": "The Neolithic Revolution is associated with the development of:",
           "answers": [
             "Metalworking",
-            "Writing systems",
             "Agriculture",
-            "Democracy"
+            "Writing",
+            "The wheel"
           ],
           "correctAnswer": "Agriculture"
         },
         {
-          "id": "17",
+          "id": "6",
           "question": "Which civilization developed the concept of zero?",
           "answers": [
             "Greek",
             "Roman",
             "Mayan",
-            "Gupta"
+            "Indian"
           ],
-          "correctAnswer": "Gupta"
+          "correctAnswer": "Indian"
         },
         {
-          "id": "18",
-          "question": "The Silk Road facilitated trade between which two major regions?",
+          "id": "7",
+          "question": "The Protestant Reformation was initiated by:",
           "answers": [
-            "Europe and Africa",
-            "Europe and Asia",
-            "Asia and the Americas",
-            "Africa and the Americas"
+            "Martin Luther",
+            "John Calvin",
+            "Henry VIII",
+            "Pope Leo X"
           ],
-          "correctAnswer": "Europe and Asia"
+          "correctAnswer": "Martin Luther"
         },
         {
-          "id": "19",
-          "question": "The invention of the printing press is most associated with:",
+          "id": "8",
+          "question": "The Opium Wars were fought between Britain and:",
           "answers": [
-            "Johannes Gutenberg",
-            "Leonardo da Vinci",
-            "Isaac Newton",
-            "Galileo Galilei"
+            "France",
+            "Russia",
+            "China",
+            "Japan"
           ],
-          "correctAnswer": "Johannes Gutenberg"
+          "correctAnswer": "China"
         },
         {
-          "id": "20",
-          "question": "Which event is widely considered to be the start of World War II?",
+          "id": "9",
+          "question": "Which event is widely considered the start of World War II?",
           "answers": [
-            "The assassination of Archduke Franz Ferdinand",
             "The invasion of Poland",
             "The bombing of Pearl Harbor",
+            "The assassination of Archduke Franz Ferdinand",
             "The signing of the Treaty of Versailles"
           ],
           "correctAnswer": "The invasion of Poland"
         },
         {
-          "id": "21",
-          "question": "Which of the following is NOT a core principle of object-oriented programming?",
+          "id": "10",
+          "question": "The Silk Road primarily facilitated trade between:",
           "answers": [
-            "a) Encapsulation",
-            "b) Polymorphism",
-            "c) Sequential Processing",
-            "d) Inheritance"
+            "Europe and the Americas",
+            "East Asia and the Mediterranean",
+            "Africa and South America",
+            "India and Australia"
           ],
-          "correctAnswer": "c) Sequential Processing"
-        },
-        {
-          "id": "22",
-          "question": "What does the acronym DRY stand for in software development principles?",
-          "answers": [
-            "a)  Develop Repeatedly, Yield",
-            "b)  Don't Repeat Yourself",
-            "c)  Define, Refactor, Yield",
-            "d)  Data Retrieval, Yield"
-          ],
-          "correctAnswer": "b) Don't Repeat Yourself"
-        },
-        {
-          "id": "23",
-          "question": "Which design pattern promotes loose coupling by using interfaces or abstract classes?",
-          "answers": [
-            "a)  Singleton",
-            "b)  Factory",
-            "c)  Observer",
-            "d)  Strategy"
-          ],
-          "correctAnswer": "d) Strategy"
-        },
-        {
-          "id": "24",
-          "question": "What is a common characteristic of a well-designed API?",
-          "answers": [
-            "a)  Complex implementation details exposed to the user",
-            "b)  Tight coupling between components",
-            "c)  Easy to understand and use",
-            "d)  Limited functionality"
-          ],
-          "correctAnswer": "c) Easy to understand and use"
-        },
-        {
-          "id": "25",
-          "question": "What is the purpose of version control systems like Git?",
-          "answers": [
-            "a)  To prevent software bugs",
-            "b)  To manage and track changes to code",
-            "c)  To compile code into executables",
-            "d)  To write documentation"
-          ],
-          "correctAnswer": "b) To manage and track changes to code"
-        },
-        {
-          "id": "26",
-          "question": "Which type of testing focuses on individual units of code?",
-          "answers": [
-            "a)  Integration testing",
-            "b)  System testing",
-            "c)  Unit testing",
-            "d)  Acceptance testing"
-          ],
-          "correctAnswer": "c) Unit testing"
-        },
-        {
-          "id": "27",
-          "question": "What does SOLID stand for in software design principles?",
-          "answers": [
-            "a)  Simple, Organized, Logical, Integrated, Dependable",
-            "b)  Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion",
-            "c)  Structured, Object-Oriented, Logical, Integrated, Data-driven",
-            "d)  Scalable, Organized, Lightweight, Integrated, Deployable"
-          ],
-          "correctAnswer": "b) Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion"
-        },
-        {
-          "id": "28",
-          "question": "What is a common use case for a queue data structure?",
-          "answers": [
-            "a)  Storing data in a key-value pair",
-            "b)  Managing tasks in a first-in, first-out (FIFO) manner",
-            "c)  Representing hierarchical relationships",
-            "d)  Storing data in sorted order"
-          ],
-          "correctAnswer": "b) Managing tasks in a first-in, first-out (FIFO) manner"
-        },
-        {
-          "id": "29",
-          "question": "Which programming paradigm emphasizes immutability and pure functions?",
-          "answers": [
-            "a)  Object-Oriented Programming",
-            "b)  Imperative Programming",
-            "c)  Functional Programming",
-            "d)  Procedural Programming"
-          ],
-          "correctAnswer": "c) Functional Programming"
-        },
-        {
-          "id": "30",
-          "question": "What is a potential benefit of using design patterns?",
-          "answers": [
-            "a)  Increased code complexity",
-            "b)  Reduced code reusability",
-            "c)  Improved code readability and maintainability",
-            "d)  Slower development time"
-          ],
-          "correctAnswer": "c) Improved code readability and maintainability"
+          "correctAnswer": "East Asia and the Mediterranean"
         }
       ],
       "questionsSelected": [
         {
           "id": "1",
-          "question": "Which of the following is NOT a core principle of object-oriented programming?",
+          "question": "Which empire is credited with the construction of the Great Wall of China?",
           "answers": [
-            "Encapsulation",
-            "Polymorphism",
-            "Sequential Processing",
-            "Inheritance"
+            "Qin",
+            "Han",
+            "Sui",
+            "Tang"
           ],
-          "correctAnswer": "Sequential Processing"
+          "correctAnswer": "Qin"
         },
         {
           "id": "2",
-          "question": "What does the acronym \"OOP\" stand for in the context of programming?",
+          "question": "The Renaissance is generally considered to have begun in which region of Europe?",
           "answers": [
-            "Out Of Place",
-            "Object-Oriented Programming",
-            "Open-ended Procedure",
-            "Ordered Output Protocol"
+            "Northern Europe",
+            "Iberian Peninsula",
+            "Italy",
+            "France"
           ],
-          "correctAnswer": "Object-Oriented Programming"
+          "correctAnswer": "Italy"
         },
         {
           "id": "3",
-          "question": "A class is defined as:",
+          "question": "Which treaty officially ended World War I?",
           "answers": [
-            "An instance of an object",
-            "A blueprint for creating objects",
-            "A specific type of data structure",
-            "A method within an object"
+            "Treaty of Versailles",
+            "Treaty of Tordesillas",
+            "Treaty of Paris",
+            "Treaty of Ghent"
           ],
-          "correctAnswer": "A blueprint for creating objects"
+          "correctAnswer": "Treaty of Versailles"
         },
         {
           "id": "4",
-          "question": "What is method overloading?",
-          "answers": [
-            "Defining multiple methods with the same name but different return types.",
-            "Defining multiple methods with the same name and the same parameters.",
-            "Defining multiple methods with the same name but different parameter lists.",
-            "Defining multiple methods with different names but the same functionality."
-          ],
-          "correctAnswer": "Defining multiple methods with the same name but different parameter lists."
-        },
-        {
-          "id": "5",
-          "question": "Inheritance in OOP allows for:",
-          "answers": [
-            "Data hiding",
-            "Code reusability",
-            "Polymorphic errors",
-            "Overloading methods"
-          ],
-          "correctAnswer": "Code reusability"
-        },
-        {
-          "id": "6",
-          "question": "Encapsulation is achieved through:",
-          "answers": [
-            "Publicly accessible data members",
-            "Private and protected access modifiers",
-            "Inheritance mechanisms",
-            "Polymorphic functions"
-          ],
-          "correctAnswer": "Private and protected access modifiers"
-        },
-        {
-          "id": "8",
-          "question": "What is an abstract class?",
-          "answers": [
-            "A class that cannot be instantiated.",
-            "A class that has only abstract methods.",
-            "A class that has no methods.",
-            "A class that cannot be inherited from."
-          ],
-          "correctAnswer": "A class that cannot be instantiated."
-        },
-        {
-          "id": "9",
-          "question": "What is the purpose of a constructor in a class?",
-          "answers": [
-            "To destroy an object",
-            "To initialize an object",
-            "To define the class's methods",
-            "To inherit from another class"
-          ],
-          "correctAnswer": "To initialize an object"
-        },
-        {
-          "id": "10",
-          "question": "Which concept describes the ability of a single method to handle different types of objects?",
-          "answers": [
-            "Encapsulation",
-            "Abstraction",
-            "Polymorphism",
-            "Inheritance"
-          ],
-          "correctAnswer": "Polymorphism"
-        },
-        {
-          "id": "11",
-          "question": "Which empire is credited with the construction of the Great Wall of China?",
-          "answers": [
-            "Qin Dynasty",
-            "Han Dynasty",
-            "Sui Dynasty",
-            "Tang Dynasty"
-          ],
-          "correctAnswer": "Qin Dynasty"
-        },
-        {
-          "id": "12",
-          "question": "The Renaissance is considered to have begun in which Italian city-state?",
-          "answers": [
-            "Venice",
-            "Florence",
-            "Rome",
-            "Milan"
-          ],
-          "correctAnswer": "Florence"
-        },
-        {
-          "id": "13",
-          "question": "The Protestant Reformation is most associated with which historical figure?",
-          "answers": [
-            "Leonardo da Vinci",
-            "Martin Luther",
-            "Michelangelo",
-            "Niccolò Machiavelli"
-          ],
-          "correctAnswer": "Martin Luther"
-        },
-        {
-          "id": "15",
           "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
           "answers": [
-            "United States and China",
-            "Soviet Union and Great Britain",
+            "United States and Britain",
+            "Soviet Union and Germany",
             "United States and Soviet Union",
-            "Great Britain and France"
+            "China and Japan"
           ],
           "correctAnswer": "United States and Soviet Union"
         },
         {
-          "id": "16",
-          "question": "The Neolithic Revolution is characterized by the development of:",
+          "id": "5",
+          "question": "The Neolithic Revolution is associated with the development of:",
           "answers": [
             "Metalworking",
-            "Writing systems",
             "Agriculture",
-            "Democracy"
+            "Writing",
+            "The wheel"
           ],
           "correctAnswer": "Agriculture"
         },
         {
-          "id": "20",
-          "question": "Which event is widely considered to be the start of World War II?",
+          "id": "6",
+          "question": "Which civilization developed the concept of zero?",
           "answers": [
-            "The assassination of Archduke Franz Ferdinand",
+            "Greek",
+            "Roman",
+            "Mayan",
+            "Indian"
+          ],
+          "correctAnswer": "Indian"
+        },
+        {
+          "id": "7",
+          "question": "The Protestant Reformation was initiated by:",
+          "answers": [
+            "Martin Luther",
+            "John Calvin",
+            "Henry VIII",
+            "Pope Leo X"
+          ],
+          "correctAnswer": "Martin Luther"
+        },
+        {
+          "id": "8",
+          "question": "The Opium Wars were fought between Britain and:",
+          "answers": [
+            "France",
+            "Russia",
+            "China",
+            "Japan"
+          ],
+          "correctAnswer": "China"
+        },
+        {
+          "id": "9",
+          "question": "Which event is widely considered the start of World War II?",
+          "answers": [
             "The invasion of Poland",
             "The bombing of Pearl Harbor",
+            "The assassination of Archduke Franz Ferdinand",
             "The signing of the Treaty of Versailles"
           ],
           "correctAnswer": "The invasion of Poland"
         },
         {
-          "id": "22",
-          "question": "What does the acronym DRY stand for in software development principles?",
+          "id": "10",
+          "question": "The Silk Road primarily facilitated trade between:",
           "answers": [
-            "a)  Develop Repeatedly, Yield",
-            "b)  Don't Repeat Yourself",
-            "c)  Define, Refactor, Yield",
-            "d)  Data Retrieval, Yield"
+            "Europe and the Americas",
+            "East Asia and the Mediterranean",
+            "Africa and South America",
+            "India and Australia"
           ],
-          "correctAnswer": "b) Don't Repeat Yourself"
-        },
-        {
-          "id": "23",
-          "question": "Which design pattern promotes loose coupling by using interfaces or abstract classes?",
-          "answers": [
-            "a)  Singleton",
-            "b)  Factory",
-            "c)  Observer",
-            "d)  Strategy"
-          ],
-          "correctAnswer": "d) Strategy"
-        },
-        {
-          "id": "25",
-          "question": "What is the purpose of version control systems like Git?",
-          "answers": [
-            "a)  To prevent software bugs",
-            "b)  To manage and track changes to code",
-            "c)  To compile code into executables",
-            "d)  To write documentation"
-          ],
-          "correctAnswer": "b) To manage and track changes to code"
-        },
-        {
-          "id": "27",
-          "question": "What does SOLID stand for in software design principles?",
-          "answers": [
-            "a)  Simple, Organized, Logical, Integrated, Dependable",
-            "b)  Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion",
-            "c)  Structured, Object-Oriented, Logical, Integrated, Data-driven",
-            "d)  Scalable, Organized, Lightweight, Integrated, Deployable"
-          ],
-          "correctAnswer": "b) Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion"
-        },
-        {
-          "id": "29",
-          "question": "Which programming paradigm emphasizes immutability and pure functions?",
-          "answers": [
-            "a)  Object-Oriented Programming",
-            "b)  Imperative Programming",
-            "c)  Functional Programming",
-            "d)  Procedural Programming"
-          ],
-          "correctAnswer": "c) Functional Programming"
+          "correctAnswer": "East Asia and the Mediterranean"
         }
       ]
     }
@@ -5942,219 +6338,72 @@
   "courses": [
     {
       "id": "1",
-      "coursequizID": "BIO101",
+      "Module":"M101",
       "courseName": "Introduction to Biology",
       "teacherId": "T001",
       "teacherName": "Dr. Alice Johnson",
       "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
-      "credits": 3,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "schedule": "Mon/Wed/Fri 10:00 AM - 11:30 AM",
-      "location": "Room 203, Science Building",
-      "materials": [
-        "Biology 101 Textbook",
-        "Lab Manual"
-      ],
-      "contentOfCourse": [
-        {
-          "contentId": "1",
-          "contentName": "Introduction to Biology",
-          "contentDescription": "An overview of the fundamental concepts of biology, including cell biology, genetics, and ecology."
-        },
-        {
-          "contentId": "2",
-          "contentName": "Lab Safety Guidelines",
-          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
-        },
-        {
-          "contentId": "3",
-          "contentName": "Lab Equipment Maintenance",
-          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
-        }
-      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "completed"
+      "videoLink": "https://youtu.be/tZE_fQFK8EY?si=_ZCt1TrfD2apu22m"
     },
     {
       "id": "2",
-      "coursequizID": "PHYS101",
+      "Module":"M102",
       "courseName": "Introduction to Physics",
       "teacherId": "T002",
       "teacherName": "Dr. Michael Smith",
       "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
-      "credits": 4,
       "imageUrl": "https://th.bing.com/th/id/OIP.RKDSdMJ5v5Hb4uflD3AoZgHaD5?rs=1&pid=ImgDetMain",
-      "schedule": "Tue/Thu 9:00 AM - 10:30 AM",
-      "location": "Room 102, Physics Lab",
-      "materials": [
-        "Physics 101 Textbook",
-        "Lab Safety Manual"
-      ],
-      "contentOfCourse": [
-        {
-          "contentId": "1",
-          "contentName": "Introduction to Physics",
-          "contentDescription": "An overview of the fundamental concepts of physics, including motion, energy, and forces."
-        },
-        {
-          "contentId": "2",
-          "contentName": "Lab Safety Guidelines",
-          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
-        },
-        {
-          "contentId": "3",
-          "contentName": "Lab Equipment Maintenance",
-          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
-        }
-      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "active"
+      "status": "completed"
     },
     {
       "id": "3",
-      "coursequizID": "HIST201",
+      "Module":"M103",
       "courseName": "World History",
       "teacherId": "T003",
       "teacherName": "Dr. Sarah Davis",
       "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
-      "credits": 3,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "schedule": "Mon/Wed 1:00 PM - 2:30 PM",
-      "location": "Room 104, History Department",
-      "materials": [
-        "World History Textbook",
-        "Primary Source Readings"
-      ],
-      "contentOfCourse": [
-        {
-          "contentId": "1",
-          "contentName": "Introduction to World History",
-          "contentDescription": "An overview of the fundamental concepts of world history, including major events, figures, and cultural movements."
-        },
-        {
-          "contentId": "2",
-          "contentName": "Lab Safety Guidelines",
-          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
-        },
-        {
-          "contentId": "3",
-          "contentName": "Lab Equipment Maintenance",
-          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
-        }
-      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "completed"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
     },
     {
       "id": "4",
-      "coursequizID": "CHEM101",
+      "Module":"M104",
+      "coursequizID": "104",
       "courseName": "General Chemistry",
       "teacherId": "T004",
       "teacherName": "Dr. Emily Zhang",
       "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
-      "credits": 4,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "schedule": "Tue/Thu 2:00 PM - 3:30 PM",
-      "location": "Room 205, Chemistry Lab",
-      "materials": [
-        "General Chemistry Textbook",
-        "Laboratory Notebook"
-      ],
-      "contentOfCourse": [
-        {
-          "contentId": "1",
-          "contentName": "Introduction to Chemistry",
-          "contentDescription": "An overview of the fundamental concepts of chemistry, including chemical reactions, atomic structure, and the periodic table."
-        },
-        {
-          "contentId": "2",
-          "contentName": "Lab Safety Guidelines",
-          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
-        },
-        {
-          "contentId": "3",
-          "contentName": "Lab Equipment Maintenance",
-          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
-        }
-      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "completed"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
     },
     {
       "id": "5",
-      "coursequizID": "105",
+      "Module":"M105",
       "courseName": "Introduction to Mathematics",
       "teacherId": "T005",
       "teacherName": "Mr. William Lee",
       "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
-      "credits": 3,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "schedule": "Mon/Fri 11:00 AM - 12:30 PM",
-      "location": "Room 101, Math Department",
-      "materials": [
-        "Mathematics 101 Textbook",
-        "Scientific Calculator"
-      ],
-      "contentOfCourse": [
-        {
-          "contentId": "1",
-          "contentName": "Introduction to Mathematics",
-          "contentDescription": "An overview of the fundamental concepts of mathematics, including algebra, calculus, and geometry."
-        },
-        {
-          "contentId": "2",
-          "contentName": "Lab Safety Guidelines",
-          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
-        },
-        {
-          "contentId": "3",
-          "contentName": "Lab Equipment Maintenance",
-          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
-        }
-      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "completed"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
     },
     {
       "id": "6",
-      "coursequizID": "106",
+      "Module":"M106",
       "courseName": "Principles of Economics",
       "teacherId": "T006",
       "teacherName": "Dr. Rachel Green",
       "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
-      "credits": 3,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "schedule": "Mon/Wed 3:00 PM - 4:30 PM",
-      "location": "Room 303, Economics Building",
-      "materials": [
-        "Economics 101 Textbook",
-        "Macroeconomics Reader"
-      ],
-      "contentOfCourse": [
-        {
-          "contentId": "1",
-          "contentName": "Introduction to Economics",
-          "contentDescription": "An overview of the fundamental concepts of economics, including microeconomics and macroeconomics."
-        },
-        {
-          "contentId": "2",
-          "contentName": "Lab Safety Guidelines",
-          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
-        },
-        {
-          "contentId": "3",
-          "contentName": "Lab Equipment Maintenance",
-          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
-        }
-      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "completed"
+      "status": "active"
     }
   ],
   "modules": [

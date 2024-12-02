@@ -16,7 +16,7 @@ const Formateur = () => {
   const [selectedFormateur, setSelectedFormateur] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modules, setModules] = useState([]);
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -29,8 +29,8 @@ const Formateur = () => {
         }
         const data = await response.json();
         dispatch(setFormateurs(data.formateurs));
-        
-        const itemsParPage = 21; 
+
+        const itemsParPage = 21;
         setTotalPages(Math.ceil(data.formateurs.length / itemsParPage));
       } catch (error) {
         console.error('Error fetching data:', error.message);
@@ -57,26 +57,25 @@ const Formateur = () => {
 
   const exportToPDF = async (modules, formateurName) => {
     const doc = new jsPDF();
-    const logoURL =
-      "https://th.bing.com/th/id/OIP.Sb1FiwDyjsY5DePGcoEAwwHaHa?rs=1&pid=ImgDetMain"; 
-    const label = "Liste des Modules"; 
-  
+    const logoURL = 'https://th.bing.com/th/id/OIP.Sb1FiwDyjsY5DePGcoEAwwHaHa?rs=1&pid=ImgDetMain';
+    const label = 'Liste des Modules';
+
     const img = new Image();
     img.src = logoURL;
-  
+
     img.onload = () => {
-      const imgWidth = 20; 
-      const imgHeight = (img.height * imgWidth) / img.width; 
-      doc.addImage(img, "PNG", 10, 10, imgWidth, imgHeight); 
-  
+      const imgWidth = 20;
+      const imgHeight = (img.height * imgWidth) / img.width;
+      doc.addImage(img, 'PNG', 10, 10, imgWidth, imgHeight);
+
       doc.setFontSize(18);
-      doc.text(label, imgWidth + 30, 25); 
-  
+      doc.text(label, imgWidth + 30, 25);
+
       doc.setFontSize(12);
-  
+
       autoTable(doc, {
-        startY: 40, 
-        head: [["Code", "Intitulé", "MH Synthese", "MH P", "MH Total"]],
+        startY: 40,
+        head: [['Code', 'Intitulé', 'MH Synthese', 'MH P', 'MH Total']],
         body: modules.map((module) => [
           module.code,
           module.intitule,
@@ -85,11 +84,10 @@ const Formateur = () => {
           module.mhTotal,
         ]),
       });
-  
+
       doc.save(`Modules_${formateurName}.pdf`);
     };
   };
-  
 
   const exportToExcel = (modules, formateurName) => {
     const worksheet = XLSX.utils.json_to_sheet(modules);
@@ -158,7 +156,10 @@ const Formateur = () => {
             </thead>
             <tbody>
               {currentFormateurs.map((formateur) => (
-                <tr key={formateur.id} className="bg-white text-gray-700 dark:bg-gray-800 dark:text-white">
+                <tr
+                  key={formateur.id}
+                  className="bg-white text-gray-700 dark:bg-gray-800 dark:text-white"
+                >
                   <td className="px-6 py-3 border-b">{formateur.id}</td>
                   <td className="px-6 py-3 border-b">{formateur.nom}</td>
                   <td className="px-6 py-3 border-b">{formateur.prenom}</td>
@@ -251,6 +252,5 @@ const Formateur = () => {
     </div>
   );
 };
-
 
 export default Formateur;

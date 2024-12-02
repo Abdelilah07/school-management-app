@@ -26,9 +26,7 @@ const rolePermissions = {
   ],
   admin: [
     'Home',
-    'Courses',
     'Attendance',
-    'Schedule',
     'Documents',
     'Demandes',
     'Scheduler',
@@ -179,7 +177,7 @@ const Sidebar = memo(() => {
   };
 
   const sidebarClasses = `
-    fixed rounded-lg top-20 
+    fixed rounded-2xl top-20 
     h-[calc(100vh-5.5rem)] 
     bg-base-100 border-r border-base-200
     transition-transform duration-${TRANSITION_DURATION} ease-in-out

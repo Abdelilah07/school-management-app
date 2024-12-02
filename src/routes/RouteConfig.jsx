@@ -23,6 +23,7 @@ import {
   CompetencesPage,
   ModulesPage,
   Course,
+  CoursesFormateur,
   GroupesPage,
   Formateur,
   AllQuestions,
@@ -77,7 +78,7 @@ const RouteConfig = () => {
           path="/courses"
           element={
             <ProtectedRoute allowedRoles={['super user', 'trainer', 'trainee']}>
-              <CoursesPage />
+              {({ role }) => (role === 'trainer' ? <CoursesFormateur /> : <CoursesPage />)}
             </ProtectedRoute>
           }
         />

@@ -179,15 +179,9 @@ const WeekAdmin = () => {
     }));
   };
 
-
-
-
-
   const isStudentAbsentOnDay = (student, day) => {
     return student.absenceDates.has(day.format('YYYY-MM-DD'));
   };
-
-
 
   const handleSave = async () => {
     try {
@@ -327,7 +321,10 @@ const WeekAdmin = () => {
                                       className="radio radio-primary radio-sm mr-1"
                                       disabled={!isEditing}
                                       checked={
-                                        (editedAbsences[student.studentId]?.[day.format('YYYY-MM-DD')] || student.absenceDetails[day.format('YYYY-MM-DD')]) === 'AJ'
+                                        (editedAbsences[student.studentId]?.[
+                                          day.format('YYYY-MM-DD')
+                                        ] || student.absenceDetails[day.format('YYYY-MM-DD')]) ===
+                                        'AJ'
                                       }
                                       onChange={() =>
                                         handleAbsenceTypeChange(
@@ -346,7 +343,10 @@ const WeekAdmin = () => {
                                       className="radio radio-error radio-sm mr-1"
                                       disabled={!isEditing}
                                       checked={
-                                        (editedAbsences[student.studentId]?.[day.format('YYYY-MM-DD')] || student.absenceDetails[day.format('YYYY-MM-DD')]) === 'ANJ'
+                                        (editedAbsences[student.studentId]?.[
+                                          day.format('YYYY-MM-DD')
+                                        ] || student.absenceDetails[day.format('YYYY-MM-DD')]) ===
+                                        'ANJ'
                                       }
                                       onChange={() =>
                                         handleAbsenceTypeChange(

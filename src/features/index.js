@@ -9,6 +9,7 @@ export { default as scheduleReducer } from './schedule/scheduleSlice';
 export { default as traineesReducer } from './trainees/traineesSlice';
 export { default as moduleReducer } from './modules/moduleSlice';
 export { default as coursesReducer } from './courses/coursesSlice';
+export { default as coursesformateurReducer } from './coursesFormateur/coursesFormateurSlice';
 export { default as documentsReducer } from './documents/documentSlice';
 export { default as secteursReducer } from './secteur/secteurslice';
 export { default as GroupesSlice } from './Groupes/GroupesSlice';

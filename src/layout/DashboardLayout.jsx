@@ -20,8 +20,8 @@ const DashboardContent = () => {
         className={`
           fixed overflow-y-auto
           h-[calc(100vh-5.5rem)] 
-          top-20 right-2 p-2
-          bg-base-100 rounded-lg
+          top-20 right-2 p-4
+          bg-base-100 rounded-2xl
           transition-all duration-300 ease-in-out
           ${isMobile ? `left-2 ${isSidebarOpen ? 'opacity-50' : 'opacity-100'}` : 'left-[17rem]'}
         `}
