@@ -27,10 +27,7 @@ const CoursesFormateur = () => {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Courses List</h2>
-        <button
-          onClick={() => navigate('/CoursesFormateur/addCourse')}
-          className="btn btn-primary"
-        >
+        <button onClick={() => navigate('/CoursesFormateur/addCourse')} className="btn btn-primary">
           Add Course
         </button>
       </div>
@@ -64,8 +61,12 @@ const CoursesFormateur = () => {
                       className="w-20 h-auto rounded"
                     />
                   </td>
-                  <td><a href={course.videoLink} >videoUrl</a></td>
-                  <td><a href={course.pdfUrl} >pdfUrl</a></td>
+                  <td>
+                    <a href={course.videoLink}>videoUrl</a>
+                  </td>
+                  <td>
+                    <a href={course.pdfUrl}>pdfUrl</a>
+                  </td>
                   <td className="flex gap-2">
                     <button
                       onClick={() => handleUpdateCourse(course.id)}

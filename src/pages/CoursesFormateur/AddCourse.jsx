@@ -54,7 +54,7 @@ const AddCourse = () => {
     doc.text(`pdfUrl: ${newCourse.pdfUrl}`, 10, 50);
 
     // Reset form and navigate to course list
-    setNewCourse({ courseId: '',Module: '',courseName: '',imageUrl: '',pdfUrl: ''});
+    setNewCourse({ courseId: '', Module: '', courseName: '', imageUrl: '', pdfUrl: '' });
     setPdfFile(null);
     navigate('/CoursesFormateur');
   };
@@ -64,7 +64,6 @@ const AddCourse = () => {
       <h1 className="text-3xl font-bold text-center mb-6">Add New Course</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
-
         {/* Module */}
         <div>
           <label className="block font-semibold">Module</label>
@@ -107,18 +106,11 @@ const AddCourse = () => {
         {/* PDF Upload */}
         <div>
           <label className="block font-semibold">Upload PDF</label>
-          <input
-            type="text"
-            onChange={handlePdfChange}
-            className="input input-bordered w-full"
-          />
+          <input type="text" onChange={handlePdfChange} className="input input-bordered w-full" />
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="btn btn-primary w-full"
-        >
+        <button type="submit" className="btn btn-primary w-full">
           Add Course
         </button>
       </form>

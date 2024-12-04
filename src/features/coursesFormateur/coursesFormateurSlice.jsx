@@ -25,14 +25,17 @@ export const deleteCourse = createAsyncThunk('courses/deleteCourse', async (cour
 });
 
 // Update a course
-export const updateCourse = createAsyncThunk('courses/updateCourse', async ({ id, updatedCourse }) => {
-  const response = await fetch(`${API_URL}/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(updatedCourse),
-  });
-  return response.json();
-});
+export const updateCourse = createAsyncThunk(
+  'courses/updateCourse',
+  async ({ id, updatedCourse }) => {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedCourse),
+    });
+    return response.json();
+  }
+);
 
 // Initial state
 const initialState = {
