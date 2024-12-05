@@ -14,6 +14,7 @@ const AddCourse = () => {
     courseName: '',
     teacherName:'',
     teacherId:'',
+    videoLink: '',
     imageUrl: '',
     pdfUrl: '',
   });
@@ -56,7 +57,7 @@ const AddCourse = () => {
     doc.text(`pdfUrl: ${newCourse.pdfUrl}`, 10, 50);
 
     // Reset form and navigate to course list
-    setNewCourse({ courseId: '',Module: '',courseName: '',imageUrl: '',pdfUrl: ''});
+    setNewCourse({ courseId: '', Module: '', courseName: '', imageUrl: '', pdfUrl: '' });
     setPdfFile(null);
     navigate('/courses');
   };
@@ -65,7 +66,7 @@ const AddCourse = () => {
     <div className="p-8 bg-base-100">
       <h1 className="text-3xl font-bold text-center mb-6">Add New Course</h1>
 
-      <form onSubmit={handleSubmit} className=" mx-auto">
+      <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
 
         {/* Module */}
         <div>
@@ -115,6 +116,18 @@ const AddCourse = () => {
           />
         </div>
 
+        {/* videoUrl */}
+        <div>
+          <label className="block font-semibold">videoUrl</label>
+          <input
+            type="text"
+            name="videoLink"
+            onChange={handleInputChange}
+            className="input input-bordered w-full"
+            placeholder="Enter  video URL"
+            required
+          />
+        </div>
         {/* imageUrl */}
         <div>
           <label className="block font-semibold">imageUrl URL</label>
@@ -134,16 +147,12 @@ const AddCourse = () => {
           <input
             type="text"
             onChange={handlePdfChange}
-            placeholder="Enter pdf URL"
             className="input input-bordered w-full"
           />
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="btn btn-primary w-full"
-        >
+        <button type="submit" className="btn btn-primary w-full">
           Add Course
         </button>
       </form>

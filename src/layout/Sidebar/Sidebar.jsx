@@ -12,6 +12,7 @@ const rolePermissions = {
     'Quizzes',
     'Attendance',
     'Schedule',
+    'Generate Documents',
     'Documents',
     'Demandes',
     'Scheduler',

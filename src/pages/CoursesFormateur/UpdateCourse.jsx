@@ -13,6 +13,9 @@ const UpdateCourse = () => {
   const [courseData, setCourseData] = useState({
     Module: '',
     courseName: '',
+    teacherName:'',
+    teacherId:'',
+    videoLink: '',
     imageUrl: '',
     pdfUrl: null,
   });
@@ -106,6 +109,18 @@ const UpdateCourse = () => {
             onChange={handleChange}
             className="input input-bordered w-full"
             placeholder="Enter Teacher Name"
+            required
+          />
+        </div>
+        {/* videoUrl */}
+        <div>
+          <label className="block font-semibold">videoUrl</label>
+          <input
+            type="text"
+            name="videoLink"
+            value={courseData.videoLink}
+            onChange={handleChange}
+            className="input input-bordered w-full"
             required
           />
         </div>

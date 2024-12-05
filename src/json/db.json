@@ -6403,6 +6403,40 @@
       "status": "completed"
     },
     {
+      "id": "3",
+      "Module": "M103",
+      "courseName": "World History",
+      "teacherId": "T003",
+      "teacherName": "Dr. Sarah Davis",
+      "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
+    },
+    {
+      "id": "4",
+      "Module": "M104",
+      "coursequizID": "104",
+      "courseName": "General Chemistry",
+      "teacherId": "T004",
+      "teacherName": "Dr. Emily Zhang",
+      "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
+    },
+    {
+      "id": "5",
+      "Module": "M105",
+      "courseName": "Introduction to Mathematics",
+      "teacherId": "T005",
+      "teacherName": "Mr. William Lee",
+      "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
+    },
+    {
       "id": "6",
       "Module": "M106",
       "courseName": "Principles of Economics",
@@ -6417,7 +6451,7 @@
     {
       "id": "sah99vq",
       "courseId": "",
-      "Module": "M107",
+      "Module": "M108",
       "courseName": "Mongodb",
       "imageUrl": "https://th.bing.com/th?q=MongoDB+Logo.svg&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=2.6&pid=InlineBlock&mkt=en-XA&cc=MA&setlang=fr&adlt=strict&t=1&mw=247",
       "pdfUrl": "http://elmouelhia.free.fr/courses/nosql/coursMongoDB.pdf",
@@ -7561,6 +7595,28 @@
       "user": "Admin Admin",
       "status": "en cours",
       "submissionDate": "11/21/2024",
+      "processingTime": "3-5 jours"
+    },
+    {
+      "id": "75b7",
+      "document": "Relevé de notes",
+      "description": "Résumé des notes obtenues durant les examens",
+      "requestDate": "2024-12-04",
+      "files": [
+        {
+          "name": "tp_scrum.pdf",
+          "size": 333898,
+          "type": "application/pdf"
+        },
+        {
+          "name": "diagram.png",
+          "size": 141728,
+          "type": "image/png"
+        }
+      ],
+      "user": "Alice Smith",
+      "status": "en cours",
+      "submissionDate": "03/12/2024",
       "processingTime": "3-5 jours"
     }
   ],

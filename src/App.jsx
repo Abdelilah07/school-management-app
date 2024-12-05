@@ -14,7 +14,13 @@ function App() {
   }, [theme]);
 
   return (
-    <Router basename={basename}>
+    <Router
+      basename={basename}
+      future={{
+        v7_relativeSplatPath: true,
+        v7_startTransition: true,
+      }}
+    >
       <RouteConfig />
     </Router>
   );
