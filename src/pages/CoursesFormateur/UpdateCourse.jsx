@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { updateCourse, fetchCourses } from '../../features/coursesFormateur/coursesFormateurSlice';
-import jsPDF from 'jspdf';
 
 const UpdateCourse = () => {
   const { courseId } = useParams(); // Match courseId from route params
@@ -19,7 +18,6 @@ const UpdateCourse = () => {
   });
 
   const [pdfFile, setPdfFile] = useState(null);
-  const [pdfPreviewData, setPdfPreviewData] = useState('');
 
   // Fetch courses or set course data when component mounts
   useEffect(() => {
@@ -35,18 +33,9 @@ const UpdateCourse = () => {
 
   // Handle input changes
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-
-    if (name === 'pdfUrl' && files[0]) {
-      setPdfFile(files[0]); // Store file
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setPdfPreviewData(event.target.result); // Preview PDF
-      };
-      reader.readAsDataURL(files[0]);
-    } else {
-      setCourseData({ ...courseData, [name]: value });
-    }
+    const { name, value } = e.target;
+    setCourseData({ ...courseData, [name]: value });
+    
   };
 
   // Handle form submission
@@ -63,21 +52,11 @@ const UpdateCourse = () => {
     dispatch(updateCourse({ id: courseId, updatedCourse }))
       .unwrap()
       .then(() => {
-        navigate('/CoursesFormateur'); // Navigate back
+        navigate('/courses'); // Navigate back
       })
       .catch((error) => {
         console.error('Error updating course:', error);
       });
-
-    // Generate PDF with jsPDF (optional)
-    const doc = new jsPDF();
-    doc.text(`Module: ${courseData.Module}`, 10, 10);
-    doc.text(`courseName: ${courseData.courseName}`, 10, 20);
-    doc.text(`imageUrl URL: ${courseData.imageUrl}`, 10, 30);
-
-    if (pdfFile) {
-      doc.text(`PDF Uploaded: ${pdfFile.name}`, 10, 40);
-    }
   };
 
   return (
@@ -91,7 +70,7 @@ const UpdateCourse = () => {
             name="Module"
             value={courseData.Module}
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="input input-bordered w-full"
             required
           />
         </div>
@@ -102,18 +81,42 @@ const UpdateCourse = () => {
             name="Title"
             value={courseData.courseName}
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold">ID du formateur</label>
+          <input
+            type="text"
+            name="teacherId"
+            value={courseData.teacherId}
+            onChange={handleChange}
+            className="input input-bordered w-full"
+            placeholder="Enter Course ID"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold">Nom du formateur</label>
+          <input
+            type="text"
+            name="teacherName"
+            value={courseData.teacherName}
+            onChange={handleChange}
+            className="input input-bordered w-full"
+            placeholder="Enter Teacher Name"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block font-semibold">imageUrl</label>
+          <label className="block font-semibold">Image URL</label>
           <input
             type="text"
             name="imageUrl"
             value={courseData.imageUrl}
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="input input-bordered w-full"
             required
           />
         </div>
@@ -124,17 +127,12 @@ const UpdateCourse = () => {
             name="pdfUrl"
             value={courseData.pdfUrl}
             onChange={handleChange}
-            className="w-full p-2 rounded border border-gray-300"
+            className="input input-bordered w-full"
           />
         </div>
-        {pdfPreviewData && (
-          <div className="pdf-preview mt-4 border p-4">
-            <embed src={pdfPreviewData} type="application/pdf" width="100%" height="400px" />
-          </div>
-        )}
         <button
           type="submit"
-          className="bg-green-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4"
+          className="btn btn-primary w-full"
         >
           Save Changes
         </button>

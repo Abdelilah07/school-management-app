@@ -8,6 +8,8 @@ import SignupPage from '../features/auth/components/SignupForm';
 import DemandesPage from '../pages/Documents/DemandesPage';
 import {
   HomePage,
+  UpdateCourse,
+  AddCourse,
   NotFoundPage,
   CoursesPage,
   QuizzesPage,
@@ -82,6 +84,22 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/courses/addCourse"
+          element={
+            <ProtectedRoute allowedRoles={['trainer']}>
+              <AddCourse />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/courses/update/:courseId"
+          element={
+    <ProtectedRoute allowedRoles={['trainer']}>
+      <UpdateCourse />
+    </ProtectedRoute>
+  }
+/>
         <Route
           path="/courses/:id"
           element={

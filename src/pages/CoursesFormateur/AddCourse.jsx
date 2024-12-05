@@ -12,6 +12,8 @@ const AddCourse = () => {
     courseId: '',
     Module: '',
     courseName: '',
+    teacherName:'',
+    teacherId:'',
     imageUrl: '',
     pdfUrl: '',
   });
@@ -56,14 +58,14 @@ const AddCourse = () => {
     // Reset form and navigate to course list
     setNewCourse({ courseId: '',Module: '',courseName: '',imageUrl: '',pdfUrl: ''});
     setPdfFile(null);
-    navigate('/CoursesFormateur');
+    navigate('/courses');
   };
 
   return (
     <div className="p-8 bg-base-100">
       <h1 className="text-3xl font-bold text-center mb-6">Add New Course</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
+      <form onSubmit={handleSubmit} className=" mx-auto">
 
         {/* Module */}
         <div>
@@ -73,7 +75,7 @@ const AddCourse = () => {
             name="Module"
             onChange={handleInputChange}
             className="input input-bordered w-full"
-            placeholder="Enter Module Name"
+            placeholder="Enter the Module Name"
             required
           />
         </div>
@@ -86,7 +88,29 @@ const AddCourse = () => {
             name="courseName"
             onChange={handleInputChange}
             className="input input-bordered w-full"
-            placeholder="Enter Course courseName"
+            placeholder="Enter the courseName"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold">ID du formateur</label>
+          <input
+            type="text"
+            name="teacherId"
+            onChange={handleInputChange}
+            className="input input-bordered w-full"
+            placeholder="Enter The ID of the teacher"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold">Nom du formateur</label>
+          <input
+            type="text"
+            name="teacherName"
+            onChange={handleInputChange}
+            className="input input-bordered w-full"
+            placeholder="Enter the Name of the teacher"
             required
           />
         </div>
@@ -99,7 +123,7 @@ const AddCourse = () => {
             name="imageUrl"
             onChange={handleInputChange}
             className="input input-bordered w-full"
-            placeholder="Enter imageUrl Image URL"
+            placeholder="Enter  Image URL"
             required
           />
         </div>
@@ -110,6 +134,7 @@ const AddCourse = () => {
           <input
             type="text"
             onChange={handlePdfChange}
+            placeholder="Enter pdf URL"
             className="input input-bordered w-full"
           />
         </div>

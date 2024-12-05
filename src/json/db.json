@@ -2473,7 +2473,7 @@
       ],
       "questionsSelected": [
         {
-          "id": "3",
+          "id": "1732647826453",
           "question": "What is the chemical formula for water?",
           "answers": [
             "ff",
@@ -2481,8 +2481,7 @@
             "ff",
             "ff"
           ],
-          "correctAnswer": "fff",
-          "id": "1732647826453"
+          "correctAnswer": "fff"
         }
       ]
     },
@@ -6381,18 +6380,19 @@
   "courses": [
     {
       "id": "1",
-      "Module":"M101",
+      "Module": "M101",
       "courseName": "Introduction to Biology",
       "teacherId": "T001",
       "teacherName": "Dr. Alice Johnson",
       "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://youtu.be/tZE_fQFK8EY?si=_ZCt1TrfD2apu22m"
+      "pdfUrl": "https://www.basicbiology.net/wp-content/uploads/edd/2018/05/Basic-Biology-an-introduction.pdf",
+      "videoLink": "https://youtu.be/tZE_fQFK8EY?si=_ZCt1TrfD2apu22m",
+      "Title": "Introduction to Biolog"
     },
     {
       "id": "2",
-      "Module":"M102",
+      "Module": "M102",
       "courseName": "Introduction to Physics",
       "teacherId": "T002",
       "teacherName": "Dr. Michael Smith",
@@ -6403,42 +6403,8 @@
       "status": "completed"
     },
     {
-      "id": "3",
-      "Module":"M103",
-      "courseName": "World History",
-      "teacherId": "T003",
-      "teacherName": "Dr. Sarah Davis",
-      "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
-      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
-    },
-    {
-      "id": "4",
-      "Module":"M104",
-      "coursequizID": "104",
-      "courseName": "General Chemistry",
-      "teacherId": "T004",
-      "teacherName": "Dr. Emily Zhang",
-      "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
-      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
-    },
-    {
-      "id": "5",
-      "Module":"M105",
-      "courseName": "Introduction to Mathematics",
-      "teacherId": "T005",
-      "teacherName": "Mr. William Lee",
-      "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
-      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
-    },
-    {
       "id": "6",
-      "Module":"M106",
+      "Module": "M106",
       "courseName": "Principles of Economics",
       "teacherId": "T006",
       "teacherName": "Dr. Rachel Green",
@@ -6447,6 +6413,16 @@
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
       "status": "active"
+    },
+    {
+      "id": "sah99vq",
+      "courseId": "",
+      "Module": "M107",
+      "courseName": "Mongodb",
+      "imageUrl": "https://th.bing.com/th?q=MongoDB+Logo.svg&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=2.6&pid=InlineBlock&mkt=en-XA&cc=MA&setlang=fr&adlt=strict&t=1&mw=247",
+      "pdfUrl": "http://elmouelhia.free.fr/courses/nosql/coursMongoDB.pdf",
+      "teacherId": "T001",
+      "teacherName": "Maichel"
     }
   ],
   "modules": [
