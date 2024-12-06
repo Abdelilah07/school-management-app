@@ -40,6 +40,7 @@ export default function AttendanceAdmin() {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
+      console.log(data)
     };
 
     fetchData();
