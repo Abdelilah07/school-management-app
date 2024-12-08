@@ -7,14 +7,13 @@ const CoursesFormateur = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { courses } = useSelector((state) => state.courses);
-
   useEffect(() => {
     // Fetch courses from the API
     dispatch(fetchCourses());
   }, [dispatch]);
 
   const handleUpdateCourse = (id) => {
-    navigate(`/school-management-app/courses/update/${id}`);
+    navigate(`/courses/update/${id}`);
   };
 
   const handleDeleteCourse = (id) => {
@@ -27,7 +26,10 @@ const CoursesFormateur = () => {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Courses List</h2>
-        <button onClick={() => navigate('/CoursesFormateur/addCourse')} className="btn btn-primary">
+        <button
+          onClick={() => navigate('/courses/addCourse')}
+          className="btn btn-primary"
+        >
           Add Course
         </button>
       </div>
@@ -39,6 +41,7 @@ const CoursesFormateur = () => {
               <th>#</th>
               <th>Module</th>
               <th>Title</th>
+              <th>ID du formateur</th>
               <th>Nom du formateur</th>
               <th>imageUrl</th>
               <th>videoUrl</th>
@@ -53,6 +56,8 @@ const CoursesFormateur = () => {
                   <td>{index + 1}</td>
                   <td>{course.Module}</td>
                   <td>{course.courseName}</td>
+                  <td>{course.courseDescription}</td>
+                  <td>{course.teacherId}</td>
                   <td>{course.teacherName}</td>
                   <td>
                     <img
@@ -61,12 +66,8 @@ const CoursesFormateur = () => {
                       className="w-20 h-auto rounded"
                     />
                   </td>
-                  <td>
-                    <a href={course.videoLink}>videoUrl</a>
-                  </td>
-                  <td>
-                    <a href={course.pdfUrl}>pdfUrl</a>
-                  </td>
+                  <td><a href={course.videoLink} >videoUrl</a></td>
+                  <td><a href={course.pdfUrl} >pdfUrl</a></td>
                   <td className="flex gap-2">
                     <button
                       onClick={() => handleUpdateCourse(course.id)}

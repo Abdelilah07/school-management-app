@@ -3,6 +3,8 @@ export { default as AboutPage } from './About/AboutPage';
 export { default as NotFoundPage } from './NotFound/NotFoundPage';
 export { default as CoursesPage } from './Courses/CoursesPage';
 export { default as CoursesFormateur } from './CoursesFormateur/CoursesFormateur';
+export { default as UpdateCourse } from './CoursesFormateur/UpdateCourse';
+export { default as AddCourse } from './CoursesFormateur/AddCourse';
 export { default as FilieresPage } from './Filieres/FilieresPage';
 export { default as QuizzesPage } from './Quizzes/QuizzesPage';
 export { default as Quiz } from './Quizzes/Quiz';

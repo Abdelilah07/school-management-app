@@ -6,10 +6,10 @@ import DashboardLayout from '../layout/DashboardLayout';
 import LoginPage from '../features/auth/components/LoginForm';
 import SignupPage from '../features/auth/components/SignupForm';
 import DemandesPage from '../pages/Documents/DemandesPage';
-import Docs from '../pages/Documents/Docs/Docs';
-import AddCourse from '../pages/CoursesFormateur/AddCourse';
 import {
   HomePage,
+  UpdateCourse,
+  AddCourse,
   NotFoundPage,
   CoursesPage,
   QuizzesPage,
@@ -32,7 +32,7 @@ import {
   QuizQuestions,
   TeacherQuizzes,
   SecteursPage,
-  SchedulerPage
+  SchedulerPage,
 } from '../pages';
 
 const RouteConfig = () => {
@@ -84,20 +84,27 @@ const RouteConfig = () => {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/courses/addCourse"
+          element={
+            <ProtectedRoute allowedRoles={['trainer']}>
+              <AddCourse />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/courses/update/:courseId"
+          element={
+    <ProtectedRoute allowedRoles={['trainer']}>
+      <UpdateCourse />
+    </ProtectedRoute>
+  }
+/>
         <Route
           path="/courses/:id"
           element={
             <ProtectedRoute allowedRoles={['super user', 'trainer', 'trainee']}>
               <Course />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/CoursesFormateur/addCourse"
-          element={
-            <ProtectedRoute allowedRoles={['super user', 'trainer']}>
-              <AddCourse />
             </ProtectedRoute>
           }
         />
@@ -116,14 +123,6 @@ const RouteConfig = () => {
           element={
             <ProtectedRoute allowedRoles={['super user', 'trainer', 'admin']}>
               <AttendancePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/docs" 
-          element={
-            <ProtectedRoute allowedRoles={['super user', 'admin']}>
-              <Docs />
             </ProtectedRoute>
           }
         />
