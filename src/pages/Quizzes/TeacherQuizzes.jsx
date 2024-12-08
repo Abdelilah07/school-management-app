@@ -23,7 +23,11 @@ const TeacherQuizzes = () => {
     try {
       const response = await fetch(`${BASE_URL}/quizzes`);
       const data = await response.json();
-      setQuizzes(data);
+      const quizzesWithUniqueIds = data.map((quiz, index) => ({
+        ...quiz,
+        id: quiz.id || `quiz-${Date.now()}-${index}`
+      }));
+      setQuizzes(quizzesWithUniqueIds);
     } catch (error) {
       console.error('Error fetching quizzes:', error);
     }
@@ -145,15 +149,16 @@ const TeacherQuizzes = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {filteredQuizzes.map((quiz) => (
-            <QuizCardTeacher
-              key={quiz.id}
-              quiz={quiz}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
-              onViewDetails={handleViewDetails}
-              onAddQuestions={handleAddQuestions}
-            />
+          {filteredQuizzes.map((quiz, index) => (
+            <div key={`quiz-card-${quiz.id}-${index}`}>
+              <QuizCardTeacher
+                quiz={quiz}
+                onDelete={() => handleDelete(quiz.id)}
+                onEdit={() => handleEdit(quiz)}
+                onViewDetails={() => handleViewDetails(quiz.id)}
+                onAddQuestions={() => handleAddQuestions(quiz.id)}
+              />
+            </div>
           ))}
         </div>
 

@@ -2492,228 +2492,134 @@
       "teacherName": "Jim Halpert",
       "Deadline": "2024-12-04T12:40",
       "status": "draft",
+      "questions": [],
+      "questionsSelected": []
+    },
+    {
+      "id": "80a8",
+      "courseName": "Introduction to Biology",
+      "coursequizID": "BIO101",
+      "teacherName": "Carlos Martinez",
+      "Deadline": "2025-01-02T23:31",
+      "status": "active"
+    },
+    {
+      "id": "8193",
+      "courseName": "Introduction to Mathematics",
+      "coursequizID": "105",
+      "teacherName": "Carlos Martinez",
+      "Deadline": "2025-01-17T23:42",
+      "status": "active",
       "questions": [
         {
           "id": "1",
-          "question": "Which empire is credited with the construction of the Great Wall of China?",
+          "question": "Which of the following is NOT a fundamental branch of mathematics?",
           "answers": [
-            "Qin",
-            "Han",
-            "Sui",
-            "Tang"
+            "Algebra",
+            "Geometry",
+            "Astrology",
+            "Calculus"
           ],
-          "correctAnswer": "Qin"
+          "correctAnswer": "Astrology"
         },
         {
           "id": "2",
-          "question": "The Renaissance is generally considered to have begun in which region of Europe?",
+          "question": "What is the result of 2² + 3²?",
           "answers": [
-            "Northern Europe",
-            "Iberian Peninsula",
-            "Italy",
-            "France"
+            "13",
+            "25",
+            "10",
+            "36"
           ],
-          "correctAnswer": "Italy"
+          "correctAnswer": "13"
         },
         {
           "id": "3",
-          "question": "Which treaty officially ended World War I?",
+          "question": "What does the term \"commutative\" refer to in mathematics?",
           "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
+            "The order of operations",
+            "The ability to switch the order of operands without changing the result",
+            "The distribution of numbers",
+            "The inverse of an operation"
           ],
-          "correctAnswer": "Treaty of Versailles"
+          "correctAnswer": "The ability to switch the order of operands without changing the result"
         },
         {
           "id": "4",
-          "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
+          "question": "What type of number is π (pi)?",
           "answers": [
-            "United States and Britain",
-            "Soviet Union and Germany",
-            "United States and Soviet Union",
-            "China and Japan"
+            "Integer",
+            "Rational",
+            "Irrational",
+            "Complex"
           ],
-          "correctAnswer": "United States and Soviet Union"
+          "correctAnswer": "Irrational"
         },
         {
           "id": "5",
-          "question": "The Neolithic Revolution is associated with the development of:",
+          "question": "Which number system uses only the digits 0 and 1?",
           "answers": [
-            "Metalworking",
-            "Agriculture",
-            "Writing",
-            "The wheel"
+            "Decimal",
+            "Binary",
+            "Hexadecimal",
+            "Octal"
           ],
-          "correctAnswer": "Agriculture"
+          "correctAnswer": "Binary"
         },
         {
           "id": "6",
-          "question": "Which civilization developed the concept of zero?",
+          "question": "What is the name given to a polygon with three sides?",
           "answers": [
-            "Greek",
-            "Roman",
-            "Mayan",
-            "Indian"
+            "Quadrilateral",
+            "Pentagon",
+            "Triangle",
+            "Hexagon"
           ],
-          "correctAnswer": "Indian"
+          "correctAnswer": "Triangle"
         },
         {
           "id": "7",
-          "question": "The Protestant Reformation was initiated by:",
+          "question": "What is the value of 0! (zero factorial)?",
           "answers": [
-            "Martin Luther",
-            "John Calvin",
-            "Henry VIII",
-            "Pope Leo X"
+            "0",
+            "1",
+            "Undefined",
+            "-1"
           ],
-          "correctAnswer": "Martin Luther"
+          "correctAnswer": "1"
         },
         {
           "id": "8",
-          "question": "The Opium Wars were fought between Britain and:",
+          "question": "What does the symbol ∞ represent?",
           "answers": [
-            "France",
-            "Russia",
-            "China",
-            "Japan"
+            "A very large number",
+            "Infinity",
+            "Zero",
+            "A very small number"
           ],
-          "correctAnswer": "China"
+          "correctAnswer": "Infinity"
         },
         {
           "id": "9",
-          "question": "Which event is widely considered the start of World War II?",
+          "question": "Which mathematical concept deals with the size, shape, and relative position of figures?",
           "answers": [
-            "The invasion of Poland",
-            "The bombing of Pearl Harbor",
-            "The assassination of Archduke Franz Ferdinand",
-            "The signing of the Treaty of Versailles"
+            "Algebra",
+            "Calculus",
+            "Geometry",
+            "Statistics"
           ],
-          "correctAnswer": "The invasion of Poland"
+          "correctAnswer": "Geometry"
         },
         {
           "id": "10",
-          "question": "The Silk Road primarily facilitated trade between:",
+          "question": "What is the process of finding the derivative of a function called?",
           "answers": [
-            "Europe and the Americas",
-            "East Asia and the Mediterranean",
-            "Africa and South America",
-            "India and Australia"
+            "Integration",
+            "Differentiation",
+            "Simplification",
+            "Substitution"
           ],
-          "correctAnswer": "East Asia and the Mediterranean"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "1",
-          "question": "Which empire is credited with the construction of the Great Wall of China?",
-          "answers": [
-            "Qin",
-            "Han",
-            "Sui",
-            "Tang"
-          ],
-          "correctAnswer": "Qin"
-        },
-        {
-          "id": "2",
-          "question": "The Renaissance is generally considered to have begun in which region of Europe?",
-          "answers": [
-            "Northern Europe",
-            "Iberian Peninsula",
-            "Italy",
-            "France"
-          ],
-          "correctAnswer": "Italy"
-        },
-        {
-          "id": "3",
-          "question": "Which treaty officially ended World War I?",
-          "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
-          ],
-          "correctAnswer": "Treaty of Versailles"
-        },
-        {
-          "id": "4",
-          "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
-          "answers": [
-            "United States and Britain",
-            "Soviet Union and Germany",
-            "United States and Soviet Union",
-            "China and Japan"
-          ],
-          "correctAnswer": "United States and Soviet Union"
-        },
-        {
-          "id": "5",
-          "question": "The Neolithic Revolution is associated with the development of:",
-          "answers": [
-            "Metalworking",
-            "Agriculture",
-            "Writing",
-            "The wheel"
-          ],
-          "correctAnswer": "Agriculture"
-        },
-        {
-          "id": "6",
-          "question": "Which civilization developed the concept of zero?",
-          "answers": [
-            "Greek",
-            "Roman",
-            "Mayan",
-            "Indian"
-          ],
-          "correctAnswer": "Indian"
-        },
-        {
-          "id": "7",
-          "question": "The Protestant Reformation was initiated by:",
-          "answers": [
-            "Martin Luther",
-            "John Calvin",
-            "Henry VIII",
-            "Pope Leo X"
-          ],
-          "correctAnswer": "Martin Luther"
-        },
-        {
-          "id": "8",
-          "question": "The Opium Wars were fought between Britain and:",
-          "answers": [
-            "France",
-            "Russia",
-            "China",
-            "Japan"
-          ],
-          "correctAnswer": "China"
-        },
-        {
-          "id": "9",
-          "question": "Which event is widely considered the start of World War II?",
-          "answers": [
-            "The invasion of Poland",
-            "The bombing of Pearl Harbor",
-            "The assassination of Archduke Franz Ferdinand",
-            "The signing of the Treaty of Versailles"
-          ],
-          "correctAnswer": "The invasion of Poland"
-        },
-        {
-          "id": "10",
-          "question": "The Silk Road primarily facilitated trade between:",
-          "answers": [
-            "Europe and the Americas",
-            "East Asia and the Mediterranean",
-            "Africa and South America",
-            "India and Australia"
-          ],
-          "correctAnswer": "East Asia and the Mediterranean"
+          "correctAnswer": "Differentiation"
         }
       ]
     }
@@ -6378,7 +6284,7 @@
     }
   ],
   "courses": [
-    {
+   {
       "id": "1",
       "Module": "M101",
       "courseName": "Introduction to Biology",
