@@ -6392,7 +6392,7 @@
     },
     {
       "id": "2",
-      "Module": "M102",
+      "Module": "M102s",
       "courseName": "Introduction to Physics",
       "teacherId": "T002",
       "teacherName": "Dr. Michael Smith",
@@ -6451,15 +6451,15 @@
       "status": "active"
     },
     {
-      "id": "7",
+      "id": "09c3",
       "Module": "M108",
-      "courseName": "Mongodb",
+      "courseName": "uml",
+      "teacherName": "Dr. boch3ib",
+      "courseDescription": "rrrrrrrrrrrrrrrrrrrrrrrrr",
       "teacherId": "T001",
-      "teacherName": "Maichel",      
-      "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
-      "imageUrl": "https://th.bing.com/th?q=MongoDB+Logo.svg&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=2.6&pid=InlineBlock&mkt=en-XA&cc=MA&setlang=fr&adlt=strict&t=1&mw=247",
+      "videoLink": "https://youtu.be/OsozB0KhP78?si=D-uHi8iM8pHm0qx9",
+      "imageUrl": "https://th.bing.com/th/id/OIP.3Vx4EcNnLtIKr_ch1sGM6AHaEK?w=280&h=180&c=7&r=0&o=5&dpr=2.6&pid=1.7",
       "pdfUrl": "http://elmouelhia.free.fr/courses/nosql/coursMongoDB.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
       "status": "active"
     }
   ],

@@ -56,6 +56,7 @@ const CoursesFormateur = () => {
                   <td>{index + 1}</td>
                   <td>{course.Module}</td>
                   <td>{course.courseName}</td>
+                  <td>{course.courseDescription}</td>
                   <td>{course.teacherId}</td>
                   <td>{course.teacherName}</td>
                   <td>

@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addCourse } from '../../features/coursesFormateur/coursesFormateurSlice'; // Adjust path as needed
-import jsPDF from 'jspdf';
 
 const AddCourse = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [newCourse, setNewCourse] = useState({
-    courseId: '',
     Module: '',
     courseName: '',
     teacherName:'',
+    courseDescription:'',
     teacherId:'',
     videoLink: '',
     imageUrl: '',
     pdfUrl: '',
+    status: 'active',
   });
 
-  const [pdfFile, setPdfFile] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,37 +27,15 @@ const AddCourse = () => {
       [name]: value,
     }));
   };
-
-  const handlePdfChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type === 'application/pdf') {
-      setPdfFile(file);
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Generate a unique ID for the course
-    const id = Math.random().toString(36).substring(2, 9);
-
     // Create the course data with the new information
-    const courseData = { ...newCourse, id };
+    const courseData = { ...newCourse};
 
     // Add the course using Redux action
     dispatch(addCourse(courseData));
-
-    // Generate PDF with jsPDF
-    const doc = new jsPDF();
-    doc.text(`Course ID: ${newCourse.courseId}`, 10, 10);
-    doc.text(`Module: ${newCourse.Module}`, 10, 20);
-    doc.text(`courseName: ${newCourse.courseName}`, 10, 30);
-    doc.text(`imageUrl: ${newCourse.imageUrl}`, 10, 40);
-    doc.text(`pdfUrl: ${newCourse.pdfUrl}`, 10, 50);
-
     // Reset form and navigate to course list
     setNewCourse({ courseId: '', Module: '', courseName: '', imageUrl: '', pdfUrl: '' });
-    setPdfFile(null);
     navigate('/courses');
   };
 
@@ -115,7 +92,17 @@ const AddCourse = () => {
             required
           />
         </div>
-
+        <div>
+          <label className="block font-semibold">Course description</label>
+          <input
+            type="text"
+            name="courseDescription"
+            onChange={handleInputChange}
+            className="input input-bordered w-full"
+            placeholder="Enter the course description"
+            required
+          />
+        </div>
         {/* videoUrl */}
         <div>
           <label className="block font-semibold">videoUrl</label>
@@ -146,8 +133,11 @@ const AddCourse = () => {
           <label className="block font-semibold">Upload PDF</label>
           <input
             type="text"
-            onChange={handlePdfChange}
+            name="pdfUrl"
+            onChange={handleInputChange}
             className="input input-bordered w-full"
+            placeholder="Enter the pdf link"
+            required
           />
         </div>
 

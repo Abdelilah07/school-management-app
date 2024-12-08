@@ -15,13 +15,11 @@ const UpdateCourse = () => {
     courseName: '',
     teacherName:'',
     teacherId:'',
+    courseDescription:'',
     videoLink: '',
     imageUrl: '',
     pdfUrl: null,
   });
-
-  const [pdfFile, setPdfFile] = useState(null);
-
   // Fetch courses or set course data when component mounts
   useEffect(() => {
     if (status === 'idle' && !courses.length) {
@@ -49,7 +47,7 @@ const UpdateCourse = () => {
       ...courseData,
       id: courseId, // Ensure the course ID is sent
       Module: courseData.Module,
-      pdfUrl: pdfFile ? pdfFile.name : courseData.pdfUrl, // File name or existing value
+      pdfUrl: courseData.pdfUrl, // File name or existing value
     };
 
     dispatch(updateCourse({ id: courseId, updatedCourse }))
@@ -77,14 +75,15 @@ const UpdateCourse = () => {
             required
           />
         </div>
-        <div className="mb-4">
+        <div>
           <label className="block font-semibold">Title</label>
           <input
             type="text"
-            name="Title"
+            name="courseName"
             value={courseData.courseName}
             onChange={handleChange}
             className="input input-bordered w-full"
+            placeholder="Enter Course ID"
             required
           />
         </div>
@@ -109,6 +108,18 @@ const UpdateCourse = () => {
             onChange={handleChange}
             className="input input-bordered w-full"
             placeholder="Enter Teacher Name"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold">Course description</label>
+          <input
+            type="text"
+            name="courseDescription"
+            value={courseData.courseDescription}
+            onChange={handleChange}
+            className="input input-bordered w-full"
+            placeholder="Enter the course description"
             required
           />
         </div>
@@ -143,6 +154,8 @@ const UpdateCourse = () => {
             value={courseData.pdfUrl}
             onChange={handleChange}
             className="input input-bordered w-full"
+            placeholder="Enter the pdf link"
+            required
           />
         </div>
         <button

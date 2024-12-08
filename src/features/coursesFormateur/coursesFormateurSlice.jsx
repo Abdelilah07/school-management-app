@@ -19,9 +19,9 @@ export const addCourse = createAsyncThunk('courses/addCourse', async (newCourse)
 });
 
 // Delete a course
-export const deleteCourse = createAsyncThunk('courses/deleteCourse', async (courseId) => {
-  await fetch(`${API_URL}/${courseId}`, { method: 'DELETE' });
-  return courseId;
+export const deleteCourse = createAsyncThunk('courses/deleteCourse', async (id) => {
+  await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+  return id;
 });
 
 // Update a course
