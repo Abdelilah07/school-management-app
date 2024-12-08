@@ -6388,7 +6388,7 @@
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "pdfUrl": "https://www.basicbiology.net/wp-content/uploads/edd/2018/05/Basic-Biology-an-introduction.pdf",
       "videoLink": "https://youtu.be/tZE_fQFK8EY?si=_ZCt1TrfD2apu22m",
-      "Title": "Introduction to Biolog"
+      "status": "completed"
     },
     {
       "id": "2",
@@ -6411,19 +6411,20 @@
       "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
       "id": "4",
       "Module": "M104",
-      "coursequizID": "104",
       "courseName": "General Chemistry",
       "teacherId": "T004",
       "teacherName": "Dr. Emily Zhang",
       "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
       "id": "5",
@@ -6434,7 +6435,8 @@
       "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
       "id": "6",
@@ -6449,14 +6451,16 @@
       "status": "active"
     },
     {
-      "id": "sah99vq",
-      "courseId": "",
+      "id": "7",
       "Module": "M108",
       "courseName": "Mongodb",
+      "teacherId": "T001",
+      "teacherName": "Maichel",      
+      "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
       "imageUrl": "https://th.bing.com/th?q=MongoDB+Logo.svg&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=2.6&pid=InlineBlock&mkt=en-XA&cc=MA&setlang=fr&adlt=strict&t=1&mw=247",
       "pdfUrl": "http://elmouelhia.free.fr/courses/nosql/coursMongoDB.pdf",
-      "teacherId": "T001",
-      "teacherName": "Maichel"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "active"
     }
   ],
   "modules": [

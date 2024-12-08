@@ -2010,140 +2010,88 @@
   ],
   "courses": [
     {
-      "courseId": "BIO101",
+      "id": "1",
+      "Module": "M101",
       "courseName": "Introduction to Biology",
       "teacherId": "T001",
       "teacherName": "Dr. Alice Johnson",
       "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
-      "credits": 3,
-      "imageUrl": "https://th.bing.com/th/id/OIP.dJToM1TiZiJA0GYwzDHwjQHaHY?rs=1&pid=ImgDetMain",
-      "schedule": "Mon/Wed/Fri 10:00 AM - 11:30 AM",
-      "location": "Room 203, Science Building",
-      "materials": [
-        "Biology 101 Textbook",
-        "Lab Manual"
-      ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "10cd"
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "pdfUrl": "https://www.basicbiology.net/wp-content/uploads/edd/2018/05/Basic-Biology-an-introduction.pdf",
+      "videoLink": "https://youtu.be/tZE_fQFK8EY?si=_ZCt1TrfD2apu22m",
+      "status": "completed"
     },
     {
-      "courseId": "PHYS101",
+      "id": "2",
+      "Module": "M102",
       "courseName": "Introduction to Physics",
       "teacherId": "T002",
       "teacherName": "Dr. Michael Smith",
-      "courseDescription": "A basic introduction to the concepts of physics, including motion, energy, and forces.",
-      "credits": 4,
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-      "schedule": "Tue/Thu 9:00 AM - 10:30 AM",
-      "location": "Room 102, Physics Lab",
-      "materials": [
-        "Physics 101 Textbook",
-        "Lab Safety Manual"
-      ],
+      "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
+      "imageUrl": "https://th.bing.com/th/id/OIP.RKDSdMJ5v5Hb4uflD3AoZgHaD5?rs=1&pid=ImgDetMain",
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "1f30"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "HIST201",
+      "id": "3",
+      "Module": "M103",
       "courseName": "World History",
       "teacherId": "T003",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
       "teacherName": "Dr. Sarah Davis",
       "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
-      "credits": 3,
-      "schedule": "Mon/Wed 1:00 PM - 2:30 PM",
-      "location": "Room 104, History Department",
-      "materials": [
-        "World History Textbook",
-        "Primary Source Readings"
-      ],
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "42ae"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "CHEM101",
+      "id": "4",
+      "Module": "M104",
       "courseName": "General Chemistry",
       "teacherId": "T004",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
       "teacherName": "Dr. Emily Zhang",
       "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
-      "credits": 4,
-      "schedule": "Tue/Thu 2:00 PM - 3:30 PM",
-      "location": "Room 205, Chemistry Lab",
-      "materials": [
-        "General Chemistry Textbook",
-        "Laboratory Notebook"
-      ],
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "0b10"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "MATH101",
+      "id": "5",
+      "Module": "M105",
       "courseName": "Introduction to Mathematics",
       "teacherId": "T005",
       "teacherName": "Mr. William Lee",
       "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
-      "credits": 3,
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-      "schedule": "Mon/Fri 11:00 AM - 12:30 PM",
-      "location": "Room 101, Math Department",
-      "materials": [
-        "Mathematics 101 Textbook",
-        "Scientific Calculator"
-      ],
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "7826"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
-      "courseId": "ECON101",
+      "id": "6",
+      "Module": "M106",
       "courseName": "Principles of Economics",
       "teacherId": "T006",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
       "teacherName": "Dr. Rachel Green",
       "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
-      "credits": 3,
-      "schedule": "Mon/Wed 3:00 PM - 4:30 PM",
-      "location": "Room 303, Economics Building",
-      "materials": [
-        "Economics 101 Textbook",
-        "Macroeconomics Reader"
-      ],
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "4b93"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "active"
     },
     {
-      "courseId": "PSY101",
-      "courseName": "Introduction to Psychology",
-      "teacherId": "T007",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-      "teacherName": "Dr. James Walker",
-      "courseDescription": "A comprehensive introduction to the field of psychology, including behavior, cognition, and emotion.",
-      "credits": 3,
-      "schedule": "Tue/Thu 11:00 AM - 12:30 PM",
-      "location": "Room 306, Psychology Building",
-      "materials": [
-        "Psychology 101 Textbook",
-        "Research Articles Packet"
-      ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "010e"
-    },
-    {
-      "courseId": "LIT102",
-      "courseName": "English Literature",
-      "teacherId": "T008",
-      "imageUrl": "https://th.bing.com/th/id/OIP.6J4KfFmVn8dEYjzQH2Y7WwHaEK?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-      "teacherName": "Dr. Hannah Clark",
-      "courseDescription": "A study of major works in English literature, from Shakespeare to modern writers.",
-      "credits": 3,
-      "schedule": "Mon/Wed 10:00 AM - 11:30 AM",
-      "location": "Room 202, Literature Department",
-      "materials": [
-        "English Literature Anthology",
-        "Shakespeare Plays Collection"
-      ],
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "id": "7653"
+      "id": "7",
+      "Module": "M108",
+      "courseName": "Mongodb",
+      "teacherId": "T001",
+      "teacherName": "Maichel",      
+      "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
+      "imageUrl": "https://th.bing.com/th?q=MongoDB+Logo.svg&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=2.6&pid=InlineBlock&mkt=en-XA&cc=MA&setlang=fr&adlt=strict&t=1&mw=247",
+      "pdfUrl": "http://elmouelhia.free.fr/courses/nosql/coursMongoDB.pdf",
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "active"
     }
   ]
 }
