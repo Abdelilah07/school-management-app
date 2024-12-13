@@ -1,5 +1,3 @@
-import React from 'react';
-
 const DocumentCard = ({ type, Icon, label, isSelected, onClick }) => (
   <button
     onClick={() => onClick(type)}

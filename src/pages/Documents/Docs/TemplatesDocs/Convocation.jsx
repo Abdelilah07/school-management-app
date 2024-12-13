@@ -1,8 +1,6 @@
 import React from 'react';
 import { Building2, Calendar, User, Users2 } from 'lucide-react';
-
 const Convocation = ({ name, date, group }) => {
-
   return (
     <div className="bg-white p-8 w-[210mm] h-[297mm] mx-auto">
       <div className="max-w-3xl mx-auto space-y-8">
@@ -17,16 +15,13 @@ const Convocation = ({ name, date, group }) => {
           </h1>
           <p className="text-gray-700 mt-2 text-lg">CFIA - ISTA AIT MELLOUL</p>
         </div>
-
         <h2 className="text-3xl font-bold text-center text-gray-900 border-2 border-gray-300 py-4 rounded-lg ">
           Convocation
         </h2>
-
         <div className="space-y-4">
           <p className="text-xl font-semibold text-gray-900">
             Le conseil de discipline
           </p>
-
           <div className=" text-gray-800">
             <div className="flex items-center space-x-4 p-3  rounded-lg">
               <User className="w-5 h-5 text-gray-600" />
@@ -48,12 +43,10 @@ const Convocation = ({ name, date, group }) => {
             </div>
           </div>
         </div>
-
         <div className="space-y-4">
           <p className="text-gray-800 text-lg">
             Est à vouloir bien présenter au conseil disciplinaire qui aura lieu à l'ISTA AIT MELLOUL:
           </p>
-
           <div className="flex items-center space-x-4 p-3  rounded-lg">
             <Calendar className="w-5 h-5 text-gray-900" />
             <span className="font-semibold text-black">Le :</span>
@@ -84,5 +77,4 @@ const Convocation = ({ name, date, group }) => {
     </div>
   );
 };
-
 export default Convocation;

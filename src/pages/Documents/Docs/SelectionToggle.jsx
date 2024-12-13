@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SelectionToggle = ({ icon: Icon, label, isSelected, onClick }) => (
   <button
     onClick={onClick}

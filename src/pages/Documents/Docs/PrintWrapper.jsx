@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { Printer } from 'lucide-react';
 
 const PrintWrapper = forwardRef(({ onPrint, children }, ref) => (
