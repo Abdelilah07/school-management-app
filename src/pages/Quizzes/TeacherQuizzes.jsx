@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Plus, X } from 'lucide-react';
 import QuizCardTeacher from './components/QuizCardTeacher';
 import QuizForm from './components/QuizForm';
-import { getTimeStatus, BASE_URL } from './utils/quizUtils';
-import GreetingHeader from '../Home/components/GreetingHeader';
+import { BASE_URL } from './utils/quizUtils';
+import Pagination from './components/Pagination'; 
 
 const TeacherQuizzes = () => {
   const user = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user') || '{}');
@@ -14,6 +14,10 @@ const TeacherQuizzes = () => {
   const [selectedCourse, setSelectedCourse] = useState('');
   const [editingQuiz, setEditingQuiz] = useState(null);
 
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const quizzesPerPage = 8; 
+
   useEffect(() => {
     fetchQuizzes();
     fetchApiCourses();
@@ -23,7 +27,11 @@ const TeacherQuizzes = () => {
     try {
       const response = await fetch(`${BASE_URL}/quizzes`);
       const data = await response.json();
-      setQuizzes(data);
+      const quizzesWithUniqueIds = data.map((quiz, index) => ({
+        ...quiz,
+        id: quiz.id || `quiz-${Date.now()}-${index}`
+      }));
+      setQuizzes(quizzesWithUniqueIds);
     } catch (error) {
       console.error('Error fetching quizzes:', error);
     }
@@ -116,10 +124,16 @@ const TeacherQuizzes = () => {
   const filteredQuizzes = selectedCourse
     ? quizzes.filter((quiz) => quiz.coursequizID === selectedCourse)
     : quizzes;
+    
+  const indexOfLastQuiz = currentPage * quizzesPerPage;
+  const indexOfFirstQuiz = indexOfLastQuiz - quizzesPerPage;
+  const currentQuizzes = filteredQuizzes.slice(indexOfFirstQuiz, indexOfLastQuiz);
+
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="bg-base-100">
-      <GreetingHeader />
       <div className="container mx-auto px-4 py-8">
         <h3 className="text-3xl font-bold text-center mb-2">Available Quizzes</h3>
         <p className="text-center text-base-content/70 mb-6">Our collection of quizzes</p>
@@ -145,17 +159,26 @@ const TeacherQuizzes = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {filteredQuizzes.map((quiz) => (
-            <QuizCardTeacher
-              key={quiz.id}
-              quiz={quiz}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
-              onViewDetails={handleViewDetails}
-              onAddQuestions={handleAddQuestions}
-            />
+          {currentQuizzes.map((quiz, index) => (
+            <div key={`quiz-card-${quiz.id}-${index}`}>
+              <QuizCardTeacher
+                quiz={quiz}
+                onDelete={() => handleDelete(quiz.id)}
+                onEdit={() => handleEdit(quiz)}
+                onViewDetails={() => handleViewDetails(quiz.id)}
+                onAddQuestions={() => handleAddQuestions(quiz.id)}
+              />
+            </div>
           ))}
         </div>
+
+        {/* Pagination  */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(filteredQuizzes.length / quizzesPerPage)}
+          onPrevious={() => paginate(currentPage - 1)}
+          onNext={() => paginate(currentPage + 1)}
+        />
 
         {isAddModalOpen && (
           <div className="modal modal-open">

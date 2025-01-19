@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 import PropTypes from 'prop-types';
 import * as Icons from 'lucide-react';
 

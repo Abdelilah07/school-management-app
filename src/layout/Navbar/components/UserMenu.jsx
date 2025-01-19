@@ -1,5 +1,5 @@
 import { ChevronDown, LogOut, MessageSquare, UserCircle2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../features/auth/slices/authSlice';
 import { getUserFromStorage } from '../../../utils';

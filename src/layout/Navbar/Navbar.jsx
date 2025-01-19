@@ -1,6 +1,6 @@
 import { SearchBar, SidebarToggle, UserMenu, NotificationsMenu, ThemeToggle } from './components';
 import { Logo } from '../../assets/';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const Navbar = () => {
   return (

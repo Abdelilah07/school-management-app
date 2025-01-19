@@ -1,231 +1,390 @@
-import React, { useRef, useState, useEffect } from 'react';
-import Convocation from './TemplatesDocs/Convocation';
-import DocumentCard from './DocumentCard';
-import FormInput from './FormInput';
-import SelectionToggle from './SelectionToggle';
-import PrintWrapper from './PrintWrapper';
-import ReactDOM from 'react-dom'; // Add this import at the top of your file
-import { FileText, GraduationCap, ClipboardList, User, Users } from 'lucide-react';
+import { useRef, useState, useEffect, useMemo } from "react";
+import ReactDOM from "react-dom";
+import {
+    ScrollText, Award, GraduationCap, AlertTriangle,
+    FileBadge, FileType2, Scale, Users, User, Printer
+} from 'lucide-react';
+import Convocation from "./TemplatesDocs/Convocation";
+import RetraitBacProvisoire from "./TemplatesDocs/RetraitBacProvisoire";
+import ReprimandNotice from "./TemplatesDocs/ReprimandNotice";
+import BacWithdrawalNotice from "./TemplatesDocs/BacWithdrawalNotice";
+import WarningNotice from "./TemplatesDocs/WarningNotice";
+import FormInput from "./FormInput";
+
+const DOCUMENT_TYPES = [
+    {
+        type: "convocation",
+        icon: ScrollText,
+        label: "Convocation",
+        component: Convocation,
+        theme: "primary"
+    },
+    {
+        type: "retrait-bac",
+        icon: Award,
+        label: "Retrait Bac Provisoire",
+        component: RetraitBacProvisoire,
+        theme: "secondary"
+    },
+    {
+        type: "rebuke",
+        icon: AlertTriangle,
+        label: "Reprimand Notice",
+        components: { ReprimandNotice, WarningNotice },
+        theme: "warning"
+    },
+    {
+        type: "bac-withdrawal",
+        icon: FileBadge,
+        label: "Bac Withdrawal Notice",
+        component: BacWithdrawalNotice,
+        theme: "error"
+    },
+    {
+        type: "WarningNotice",
+        icon: Scale,
+        label: "Warning Notice",
+        component: WarningNotice,
+        theme: "info"
+    }
+];
+
+const DocumentCard = ({ type, Icon, label, isSelected, onClick, theme }) => (
+    <div
+        className={`card bg-base-100 shadow-xl cursor-pointer transition-all hover:scale-105 
+            ${isSelected ? `border-4 border-${theme} shadow-${theme}/50` : ''}`}
+        onClick={() => onClick(type)}
+    >
+        <div className="card-body items-center text-center p-4">
+            <Icon className={`w-8 h-8 ${isSelected ? `text-${theme}` : 'text-base-content'}`} />
+            <h3 className="card-title text-sm mt-2">{label}</h3>
+        </div>
+    </div>
+);
 
 const Docs = () => {
-  const [form, setForm] = useState({
-    name: '',
-    group: '',
-    date: '',
-    type: 'convocation',
-  });
+    const [form, setForm] = useState({
+        name: "",
+        group: "",
+        date: "",
+        type: "convocation",
+        reason: [],
+        resen1: "",
+        resen2: "",
+        resen3: "",
+        cin: "",
+        details: "",
+    });
+    const [selectedCard, setSelectedCard] = useState("convocation");
+    const [isParGroupSelected, setIsParGroupSelected] = useState(false);
+    const [selectedRebuke, setSelectedRebuke] = useState("ReprimandNotice");
+    const [groupes, setGroupes] = useState([]);
+    const printRef = useRef(null);
 
-  const [selectedCard, setSelectedCard] = useState('convocation');
-  const [isParGroupSelected, setIsParGroupSelected] = useState(false);
-  const [groupes, setGroupes] = useState([]);
-  const [students, setStudents] = useState([]); // Store students' data here
-  const printRef = useRef(null);
+    useEffect(() => {
+        const fetchGroups = async () => {
+            try {
+                const response = await fetch("http://localhost:3000/groups");
+                const data = await response.json();
+                setGroupes(data || []);
+            } catch (error) {
+                console.error("Failed to fetch groups:", error);
+            }
+        };
+        fetchGroups();
+    }, []);
 
-  // Fetch the groups and students when the component mounts
-  useEffect(() => {
-    const fetchGroupesAndStudents = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/groups'); // Update with your actual API URL
-        const data = await response.json();
-        setGroupes(data);
-
-        // Extract students' names from the fetched groups
-        const allStudents = data.flatMap((group) => group.liste);
-        setStudents(allStudents);
-      } catch (error) {
-        console.error(error);
-      }
+    const validateForm = () => {
+        if (!form.name && !form.group) {
+            alert("Veuillez remplir au moins un champ");
+            return false;
+        }
+        if (!form.date) {
+            alert("Veuillez sélectionner une date");
+            return false;
+        }
+        return true;
     };
 
-    fetchGroupesAndStudents();
-  }, []);
+    const createPrintableDocument = (student) => {
+        const documentType = DOCUMENT_TYPES.find((doc) => doc.type === selectedCard);
+        let DocumentComponent;
 
-  const onPrint = () => {
-    const originalDisplay = document.querySelector('.navbar')?.style.display;
-    const printContainer = document.createElement('div');
-    printContainer.style.position = 'absolute';
-    printContainer.style.top = '0';
-    printContainer.style.left = '0';
-    printContainer.style.width = '100%';
-    document.body.appendChild(printContainer);
+        if (selectedCard === "rebuke") {
+            DocumentComponent = documentType.components[selectedRebuke];
+        } else {
+            DocumentComponent = documentType?.component;
+        }
 
-    if (isParGroupSelected && form.group) {
-      const selectedGroup = groupes.find((groupe) => groupe.niveau === form.group);
-      if (!selectedGroup) return;
+        const container = document.createElement("div");
+        container.style.pageBreakAfter = "always";
 
-      const convocations = selectedGroup.liste.map((student) => {
-        const container = document.createElement('div');
-        container.style.pageBreakAfter = 'always';
+        let documentProps = {
+            key: student.idEtudiant,
+            name: student.nomEtudiant,
+            group: form.group,
+            date: form.date,
+            reason: form.reason,
+            resen1: form.resen1,
+            resen2: form.resen2,
+            resen3: form.resen3,
+        };
+
+        // Add specific props for different document types
+        if (selectedCard === "bac-withdrawal") {
+            documentProps.cin = student.cin;
+            documentProps.student = student;
+        }
+
         ReactDOM.render(
-          <Convocation
-            key={student.idEtudiant}
-            name={student.nomEtudiant}
-            group={form.group}
-            date={form.date}
-          />,
-          container
+            <DocumentComponent {...documentProps} />,
+            container
         );
+
         return container;
-      });
+    };
 
-      convocations.forEach((convocation) => {
-        printContainer.appendChild(convocation);
-      });
-    } else {
-      ReactDOM.render(
-        <Convocation name={form.name} group={form.group} date={form.date} />,
-        printContainer
-      );
-    }
+    const onPrint = () => {
+        if (!validateForm()) return;
 
-    // Hide the navbar before printing
-    const navbar = document.querySelector('.navbar');
-    if (navbar) navbar.style.display = 'none';
+        const originalDisplay = document.querySelector(".navbar")?.style.display;
 
-    window.print();
+        const printContainer = document.createElement("div");
+        printContainer.style.position = "absolute";
+        printContainer.style.top = "0";
+        printContainer.style.left = "0";
+        printContainer.style.width = "100%";
+        document.body.appendChild(printContainer);
 
-    // Restore the navbar display after printing
-    if (navbar) navbar.style.display = originalDisplay;
+        try {
+            if (isParGroupSelected && form.group) {
+                const selectedGroup = groupes.find((groupe) => groupe.niveau === form.group);
+                if (!selectedGroup) return;
 
-    document.body.removeChild(printContainer);
-  };
+                const documents = selectedGroup.liste.map(createPrintableDocument);
+                documents.forEach((doc) => printContainer.appendChild(doc));
+            } else {
+                let documentProps = {
+                    name: form.name,
+                    group: form.group,
+                    date: form.date,
+                    reason: form.reason,
+                    resen1: form.resen1,
+                    resen2: form.resen2,
+                    resen3: form.resen3,
+                };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+                // Add specific props for different document types
+                if (selectedCard === "bac-withdrawal") {
+                    documentProps.cin = form.cin;
+                }
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setForm((prevForm) => ({ ...prevForm, [name]: value }));
-  };
+                let DocumentComponent;
+                if (selectedCard === "rebuke") {
+                    const documentType = DOCUMENT_TYPES.find((doc) => doc.type === selectedCard);
+                    DocumentComponent = documentType.components[selectedRebuke];
+                } else {
+                    DocumentComponent = DOCUMENT_TYPES.find((doc) => doc.type === selectedCard)?.component;
+                }
 
-  const handleCardClick = (type) => {
-    setSelectedCard(type);
-    setForm((prevForm) => ({ ...prevForm, type }));
-  };
+                ReactDOM.render(
+                    <DocumentComponent {...documentProps} />,
+                    printContainer
+                );
+            }
 
-  const documentTypes = [
-    { type: 'convocation', icon: FileText, label: 'Convocation' },
-    { type: 'diplome', icon: GraduationCap, label: 'Diplome' },
-    { type: 'listes', icon: ClipboardList, label: 'Listes' },
-  ];
+            const navbar = document.querySelector(".navbar");
+            if (navbar) navbar.style.display = "none";
 
-  const renderDocument = () => {
-    switch (form.type) {
-      case 'convocation':
-        return <Convocation {...form} />;
-      case 'diplome':
-        return <div>Diplome</div>;
-      case 'listes':
-        return <div>Listes</div>;
-      default:
-        return null;
-    }
-  };
+            window.print();
+        } catch (err) {
+            console.error("Print error:", err);
+            alert("An error occurred during printing");
+        } finally {
+            const navbar = document.querySelector(".navbar");
+            if (navbar) navbar.style.display = originalDisplay;
+            document.body.removeChild(printContainer);
+        }
+    };
 
-  const renderForm = () => {
-    if (isParGroupSelected) {
-      return (
-        <div className="space-y-4">
-          <select
-            name="group"
-            value={form.group}
-            onChange={handleChange}
-            className="select select-bordered w-full"
-          >
-            <option value="">Sélectionnez un groupe</option>
-            {groupes.map(({ id, niveau }) => (
-              <option key={id} value={niveau}>
-                {niveau}
-              </option>
-            ))}
-          </select>
+    const renderDocumentForm = () => (
+        <div className="form-control w-full gap-4">
+            {!isParGroupSelected && (
+                <FormInput
+                    label="Nom"
+                    name="name"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="input input-bordered w-full"
+                />
+            )}
 
-          <FormInput
-            label="Date"
-            type="date"
-            name="date"
-            value={form.date}
-            onChange={handleChange}
-          />
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Groupe</span>
+                </label>
+                <select
+                    className="select select-bordered w-full"
+                    value={form.group}
+                    onChange={(e) => setForm({ ...form, group: e.target.value })}
+                >
+                    <option value="">Sélectionnez un groupe</option>
+                    {groupes.map(({ id, niveau }) => (
+                        <option key={id} value={niveau}>{niveau}</option>
+                    ))}
+                </select>
+            </div>
+
+            <FormInput
+                label="Date"
+                type="date"
+                name="date"
+                value={form.date}
+                onChange={(e) => setForm({ ...form, date: e.target.value })}
+                className="input input-bordered w-full"
+            />
+
+            {selectedCard === "rebuke" && (
+                <div className="space-y-4">
+                    <div className="tabs tabs-boxed">
+                        <button
+                            className={`tab ${selectedRebuke === "ReprimandNotice" ? "tab-active" : ""}`}
+                            onClick={() => setSelectedRebuke("ReprimandNotice")}
+                        >
+                            Reprimand
+                        </button>
+                        <button
+                            className={`tab ${selectedRebuke === "WarningNotice" ? "tab-active" : ""}`}
+                            onClick={() => setSelectedRebuke("WarningNotice")}
+                        >
+                            Warning
+                        </button>
+                    </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Reasons</span>
+                        </label>
+                        {["Absence non justifiée", "Retard répété", "Comportement inapproprié", "Non-respect du règlement"]
+                            .map((reason) => (
+                                <label key={reason} className="label cursor-pointer">
+                                    <span className="label-text">{reason}</span>
+                                    <input
+                                        type="checkbox"
+                                        className="checkbox"
+                                        checked={form.reason.includes(reason)}
+                                        onChange={(e) => {
+                                            const newReasons = e.target.checked
+                                                ? [...form.reason, reason]
+                                                : form.reason.filter(r => r !== reason);
+                                            setForm({ ...form, reason: newReasons });
+                                        }}
+                                    />
+                                </label>
+                            ))}
+                    </div>
+                </div>
+            )}
         </div>
-      );
-    }
+    );
+
+    const renderDocument = useMemo(() => {
+        const documentType = DOCUMENT_TYPES.find(doc => doc.type === selectedCard);
+        const DocumentComponent = selectedCard === "rebuke"
+            ? documentType?.components[selectedRebuke]
+            : documentType?.component;
+
+        return DocumentComponent ? <DocumentComponent {...form} /> : null;
+    }, [form, selectedCard, selectedRebuke]);
 
     return (
-      <div className="space-y-4">
-        <FormInput
-          label="Nom"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Nom"
-        />
+        <div className="drawer lg:drawer-open">
+            <input id="docs-drawer" type="checkbox" className="drawer-toggle" />
 
-        <FormInput
-          label="Group & Filiere"
-          name="group"
-          value={form.group}
-          onChange={handleChange}
-          placeholder="Group"
-        />
-        <FormInput label="Date" type="date" name="date" value={form.date} onChange={handleChange} />
-      </div>
+            <div className="drawer-content flex flex-col">
+                {/* Navbar */}
+                <div className="navbar bg-base-200 lg:hidden">
+                    <div className="flex-none">
+                        <label htmlFor="docs-drawer" className="btn btn-square btn-ghost">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <div className="flex-1">
+                        <h1 className="text-xl font-bold">Documents Generator</h1>
+                    </div>
+                </div>
+
+                {/* Main Content */}
+                <div className="flex flex-1">
+                    {/* Document Preview */}
+                    <div className="flex-1 p-4 bg-base-200">
+                        <div className="card bg-base-100 shadow-xl h-full">
+                            <div className="card-body">
+                                {renderDocument}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Document Types */}
+                    <div className="w-64 bg-base-100 p-4 border-l">
+                        <div className="space-y-4">
+                            <h2 className="text-xl font-bold text-center">Document Types</h2>
+                            <div className="grid gap-4">
+                                {DOCUMENT_TYPES.map(({ type, icon: Icon, label, theme }) => (
+                                    <DocumentCard
+                                        key={type}
+                                        type={type}
+                                        Icon={Icon}
+                                        label={label}
+                                        theme={theme}
+                                        isSelected={selectedCard === type}
+                                        onClick={setSelectedCard}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Drawer */}
+            <div className="drawer-side">
+                <label htmlFor="docs-drawer" className="drawer-overlay"></label>
+                <div className="p-4 w-80 bg-base-100 text-base-content h-full">
+                    <h2 className="text-xl font-bold mb-4">Document Settings</h2>
+
+                    <div className="join mb-4 w-full">
+                        <button
+                            className={`join-item btn ${!isParGroupSelected ? 'btn-active' : ''}`}
+                            onClick={() => setIsParGroupSelected(false)}
+                        >
+                            <User className="w-4 h-4 mr-2" />
+                            Individual
+                        </button>
+                        <button
+                            className={`join-item btn ${isParGroupSelected ? 'btn-active' : ''}`}
+                            onClick={() => setIsParGroupSelected(true)}
+                        >
+                            <Users className="w-4 h-4 mr-2" />
+                            Group
+                        </button>
+                    </div>
+
+                    {renderDocumentForm()}
+
+                    <button
+                        className="btn btn-primary w-full mt-4"
+                        onClick={onPrint}
+                    >
+                        <Printer className="w-4 h-4 mr-2" />
+                        Print Document
+                    </button>
+                </div>
+            </div>
+        </div>
     );
-  };
-
-  return (
-    <div className="flex h-screen">
-      <div className="w-1/2 border-r border-gray-200 p-8 overflow-y-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Documents
-          </h1>
-          <p className="">Cette page vous permet de générer des documents.</p>
-        </div>
-
-        <div className="grid grid-cols-3 gap-4 mb-8">
-          {documentTypes.map(({ type, icon, label }) => (
-            <DocumentCard
-              key={type}
-              type={type}
-              Icon={icon}
-              label={label}
-              isSelected={selectedCard === type}
-              onClick={handleCardClick}
-            />
-          ))}
-        </div>
-
-        {form.type !== 'listes' && (
-          <div className="flex gap-4 mb-8">
-            <SelectionToggle
-              icon={Users}
-              label="Par Group"
-              isSelected={isParGroupSelected}
-              onClick={() => setIsParGroupSelected(true)}
-            />
-            <SelectionToggle
-              icon={User}
-              label="Par Stagiaire"
-              isSelected={!isParGroupSelected}
-              onClick={() => setIsParGroupSelected(false)}
-            />
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {renderForm()}
-        </form>
-      </div>
-
-      <PrintWrapper ref={printRef} onPrint={onPrint} className=" w-full h-full">
-        <div id="convocation" className="w-full h-full flex items-center justify-center">
-          {renderDocument()}
-        </div>
-      </PrintWrapper>
-    </div>
-  );
 };
 
 export default Docs;

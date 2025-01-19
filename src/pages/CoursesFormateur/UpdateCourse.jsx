@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router';
 import { updateCourse, fetchCourses } from '../../features/coursesFormateur/coursesFormateurSlice';
 import jsPDF from 'jspdf';
 

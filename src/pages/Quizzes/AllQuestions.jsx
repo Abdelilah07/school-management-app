@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { PlusCircle, ArrowLeft, Trash, X } from 'lucide-react';
+import { useParams } from 'react-router';
+import { PlusCircle, ArrowLeft, Trash, X, Edit } from 'lucide-react';
 import QuizHeader from './components/QuizHeader';
 import Pagination from './components/Pagination';
 import UploadQuestions from './components/UploadQuestions';
 import AIQuestionGenerator from './components/AIQuestionGenerator';
 import QuestionForm from './components/QuestionForm';
+import EditableQuestion from './components/EditableQuestion';
 import { BASE_URL, fetchQuizDetails } from './utils/quizUtils';
 
 const QUESTIONS_PER_PAGE = 5;
@@ -19,6 +20,7 @@ const AllQuestions = () => {
   const [randomCount, setRandomCount] = useState(0);
   const [quiz, setQuiz] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
+  const [editingQuestionId, setEditingQuestionId] = useState(null); 
 
   useEffect(() => {
     if (!quizId) {
@@ -67,13 +69,12 @@ const AllQuestions = () => {
     const selectedCount = selectedQuestions.length;
     if (selectedCount === 0) return;
 
-    const confirmationMessage = `Are you sure you want to delete ${
-      selectedCount === 1
+    const confirmationMessage = `Are you sure you want to delete ${selectedCount === 1
         ? 'this question'
         : selectedCount === questions.length
           ? 'all questions'
           : `these ${selectedCount} questions`
-    }?`;
+      }?`;
 
     if (!window.confirm(confirmationMessage)) return;
 
@@ -102,12 +103,11 @@ const AllQuestions = () => {
       setSelectAll(false);
 
       alert(
-        `Successfully deleted ${
-          selectedCount === 1
-            ? 'the question'
-            : selectedCount === questions.length
-              ? 'all questions'
-              : `${selectedCount} questions`
+        `Successfully deleted ${selectedCount === 1
+          ? 'the question'
+          : selectedCount === questions.length
+            ? 'all questions'
+            : `${selectedCount} questions`
         }`
       );
     } catch (error) {
@@ -208,12 +208,50 @@ const AllQuestions = () => {
     setSelectedQuestions(selectedRandomQuestions.map((q) => q.id));
   };
 
+  const handleUpdateQuestion = async (updatedQuestion) => {
+    try {
+      const updatedQuestions = questions.map((q) =>
+        q.id === updatedQuestion.id ? updatedQuestion : q
+      );
+      setQuestions(updatedQuestions);
+
+      const response = await fetch(`${BASE_URL}/quizzes/${quizId}`);
+      const existingQuiz = await response.json();
+      const updatedQuestionsSelected = (existingQuiz.questionsSelected || []).map((q) =>
+        q.id === updatedQuestion.id ? updatedQuestion : q
+      );
+
+      await fetch(`${BASE_URL}/quizzes/${quizId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          questions: updatedQuestions,
+          questionsSelected: updatedQuestionsSelected
+        }),
+      });
+
+      alert('Question updated successfully!');
+    } catch (error) {
+      console.error('Error updating question:', error);
+      alert('An error occurred while updating the question.');
+    }
+  };
+
+
   const currentQuestions = questions.slice(
     (currentPage - 1) * QUESTIONS_PER_PAGE,
     currentPage * QUESTIONS_PER_PAGE
   );
   const totalPages = Math.ceil(questions.length / QUESTIONS_PER_PAGE);
+  const handleEditStart = (questionId) => {
+    setEditingQuestionId(questionId);
+  };
 
+  const handleEditEnd = () => {
+    setEditingQuestionId(null);
+  };
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold text-center mb-2">All Questions</h1>
@@ -255,30 +293,21 @@ const AllQuestions = () => {
               <th>Question</th>
               <th>Options</th>
               <th>Correct Answer</th>
+              <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            {currentQuestions.map((question, index) => (
-              <tr key={`question-${question.id}-${index}`}>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={selectedQuestions.includes(question.id)}
-                    onChange={() => handleSelect(question.id)}
-                    className="checkbox"
-                  />
-                </td>
-                <td>{question.question}</td>
-                <td>
-                  <ul>
-                    {question.answers.map((answer, idx) => (
-                      <li key={`answer-${question.id}-${idx}`}>{answer}</li>
-                    ))}
-                  </ul>
-                </td>
-                <td className="text-green-600">{question.correctAnswer}</td>
-              </tr>
-            ))}
+          <tbody>{currentQuestions.map((question, index) => (
+            <EditableQuestion
+              key={`question-${question.id}-${index}`}
+              question={question}
+              onSave={handleUpdateQuestion}
+              selectedQuestions={selectedQuestions}
+              handleSelect={handleSelect}
+              editingQuestionId={editingQuestionId} 
+              onEditStart={handleEditStart}     
+              onEditEnd={handleEditEnd}        
+            />
+          ))}
           </tbody>
         </table>
         <Pagination

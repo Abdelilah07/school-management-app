@@ -7,3 +7,4 @@ export { default as DataTable } from './shared/DataTable';
 export { default as DetailView } from './shared/DetailView';
 export { default as TableHeader } from './shared/TableHeader';
 export { default as SearchFilter } from './shared/SearchFilter';
+export { default as PageHeader } from './shared/PageHeader';

@@ -168,169 +168,114 @@
       "status": "draft",
       "questions": [
         {
-          "id": "1a",
-          "question": "What is the basic unit of life?",
+          "id": "1",
+          "question": "Quelle est l'unité fondamentale de la vie ?",
           "answers": [
-            "Atom",
-            "Molecule",
-            "Cell",
-            "Tissue"
+            "a) L'atome",
+            "b) La molécule",
+            "c) La cellule",
+            "d) L'organe"
           ],
-          "correctAnswer": "Cell"
+          "correctAnswer": "c) La cellule"
         },
         {
-          "id": "2b",
-          "question": "Which macromolecule is the main source of energy for living organisms?",
+          "id": "2",
+          "question": "Laquelle de ces affirmations concernant la photosynthèse est FAUSSE ?",
           "answers": [
-            "Lipids",
-            "Proteins",
-            "Carbohydrates",
-            "Nucleic acids"
+            "a) Elle utilise l'énergie solaire.",
+            "b) Elle produit du dioxyde de carbone.",
+            "c) Elle produit du glucose.",
+            "d) Elle se produit dans les chloroplastes des plantes."
           ],
-          "correctAnswer": "Carbohydrates"
+          "correctAnswer": "b) Elle produit du dioxyde de carbone"
         },
         {
-          "id": "3c",
-          "question": "What is the process by which plants convert sunlight into chemical energy?",
+          "id": "3",
+          "question": "Quel processus biologique produit de l'ATP ?",
           "answers": [
-            "Respiration",
-            "Fermentation",
-            "Photosynthesis",
-            "Digestion"
+            "a) Photosynthèse uniquement",
+            "b) Respiration cellulaire uniquement",
+            "c) Photosynthèse et respiration cellulaire",
+            "d) Ni la photosynthèse ni la respiration cellulaire"
           ],
-          "correctAnswer": "Photosynthesis"
+          "correctAnswer": "c) Photosynthèse et respiration cellulaire"
         },
         {
-          "id": "4d",
-          "question": "Which organelle is known as the powerhouse of the cell?",
+          "id": "4",
+          "question": "Qu'est-ce que l'ADN ?",
           "answers": [
-            "Nucleus",
-            "Chloroplast",
-            "Mitochondria",
-            "Ribosome"
+            "a) Une source d'énergie",
+            "b) Une molécule porteuse d'information génétique",
+            "c) Une protéine structurale",
+            "d) Un type de lipide"
           ],
-          "correctAnswer": "Mitochondria"
+          "correctAnswer": "b) Une molécule porteuse d'information génétique"
         },
         {
-          "id": "5e",
-          "question": "Which molecule carries genetic information in most living organisms?",
+          "id": "5",
+          "question": "Lequel de ces termes décrit le processus par lequel les organismes maintiennent un environnement interne stable ?",
           "answers": [
-            "RNA",
-            "DNA",
-            "Protein",
-            "ATP"
+            "a) Métabolisme",
+            "b) Homéostasie",
+            "c) Reproduction",
+            "d) Croissance"
           ],
-          "correctAnswer": "A company's assets, liabilities, and equity at a point in time"
+          "correctAnswer": "b) Homéostasie"
         },
         {
           "id": "6",
-          "question": "What is the primary goal of financial management in a firm?",
+          "question": "Quelle est la différence principale entre la mitose et la méiose ?",
           "answers": [
-            "Maximizing market share",
-            "Minimizing expenses",
-            "Maximizing shareholder wealth",
-            "Increasing employee satisfaction"
+            "a) La mitose produit des cellules haploïdes, la méiose produit des cellules diploïdes.",
+            "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes.",
+            "c) La mitose ne produit que des cellules somatiques, la méiose produit uniquement des gamètes.",
+            "d) La mitose est un processus asexué, la méiose est un processus sexué."
           ],
-          "correctAnswer": "Maximizing shareholder wealth"
+          "correctAnswer": "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes."
         },
         {
           "id": "7",
-          "question": "Which of the following is NOT a key area of finance?",
+          "question": "Que sont les enzymes ?",
           "answers": [
-            "Corporate finance",
-            "Investments",
-            "Behavioral finance",
-            "Econometrics"
+            "a) Des lipides",
+            "b) Des glucides",
+            "c) Des protéines qui catalysent les réactions biochimiques",
+            "d) Des acides nucléiques"
           ],
-          "correctAnswer": "Econometrics"
+          "correctAnswer": "c) Des protéines qui catalysent les réactions biochimiques"
         },
         {
           "id": "8",
-          "question": "The time value of money concept suggests that:",
+          "question": "Quel est le rôle principal du système circulatoire ?",
           "answers": [
-            "A dollar today is worth less than a dollar tomorrow.",
-            "A dollar today is worth more than a dollar tomorrow.",
-            "A dollar today is worth the same as a dollar tomorrow.",
-            "The value of a dollar fluctuates randomly."
+            "a) La digestion des aliments",
+            "b) Le transport de substances dans le corps",
+            "c) La production d'hormones",
+            "d) La protection contre les maladies"
           ],
-          "correctAnswer": "A dollar today is worth more than a dollar tomorrow."
+          "correctAnswer": "b) Le transport de substances dans le corps"
         },
         {
           "id": "9",
-          "question": "What does the term \"liquidity\" refer to in finance?",
+          "question": "Quel est le nom du processus par lequel les organismes produisent des descendants ?",
           "answers": [
-            "The ability of an asset to be quickly converted into cash without significant loss of value.",
-            "The profitability of an asset.",
-            "The risk associated with an asset.",
-            "The growth potential of an asset."
+            "a) Métabolisme",
+            "b) Croissance",
+            "c) Reproduction",
+            "d) Adaptation"
           ],
-          "correctAnswer": "The ability of an asset to be quickly converted into cash without significant loss of value."
+          "correctAnswer": "c) Reproduction"
         },
         {
           "id": "10",
-          "question": "Which financial statement shows a company's financial position at a specific point in time?",
+          "question": "Laquelle de ces affirmations concernant l'évolution est VRAIE ?",
           "answers": [
-            "Income Statement",
-            "Statement of Cash Flows",
-            "Balance Sheet",
-            "Statement of Retained Earnings"
+            "a) L'évolution est un processus rapide et observable en quelques générations.",
+            "b) L'évolution se produit toujours vers une complexité accrue.",
+            "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps.",
+            "d) L'évolution est un processus dirigé vers un but précis."
           ],
-          "correctAnswer": "Balance Sheet"
-        },
-        {
-          "id": "11",
-          "question": "What is the difference between a company's current assets and its current liabilities?",
-          "answers": [
-            "Net Working Capital",
-            "Total Equity",
-            "Long-term Debt",
-            "Gross Profit"
-          ],
-          "correctAnswer": "Net Working Capital"
-        },
-        {
-          "id": "12",
-          "question": "Which of these is a measure of a company's profitability?",
-          "answers": [
-            "Debt-to-Equity Ratio",
-            "Current Ratio",
-            "Return on Equity (ROE)",
-            "Quick Ratio"
-          ],
-          "correctAnswer": "Return on Equity (ROE)"
-        },
-        {
-          "id": "13",
-          "question": "What does NPV stand for in finance?",
-          "answers": [
-            "Net Present Value",
-            "Net Profit Value",
-            "Nominal Present Value",
-            "Net Past Value"
-          ],
-          "correctAnswer": "Net Present Value"
-        },
-        {
-          "id": "14",
-          "question": "Which type of risk is typically diversified away by holding a portfolio of investments?",
-          "answers": [
-            "Systematic Risk",
-            "Unsystematic Risk",
-            "Market Risk",
-            "Inflation Risk"
-          ],
-          "correctAnswer": "Unsystematic Risk"
-        },
-        {
-          "id": "15",
-          "question": "The weighted average cost of capital (WACC) represents:",
-          "answers": [
-            "The average cost of a company's financing.",
-            "The return on equity.",
-            "The return on assets.",
-            "The cost of debt only."
-          ],
-          "correctAnswer": "The average cost of a company's financing."
+          "correctAnswer": "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps."
         }
       ],
       "questionsSelected": [
@@ -355,94 +300,6 @@
             "Nucleic acids"
           ],
           "correctAnswer": "Return on Investment"
-        },
-        {
-          "id": "3c",
-          "question": "Which of the following is a liability?",
-          "answers": [
-            "Accounts receivable",
-            "Accounts payable",
-            "Cash",
-            "Inventory"
-          ],
-          "correctAnswer": "Accounts payable"
-        },
-        {
-          "id": "4d",
-          "question": "What is the formula for calculating net profit?",
-          "answers": [
-            "Revenue - Expenses",
-            "Revenue + Expenses",
-            "Revenue - Cost of Goods Sold",
-            "Total Assets - Liabilities"
-          ],
-          "correctAnswer": "Revenue - Expenses"
-        },
-        {
-          "id": "7",
-          "question": "Which of the following is NOT a key area of finance?",
-          "answers": [
-            "Corporate finance",
-            "Investments",
-            "Behavioral finance",
-            "Econometrics"
-          ],
-          "correctAnswer": "Econometrics"
-        },
-        {
-          "id": "9",
-          "question": "What does the term \"liquidity\" refer to in finance?",
-          "answers": [
-            "The ability of an asset to be quickly converted into cash without significant loss of value.",
-            "The profitability of an asset.",
-            "The risk associated with an asset.",
-            "The growth potential of an asset."
-          ],
-          "correctAnswer": "The ability of an asset to be quickly converted into cash without significant loss of value."
-        },
-        {
-          "id": "11",
-          "question": "What is the difference between a company's current assets and its current liabilities?",
-          "answers": [
-            "Net Working Capital",
-            "Total Equity",
-            "Long-term Debt",
-            "Gross Profit"
-          ],
-          "correctAnswer": "Net Working Capital"
-        },
-        {
-          "id": "12",
-          "question": "Which of these is a measure of a company's profitability?",
-          "answers": [
-            "Debt-to-Equity Ratio",
-            "Current Ratio",
-            "Return on Equity (ROE)",
-            "Quick Ratio"
-          ],
-          "correctAnswer": "Return on Equity (ROE)"
-        },
-        {
-          "id": "13",
-          "question": "What does NPV stand for in finance?",
-          "answers": [
-            "Net Present Value",
-            "Net Profit Value",
-            "Nominal Present Value",
-            "Net Past Value"
-          ],
-          "correctAnswer": "Net Present Value"
-        },
-        {
-          "id": "14",
-          "question": "Which type of risk is typically diversified away by holding a portfolio of investments?",
-          "answers": [
-            "Systematic Risk",
-            "Unsystematic Risk",
-            "Market Risk",
-            "Inflation Risk"
-          ],
-          "correctAnswer": "Unsystematic Risk"
         }
       ],
       "id": "f4dc"
@@ -1547,14 +1404,6 @@
       "questionsSelected": []
     },
     {
-      "id": "b979",
-      "courseName": "General Chemistry",
-      "coursequizID": "CHEM101",
-      "teacherName": "khba",
-      "Deadline": "2024-11-14T23:26",
-      "status": "active"
-    },
-    {
       "id": "70b2",
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
@@ -2492,228 +2341,134 @@
       "teacherName": "Jim Halpert",
       "Deadline": "2024-12-04T12:40",
       "status": "draft",
+      "questions": [],
+      "questionsSelected": []
+    },
+    {
+      "id": "80a8",
+      "courseName": "Introduction to Biology",
+      "coursequizID": "BIO101",
+      "teacherName": "Carlos Martinez",
+      "Deadline": "2025-01-02T23:31",
+      "status": "active"
+    },
+    {
+      "id": "8193",
+      "courseName": "Introduction to Mathematics",
+      "coursequizID": "105",
+      "teacherName": "Carlos Martinez",
+      "Deadline": "2025-01-17T23:42",
+      "status": "active",
       "questions": [
         {
           "id": "1",
-          "question": "Which empire is credited with the construction of the Great Wall of China?",
+          "question": "Which of the following is NOT a fundamental branch of mathematics?",
           "answers": [
-            "Qin",
-            "Han",
-            "Sui",
-            "Tang"
+            "Algebra",
+            "Geometry",
+            "Astrology",
+            "Calculus"
           ],
-          "correctAnswer": "Qin"
+          "correctAnswer": "Astrology"
         },
         {
           "id": "2",
-          "question": "The Renaissance is generally considered to have begun in which region of Europe?",
+          "question": "What is the result of 2² + 3²?",
           "answers": [
-            "Northern Europe",
-            "Iberian Peninsula",
-            "Italy",
-            "France"
+            "13",
+            "25",
+            "10",
+            "36"
           ],
-          "correctAnswer": "Italy"
+          "correctAnswer": "13"
         },
         {
           "id": "3",
-          "question": "Which treaty officially ended World War I?",
+          "question": "What does the term \"commutative\" refer to in mathematics?",
           "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
+            "The order of operations",
+            "The ability to switch the order of operands without changing the result",
+            "The distribution of numbers",
+            "The inverse of an operation"
           ],
-          "correctAnswer": "Treaty of Versailles"
+          "correctAnswer": "The ability to switch the order of operands without changing the result"
         },
         {
           "id": "4",
-          "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
+          "question": "What type of number is π (pi)?",
           "answers": [
-            "United States and Britain",
-            "Soviet Union and Germany",
-            "United States and Soviet Union",
-            "China and Japan"
+            "Integer",
+            "Rational",
+            "Irrational",
+            "Complex"
           ],
-          "correctAnswer": "United States and Soviet Union"
+          "correctAnswer": "Irrational"
         },
         {
           "id": "5",
-          "question": "The Neolithic Revolution is associated with the development of:",
+          "question": "Which number system uses only the digits 0 and 1?",
           "answers": [
-            "Metalworking",
-            "Agriculture",
-            "Writing",
-            "The wheel"
+            "Decimal",
+            "Binary",
+            "Hexadecimal",
+            "Octal"
           ],
-          "correctAnswer": "Agriculture"
+          "correctAnswer": "Binary"
         },
         {
           "id": "6",
-          "question": "Which civilization developed the concept of zero?",
+          "question": "What is the name given to a polygon with three sides?",
           "answers": [
-            "Greek",
-            "Roman",
-            "Mayan",
-            "Indian"
+            "Quadrilateral",
+            "Pentagon",
+            "Triangle",
+            "Hexagon"
           ],
-          "correctAnswer": "Indian"
+          "correctAnswer": "Triangle"
         },
         {
           "id": "7",
-          "question": "The Protestant Reformation was initiated by:",
+          "question": "What is the value of 0! (zero factorial)?",
           "answers": [
-            "Martin Luther",
-            "John Calvin",
-            "Henry VIII",
-            "Pope Leo X"
+            "0",
+            "1",
+            "Undefined",
+            "-1"
           ],
-          "correctAnswer": "Martin Luther"
+          "correctAnswer": "1"
         },
         {
           "id": "8",
-          "question": "The Opium Wars were fought between Britain and:",
+          "question": "What does the symbol ∞ represent?",
           "answers": [
-            "France",
-            "Russia",
-            "China",
-            "Japan"
+            "A very large number",
+            "Infinity",
+            "Zero",
+            "A very small number"
           ],
-          "correctAnswer": "China"
+          "correctAnswer": "Infinity"
         },
         {
           "id": "9",
-          "question": "Which event is widely considered the start of World War II?",
+          "question": "Which mathematical concept deals with the size, shape, and relative position of figures?",
           "answers": [
-            "The invasion of Poland",
-            "The bombing of Pearl Harbor",
-            "The assassination of Archduke Franz Ferdinand",
-            "The signing of the Treaty of Versailles"
+            "Algebra",
+            "Calculus",
+            "Geometry",
+            "Statistics"
           ],
-          "correctAnswer": "The invasion of Poland"
+          "correctAnswer": "Geometry"
         },
         {
           "id": "10",
-          "question": "The Silk Road primarily facilitated trade between:",
+          "question": "What is the process of finding the derivative of a function called?",
           "answers": [
-            "Europe and the Americas",
-            "East Asia and the Mediterranean",
-            "Africa and South America",
-            "India and Australia"
+            "Integration",
+            "Differentiation",
+            "Simplification",
+            "Substitution"
           ],
-          "correctAnswer": "East Asia and the Mediterranean"
-        }
-      ],
-      "questionsSelected": [
-        {
-          "id": "1",
-          "question": "Which empire is credited with the construction of the Great Wall of China?",
-          "answers": [
-            "Qin",
-            "Han",
-            "Sui",
-            "Tang"
-          ],
-          "correctAnswer": "Qin"
-        },
-        {
-          "id": "2",
-          "question": "The Renaissance is generally considered to have begun in which region of Europe?",
-          "answers": [
-            "Northern Europe",
-            "Iberian Peninsula",
-            "Italy",
-            "France"
-          ],
-          "correctAnswer": "Italy"
-        },
-        {
-          "id": "3",
-          "question": "Which treaty officially ended World War I?",
-          "answers": [
-            "Treaty of Versailles",
-            "Treaty of Tordesillas",
-            "Treaty of Paris",
-            "Treaty of Ghent"
-          ],
-          "correctAnswer": "Treaty of Versailles"
-        },
-        {
-          "id": "4",
-          "question": "The Cold War was primarily a geopolitical struggle between which two superpowers?",
-          "answers": [
-            "United States and Britain",
-            "Soviet Union and Germany",
-            "United States and Soviet Union",
-            "China and Japan"
-          ],
-          "correctAnswer": "United States and Soviet Union"
-        },
-        {
-          "id": "5",
-          "question": "The Neolithic Revolution is associated with the development of:",
-          "answers": [
-            "Metalworking",
-            "Agriculture",
-            "Writing",
-            "The wheel"
-          ],
-          "correctAnswer": "Agriculture"
-        },
-        {
-          "id": "6",
-          "question": "Which civilization developed the concept of zero?",
-          "answers": [
-            "Greek",
-            "Roman",
-            "Mayan",
-            "Indian"
-          ],
-          "correctAnswer": "Indian"
-        },
-        {
-          "id": "7",
-          "question": "The Protestant Reformation was initiated by:",
-          "answers": [
-            "Martin Luther",
-            "John Calvin",
-            "Henry VIII",
-            "Pope Leo X"
-          ],
-          "correctAnswer": "Martin Luther"
-        },
-        {
-          "id": "8",
-          "question": "The Opium Wars were fought between Britain and:",
-          "answers": [
-            "France",
-            "Russia",
-            "China",
-            "Japan"
-          ],
-          "correctAnswer": "China"
-        },
-        {
-          "id": "9",
-          "question": "Which event is widely considered the start of World War II?",
-          "answers": [
-            "The invasion of Poland",
-            "The bombing of Pearl Harbor",
-            "The assassination of Archduke Franz Ferdinand",
-            "The signing of the Treaty of Versailles"
-          ],
-          "correctAnswer": "The invasion of Poland"
-        },
-        {
-          "id": "10",
-          "question": "The Silk Road primarily facilitated trade between:",
-          "answers": [
-            "Europe and the Americas",
-            "East Asia and the Mediterranean",
-            "Africa and South America",
-            "India and Australia"
-          ],
-          "correctAnswer": "East Asia and the Mediterranean"
+          "correctAnswer": "Differentiation"
         }
       ]
     }
@@ -6337,72 +6092,219 @@
   "courses": [
     {
       "id": "1",
-      "Module": "M101",
+      "coursequizID": "BIO101",
       "courseName": "Introduction to Biology",
       "teacherId": "T001",
       "teacherName": "Dr. Alice Johnson",
       "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
+      "credits": 3,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "schedule": "Mon/Wed/Fri 10:00 AM - 11:30 AM",
+      "location": "Room 203, Science Building",
+      "materials": [
+        "Biology 101 Textbook",
+        "Lab Manual"
+      ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Biology",
+          "contentDescription": "An overview of the fundamental concepts of biology, including cell biology, genetics, and ecology."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://youtu.be/tZE_fQFK8EY?si=_ZCt1TrfD2apu22m"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "active"
     },
     {
       "id": "2",
-      "Module": "M102",
+      "coursequizID": "PHYS101",
       "courseName": "Introduction to Physics",
       "teacherId": "T002",
       "teacherName": "Dr. Michael Smith",
       "courseDescription": "An introduction to the fundamental principles of biology, covering topics like cell biology, genetics, and ecology.",
+      "credits": 4,
       "imageUrl": "https://th.bing.com/th/id/OIP.RKDSdMJ5v5Hb4uflD3AoZgHaD5?rs=1&pid=ImgDetMain",
+      "schedule": "Tue/Thu 9:00 AM - 10:30 AM",
+      "location": "Room 102, Physics Lab",
+      "materials": [
+        "Physics 101 Textbook",
+        "Lab Safety Manual"
+      ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Physics",
+          "contentDescription": "An overview of the fundamental concepts of physics, including motion, energy, and forces."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
+      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "active"
+    },
+    {
+      "id": "3",
+      "coursequizID": "HIST201",
+      "courseName": "World History",
+      "teacherId": "T003",
+      "teacherName": "Dr. Sarah Davis",
+      "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
+      "credits": 3,
+      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "schedule": "Mon/Wed 1:00 PM - 2:30 PM",
+      "location": "Room 104, History Department",
+      "materials": [
+        "World History Textbook",
+        "Primary Source Readings"
+      ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to World History",
+          "contentDescription": "An overview of the fundamental concepts of world history, including major events, figures, and cultural movements."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
       "status": "completed"
     },
     {
-      "id": "3",
-      "Module": "M103",
-      "courseName": "World History",
-      "teacherId": "T003",
-      "teacherName": "Dr. Sarah Davis",
-      "courseDescription": "An exploration of world history from ancient civilizations to modern times.",
-      "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
-      "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
-    },
-    {
       "id": "4",
-      "Module": "M104",
-      "coursequizID": "104",
+      "coursequizID": "CHEM101",
       "courseName": "General Chemistry",
       "teacherId": "T004",
       "teacherName": "Dr. Emily Zhang",
       "courseDescription": "A foundational chemistry course covering the basics of chemical reactions, atomic structure, and the periodic table.",
+      "credits": 4,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "schedule": "Tue/Thu 2:00 PM - 3:30 PM",
+      "location": "Room 205, Chemistry Lab",
+      "materials": [
+        "General Chemistry Textbook",
+        "Laboratory Notebook"
+      ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Chemistry",
+          "contentDescription": "An overview of the fundamental concepts of chemistry, including chemical reactions, atomic structure, and the periodic table."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
       "id": "5",
-      "Module": "M105",
+      "coursequizID": "105",
       "courseName": "Introduction to Mathematics",
       "teacherId": "T005",
       "teacherName": "Mr. William Lee",
       "courseDescription": "A basic course in mathematics, including algebra, calculus, and geometry.",
+      "credits": 3,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "schedule": "Mon/Fri 11:00 AM - 12:30 PM",
+      "location": "Room 101, Math Department",
+      "materials": [
+        "Mathematics 101 Textbook",
+        "Scientific Calculator"
+      ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Mathematics",
+          "contentDescription": "An overview of the fundamental concepts of mathematics, including algebra, calculus, and geometry."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
-      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg"
+      "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
+      "status": "completed"
     },
     {
       "id": "6",
-      "Module": "M106",
+      "coursequizID": "106",
       "courseName": "Principles of Economics",
       "teacherId": "T006",
       "teacherName": "Dr. Rachel Green",
       "courseDescription": "An introductory course to economics, covering basic principles of microeconomics and macroeconomics.",
+      "credits": 3,
       "imageUrl": "https://wallpaperaccess.com/full/796849.jpg",
+      "schedule": "Mon/Wed 3:00 PM - 4:30 PM",
+      "location": "Room 303, Economics Building",
+      "materials": [
+        "Economics 101 Textbook",
+        "Macroeconomics Reader"
+      ],
+      "contentOfCourse": [
+        {
+          "contentId": "1",
+          "contentName": "Introduction to Economics",
+          "contentDescription": "An overview of the fundamental concepts of economics, including microeconomics and macroeconomics."
+        },
+        {
+          "contentId": "2",
+          "contentName": "Lab Safety Guidelines",
+          "contentDescription": "Guidelines for safe and responsible use of laboratory equipment and materials."
+        },
+        {
+          "contentId": "3",
+          "contentName": "Lab Equipment Maintenance",
+          "contentDescription": "Instructions for maintaining and repairing laboratory equipment."
+        }
+      ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "active"
+      "status": "completed"
     }
   ],
   "modules": [

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import RouteConfig from './routes/RouteConfig';

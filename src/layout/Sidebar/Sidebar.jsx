@@ -1,5 +1,5 @@
 import { memo, useEffect, useRef, useContext, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { LayoutContext } from '../context/LayoutContext';
 import { MenuItem, Divider, UserProfile } from './components';
 import menuItems from './config/menuItems';

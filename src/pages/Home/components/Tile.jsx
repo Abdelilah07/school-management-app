@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const Tile = ({ tile, onClick }) => {
+const Tile = ({ tile, onClick = () => {} }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => setIsHovered(true);
@@ -110,10 +110,6 @@ Tile.propTypes = {
     category: PropTypes.string,
   }).isRequired,
   onClick: PropTypes.func,
-};
-
-Tile.defaultProps = {
-  onClick: () => {},
 };
 
 export default Tile;

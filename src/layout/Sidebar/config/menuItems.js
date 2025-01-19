@@ -68,7 +68,7 @@ const menuItems = [
     href: '/secteurs',
   },
   {
-    label:'Generate Documents',
+    label: 'Generate Documents',
     icon: 'Stars',
     href: '/docs',
   },

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { LayoutProvider, LayoutContext } from './context/LayoutContext';
 import Navbar from './Navbar/Navbar';
 import Sidebar from './Sidebar/Sidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 
 const DashboardContent = () => {
   const { isMobile, isSidebarOpen, setIsSidebarOpen } = useContext(LayoutContext);
