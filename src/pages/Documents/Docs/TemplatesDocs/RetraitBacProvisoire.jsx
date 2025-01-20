@@ -76,7 +76,7 @@ const BacWithdrawalFormRow = ({ name, group, date, index, details }) => {
   
   const BacWithdrawalForm = ({ name, group, date, details }) => {
     return (
-      <div className="bg-white p-8 w-[210mm] h-[297mm] mx-auto max-w-4xl">
+      <div className="bg-white text-black p-8 w-[210mm] h-[297mm] mx-auto max-w-4xl">
         {[...Array(2)].map((_, index) => (
           <BacWithdrawalFormRow 
             key={index} 

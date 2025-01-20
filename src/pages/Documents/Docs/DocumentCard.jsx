@@ -1,23 +1,25 @@
-import React from 'react';
-
-const DocumentCard = ({ type, Icon, label, isSelected, onClick }) => (
+const DocumentCard = ({ type, Icon, label, isSelected, onClick, theme }) => (
   <button
     onClick={() => onClick(type)}
-    className={`p-3 rounded-md border transition-colors duration-150 flex flex-col items-center space-y-1
-      ${
-        isSelected
-          ? 'border-green-500 bg-green-50 dark:border-green-300 dark:bg-green-900'
-          : 'border-gray-300 hover:border-green-400 hover:bg-green-50 dark:border-gray-600 dark:hover:border-green-500 dark:hover:bg-green-800'
-      }`}
+    className={`card bg-base-100 hover:bg-base-100/80 transition-all duration-200 cursor-pointer p-4
+      ${isSelected 
+        ? `border-2 border-primary shadow-lg shadow-primary/20 bg-primary/5` 
+        : 'border border-base-300 hover:border-base-content/20'}`}
   >
-    <Icon
-      className={`w-5 h-5 ${isSelected ? 'text-green-500 dark:text-green-300' : 'text-gray-500 dark:text-gray-400'}`}
-    />
-    <span
-      className={`font-semibold ${isSelected ? 'text-green-500 dark:text-green-300' : 'text-gray-600 dark:text-gray-400'}`}
-    >
-      {label}
-    </span>
+    <div className="flex flex-col items-center gap-3">
+      <Icon 
+        className={`w-6 h-6 ${isSelected 
+          ? `text-primary` 
+          : 'text-base-content/70'}`} 
+      />
+      <span 
+        className={`font-medium text-sm ${isSelected 
+          ? `text-primary` 
+          : 'text-base-content/80'}`}
+      >
+        {label}
+      </span>
+    </div>
   </button>
 );
 

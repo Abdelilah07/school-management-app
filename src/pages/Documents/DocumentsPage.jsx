@@ -24,6 +24,7 @@ const DocumentsPage = () => {
     const [loading, setLoading] = useState(false);
     const [activeTab, setActiveTab] = useState('new-request');
 
+
     useEffect(() => {
         dispatch(fetchDocuments());
         dispatch(fetchDemandes());
@@ -45,34 +46,32 @@ const DocumentsPage = () => {
         setFiles(validFiles);
     }, []);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
-        if (!selectedDocument || !requestDate || files.length === 0) return;
-
-        setLoading(true);
+        if (!selectedDocument) return;
 
         const newRequest = {
             document: selectedDocument.name,
             description: selectedDocument.description,
+            cef: user.id || "CEF-Unknown",
+            group: user.group || "Unknown",
             requestDate,
-            files: files.map(file => ({
+            files: files.map((file) => ({
                 name: file.name,
                 size: file.size,
-                type: file.type,
+                type: file.type
             })),
             user: user?.name || 'Unknown',
-            CEF: user?.id || 'Unknown',
-            group: user?.group || 'DEV101',
             status: 'en cours',
             submissionDate: new Date().toLocaleDateString(),
-            processingTime: selectedDocument.processingTime,
+            processingTime: selectedDocument.processingTime
         };
 
         try {
             const response = await fetch('http://localhost:3000/demandes', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newRequest),
+                body: JSON.stringify(newRequest)
             });
 
             if (!response.ok) throw new Error('Failed to submit request');
@@ -83,10 +82,14 @@ const DocumentsPage = () => {
             setRequestDate('');
             dispatch(fetchDemandes());
         } catch (error) {
-            setAlerts({ success: false, error: error.message });
-        } finally {
-            setLoading(false);
+            setAlerts((prev) => ({ ...prev, error: error.message }));
         }
+    }, [selectedDocument, requestDate, files, user, dispatch]);
+
+    const handleDelete = (demande) => {
+        dispatch(deleteDemande(demande.id));
+        const newDemandes = demandes.filter((d) => d.id !== demande.id);
+        dispatch(fetchDemandes(newDemandes));
     };
 
     const StatusBadge = ({ status }) => {
@@ -119,24 +122,24 @@ const DocumentsPage = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container p-4 mx-auto">
             {/* Alerts */}
             {alerts.success && (
-                <div className="alert alert-success mb-4">
+                <div className="mb-4 alert alert-success">
                     <BadgeCheck className="w-6 h-6" />
                     <span>Request submitted successfully!</span>
                 </div>
             )}
 
             {alerts.error && (
-                <div className="alert alert-error mb-4">
+                <div className="mb-4 alert alert-error">
                     <FileWarning className="w-6 h-6" />
                     <span>{alerts.error}</span>
                 </div>
             )}
 
             {/* Tabs */}
-            <div className="tabs tabs-boxed mb-6">
+            <div className="mb-6 tabs tabs-boxed">
                 <button
                     className={`tab tab-lg gap-2 ${activeTab === 'new-request' ? 'tab-active' : ''}`}
                     onClick={() => setActiveTab('new-request')}
@@ -154,11 +157,11 @@ const DocumentsPage = () => {
             </div>
 
             {activeTab === 'new-request' ? (
-                <div className="grid lg:grid-cols-2 gap-6">
+                <div className="grid gap-6 lg:grid-cols-2">
                     {/* Available Documents */}
-                    <div className="card bg-base-100 shadow-xl">
+                    <div className="shadow-xl card bg-base-100">
                         <div className="card-body">
-                            <h2 className="card-title flex gap-2">
+                            <h2 className="flex gap-2 card-title">
                                 <Shield className="w-6 h-6 text-primary" />
                                 Available Documents
                             </h2>
@@ -171,8 +174,8 @@ const DocumentsPage = () => {
                                             }`}
                                         onClick={() => setSelectedDocument(doc)}
                                     >
-                                        <div className="card-body p-4">
-                                            <h3 className="font-medium flex items-center gap-2">
+                                        <div className="p-4 card-body">
+                                            <h3 className="flex items-center gap-2 font-medium">
                                                 <FileText className="w-5 h-5 text-primary" />
                                                 {doc.name}
                                             </h3>
@@ -189,9 +192,9 @@ const DocumentsPage = () => {
                     </div>
 
                     {/* Request Form */}
-                    <div className="card bg-base-100 shadow-xl">
+                    <div className="shadow-xl card bg-base-100">
                         <div className="card-body">
-                            <h2 className="card-title flex gap-2">
+                            <h2 className="flex gap-2 card-title">
                                 <ArrowUpCircle className="w-6 h-6 text-primary" />
                                 Submit Request
                             </h2>
@@ -204,7 +207,7 @@ const DocumentsPage = () => {
                                         <span className="label-text">Selected Document</span>
                                     </label>
                                     {selectedDocument ? (
-                                        <div className="bg-base-200 p-4 flex items-center justify-between">
+                                        <div className="flex items-center justify-between p-4 bg-base-200">
                                             <div>
                                                 <h3 className="font-bold">{selectedDocument.name}</h3>
                                                 <p className="text-sm">{selectedDocument.description}</p>
@@ -231,7 +234,7 @@ const DocumentsPage = () => {
                                         <label className="label">
                                             <span className="label-text">Required Documents</span>
                                         </label>
-                                        <div className="bg-neutral-100 p-4">
+                                        <div className="p-4 bg-neutral-100">
                                             <ul className="list-disc list-inside">
                                                 {selectedDocument.documentAttachment.map((doc, index) => (
                                                     <li key={index} className="flex items-center gap-2">
@@ -274,7 +277,7 @@ const DocumentsPage = () => {
                                         />
                                         <label htmlFor="file-upload" className="cursor-pointer">
                                             <Upload className="w-12 h-12 mx-auto mb-4 text-primary" />
-                                            <p className="text-lg mb-2">
+                                            <p className="mb-2 text-lg">
                                                 Drag and drop files here or <span className="text-primary">browse</span>
                                             </p>
                                             <p className="text-sm opacity-70">PDF, JPG, and PNG files (max 5MB each)</p>
@@ -285,7 +288,7 @@ const DocumentsPage = () => {
                                     {files.length > 0 && (
                                         <div className="mt-4 space-y-2">
                                             {files.map((file, index) => (
-                                                <div key={index} className="bg-base-200 p-4 flex items-center justify-between">
+                                                <div key={index} className="flex items-center justify-between p-4 bg-base-200">
                                                     <div className="flex items-center gap-2">
                                                         <FileText className="w-5 h-5" />
                                                         <div>
@@ -341,16 +344,16 @@ const DocumentsPage = () => {
                 </div>
             ) : (
                 /* My Requests Tab */
-                <div className="card bg-base-100 shadow-xl">
+                <div className="shadow-xl card bg-base-100">
                     <div className="card-body">
-                        <h2 className="card-title flex gap-2">
+                        <h2 className="flex gap-2 card-title">
                             <FolderOpen className="w-6 h-6 text-primary" />
                             My Requests
                         </h2>
                         <div className="divider"></div>
 
                         {demandes.filter(d => d.user === user?.name).length === 0 ? (
-                            <div className="text-center py-12">
+                            <div className="py-12 text-center">
                                 <Info className="w-16 h-16 mx-auto mb-4 text-primary" />
                                 <h3 className="text-lg font-medium">No Requests Found</h3>
                                 <p className="text-sm opacity-70">You haven't made any document requests yet.</p>
@@ -390,7 +393,7 @@ const DocumentsPage = () => {
                                                             </button>
                                                             <button
                                                                 className="btn btn-ghost btn-circle"
-                                                                onClick={() => dispatch(deleteDemande(demande.id))}
+                                                                onClick={() => handleDelete(demande)}
                                                             >
                                                                 <Trash className="w-5 h-5" />
                                                             </button>

@@ -11,6 +11,8 @@ import BacWithdrawalNotice from "./TemplatesDocs/BacWithdrawalNotice";
 import WarningNotice from "./TemplatesDocs/WarningNotice";
 import FormInput from "./FormInput";
 
+import DocumentCard from "./DocumentCard";
+
 const DOCUMENT_TYPES = [
     {
         type: "convocation",
@@ -49,18 +51,7 @@ const DOCUMENT_TYPES = [
     }
 ];
 
-const DocumentCard = ({ type, Icon, label, isSelected, onClick, theme }) => (
-    <div
-        className={`card bg-base-100 shadow-xl cursor-pointer transition-all hover:scale-105 
-            ${isSelected ? `border-4 border-${theme} shadow-${theme}/50` : ''}`}
-        onClick={() => onClick(type)}
-    >
-        <div className="card-body items-center text-center p-4">
-            <Icon className={`w-8 h-8 ${isSelected ? `text-${theme}` : 'text-base-content'}`} />
-            <h3 className="card-title text-sm mt-2">{label}</h3>
-        </div>
-    </div>
-);
+
 
 const Docs = () => {
     const [form, setForm] = useState({
@@ -319,20 +310,18 @@ const Docs = () => {
                 {/* Main Content */}
                 <div className="flex flex-1">
                     {/* Document Preview */}
-                    <div className="flex-1 p-4 bg-base-200">
-                        <div className="card bg-base-100 shadow-xl h-full">
+                        <div className="card bg-base-100 border border-1 h-full">
                             <div className="card-body">
                                 {renderDocument}
                             </div>
-                        </div>
                     </div>
 
                     {/* Document Types */}
-                    <div className="w-64 bg-base-100 p-4 border-l">
+                    <div className="w-64 bg-base-100 p-4 ">
                         <div className="space-y-4">
                             <h2 className="text-xl font-bold text-center">Document Types</h2>
                             <div className="grid gap-4">
-                                {DOCUMENT_TYPES.map(({ type, icon: Icon, label, theme }) => (
+                                {DOCUMENT_TYPES.map(({ type, icon: Icon, label , theme}) => (
                                     <DocumentCard
                                         key={type}
                                         type={type}
