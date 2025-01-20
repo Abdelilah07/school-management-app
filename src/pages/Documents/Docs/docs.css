@@ -1,0 +1,12 @@
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .print-container {
+        page-break-inside: avoid;
+    }
+    @page {
+        margin : 1cm;
+    }
+}

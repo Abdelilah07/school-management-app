@@ -71,6 +71,7 @@ const Docs = () => {
     const [selectedRebuke, setSelectedRebuke] = useState("ReprimandNotice");
     const [groupes, setGroupes] = useState([]);
     const printRef = useRef(null);
+    const [error, setError] = useState("")
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -87,11 +88,11 @@ const Docs = () => {
 
     const validateForm = () => {
         if (!form.name && !form.group) {
-            alert("Veuillez remplir au moins un champ");
+            setError("Veuillez remplir au moins un champ");
             return false;
         }
         if (!form.date) {
-            alert("Veuillez sélectionner une date");
+            setError("Veuillez sélectionner une date");
             return false;
         }
         return true;
@@ -107,8 +108,18 @@ const Docs = () => {
             DocumentComponent = documentType?.component;
         }
 
+        // Create a wrapper div with consistent page styling
         const container = document.createElement("div");
-        container.style.pageBreakAfter = "always";
+        container.className = "print-page";
+        // Apply consistent page break and margin styles
+        container.style.cssText = `
+            page-break-after: always;
+            page-break-inside: avoid;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            box-sizing: border-box;
+        `;
 
         let documentProps = {
             key: student.idEtudiant,
@@ -121,7 +132,6 @@ const Docs = () => {
             resen3: form.resen3,
         };
 
-        // Add specific props for different document types
         if (selectedCard === "bac-withdrawal") {
             documentProps.cin = student.cin;
             documentProps.student = student;
@@ -138,13 +148,53 @@ const Docs = () => {
     const onPrint = () => {
         if (!validateForm()) return;
 
+        // Store original styles
         const originalDisplay = document.querySelector(".navbar")?.style.display;
+        const originalOverflow = document.body.style.overflow;
 
+        // Create print container with specific print styles
         const printContainer = document.createElement("div");
-        printContainer.style.position = "absolute";
-        printContainer.style.top = "0";
-        printContainer.style.left = "0";
-        printContainer.style.width = "100%";
+        printContainer.className = "print-container";
+        printContainer.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        `;
+
+        // Add print-specific styles to the document
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `
+            @media print {
+                @page {
+                    size: A4;
+                    margin: 0;
+                }
+                
+                body {
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                .print-page {
+                    width: 210mm;
+                    height: 297mm;
+                    margin: 0;
+                    padding: 20mm;
+                    box-sizing: border-box;
+                    page-break-after: always;
+                    page-break-inside: avoid;
+                }
+                
+                .print-container {
+                    width: 100%;
+                }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
         document.body.appendChild(printContainer);
 
         try {
@@ -165,7 +215,6 @@ const Docs = () => {
                     resen3: form.resen3,
                 };
 
-                // Add specific props for different document types
                 if (selectedCard === "bac-withdrawal") {
                     documentProps.cin = form.cin;
                 }
@@ -178,23 +227,26 @@ const Docs = () => {
                     DocumentComponent = DOCUMENT_TYPES.find((doc) => doc.type === selectedCard)?.component;
                 }
 
-                ReactDOM.render(
-                    <DocumentComponent {...documentProps} />,
-                    printContainer
-                );
+                const container = createPrintableDocument({ nomEtudiant: form.name, idEtudiant: 'single' });
+                printContainer.appendChild(container);
             }
 
+            // Hide navbar and set body overflow
             const navbar = document.querySelector(".navbar");
             if (navbar) navbar.style.display = "none";
+            document.body.style.overflow = "visible";
 
             window.print();
         } catch (err) {
             console.error("Print error:", err);
             alert("An error occurred during printing");
         } finally {
+            // Cleanup
             const navbar = document.querySelector(".navbar");
             if (navbar) navbar.style.display = originalDisplay;
+            document.body.style.overflow = originalOverflow;
             document.body.removeChild(printContainer);
+            document.head.removeChild(styleSheet);
         }
     };
 
@@ -289,90 +341,113 @@ const Docs = () => {
     }, [form, selectedCard, selectedRebuke]);
 
     return (
-        <div className="drawer lg:drawer-open">
-            <input id="docs-drawer" type="checkbox" className="drawer-toggle" />
-
-            <div className="drawer-content flex flex-col">
-                {/* Navbar */}
-                <div className="navbar bg-base-200 lg:hidden">
-                    <div className="flex-none">
-                        <label htmlFor="docs-drawer" className="btn btn-square btn-ghost">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </label>
-                    </div>
-                    <div className="flex-1">
-                        <h1 className="text-xl font-bold">Documents Generator</h1>
-                    </div>
+        <>
+            {error ? (
+                <div role="alert" className="alert alert-error my-3">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 shrink-0 stroke-current"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{error}.</span>
                 </div>
+            ) : ""}
+            <div className="drawer lg:drawer-open">
 
-                {/* Main Content */}
-                <div className="flex flex-1">
-                    {/* Document Preview */}
-                        <div className="card bg-base-100 border border-1 h-full">
-                            <div className="card-body">
-                                {renderDocument}
-                            </div>
+                <input id="docs-drawer" type="checkbox" className="drawer-toggle" />
+
+                <div className="drawer-content flex flex-col">
+                    {/* Navbar */}
+                    <div className="navbar bg-base-200 lg:hidden">
+                        <div className="flex-none">
+                            <label htmlFor="docs-drawer" className="btn btn-square btn-ghost">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </label>
+                        </div>
+                        <div className="flex-1">
+                            <h1 className="text-xl font-bold">Documents Generator</h1>
+                        </div>
                     </div>
 
-                    {/* Document Types */}
-                    <div className="w-64 bg-base-100 p-4 ">
-                        <div className="space-y-4">
-                            <h2 className="text-xl font-bold text-center">Document Types</h2>
-                            <div className="grid gap-4">
-                                {DOCUMENT_TYPES.map(({ type, icon: Icon, label , theme}) => (
-                                    <DocumentCard
-                                        key={type}
-                                        type={type}
-                                        Icon={Icon}
-                                        label={label}
-                                        theme={theme}
-                                        isSelected={selectedCard === type}
-                                        onClick={setSelectedCard}
-                                    />
-                                ))}
+
+                    {/* Main Content */}
+                    <div className="flex flex-1">
+                        {/* Document Preview */}
+                        <div className="flex-1 p-4">
+                            <div className="card bg-base-100 h-full">
+                                <div className="card-body border border-gray-400 rounded-xl">
+                                    {renderDocument}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Document Types */}
+                        <div className="w-64 bg-base-100 p-4">
+                            <div className="space-y-4">
+                                <h2 className="text-xl font-bold text-center">Document Types</h2>
+                                <hr className="my-3" />
+                                <div className="grid gap-4">
+                                    {DOCUMENT_TYPES.map(({ type, icon: Icon, label, theme }) => (
+                                        <DocumentCard
+                                            key={type}
+                                            type={type}
+                                            Icon={Icon}
+                                            label={label}
+                                            theme={theme}
+                                            isSelected={selectedCard === type}
+                                            onClick={setSelectedCard}
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Drawer */}
-            <div className="drawer-side">
-                <label htmlFor="docs-drawer" className="drawer-overlay"></label>
-                <div className="p-4 w-80 bg-base-100 text-base-content h-full">
-                    <h2 className="text-xl font-bold mb-4">Document Settings</h2>
+                {/* Drawer */}
+                <div className="drawer-side">
+                    <label htmlFor="docs-drawer" className="drawer-overlay"></label>
+                    <div className="p-4 w-80 bg-base-100 text-base-content h-full">
+                        <h2 className="text-xl font-bold mb-4">Document Settings</h2>
 
-                    <div className="join mb-4 w-full">
+                        <div className="join mb-4 w-full">
+                            <button
+                                className={`join-item btn ${!isParGroupSelected ? 'btn-active' : ''}`}
+                                onClick={() => setIsParGroupSelected(false)}
+                            >
+                                <User className="w-4 h-4 mr-2" />
+                                Individual
+                            </button>
+                            <button
+                                className={`join-item btn ${isParGroupSelected ? 'btn-active' : ''}`}
+                                onClick={() => setIsParGroupSelected(true)}
+                            >
+                                <Users className="w-4 h-4 mr-2" />
+                                Group
+                            </button>
+                        </div>
+
+                        {renderDocumentForm()}
+
                         <button
-                            className={`join-item btn ${!isParGroupSelected ? 'btn-active' : ''}`}
-                            onClick={() => setIsParGroupSelected(false)}
+                            className="btn btn-primary w-full mt-4"
+                            onClick={onPrint}
                         >
-                            <User className="w-4 h-4 mr-2" />
-                            Individual
-                        </button>
-                        <button
-                            className={`join-item btn ${isParGroupSelected ? 'btn-active' : ''}`}
-                            onClick={() => setIsParGroupSelected(true)}
-                        >
-                            <Users className="w-4 h-4 mr-2" />
-                            Group
+                            <Printer className="w-4 h-4 mr-2" />
+                            Print Document
                         </button>
                     </div>
-
-                    {renderDocumentForm()}
-
-                    <button
-                        className="btn btn-primary w-full mt-4"
-                        onClick={onPrint}
-                    >
-                        <Printer className="w-4 h-4 mr-2" />
-                        Print Document
-                    </button>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
