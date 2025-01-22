@@ -19,7 +19,6 @@ import {
     AlertTriangle,
     X
 } from 'lucide-react';
-import { handleDocumentSelect } from '../../features/documents/documentSlice';
 
 const DemandesPage = () => {
     const dispatch = useDispatch();
