@@ -6,9 +6,9 @@ const EditableQuestion = ({
   onSave,
   selectedQuestions,
   handleSelect,
-  editingQuestionId, 
-  onEditStart,       
-  onEditEnd
+  editingQuestionId,
+  onEditStart,
+  onEditEnd,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedQuestion, setEditedQuestion] = useState({ ...question });
@@ -16,35 +16,34 @@ const EditableQuestion = ({
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
     if (name.startsWith('answers[')) {
-        const index = parseInt(name.match(/\[(\d+)\]/)[1], 10);
-        setEditedQuestion((prevQuestion) => {
-          const updatedAnswers = [...prevQuestion.answers];
-          updatedAnswers[index] = value;
-          return { ...prevQuestion, answers: updatedAnswers };
-        });
-      } else {
-        setEditedQuestion((prevQuestion) => ({
-          ...prevQuestion,
-          [name]: type === 'checkbox' ? checked : value,
-        }));
-      }
+      const index = parseInt(name.match(/\[(\d+)\]/)[1], 10);
+      setEditedQuestion((prevQuestion) => {
+        const updatedAnswers = [...prevQuestion.answers];
+        updatedAnswers[index] = value;
+        return { ...prevQuestion, answers: updatedAnswers };
+      });
+    } else {
+      setEditedQuestion((prevQuestion) => ({
+        ...prevQuestion,
+        [name]: type === 'checkbox' ? checked : value,
+      }));
+    }
   };
 
   const handleSave = () => {
     onSave(editedQuestion);
     setIsEditing(false);
-    onEditEnd(); 
+    onEditEnd();
   };
   const handleEditClick = () => {
-    if (!editingQuestionId) { 
-      onEditStart(question.id); 
-      setIsEditing(true); 
+    if (!editingQuestionId) {
+      onEditStart(question.id);
+      setIsEditing(true);
     }
   };
 
-
   return (
-    <tr> 
+    <tr>
       <td>
         <input
           type="checkbox"
@@ -63,11 +62,11 @@ const EditableQuestion = ({
             className="input input-bordered input-sm w-full max-w-xs"
           />
         ) : (
-          editedQuestion.question 
+          editedQuestion.question
         )}
       </td>
       <td>
-        <ul className="list-none pl-4"> 
+        <ul className="list-none pl-4">
           {isEditing
             ? editedQuestion.answers.map((answer, idx) => (
                 <li key={`answer-${question.id}-${idx}`}>
@@ -80,11 +79,7 @@ const EditableQuestion = ({
                   />
                 </li>
               ))
-            :  (
-                editedQuestion.answers.map((answer) => (
-                  <li key={`answer-${answer}`}>{answer}</li>
-                ))
-              )}
+            : editedQuestion.answers.map((answer) => <li key={`answer-${answer}`}>{answer}</li>)}
         </ul>
       </td>
       <td>
@@ -98,7 +93,7 @@ const EditableQuestion = ({
                   value={answer}
                   checked={editedQuestion.correctAnswer === answer}
                   onChange={handleInputChange}
-                  className="radio radio-sm mr-2" 
+                  className="radio radio-sm mr-2"
                 />
                 <label htmlFor={answer}>{answer}</label>
               </div>
@@ -109,30 +104,24 @@ const EditableQuestion = ({
         )}
       </td>
       <td>
-        <div className="btn-group btn-group-xs"> 
+        <div className="btn-group btn-group-xs">
           {isEditing ? (
             <>
-              <button
-                onClick={handleSave}
-                className="btn btn-outline btn-success"
-              >
+              <button onClick={handleSave} className="btn btn-outline btn-success">
                 Save
               </button>
-              <button
-                onClick={() => setIsEditing(false)}
-                className="btn btn-outline btn-error"
-              >
+              <button onClick={() => setIsEditing(false)} className="btn btn-outline btn-error">
                 Cancel
               </button>
             </>
           ) : (
             <button
-              onClick={handleEditClick} 
+              onClick={handleEditClick}
               className="btn btn-outline btn-primary"
               disabled={editingQuestionId !== null && editingQuestionId !== question.id}
             >
               <Edit size={16} className="mr-2" />
-                Update
+              Update
             </button>
           )}
         </div>

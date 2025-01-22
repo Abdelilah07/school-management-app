@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { LayoutContext } from '../../context/LayoutContext'; // Ensure the correct path to LayoutContext
 
 const SidebarToggle = () => {
@@ -12,17 +12,22 @@ const SidebarToggle = () => {
   const { isSidebarOpen, setIsSidebarOpen } = context;
 
   return (
-    <button
-      type="button"
-      data-sidebar-toggle
-      onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      className="btn btn-ghost lg:hidden"
-      aria-label={`${isSidebarOpen ? 'Close' : 'Open'} sidebar`}
-      aria-expanded={isSidebarOpen}
-      aria-controls="sidebar"
+    <div
+      className="tooltip tooltip-right z-50"
+      data-tip={`${isSidebarOpen ? 'Close' : 'Open'} sidebar`}
     >
-      {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-    </button>
+      <button
+        type="button"
+        data-sidebar-toggle
+        onClick={() => setIsSidebarOpen((prevState) => !prevState)}
+        className="btn btn-ghost"
+        aria-label={`${isSidebarOpen ? 'Close' : 'Open'} sidebar`}
+        aria-expanded={isSidebarOpen}
+        aria-controls="sidebar"
+      >
+        <Menu className="w-5 h-5" />
+      </button>
+    </div>
   );
 };
 

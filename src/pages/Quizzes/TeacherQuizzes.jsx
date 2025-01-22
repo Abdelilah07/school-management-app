@@ -3,7 +3,8 @@ import { Plus, X } from 'lucide-react';
 import QuizCardTeacher from './components/QuizCardTeacher';
 import QuizForm from './components/QuizForm';
 import { BASE_URL } from './utils/quizUtils';
-import Pagination from './components/Pagination'; 
+import Pagination from './components/Pagination';
+import { PageHeader } from '../../components';
 
 const TeacherQuizzes = () => {
   const user = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user') || '{}');
@@ -14,9 +15,8 @@ const TeacherQuizzes = () => {
   const [selectedCourse, setSelectedCourse] = useState('');
   const [editingQuiz, setEditingQuiz] = useState(null);
 
-  
   const [currentPage, setCurrentPage] = useState(1);
-  const quizzesPerPage = 8; 
+  const quizzesPerPage = 8;
 
   useEffect(() => {
     fetchQuizzes();
@@ -29,7 +29,7 @@ const TeacherQuizzes = () => {
       const data = await response.json();
       const quizzesWithUniqueIds = data.map((quiz, index) => ({
         ...quiz,
-        id: quiz.id || `quiz-${Date.now()}-${index}`
+        id: quiz.id || `quiz-${Date.now()}-${index}`,
       }));
       setQuizzes(quizzesWithUniqueIds);
     } catch (error) {
@@ -124,105 +124,98 @@ const TeacherQuizzes = () => {
   const filteredQuizzes = selectedCourse
     ? quizzes.filter((quiz) => quiz.coursequizID === selectedCourse)
     : quizzes;
-    
+
   const indexOfLastQuiz = currentPage * quizzesPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizzesPerPage;
   const currentQuizzes = filteredQuizzes.slice(indexOfFirstQuiz, indexOfLastQuiz);
 
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="bg-base-100">
-      <div className="container mx-auto px-4 py-8">
-        <h3 className="text-3xl font-bold text-center mb-2">Available Quizzes</h3>
-        <p className="text-center text-base-content/70 mb-6">Our collection of quizzes</p>
+    <div className="container mx-auto">
+      <PageHeader title="Quizzes" />
 
-        <div className="flex flex-col md:flex-row gap-4 mb-6">
-          <div className="flex-1 relative">
-            <select
-              value={selectedCourse}
-              onChange={(e) => setSelectedCourse(e.target.value)}
-              className="select select-bordered w-full max-w"
-            >
-              <option value="">All Courses</option>
-              {courses.map((course) => (
-                <option key={course.coursequizID} value={course.coursequizID}>
-                  {course.courseName}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button onClick={() => setIsAddModalOpen(true)} className="btn btn-wide btn-primary">
-            <Plus className="w-4 h-4 sm:w-5 sm:h-5" /> Add Quiz
-          </button>
+      <div className="flex flex-col md:flex-row gap-4 mb-6">
+        <div className="flex-1 relative">
+          <select
+            value={selectedCourse}
+            onChange={(e) => setSelectedCourse(e.target.value)}
+            className="select select-bordered w-full max-w"
+          >
+            <option value="">All Courses</option>
+            {courses.map((course) => (
+              <option key={course.coursequizID} value={course.coursequizID}>
+                {course.courseName}
+              </option>
+            ))}
+          </select>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {currentQuizzes.map((quiz, index) => (
-            <div key={`quiz-card-${quiz.id}-${index}`}>
-              <QuizCardTeacher
-                quiz={quiz}
-                onDelete={() => handleDelete(quiz.id)}
-                onEdit={() => handleEdit(quiz)}
-                onViewDetails={() => handleViewDetails(quiz.id)}
-                onAddQuestions={() => handleAddQuestions(quiz.id)}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Pagination  */}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(filteredQuizzes.length / quizzesPerPage)}
-          onPrevious={() => paginate(currentPage - 1)}
-          onNext={() => paginate(currentPage + 1)}
-        />
-
-        {isAddModalOpen && (
-          <div className="modal modal-open">
-            <div className="modal-box max-w-md">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Add New Quiz</h2>
-                <button
-                  onClick={() => setIsAddModalOpen(false)}
-                  className="btn btn-ghost btn-circle"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-              <QuizForm
-                courses={courses}
-                onSubmit={handleAddQuiz}
-                onCancel={() => setIsAddModalOpen(false)}
-              />
-            </div>
-          </div>
-        )}
-
-        {isEditModalOpen && editingQuiz && (
-          <div className="modal modal-open">
-            <div className="modal-box max-w-md">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Edit Quiz</h2>
-                <button
-                  onClick={() => setIsEditModalOpen(false)}
-                  className="btn btn-ghost btn-circle"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              <QuizForm
-                initialQuiz={editingQuiz}
-                courses={courses}
-                onSubmit={handleUpdateQuiz}
-                onCancel={() => setIsEditModalOpen(false)}
-              />
-            </div>
-          </div>
-        )}
+        <button onClick={() => setIsAddModalOpen(true)} className="btn btn-wide btn-primary">
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5" /> Add Quiz
+        </button>
       </div>
+
+      <div className="flex flex-col gap-4">
+        {currentQuizzes.map((quiz, index) => (
+          <div key={`quiz-card-${quiz.id}-${index}`}>
+            <QuizCardTeacher
+              quiz={quiz}
+              onDelete={() => handleDelete(quiz.id)}
+              onEdit={() => handleEdit(quiz)}
+              onViewDetails={() => handleViewDetails(quiz.id)}
+              onAddQuestions={() => handleAddQuestions(quiz.id)}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Pagination  */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(filteredQuizzes.length / quizzesPerPage)}
+        onPrevious={() => paginate(currentPage - 1)}
+        onNext={() => paginate(currentPage + 1)}
+      />
+
+      {isAddModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box max-w-md">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold">Add New Quiz</h2>
+              <button onClick={() => setIsAddModalOpen(false)} className="btn btn-ghost btn-circle">
+                <X size={24} />
+              </button>
+            </div>
+            <QuizForm
+              courses={courses}
+              onSubmit={handleAddQuiz}
+              onCancel={() => setIsAddModalOpen(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {isEditModalOpen && editingQuiz && (
+        <div className="modal modal-open">
+          <div className="modal-box max-w-md">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold">Edit Quiz</h2>
+              <button
+                onClick={() => setIsEditModalOpen(false)}
+                className="btn btn-ghost btn-circle"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <QuizForm
+              initialQuiz={editingQuiz}
+              courses={courses}
+              onSubmit={handleUpdateQuiz}
+              onCancel={() => setIsEditModalOpen(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

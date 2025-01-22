@@ -1,5 +1,7 @@
+import { PageHeader } from '../../components';
+
 const SettingsPage = () => {
-  return <div>Settings</div>;
+  return <PageHeader title="Settings" />;
 };
 
 export default SettingsPage;

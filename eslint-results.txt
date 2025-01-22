@@ -1,0 +1,590 @@
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\App.jsx[24m[0m
+[0m  [2m4:22[22m  [31merror[39m  'process' is not defined  [2mno-undef[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\components\shared\DataTable.jsx[24m[0m
+[0m    [2m1:8[22m   [31merror[39m  'React' is defined but never used                        [2mno-unused-vars[22m[0m
+[0m   [2m25:23[22m  [31merror[39m  'column' is missing in props validation                  [2mreact/prop-types[22m[0m
+[0m   [2m26:17[22m  [31merror[39m  'column.sortable' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m   [2m26:56[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m   [2m35:16[22m  [31merror[39m  'column.sortable' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m   [2m36:21[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m   [2m62:29[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m   [2m65:26[22m  [31merror[39m  'column.sortable' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m   [2m71:27[22m  [31merror[39m  'column.label' is missing in props validation            [2mreact/prop-types[22m[0m
+[0m   [2m82:33[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m   [2m82:56[22m  [31merror[39m  'column.className' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m   [2m83:27[22m  [31merror[39m  'column.render' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m   [2m83:43[22m  [31merror[39m  'column.render' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m   [2m83:68[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m  [2m101:30[22m  [31merror[39m  'column.hideOnMobile' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m102:30[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m  [2m106:40[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m  [2m108:35[22m  [31merror[39m  'column.render' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m  [2m108:51[22m  [31merror[39m  'column.render' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m  [2m108:76[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m  [2m115:30[22m  [31merror[39m  'column.mobileSecondary' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m119:35[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m  [2m121:32[22m  [31merror[39m  'column.mobileTruncate' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m124:31[22m  [31merror[39m  'column.render' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m  [2m124:47[22m  [31merror[39m  'column.render' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m  [2m124:72[22m  [31merror[39m  'column.key' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\components\shared\PageHeader.jsx[24m[0m
+[0m  [2m1:23[22m  [31merror[39m  'title' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\features\Groupes\GroupesSlice.jsx[24m[0m
+[0m  [2m57:7[22m  [33mwarning[39m  Fast refresh only works when a file only exports components. Move your component(s) to a separate file  [2mreact-refresh/only-export-components[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\features\auth\components\LoginForm.jsx[24m[0m
+[0m  [2m122:16[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\features\auth\components\SignupForm.jsx[24m[0m
+[0m  [2m115:13[22m  [31merror[39m  'confirmPassword' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\features\auth\slices\authSlice.js[24m[0m
+[0m   [2m70:42[22m  [31merror[39m  'profile_picture' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m  [2m247:14[22m  [31merror[39m  'state' is defined but never used                     [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\features\quizzes\quizzesSlice.js[24m[0m
+[0m   [2m5:7[22m   [31merror[39m  'initialState' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m  [2m68:30[22m  [31merror[39m  'axios' is not defined                             [2mno-undef[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\features\schedule\scheduleSlice.js[24m[0m
+[0m  [2m36:14[22m  [31merror[39m  'error' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\layout\Navbar\components\Searchbar.jsx[24m[0m
+[0m   [2m1:8[22m   [31merror[39m  'React' is defined but never used                                [2mno-unused-vars[22m[0m
+[0m  [2m99:58[22m  [31merror[39m  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m99:72[22m  [31merror[39m  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\layout\Sidebar\Sidebar.jsx[24m[0m
+[0m  [2m106:6[22m   [33mwarning[39m  React Hook useEffect has a missing dependency: 'isSidebarOpen'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m  [2m110:32[22m  [31merror[39m    'isVisible' is missing in props validation                                                                        [2mreact/prop-types[22m[0m
+[0m  [2m110:43[22m  [31merror[39m    'onClose' is missing in props validation                                                                          [2mreact/prop-types[22m[0m
+[0m  [2m124:32[22m  [31merror[39m    'menuItems' is missing in props validation                                                                        [2mreact/prop-types[22m[0m
+[0m  [2m124:43[22m  [31merror[39m    'userData' is missing in props validation                                                                         [2mreact/prop-types[22m[0m
+[0m  [2m124:53[22m  [31merror[39m    'isSidebarOpen' is missing in props validation                                                                    [2mreact/prop-types[22m[0m
+[0m  [2m128:20[22m  [31merror[39m    'menuItems.map' is missing in props validation                                                                    [2mreact/prop-types[22m[0m
+[0m  [2m143:27[22m  [31merror[39m    'userData.name' is missing in props validation                                                                    [2mreact/prop-types[22m[0m
+[0m  [2m144:27[22m  [31merror[39m    'userData.role' is missing in props validation                                                                    [2mreact/prop-types[22m[0m
+[0m  [2m145:38[22m  [31merror[39m    'userData.profile_picture' is missing in props validation                                                         [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\layout\context\LayoutContext.jsx[24m[0m
+[0m  [2m4:14[22m  [33mwarning[39m  Fast refresh only works when a file only exports components. Move your React context(s) to a separate file  [2mreact-refresh/only-export-components[22m[0m
+[0m  [2m7:34[22m  [31merror[39m    'children' is missing in props validation                                                                   [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Attendance\AttendancePage.jsx[24m[0m
+[0m  [2m29:68[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Attendance\components\AttendanceAdmin.jsx[24m[0m
+[0m   [2m1:8[22m   [31merror[39m    'React' is defined but never used                                                                                  [2mno-unused-vars[22m[0m
+[0m  [2m21:10[22m  [31merror[39m    'hasChanges' is assigned a value but never used                                                                    [2mno-unused-vars[22m[0m
+[0m  [2m50:6[22m   [33mwarning[39m  React Hook useEffect has a missing dependency: 'filterStudents'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Attendance\components\AttendanceFormateur.jsx[24m[0m
+[0m    [2m1:8[22m   [31merror[39m    'React' is defined but never used                                                                                                                                                                                                       [2mno-unused-vars[22m[0m
+[0m   [2m17:10[22m  [31merror[39m    'error' is assigned a value but never used                                                                                                                                                                                              [2mno-unused-vars[22m[0m
+[0m   [2m19:10[22m  [31merror[39m    'isSaved' is assigned a value but never used                                                                                                                                                                                            [2mno-unused-vars[22m[0m
+[0m   [2m36:9[22m   [31merror[39m    'currentItems' is assigned a value but never used                                                                                                                                                                                       [2mno-unused-vars[22m[0m
+[0m   [2m56:6[22m   [33mwarning[39m  React Hook useEffect has missing dependencies: 'afternoonTimeSlots', 'getTimeSlots', and 'morningTimeSlots'. Either include them or remove the dependency array                                                                         [2mreact-hooks/exhaustive-deps[22m[0m
+[0m   [2m91:6[22m   [33mwarning[39m  React Hook useEffect has a missing dependency: 'timeSlots'. Either include it or remove the dependency array. You can also replace multiple useState variables with useReducer if 'setStudents' needs the current value of 'timeSlots'  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m  [2m132:6[22m   [33mwarning[39m  React Hook useEffect has a missing dependency: 'fetchAbsentStudents'. Either include it or remove the dependency array                                                                                                                  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Attendance\components\FiltersAdmin.jsx[24m[0m
+[0m   [2m3:8[22m  [31merror[39m  'React' is defined but never used                  [2mno-unused-vars[22m[0m
+[0m   [2m9:3[22m  [31merror[39m  'allData' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m  [2m10:3[22m  [31merror[39m  'niveau' is missing in props validation            [2mreact/prop-types[22m[0m
+[0m  [2m11:3[22m  [31merror[39m  'filiere' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m  [2m12:3[22m  [31merror[39m  'annee' is missing in props validation             [2mreact/prop-types[22m[0m
+[0m  [2m13:3[22m  [31merror[39m  'groupe' is missing in props validation            [2mreact/prop-types[22m[0m
+[0m  [2m14:3[22m  [31merror[39m  'cin' is missing in props validation               [2mreact/prop-types[22m[0m
+[0m  [2m15:3[22m  [31merror[39m  'cef' is missing in props validation               [2mreact/prop-types[22m[0m
+[0m  [2m16:3[22m  [31merror[39m  'nom' is missing in props validation               [2mreact/prop-types[22m[0m
+[0m  [2m17:3[22m  [31merror[39m  'prenom' is missing in props validation            [2mreact/prop-types[22m[0m
+[0m  [2m18:3[22m  [31merror[39m  'selectedMonth' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m19:3[22m  [31merror[39m  'selectedWeek' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m20:3[22m  [31merror[39m  'onNiveauChange' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m  [2m21:3[22m  [31merror[39m  'onFiliereChange' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m22:3[22m  [31merror[39m  'onAnneeChange' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m23:3[22m  [31merror[39m  'onGroupeChange' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m  [2m24:3[22m  [31merror[39m  'onCinChange' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m25:3[22m  [31merror[39m  'onCefChange' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m26:3[22m  [31merror[39m  'onNomChange' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m27:3[22m  [31merror[39m  'onPrenomChange' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m  [2m28:3[22m  [31merror[39m  'onMonthChange' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m29:3[22m  [31merror[39m  'onWeekChange' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m30:3[22m  [31merror[39m  'filteredStudents' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m31:3[22m  [31merror[39m  'isWeekAdminPage' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m32:3[22m  [31merror[39m  'showExport' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Attendance\components\FiltersFormateur.jsx[24m[0m
+[0m    [2m1:8[22m   [31merror[39m  'React' is defined but never used                   [2mno-unused-vars[22m[0m
+[0m    [2m5:3[22m   [31merror[39m  'secteursData' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m    [2m6:3[22m   [31merror[39m  'secteur' is missing in props validation            [2mreact/prop-types[22m[0m
+[0m    [2m7:3[22m   [31merror[39m  'niveau' is missing in props validation             [2mreact/prop-types[22m[0m
+[0m    [2m8:3[22m   [31merror[39m  'filiere' is missing in props validation            [2mreact/prop-types[22m[0m
+[0m    [2m9:3[22m   [31merror[39m  'annee' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m   [2m10:3[22m   [31merror[39m  'groupe' is missing in props validation             [2mreact/prop-types[22m[0m
+[0m   [2m11:3[22m   [31merror[39m  'dateFilter' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m   [2m12:3[22m   [31merror[39m  'onSecteurChange' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m   [2m13:3[22m   [31merror[39m  'onNiveauChange' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m   [2m14:3[22m   [31merror[39m  'onFiliereChange' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m   [2m15:3[22m   [31merror[39m  'onAnneeChange' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m   [2m16:3[22m   [31merror[39m  'onGroupeChange' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m   [2m17:3[22m   [31merror[39m  'onDateChange' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m   [2m18:3[22m   [31merror[39m  'onClearFilters' is defined but never used          [2mno-unused-vars[22m[0m
+[0m   [2m18:3[22m   [31merror[39m  'onClearFilters' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m   [2m19:3[22m   [31merror[39m  'showExport' is assigned a value but never used     [2mno-unused-vars[22m[0m
+[0m   [2m19:3[22m   [31merror[39m  'showExport' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m   [2m27:42[22m  [31merror[39m  'secteursData.find' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m   [2m39:42[22m  [31merror[39m  'secteursData.find' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m   [2m51:42[22m  [31merror[39m  'secteursData.find' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m   [2m62:42[22m  [31merror[39m  'secteursData.find' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m101:24[22m  [31merror[39m  'secteursData.map' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Attendance\components\WeekAdmin.jsx[24m[0m
+[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Competences\components\CompetenceSearch.jsx[24m[0m
+[0m  [2m2:18[22m  [31merror[39m  'Filter' is defined but never used               [2mno-unused-vars[22m[0m
+[0m  [2m4:29[22m  [31merror[39m  'searchTerm' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m4:41[22m  [31merror[39m  'filters' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m  [2m4:50[22m  [31merror[39m  'onSearchChange' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m4:66[22m  [31merror[39m  'onFilterChange' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Competences\components\CompetencesModal.jsx[24m[0m
+[0m  [2m6:72[22m  [31merror[39m  'onDelete' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Competences\components\CompetencesTable.jsx[24m[0m
+[0m  [2m1:10[22m  [31merror[39m  'Link' is defined but never used              [2mno-unused-vars[22m[0m
+[0m  [2m2:29[22m  [31merror[39m  'Code' is defined but never used              [2mno-unused-vars[22m[0m
+[0m  [2m2:35[22m  [31merror[39m  'BookOpen' is defined but never used          [2mno-unused-vars[22m[0m
+[0m  [2m5:29[22m  [31merror[39m  'competences' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m5:42[22m  [31merror[39m  'sortConfig' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m5:54[22m  [31merror[39m  'onSort' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m5:62[22m  [31merror[39m  'onView' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m5:70[22m  [31merror[39m  'onEdit' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m5:78[22m  [31merror[39m  'onDelete' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Competences\components\ViewCompetence.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used            [2mno-unused-vars[22m[0m
+[0m  [2m5:27[22m  [31merror[39m  'competence' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m5:39[22m  [31merror[39m  'closeModal' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\CoursesFormateur\AddCourse.jsx[24m[0m
+[0m   [2m1:8[22m   [31merror[39m  'React' is defined but never used             [2mno-unused-vars[22m[0m
+[0m  [2m19:10[22m  [31merror[39m  'pdfFile' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\CoursesFormateur\CoursesFormateur.jsx[24m[0m
+[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\CoursesFormateur\UpdateCourse.jsx[24m[0m
+[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\DemandesPage.jsx[24m[0m
+[0m  [2m12:3[22m   [31merror[39m  'Filter' is defined but never used            [2mno-unused-vars[22m[0m
+[0m  [2m20:3[22m   [31merror[39m  'X' is defined but never used                 [2mno-unused-vars[22m[0m
+[0m  [2m25:21[22m  [31merror[39m  'loading' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\Docs.jsx[24m[0m
+[0m    [2m6:3[22m   [31merror[39m  'GraduationCap' is defined but never used                                                                                    [2mno-unused-vars[22m[0m
+[0m    [2m9:3[22m   [31merror[39m  'FileType2' is defined but never used                                                                                        [2mno-unused-vars[22m[0m
+[0m   [2m60:25[22m  [31merror[39m  'type' is missing in props validation                                                                                        [2mreact/prop-types[22m[0m
+[0m   [2m60:31[22m  [31merror[39m  'Icon' is missing in props validation                                                                                        [2mreact/prop-types[22m[0m
+[0m   [2m60:37[22m  [31merror[39m  'label' is missing in props validation                                                                                       [2mreact/prop-types[22m[0m
+[0m   [2m60:44[22m  [31merror[39m  'isSelected' is missing in props validation                                                                                  [2mreact/prop-types[22m[0m
+[0m   [2m60:56[22m  [31merror[39m  'onClick' is missing in props validation                                                                                     [2mreact/prop-types[22m[0m
+[0m   [2m60:65[22m  [31merror[39m  'theme' is missing in props validation                                                                                       [2mreact/prop-types[22m[0m
+[0m   [2m90:9[22m   [31merror[39m  'printRef' is assigned a value but never used                                                                                [2mno-unused-vars[22m[0m
+[0m  [2m147:5[22m   [31merror[39m  ReactDOM.render is deprecated since React 18.0.0, use createRoot instead, see https://reactjs.org/link/switch-to-createroot  [2mreact/no-deprecated[22m[0m
+[0m  [2m195:9[22m   [31merror[39m  ReactDOM.render is deprecated since React 18.0.0, use createRoot instead, see https://reactjs.org/link/switch-to-createroot  [2mreact/no-deprecated[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\DocumentCard.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used            [2mno-unused-vars[22m[0m
+[0m  [2m3:25[22m  [31merror[39m  'type' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m3:31[22m  [31merror[39m  'Icon' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m3:37[22m  [31merror[39m  'label' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m3:44[22m  [31merror[39m  'isSelected' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m3:56[22m  [31merror[39m  'onClick' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\FormInput.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used       [2mno-unused-vars[22m[0m
+[0m  [2m3:22[22m  [31merror[39m  'label' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m3:29[22m  [31merror[39m  'type' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\PrintWrapper.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used          [2mno-unused-vars[22m[0m
+[0m  [2m4:36[22m  [31merror[39m  'onPrint' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m4:45[22m  [31merror[39m  'children' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\SelectionToggle.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used            [2mno-unused-vars[22m[0m
+[0m  [2m3:28[22m  [31merror[39m  'icon' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m3:40[22m  [31merror[39m  'label' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m3:47[22m  [31merror[39m  'isSelected' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m3:59[22m  [31merror[39m  'onClick' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\TemplatesDocs\BacWithdrawalNotice.jsx[24m[0m
+[0m   [2m1:32[22m  [31merror[39m  'name' is missing in props validation                            [2mreact/prop-types[22m[0m
+[0m   [2m1:38[22m  [31merror[39m  'group' is missing in props validation                           [2mreact/prop-types[22m[0m
+[0m   [2m1:45[22m  [31merror[39m  'date' is missing in props validation                            [2mreact/prop-types[22m[0m
+[0m   [2m1:51[22m  [31merror[39m  'cin' is missing in props validation                             [2mreact/prop-types[22m[0m
+[0m   [2m1:56[22m  [31merror[39m  'student' is missing in props validation                         [2mreact/prop-types[22m[0m
+[0m   [2m1:65[22m  [31merror[39m  'reason' is missing in props validation                          [2mreact/prop-types[22m[0m
+[0m  [2m24:14[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m31:31[22m  [31merror[39m  'reason.length' is missing in props validation                   [2mreact/prop-types[22m[0m
+[0m  [2m32:26[22m  [31merror[39m  'reason.join' is missing in props validation                     [2mreact/prop-types[22m[0m
+[0m  [2m39:76[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m53:52[22m  [31merror[39m  'student.dob' is missing in props validation                     [2mreact/prop-types[22m[0m
+[0m  [2m57:62[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m58:52[22m  [31merror[39m  'student.level' is missing in props validation                   [2mreact/prop-types[22m[0m
+[0m  [2m71:50[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m73:23[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\TemplatesDocs\Convocation.jsx[24m[0m
+[0m   [2m1:8[22m   [31merror[39m  'React' is defined but never used                                [2mno-unused-vars[22m[0m
+[0m   [2m4:24[22m  [31merror[39m  'name' is missing in props validation                            [2mreact/prop-types[22m[0m
+[0m   [2m4:30[22m  [31merror[39m  'date' is missing in props validation                            [2mreact/prop-types[22m[0m
+[0m   [2m4:36[22m  [31merror[39m  'group' is missing in props validation                           [2mreact/prop-types[22m[0m
+[0m  [2m31:47[22m  [31merror[39m  'name.toUpperCase' is missing in props validation                [2mreact/prop-types[22m[0m
+[0m  [2m37:47[22m  [31merror[39m  'group.toUpperCase' is missing in props validation               [2mreact/prop-types[22m[0m
+[0m  [2m50:84[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\TemplatesDocs\ReprimandNotice.jsx[24m[0m
+[0m    [2m3:28[22m  [31merror[39m  'name' is missing in props validation                            [2mreact/prop-types[22m[0m
+[0m    [2m3:34[22m  [31merror[39m  'group' is missing in props validation                           [2mreact/prop-types[22m[0m
+[0m    [2m3:41[22m  [31merror[39m  'date' is missing in props validation                            [2mreact/prop-types[22m[0m
+[0m    [2m3:47[22m  [31merror[39m  'reason' is missing in props validation                          [2mreact/prop-types[22m[0m
+[0m    [2m3:60[22m  [31merror[39m  'resen1' is missing in props validation                          [2mreact/prop-types[22m[0m
+[0m    [2m3:68[22m  [31merror[39m  'resen2' is missing in props validation                          [2mreact/prop-types[22m[0m
+[0m    [2m3:76[22m  [31merror[39m  'resen3' is missing in props validation                          [2mreact/prop-types[22m[0m
+[0m   [2m30:47[22m  [31merror[39m  'name.toUpperCase' is missing in props validation                [2mreact/prop-types[22m[0m
+[0m   [2m36:48[22m  [31merror[39m  'group.toUpperCase' is missing in props validation               [2mreact/prop-types[22m[0m
+[0m   [2m49:93[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m102:49[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m104:23[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\TemplatesDocs\RetraitBacProvisoire.jsx[24m[0m
+[0m   [2m1:33[22m  [31merror[39m  'name' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m   [2m1:39[22m  [31merror[39m  'group' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m   [2m1:46[22m  [31merror[39m  'date' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m   [2m1:52[22m  [31merror[39m  'index' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m   [2m1:59[22m  [31merror[39m  'details' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m86:30[22m  [31merror[39m  'name' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m86:36[22m  [31merror[39m  'group' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m  [2m86:43[22m  [31merror[39m  'date' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m86:49[22m  [31merror[39m  'details' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\TemplatesDocs\Tawbikh.jsx[24m[0m
+[0m  [2m1:10[22m  [31merror[39m  'Building2' is defined but never used  [2mno-unused-vars[22m[0m
+[0m  [2m1:21[22m  [31merror[39m  'Calendar' is defined but never used   [2mno-unused-vars[22m[0m
+[0m  [2m1:31[22m  [31merror[39m  'Clock' is defined but never used      [2mno-unused-vars[22m[0m
+[0m  [2m1:38[22m  [31merror[39m  'User' is defined but never used       [2mno-unused-vars[22m[0m
+[0m  [2m1:44[22m  [31merror[39m  'Users2' is defined but never used     [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\Docs\TemplatesDocs\WarningNotice.jsx[24m[0m
+[0m   [2m1:26[22m  [31merror[39m  'name' is defined but never used                                 [2mno-unused-vars[22m[0m
+[0m   [2m1:26[22m  [31merror[39m  'name' is missing in props validation                            [2mreact/prop-types[22m[0m
+[0m   [2m1:32[22m  [31merror[39m  'group' is missing in props validation                           [2mreact/prop-types[22m[0m
+[0m   [2m1:39[22m  [31merror[39m  'date' is missing in props validation                            [2mreact/prop-types[22m[0m
+[0m   [2m1:45[22m  [31merror[39m  'reason' is missing in props validation                          [2mreact/prop-types[22m[0m
+[0m   [2m1:53[22m  [31merror[39m  'trainee' is missing in props validation                         [2mreact/prop-types[22m[0m
+[0m  [2m23:78[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m29:31[22m  [31merror[39m  'reason.length' is missing in props validation                   [2mreact/prop-types[22m[0m
+[0m  [2m30:22[22m  [31merror[39m  'reason.map' is missing in props validation                      [2mreact/prop-types[22m[0m
+[0m  [2m45:50[22m  [31merror[39m  'trainee.name' is missing in props validation                    [2mreact/prop-types[22m[0m
+[0m  [2m50:50[22m  [31merror[39m  'trainee.specialty' is missing in props validation               [2mreact/prop-types[22m[0m
+[0m  [2m62:50[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m64:23[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Documents\DocumentsPage.jsx[24m[0m
+[0m    [2m1:8[22m   [31merror[39m  'React' is defined but never used                                [2mno-unused-vars[22m[0m
+[0m   [2m10:3[22m   [31merror[39m  'Calendar' is defined but never used                             [2mno-unused-vars[22m[0m
+[0m   [2m19:3[22m   [31merror[39m  'User' is defined but never used                                 [2mno-unused-vars[22m[0m
+[0m   [2m20:3[22m   [31merror[39m  'Users' is defined but never used                                [2mno-unused-vars[22m[0m
+[0m   [2m21:3[22m   [31merror[39m  'Building' is defined but never used                             [2mno-unused-vars[22m[0m
+[0m   [2m32:31[22m  [31merror[39m  'documentsLoading' is assigned a value but never used            [2mno-unused-vars[22m[0m
+[0m   [2m33:30[22m  [31merror[39m  'demandesLoading' is assigned a value but never used             [2mno-unused-vars[22m[0m
+[0m  [2m109:26[22m  [31merror[39m  'status' is missing in props validation                          [2mreact/prop-types[22m[0m
+[0m  [2m378:60[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Filieres\components\AddEditFiliere.jsx[24m[0m
+[0m  [2m6:53[22m  [31merror[39m  'isEditMode' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Filieres\components\FilieresSearch.jsx[24m[0m
+[0m  [2m2:18[22m  [31merror[39m  'Filter' is defined but never used               [2mno-unused-vars[22m[0m
+[0m  [2m4:27[22m  [31merror[39m  'searchTerm' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m4:39[22m  [31merror[39m  'filters' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m  [2m4:48[22m  [31merror[39m  'onSearchChange' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m4:64[22m  [31merror[39m  'onFilterChange' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Filieres\components\FilieresTable.jsx[24m[0m
+[0m  [2m5:26[22m  [31merror[39m  'filieres' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m  [2m5:36[22m  [31merror[39m  'sortConfig' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m5:48[22m  [31merror[39m  'onSort' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:56[22m  [31merror[39m  'onView' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:64[22m  [31merror[39m  'onEdit' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:72[22m  [31merror[39m  'onDelete' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Filieres\components\ViewFiliere.jsx[24m[0m
+[0m  [2m4:24[22m  [31merror[39m  'filiere' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m4:33[22m  [31merror[39m  'onClose' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m4:42[22m  [31merror[39m  'onDelete' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Groupes\components\AddEditGroupe.jsx[24m[0m
+[0m  [2m80:6[22m  [33mwarning[39m  React Hook useEffect has a missing dependency: 'filiereModulesMap'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Groupes\components\GroupesModal.jsx[24m[0m
+[0m  [2m3:21[22m  [31merror[39m  'number' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Groupes\components\GroupesTable.jsx[24m[0m
+[0m  [2m2:29[22m  [31merror[39m  'Users' is defined but never used            [2mno-unused-vars[22m[0m
+[0m  [2m5:25[22m  [31merror[39m  'groups' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:33[22m  [31merror[39m  'sortConfig' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m5:45[22m  [31merror[39m  'onSort' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:53[22m  [31merror[39m  'onView' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:61[22m  [31merror[39m  'onEdit' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:69[22m  [31merror[39m  'onDelete' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Groupes\components\ViewGroupes.jsx[24m[0m
+[0m  [2m4:24[22m  [31merror[39m  'group' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m4:31[22m  [31merror[39m  'onClose' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m4:40[22m  [31merror[39m  'onDelete' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Home\components\ChatlingBot.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used           [2mno-unused-vars[22m[0m
+[0m  [2m3:24[22m  [31merror[39m  'chatbotId' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Home\components\QuickActions.jsx[24m[0m
+[0m  [2m12:3[22m   [31merror[39m  'Zap' is defined but never used                         [2mno-unused-vars[22m[0m
+[0m  [2m17:10[22m  [31merror[39m  'activeCategory' is assigned a value but never used     [2mno-unused-vars[22m[0m
+[0m  [2m17:26[22m  [31merror[39m  'setActiveCategory' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Modules\ModulesPage.jsx[24m[0m
+[0m  [2m41:6[22m  [33mwarning[39m  React Hook useEffect has a missing dependency: 'fetchOptions'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\NotFound\NotFoundPage.jsx[24m[0m
+[0m  [2m23:29[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\AllQuestions.jsx[24m[0m
+[0m   [2m1:8[22m   [31merror[39m    'React' is defined but never used                                                                                  [2mno-unused-vars[22m[0m
+[0m   [2m3:43[22m  [31merror[39m    'Edit' is defined but never used                                                                                   [2mno-unused-vars[22m[0m
+[0m  [2m32:6[22m   [33mwarning[39m  React Hook useEffect has a missing dependency: 'fetchQuestions'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\Quiz.jsx[24m[0m
+[0m  [2m20:10[22m  [31merror[39m    'isConfettiActive' is assigned a value but never used                                                          [2mno-unused-vars[22m[0m
+[0m  [2m46:6[22m   [33mwarning[39m  React Hook useEffect has a missing dependency: 'finishQuiz'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\QuizCard.jsx[24m[0m
+[0m  [2m108:5[22m  [31merror[39m  'questionCount' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m  [2m109:5[22m  [31merror[39m  'duration' is assigned a value but never used       [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\QuizQuestions.jsx[24m[0m
+[0m   [2m1:8[22m  [31merror[39m    'React' is defined but never used                                                                                  [2mno-unused-vars[22m[0m
+[0m  [2m23:6[22m  [33mwarning[39m  React Hook useEffect has a missing dependency: 'fetchQuestions'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\TeacherQuizzes.jsx[24m[0m
+[0m   [2m1:8[22m  [31merror[39m  'React' is defined but never used          [2mno-unused-vars[22m[0m
+[0m  [2m10:9[22m  [31merror[39m  'user' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\components\AIQuestionGenerator.jsx[24m[0m
+[0m   [2m1:8[22m   [31merror[39m  'React' is defined but never used                      [2mno-unused-vars[22m[0m
+[0m   [2m6:32[22m  [31merror[39m  'quizId' is missing in props validation                [2mreact/prop-types[22m[0m
+[0m   [2m6:40[22m  [31merror[39m  'onQuestionsGenerated' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m10:10[22m  [31merror[39m  'error' is assigned a value but never used             [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\components\EditableQuestion.jsx[24m[0m
+[0m    [2m1:8[22m   [31merror[39m  'React' is defined but never used                            [2mno-unused-vars[22m[0m
+[0m    [2m5:3[22m   [31merror[39m  'question' is missing in props validation                    [2mreact/prop-types[22m[0m
+[0m    [2m6:3[22m   [31merror[39m  'onSave' is missing in props validation                      [2mreact/prop-types[22m[0m
+[0m    [2m7:3[22m   [31merror[39m  'selectedQuestions' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m    [2m8:3[22m   [31merror[39m  'handleSelect' is missing in props validation                [2mreact/prop-types[22m[0m
+[0m    [2m9:3[22m   [31merror[39m  'editingQuestionId' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m   [2m10:3[22m   [31merror[39m  'onEditStart' is missing in props validation                 [2mreact/prop-types[22m[0m
+[0m   [2m11:3[22m   [31merror[39m  'onEditEnd' is missing in props validation                   [2mreact/prop-types[22m[0m
+[0m   [2m40:28[22m  [31merror[39m  'question.id' is missing in props validation                 [2mreact/prop-types[22m[0m
+[0m   [2m50:38[22m  [31merror[39m  'selectedQuestions.includes' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m   [2m50:56[22m  [31merror[39m  'question.id' is missing in props validation                 [2mreact/prop-types[22m[0m
+[0m   [2m51:49[22m  [31merror[39m  'question.id' is missing in props validation                 [2mreact/prop-types[22m[0m
+[0m   [2m72:45[22m  [31merror[39m  'question.id' is missing in props validation                 [2mreact/prop-types[22m[0m
+[0m  [2m121:86[22m  [31merror[39m  'question.id' is missing in props validation                 [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\components\Pagination.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used             [2mno-unused-vars[22m[0m
+[0m  [2m4:23[22m  [31merror[39m  'currentPage' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m4:36[22m  [31merror[39m  'totalPages' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m4:48[22m  [31merror[39m  'onPrevious' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m4:60[22m  [31merror[39m  'onNext' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\components\QuestionForm.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used                 [2mno-unused-vars[22m[0m
+[0m  [2m2:22[22m  [31merror[39m  'X' is defined but never used                     [2mno-unused-vars[22m[0m
+[0m  [2m4:25[22m  [31merror[39m  'initialQuestion' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m4:42[22m  [31merror[39m  'onSubmit' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m  [2m4:52[22m  [31merror[39m  'onCancel' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\components\QuizCardTeacher.jsx[24m[0m
+[0m    [2m1:8[22m   [31merror[39m  'React' is defined but never used                                                                                                                                                              [2mno-unused-vars[22m[0m
+[0m   [2m48:20[22m  [31merror[39m  'icon' is missing in props validation                                                                                                                                                          [2mreact/prop-types[22m[0m
+[0m   [2m48:32[22m  [31merror[39m  'label' is missing in props validation                                                                                                                                                         [2mreact/prop-types[22m[0m
+[0m   [2m48:39[22m  [31merror[39m  'value' is missing in props validation                                                                                                                                                         [2mreact/prop-types[22m[0m
+[0m   [2m48:46[22m  [31merror[39m  'className' is missing in props validation                                                                                                                                                     [2mreact/prop-types[22m[0m
+[0m   [2m59:25[22m  [31merror[39m  'onClick' is missing in props validation                                                                                                                                                       [2mreact/prop-types[22m[0m
+[0m   [2m59:34[22m  [31merror[39m  'icon' is missing in props validation                                                                                                                                                          [2mreact/prop-types[22m[0m
+[0m   [2m59:46[22m  [31merror[39m  'label' is missing in props validation                                                                                                                                                         [2mreact/prop-types[22m[0m
+[0m   [2m59:53[22m  [31merror[39m  'color' is missing in props validation                                                                                                                                                         [2mreact/prop-types[22m[0m
+[0m   [2m84:22[22m  [31merror[39m  React Hook "useMemo" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?      [2mreact-hooks/rules-of-hooks[22m[0m
+[0m   [2m88:29[22m  [31merror[39m  React Hook "useMemo" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?      [2mreact-hooks/rules-of-hooks[22m[0m
+[0m   [2m98:29[22m  [31merror[39m  React Hook "useCallback" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  [2mreact-hooks/rules-of-hooks[22m[0m
+[0m   [2m99:22[22m  [31merror[39m  React Hook "useCallback" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  [2mreact-hooks/rules-of-hooks[22m[0m
+[0m  [2m100:30[22m  [31merror[39m  React Hook "useCallback" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  [2mreact-hooks/rules-of-hooks[22m[0m
+[0m  [2m101:24[22m  [31merror[39m  React Hook "useCallback" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  [2mreact-hooks/rules-of-hooks[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\components\QuizForm.jsx[24m[0m
+[0m   [2m1:8[22m   [31merror[39m  'React' is defined but never used                         [2mno-unused-vars[22m[0m
+[0m   [2m4:21[22m  [31merror[39m  'initialQuiz' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m   [2m4:34[22m  [31merror[39m  'courses' is missing in props validation                  [2mreact/prop-types[22m[0m
+[0m   [2m4:43[22m  [31merror[39m  'onSubmit' is missing in props validation                 [2mreact/prop-types[22m[0m
+[0m   [2m4:53[22m  [31merror[39m  'onCancel' is missing in props validation                 [2mreact/prop-types[22m[0m
+[0m  [2m48:44[22m  [31merror[39m  'courses.find' is missing in props validation             [2mreact/prop-types[22m[0m
+[0m  [2m59:20[22m  [31merror[39m  'courses.map' is missing in props validation              [2mreact/prop-types[22m[0m
+[0m  [2m81:44[22m  [31merror[39m  'initialQuiz.teacherName' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\components\QuizHeader.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used            [2mno-unused-vars[22m[0m
+[0m  [2m3:23[22m  [31merror[39m  'courseName' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m3:35[22m  [31merror[39m  'quizId' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m3:43[22m  [31merror[39m  'Deadline' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Quizzes\components\UploadQuestions.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used                     [2mno-unused-vars[22m[0m
+[0m  [2m6:28[22m  [31merror[39m  'quizId' is missing in props validation               [2mreact/prop-types[22m[0m
+[0m  [2m6:36[22m  [31merror[39m  'onQuestionsUploaded' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Schedule\SchedulePage.jsx[24m[0m
+[0m  [2m52:6[22m  [33mwarning[39m  React Hook useEffect has a missing dependency: 'secteurs'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Scheduler\SchedulerPage.jsx[24m[0m
+[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Scheduler\components\AssignmentFields.jsx[24m[0m
+[0m   [2m1:28[22m  [31merror[39m  'label' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m   [2m1:35[22m  [31merror[39m  'icon' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m   [2m1:47[22m  [31merror[39m  'value' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m   [2m1:54[22m  [31merror[39m  'options' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m   [2m1:63[22m  [31merror[39m  'onChange' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m   [2m1:73[22m  [31merror[39m  'isDisabled' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m19:18[22m  [31merror[39m  'options.map' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Scheduler\components\AssignmentModal.jsx[24m[0m
+[0m    [2m1:8[22m  [31merror[39m    'React' is defined but never used                                                                                                                 [2mno-unused-vars[22m[0m
+[0m  [2m100:6[22m  [33mwarning[39m  React Hook useEffect has missing dependencies: 'findFormateurDetails' and 'findGroupDetails'. Either include them or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Scheduler\components\DayRow.jsx[24m[0m
+[0m   [2m1:8[22m   [31merror[39m  'React' is defined but never used                  [2mno-unused-vars[22m[0m
+[0m  [2m10:19[22m  [31merror[39m  'day' is missing in props validation               [2mreact/prop-types[22m[0m
+[0m  [2m10:24[22m  [31merror[39m  'hours' is missing in props validation             [2mreact/prop-types[22m[0m
+[0m  [2m10:31[22m  [31merror[39m  'assignments' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m22:32[22m  [31merror[39m  'hours.flatMap' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m35:30[22m  [31merror[39m  'day.format' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m43:78[22m  [31merror[39m  'day.format' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m44:14[22m  [31merror[39m  'hours.map' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m  [2m45:37[22m  [31merror[39m  'subHourIndex' is defined but never used           [2mno-unused-vars[22m[0m
+[0m  [2m46:42[22m  [31merror[39m  'assignments.find' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m59:49[22m  [31merror[39m  'day.format' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m70:47[22m  [31merror[39m  'assignments.some' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m71:42[22m  [31merror[39m  'hours.flatMap' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m81:40[22m  [31merror[39m  'day.format' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m97:45[22m  [31merror[39m  'day.format' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Scheduler\components\SchedulerHeader.jsx[24m[0m
+[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Scheduler\components\Sidebar.jsx[24m[0m
+[0m   [2m1:8[22m  [31merror[39m    'React' is defined but never used                                                                                                                       [2mno-unused-vars[22m[0m
+[0m  [2m52:6[22m  [33mwarning[39m  React Hook useEffect has missing dependencies: 'filteredFormateurs' and 'selectedFormateurSecteur'. Either include them or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m  [2m68:6[22m  [33mwarning[39m  React Hook useEffect has a missing dependency: 'filteredFilieres'. Either include it or remove the dependency array                                     [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Scheduler\components\SidebarCollapsible.jsx[24m[0m
+[0m   [2m7:46[22m  [31merror[39m  'children' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m63:31[22m  [31merror[39m  'icon' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m63:37[22m  [31merror[39m  'text' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m63:43[22m  [31merror[39m  'children' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m63:53[22m  [31merror[39m  'id' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Scheduler\components\Week.jsx[24m[0m
+[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\Trainees\TraineesPage.jsx[24m[0m
+[0m   [2m1:8[22m  [31merror[39m  'React' is defined but never used           [2mno-unused-vars[22m[0m
+[0m  [2m43:9[22m  [31merror[39m  'error' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\UserProfile\UserProfilePage.jsx[24m[0m
+[0m  [2m78:15[22m  [31merror[39m  'id' is assigned a value but never used    [2mno-unused-vars[22m[0m
+[0m  [2m78:19[22m  [31merror[39m  'role' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\secteurs\SecteursPage.jsx[24m[0m
+[0m   [2m1:8[22m  [31merror[39m  'React' is defined but never used                     [2mno-unused-vars[22m[0m
+[0m  [2m16:5[22m  [31merror[39m  'secteurToDelete' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\secteurs\components\AddEditSecteur.jsx[24m[0m
+[0m  [2m4:53[22m  [31merror[39m  'isEditMode' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\secteurs\components\SecteursHeader.jsx[24m[0m
+[0m  [2m1:8[22m   [31merror[39m  'React' is defined but never used                [2mno-unused-vars[22m[0m
+[0m  [2m4:27[22m  [31merror[39m  'onRefresh' is missing in props validation       [2mreact/prop-types[22m[0m
+[0m  [2m4:38[22m  [31merror[39m  'onExport' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m4:48[22m  [31merror[39m  'onAdd' is missing in props validation           [2mreact/prop-types[22m[0m
+[0m  [2m4:55[22m  [31merror[39m  'onSearch' is missing in props validation        [2mreact/prop-types[22m[0m
+[0m  [2m4:65[22m  [31merror[39m  'onFilterChange' is defined but never used       [2mno-unused-vars[22m[0m
+[0m  [2m4:65[22m  [31merror[39m  'onFilterChange' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\secteurs\components\SecteursModal.jsx[24m[0m
+[0m  [2m5:26[22m  [31merror[39m  'isOpen' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m  [2m5:34[22m  [31merror[39m  'mode' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:40[22m  [31merror[39m  'secteur' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m5:49[22m  [31merror[39m  'onClose' is missing in props validation   [2mreact/prop-types[22m[0m
+[0m  [2m5:58[22m  [31merror[39m  'onSave' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m  [2m5:66[22m  [31merror[39m  'onDelete' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\secteurs\components\SecteursSearch.jsx[24m[0m
+[0m  [2m2:18[22m  [31merror[39m  'Filter' is defined but never used               [2mno-unused-vars[22m[0m
+[0m  [2m3:10[22m  [31merror[39m  'handleSearch' is defined but never used         [2mno-unused-vars[22m[0m
+[0m  [2m5:27[22m  [31merror[39m  'searchTerm' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:39[22m  [31merror[39m  'filters' is missing in props validation         [2mreact/prop-types[22m[0m
+[0m  [2m5:48[22m  [31merror[39m  'onSearchChange' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m5:64[22m  [31merror[39m  'onFilterChange' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\secteurs\components\SecteursTable.jsx[24m[0m
+[0m  [2m5:26[22m  [31merror[39m  'secteurs' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m  [2m5:36[22m  [31merror[39m  'sortConfig' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m5:48[22m  [31merror[39m  'onSort' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:56[22m  [31merror[39m  'onView' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:64[22m  [31merror[39m  'onEdit' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m5:72[22m  [31merror[39m  'onDelete' is missing in props validation    [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\pages\secteurs\components\ViewSecteur.jsx[24m[0m
+[0m   [2m2:24[22m  [31merror[39m  'secteur' is missing in props validation                   [2mreact/prop-types[22m[0m
+[0m   [2m2:33[22m  [31merror[39m  'onClose' is missing in props validation                   [2mreact/prop-types[22m[0m
+[0m   [2m2:42[22m  [31merror[39m  'onDelete' is missing in props validation                  [2mreact/prop-types[22m[0m
+[0m  [2m17:45[22m  [31merror[39m  'secteur.code_secteur' is missing in props validation      [2mreact/prop-types[22m[0m
+[0m  [2m27:45[22m  [31merror[39m  'secteur.intitule_secteur' is missing in props validation  [2mreact/prop-types[22m[0m
+[0m  [2m38:36[22m  [31merror[39m  'secteur.filieres' is missing in props validation          [2mreact/prop-types[22m[0m
+[0m  [2m38:56[22m  [31merror[39m  'secteur.filieres' is missing in props validation          [2mreact/prop-types[22m[0m
+[0m  [2m38:65[22m  [31merror[39m  'secteur.filieres.join' is missing in props validation     [2mreact/prop-types[22m[0m
+[0m  [2m38:86[22m  [31merror[39m  'secteur.filieres' is missing in props validation          [2mreact/prop-types[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\routes\ProtectedRoute.jsx[24m[0m
+[0m  [2m1:8[22m  [31merror[39m  'React' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\routes\routes.jsx[24m[0m
+[0m  [2m35:7[22m  [33mwarning[39m  Fast refresh only works when a file only exports components. Move your component(s) to a separate file  [2mreact-refresh/only-export-components[22m[0m
+[0m  [2m45:7[22m  [33mwarning[39m  Fast refresh only works when a file only exports components. Move your component(s) to a separate file  [2mreact-refresh/only-export-components[22m[0m
+[0m  [2m50:7[22m  [33mwarning[39m  Fast refresh only works when a file only exports components. Move your component(s) to a separate file  [2mreact-refresh/only-export-components[22m[0m
+[0m[0m
+[0m[4mC:\Users\abdelilah\Desktop\react-projects\school-management-app\src\services\uploadService.js[24m[0m
+[0m  [2m13:13[22m  [31merror[39m  'data' is assigned a value but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[31m[1m✖ 419 problems (400 errors, 19 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m

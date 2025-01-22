@@ -12,32 +12,35 @@ const DashboardContent = () => {
       {/* Navbar */}
       <Navbar />
 
-      {/* Sidebar */}
-      <Sidebar />
+      <div className="w-full flex fixed top-20 px-2 lg:gap-x-2 h-[calc(100vh-5.5rem)]">
+        {/* Sidebar */}
+        <Sidebar />
 
-      {/* Main Content */}
-      <main
-        className={`
-          fixed overflow-y-auto
-          h-[calc(100vh-5.5rem)] 
-          top-20 right-2 p-4
-          bg-base-100 rounded-2xl
-          transition-all duration-300 ease-in-out
-          ${isMobile ? `left-2 ${isSidebarOpen ? 'opacity-50' : 'opacity-100'}` : 'left-[17rem]'}
-        `}
-      >
-        {/* Main Outlet */}
-        <Outlet />
-      </main>
+        {/* Main Content */}
+        <main
+          className={`
+            flex-1
+            overflow-y-auto
+            p-8
+            bg-base-100
+            shadow-md
+            rounded-2xl
+            transition-all duration-300 ease-in-out
+          `}
+        >
+          {/* Main Outlet */}
+          <Outlet />
+        </main>
 
-      {/* Mobile Overlay */}
-      {isMobile && isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-20"
-          onClick={() => setIsSidebarOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+        {/* Mobile Overlay */}
+        {isMobile && isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-20"
+            onClick={() => setIsSidebarOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+      </div>
     </div>
   );
 };

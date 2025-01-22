@@ -7,7 +7,8 @@ import {
   deleteAssignment,
 } from '../../../features/scheduler/schedulerSlice';
 import { Modal } from '../../../components';
-import { Captions, Pause, Play, Plus, Save, Trash2, User, Users } from 'lucide-react';
+import dayjs from 'dayjs';
+import { Captions, Calendar, Pause, Play, Plus, Save, Trash2, User, Users } from 'lucide-react';
 import AssignmentField from './AssignmentFields';
 
 export default function AssignmentModal() {
@@ -21,7 +22,8 @@ export default function AssignmentModal() {
     assignments,
     selectedGroupe,
     selectedFormateur,
-    isEditingMode,
+    salles,
+    startOfWeek 
   } = useSelector((state) => state.scheduler);
 
   const timeSlots = hours.flatMap((hour) => hour.subHours);
@@ -288,47 +290,99 @@ export default function AssignmentModal() {
             renderFields()
           ) : (
             <>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text flex items-center gap-2">
-                    <Plus className="w-4 h-4" />
-                    Groupe
-                  </span>
-                </label>
-                <input
-                  type="text"
-                  value={assignmentData.salle}
-                  onChange={(matricule) =>
-                    setAssignmentData({
-                      ...assignmentData,
-                      formateur: getFormateursForGroup(assignmentData.groupe).find(
-                        (f) => f.matricule === matricule
-                      ),
-                    })
-                  }
-                  className="input input-bordered w-full"
-                />
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      Day
+                    </span>
+                  </label>
+                  <select
+                    value={assignmentData.day}
+                    onChange={(e) => setAssignmentData({ ...assignmentData, day: e.target.value })}
+                    className="select select-bordered w-full"
+                    required
+                  >
+                    <option value="">Select Day</option>
+                    {Array.from({ length: 6 }, (_, i) => {
+                      const date = dayjs(startOfWeek).add(i, 'day');
+                      return (
+                        <option key={i} value={date.format('YYYY-MM-DD')}>
+                          {date.format('dddd, D MMM')}
+                        </option>
+                      );
+                    })}
+                  </select>
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text flex items-center gap-2">
-                    <Plus className="w-4 h-4" />
+                    <Users className="w-4 h-4" />
+                    Groupe
+                  </span>
+                </label>
+                <select
+                  value={assignmentData.groupe.codeGroupe}
+                  onChange={(e) => {
+                    const codeGroupe = e.target.value;
+                    const selectedGroup = assignments
+                      .map(assignment => assignment.groupe)
+                      .find(groupe => groupe.codeGroupe === codeGroupe);
+                    setAssignmentData({
+                      ...assignmentData,
+                      groupe: selectedGroup || {
+                        codeGroupe: '',
+                        intituleGroupe: '',
+                        filiere: '',
+                        secteur: '',
+                      }
+                    });
+                  }}
+                  className="select select-bordered w-full"
+                  required
+                >
+                  <option value="">Select Groupe</option>
+                  {[...new Set(assignments.map(a => a.groupe))].map((groupe, index) => (
+                    <option key={index} value={groupe.codeGroupe}>
+                      {groupe.intituleGroupe} ({groupe.codeGroupe})
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text flex items-center gap-2">
+                    <User className="w-4 h-4" />
                     Formateur
                   </span>
                 </label>
-                <input
-                  type="text"
-                  value={assignmentData.salle}
-                  onChange={(codeGroupe) =>
+                <select
+                  value={assignmentData.formateur.matricule}
+                  onChange={(e) => {
+                    const matricule = e.target.value;
+                    const selectedFormateur = assignments
+                      .map(assignment => assignment.formateur)
+                      .find(formateur => formateur.matricule === matricule);
                     setAssignmentData({
                       ...assignmentData,
-                      groupe: getGroupsForFormateur(assignmentData.formateur).find(
-                        (g) => g.codeGroupe === codeGroupe
-                      ),
-                    })
-                  }
-                  className="input input-bordered w-full"
-                />
+                      formateur: selectedFormateur || {
+                        matricule: '',
+                        nom: '',
+                        email: '',
+                        secteur: '',
+                      }
+                    });
+                  }}
+                  className="select select-bordered w-full"
+                  required
+                >
+                  <option value="">Select Formateur</option>
+                  {[...new Set(assignments.map(a => a.formateur))].map((formateur, index) => (
+                    <option key={index} value={formateur.matricule}>
+                      {formateur.nom} ({formateur.matricule})
+                    </option>
+                  ))}
+                </select>
               </div>
             </>
           )}
@@ -339,12 +393,19 @@ export default function AssignmentModal() {
                 Salle
               </span>
             </label>
-            <input
-              type="text"
+            <select
               value={assignmentData.salle}
               onChange={(e) => setAssignmentData({ ...assignmentData, salle: e.target.value })}
-              className="input input-bordered w-full"
-            />
+              className="select select-bordered w-full"
+              required
+            >
+              <option value="">Select la salle</option>
+              {salles.map((salle, index) => (
+                <option key={index} value={salle}>
+                  {salle}
+                </option>
+                ))}
+          </select>
           </div>
           <div className="flex justify-between items-center mt-4">
             <button type="submit" className="btn btn-primary" aria-label="Save Assignment">

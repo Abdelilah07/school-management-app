@@ -58,7 +58,10 @@ const Course = () => {
               <img src={course.imageUrl} alt={course.courseName} className="w-full" />
             </figure>
             <div className="card-body">
-              <button className="btn btn-primary" onClick={() => window.open(course.videoLink, '_blank')}>
+              <button
+                className="btn btn-primary"
+                onClick={() => window.open(course.videoLink, '_blank')}
+              >
                 <Play className="w-5 h-5" /> Watch Course Video
               </button>
             </div>
@@ -73,9 +76,17 @@ const Course = () => {
             <h2 className="text-xl font-semibold">Course Content</h2>
             {course.contentOfCourse.map((item, index) => (
               <div key={index} className="collapse collapse-arrow border border-base-300">
-                <input type="checkbox" onClick={() => setExpandedContent({ ...expandedContent, [index]: !expandedContent[index] })} />
+                <input
+                  type="checkbox"
+                  onClick={() =>
+                    setExpandedContent({ ...expandedContent, [index]: !expandedContent[index] })
+                  }
+                />
                 <div className="collapse-title flex items-center gap-2 cursor-pointer">
-                  <ChevronRight className={`w-5 h-5 ${expandedContent[index] ? 'rotate-90' : ''}`} /> {item.contentName}
+                  <ChevronRight
+                    className={`w-5 h-5 ${expandedContent[index] ? 'rotate-90' : ''}`}
+                  />{' '}
+                  {item.contentName}
                 </div>
                 <div className="collapse-content">
                   <p>{item.contentDescription}</p>
@@ -104,7 +115,12 @@ const Course = () => {
               <Award className="w-16 h-16 text-success mx-auto" />
               <h3 className="text-xl font-bold text-success">Course Completed!</h3>
               {quizzes.some((quiz) => quiz.courseId === courseId) && (
-                <button className="btn btn-primary w-full mt-4" onClick={() => handleStartQuiz(quizzes.find((quiz) => quiz.courseId === courseId).id)}>
+                <button
+                  className="btn btn-primary w-full mt-4"
+                  onClick={() =>
+                    handleStartQuiz(quizzes.find((quiz) => quiz.courseId === courseId).id)
+                  }
+                >
                   Start Quiz
                 </button>
               )}

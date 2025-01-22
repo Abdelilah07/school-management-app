@@ -1,3 +1,5 @@
+import { darkThemes } from '@supabase/auth-ui-shared';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -21,7 +23,7 @@ export default {
     require('daisyui'),
   ],
   daisyui: {
-    themes: ["light", "night", "cupcake", "coffee", "lofi", "synthwave"],
+    themes: ["cupcake", "night"],
+    darkTheme: "night",
   },
-  darkMode: ['selector', '[data-theme="night"]'],
 }

@@ -20,7 +20,7 @@ const AllQuestions = () => {
   const [randomCount, setRandomCount] = useState(0);
   const [quiz, setQuiz] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const [editingQuestionId, setEditingQuestionId] = useState(null); 
+  const [editingQuestionId, setEditingQuestionId] = useState(null);
 
   useEffect(() => {
     if (!quizId) {
@@ -69,12 +69,13 @@ const AllQuestions = () => {
     const selectedCount = selectedQuestions.length;
     if (selectedCount === 0) return;
 
-    const confirmationMessage = `Are you sure you want to delete ${selectedCount === 1
+    const confirmationMessage = `Are you sure you want to delete ${
+      selectedCount === 1
         ? 'this question'
         : selectedCount === questions.length
           ? 'all questions'
           : `these ${selectedCount} questions`
-      }?`;
+    }?`;
 
     if (!window.confirm(confirmationMessage)) return;
 
@@ -103,11 +104,12 @@ const AllQuestions = () => {
       setSelectAll(false);
 
       alert(
-        `Successfully deleted ${selectedCount === 1
-          ? 'the question'
-          : selectedCount === questions.length
-            ? 'all questions'
-            : `${selectedCount} questions`
+        `Successfully deleted ${
+          selectedCount === 1
+            ? 'the question'
+            : selectedCount === questions.length
+              ? 'all questions'
+              : `${selectedCount} questions`
         }`
       );
     } catch (error) {
@@ -228,7 +230,7 @@ const AllQuestions = () => {
         },
         body: JSON.stringify({
           questions: updatedQuestions,
-          questionsSelected: updatedQuestionsSelected
+          questionsSelected: updatedQuestionsSelected,
         }),
       });
 
@@ -238,7 +240,6 @@ const AllQuestions = () => {
       alert('An error occurred while updating the question.');
     }
   };
-
 
   const currentQuestions = questions.slice(
     (currentPage - 1) * QUESTIONS_PER_PAGE,
@@ -296,18 +297,19 @@ const AllQuestions = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>{currentQuestions.map((question, index) => (
-            <EditableQuestion
-              key={`question-${question.id}-${index}`}
-              question={question}
-              onSave={handleUpdateQuestion}
-              selectedQuestions={selectedQuestions}
-              handleSelect={handleSelect}
-              editingQuestionId={editingQuestionId} 
-              onEditStart={handleEditStart}     
-              onEditEnd={handleEditEnd}        
-            />
-          ))}
+          <tbody>
+            {currentQuestions.map((question, index) => (
+              <EditableQuestion
+                key={`question-${question.id}-${index}`}
+                question={question}
+                onSave={handleUpdateQuestion}
+                selectedQuestions={selectedQuestions}
+                handleSelect={handleSelect}
+                editingQuestionId={editingQuestionId}
+                onEditStart={handleEditStart}
+                onEditEnd={handleEditEnd}
+              />
+            ))}
           </tbody>
         </table>
         <Pagination
