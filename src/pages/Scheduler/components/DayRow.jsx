@@ -40,7 +40,7 @@ const DayRow = ({ day, hours, assignments }) => {
 
   return (
     <tr>
-      <td className="px-1 py-5 border w-25 font-semibold text-gray-700">{day.format('dddd')}</td>
+      <td className="px-2 py-8 border w-25 text-sm font-semibold text-gray-700">{day.format('dddd')}</td>
       {hours.map((hour) =>
         hour.subHours.map((subHour, subHourIndex) => {
           const assignment = assignments.find((assignment) =>

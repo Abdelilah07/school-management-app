@@ -12,7 +12,7 @@ function AttendancePage() {
       };
 
     // Ensure role is either 'admin' or 'trainer', fallback to empty string
-    if (user && (user.role === 'admin' || user.role === 'trainer')) {
+    if (user && (user.role === 'admin' || user.role === 'trainer' || user.role === 'super user')) {
       setCurrentUser(user);
     } else {
       setCurrentUser({ role: '' });
@@ -28,7 +28,7 @@ function AttendancePage() {
     <div>
       <h1 className="text-3xl font-bold text-center mt-5">Gestion d'Absence</h1>
 
-      {currentUser.role === 'admin' ? (
+      {currentUser.role === 'admin' || currentUser.role === 'super user' ? (
         <AttendanceAdmin />
       ) : currentUser.role === 'trainer' ? (
         <AttendanceFormateur />

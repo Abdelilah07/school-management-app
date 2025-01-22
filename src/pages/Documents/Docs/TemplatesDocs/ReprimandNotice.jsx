@@ -98,7 +98,9 @@ const ReprimandNotice = ({ name, group, date, reason = [], resen1, resen2, resen
         </div>
 
         <footer className="text-center mt-6">
-          <p>Signé par: <strong>Représentant de l'institution</strong></p>
+          <p>
+            Signé par: <strong>Représentant de l'institution</strong>
+          </p>
           <p>Date de l'émission: {new Date().toLocaleDateString()}</p>
         </footer>
       </div>
@@ -107,7 +109,3 @@ const ReprimandNotice = ({ name, group, date, reason = [], resen1, resen2, resen
 };
 
 export default ReprimandNotice;
-
-
-
-

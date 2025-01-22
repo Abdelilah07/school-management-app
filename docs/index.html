@@ -1,14 +1,25 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/school-management-app/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>School Management App</title>
-    <script type="module" crossorigin src="/school-management-app/assets/index-ZTYMaPEW.js"></script>
-    <link rel="stylesheet" crossorigin href="/school-management-app/assets/index-BKIHXcNo.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<html lang="en" class="bg-base-200">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/school-management-app/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Management App</title>
+
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "cupcake";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+  
+  <script type="module" crossorigin src="/school-management-app/assets/index-DEpN-T7N.js"></script>
+  <link rel="stylesheet" crossorigin href="/school-management-app/assets/index-BVuX2Cz7.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
 </html>

@@ -1,12 +1,13 @@
-import { memo, useEffect, useRef, useContext, useCallback } from 'react';
+import { memo, useEffect, useRef, useContext, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router';
 import { LayoutContext } from '../context/LayoutContext';
 import { MenuItem, Divider, UserProfile } from './components';
 import menuItems from './config/menuItems';
 import { getUserFromStorage } from '../../utils';
 
-const rolePermissions = {
-  'super user': [
+// Role permissions configuration
+const ROLE_PERMISSIONS = {
+  'super user': new Set([
     'Home',
     'Courses',
     'Quizzes',
@@ -24,8 +25,8 @@ const rolePermissions = {
     'Settings',
     'Trainees',
     'Formateurs',
-  ],
-  admin: [
+  ]),
+  admin: new Set([
     'Home',
     'Attendance',
     'Documents',
@@ -38,62 +39,66 @@ const rolePermissions = {
     'Modules',
     'Trainees',
     'Formateurs',
-  ],
-  trainer: ['Home', 'Courses', 'Quizzes', 'Trainees', 'Attendance', 'Schedule', 'Documents'],
-  trainee: ['Home', 'Courses', 'Quizzes', 'Schedule', 'Documents'],
+  ]),
+  trainer: new Set([
+    'Home',
+    'Courses',
+    'Quizzes',
+    'Trainees',
+    'Attendance',
+    'Schedule',
+    'Documents',
+  ]),
+  trainee: new Set(['Home', 'Courses', 'Quizzes', 'Schedule', 'Documents']),
 };
 
-const getFilteredMenuItems = (role) => {
-  const allowedLabels = rolePermissions[role] || [];
-  return menuItems.filter(
-    (item, index, array) =>
-      (item.type === 'divider' && index === array.length - 1) ||
-      (item.label && allowedLabels.includes(item.label))
-  );
+// Filters menu items based on user role
+const getFilteredMenuItems = (role, items) => {
+  const allowedLabels = ROLE_PERMISSIONS[role] || new Set();
+  return items.filter((item, index, arr) => {
+    if (item.type === 'divider') {
+      return index > 0 && arr[index - 1].type !== 'divider';
+    }
+    return item.label && allowedLabels.has(item.label);
+  });
 };
 
-const TRANSITION_DURATION = 300; // matches duration in classes
-
-// Custom hook for handling sidebar close events with cleanup
-const useSidebarCloseHandlers = (sidebarRef, context) => {
+// Handles closing the sidebar when clicking outside or pressing Escape
+const useSidebarCloseHandlers = (sidebarRef, isSidebarOpen, setIsSidebarOpen, isMobile) => {
   const location = useLocation();
-  const { isSidebarOpen, setIsSidebarOpen, isMobile } = context;
 
   const handleClickOutside = useCallback(
     (event) => {
-      const isToggleButton = event.target.closest('[data-sidebar-toggle]');
-      const isInsideSidebar = sidebarRef.current?.contains(event.target);
-
-      if (!isToggleButton && !isInsideSidebar) {
+      if (!isMobile) return;
+      if (
+        !sidebarRef.current?.contains(event.target) &&
+        !event.target.closest('[data-sidebar-toggle]')
+      ) {
         setIsSidebarOpen(false);
       }
     },
-    [setIsSidebarOpen]
+    [setIsSidebarOpen, isMobile, sidebarRef]
   );
 
   const handleEscKey = useCallback(
     (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === 'Escape' && isMobile) {
         setIsSidebarOpen(false);
       }
     },
-    [setIsSidebarOpen]
+    [setIsSidebarOpen, isMobile]
   );
 
-  // Handle click outside and ESC key
   useEffect(() => {
-    if (!isMobile || !isSidebarOpen) return undefined;
-
-    document.addEventListener('mousedown', handleClickOutside, { passive: true });
-    document.addEventListener('keydown', handleEscKey, { passive: true });
-
+    if (!isSidebarOpen) return;
+    document.addEventListener('mousedown', handleClickOutside, true);
+    document.addEventListener('keydown', handleEscKey, true);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscKey);
+      document.removeEventListener('mousedown', handleClickOutside, true);
+      document.removeEventListener('keydown', handleEscKey, true);
     };
-  }, [isSidebarOpen, isMobile, handleClickOutside, handleEscKey]);
+  }, [isSidebarOpen, handleClickOutside, handleEscKey]);
 
-  // Close sidebar on mobile navigation
   useEffect(() => {
     if (isMobile && isSidebarOpen) {
       setIsSidebarOpen(false);
@@ -101,90 +106,67 @@ const useSidebarCloseHandlers = (sidebarRef, context) => {
   }, [location.pathname, isMobile, setIsSidebarOpen]);
 };
 
-// Component for the sidebar overlay
+// Sidebar overlay for mobile view
 const SidebarOverlay = memo(({ isVisible, onClose }) => (
   <div
-    className={`
-      fixed inset-0 bg-black/20 backdrop-blur-sm z-20
-      transition-opacity duration-300
-      ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-    `.trim()}
+    className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-20 transition-opacity duration-300 ${
+      isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+    }`}
     onClick={onClose}
-    onKeyDown={(e) => e.key === 'Enter' && onClose()}
     role="button"
     tabIndex={isVisible ? 0 : -1}
-    aria-label="Close sidebar"
     aria-hidden={!isVisible}
   />
 ));
-
 SidebarOverlay.displayName = 'SidebarOverlay';
 
-// Component for the sidebar content
-const SidebarContent = memo(({ menuItems, location, userData }) => (
+// Sidebar menu content
+const SidebarContent = memo(({ menuItems, userData, isSidebarOpen }) => (
   <>
     <nav className="flex-1 px-4 py-6 overflow-y-auto scrollbar-thin scrollbar-thumb-base-300">
       <ul className="space-y-1" role="menu">
-        {menuItems.map((item, index) => {
-          if (item.type === 'divider') {
-            return <Divider key={`divider-${index}`} />;
-          }
-
-          return (
-            <MenuItem
-              key={item.href || `menu-item-${index}`}
-              item={item}
-              isActive={location.pathname === item.href}
-              aria-current={location.pathname === item.href ? 'page' : undefined}
-            />
-          );
-        })}
+        {menuItems.map((item, index) =>
+          item.type === 'divider' ? (
+            <Divider key={`divider-${index}`} />
+          ) : (
+            <MenuItem key={item.href || `item-${index}`} item={item} />
+          )
+        )}
       </ul>
     </nav>
 
-    <div className="p-4 border-t border-base-200">
-      <UserProfile
-        name={userData?.name ?? 'Guest'}
-        role={userData?.role ?? 'User'}
-        profile_picture={userData?.profile_picture ?? ''}
-      />
+    <div
+      className={`transition-all duration-300 overflow-hidden ${isSidebarOpen ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'}`}
+    >
+      <div className="p-4 border-t border-base-200">
+        <UserProfile
+          name={userData?.name ?? 'Guest'}
+          role={userData?.role ?? 'User'}
+          profile_picture={userData?.profile_picture}
+        />
+      </div>
     </div>
   </>
 ));
-
 SidebarContent.displayName = 'SidebarContent';
 
+// Main Sidebar Component
 const Sidebar = memo(() => {
   const sidebarRef = useRef(null);
-  const layoutContext = useContext(LayoutContext);
+  const { isSidebarOpen, setIsSidebarOpen, isMobile } = useContext(LayoutContext);
   const userData = getUserFromStorage('user');
-  const location = useLocation();
-  const filteredMenuItems = getFilteredMenuItems(userData?.role ?? 'user');
 
-  if (!layoutContext) {
-    console.error('Sidebar: LayoutContext is missing');
-    return null; // Render nothing instead of throwing
-  }
+  const filteredMenuItems = useMemo(
+    () => getFilteredMenuItems(userData?.role ?? 'user', menuItems),
+    [userData?.role]
+  );
 
-  const { isSidebarOpen, isMobile, setIsSidebarOpen } = layoutContext;
+  useSidebarCloseHandlers(sidebarRef, isSidebarOpen, setIsSidebarOpen, isMobile);
 
-  // Initialize hooks
-  useSidebarCloseHandlers(sidebarRef, layoutContext);
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      setIsSidebarOpen(false);
-    }
-  };
-
+  // Sidebar styling
   const sidebarClasses = `
-    fixed rounded-2xl top-20 
-    h-[calc(100vh-5.5rem)] 
-    bg-base-100 border-r border-base-200
-    transition-transform duration-${TRANSITION_DURATION} ease-in-out
-    w-64
-    ${isMobile ? 'z-30' : 'z-20 lg:translate-x-2'}
-    ${!isSidebarOpen && (isMobile || !isMobile) ? '-translate-x-full' : 'translate-x-2'}
+    rounded-2xl bg-base-100 transition-all duration-300 ease-in-out z-30 shadow-md
+    ${isMobile ? (isSidebarOpen ? 'w-64 shadow-lg' : '-translate-x-[16.5rem] w-0') : isSidebarOpen ? 'w-64' : 'w-20'}
   `.trim();
 
   return (
@@ -197,19 +179,21 @@ const Sidebar = memo(() => {
       <aside
         ref={sidebarRef}
         className={sidebarClasses}
-        aria-hidden={!isSidebarOpen}
-        aria-label="Main navigation"
+        aria-hidden={isMobile && !isSidebarOpen}
         role="navigation"
-        onKeyDown={handleKeyDown}
+        aria-label="Main Navigation"
       >
         <div className="h-full flex flex-col">
-          <SidebarContent menuItems={filteredMenuItems} location={location} userData={userData} />
+          <SidebarContent
+            menuItems={filteredMenuItems}
+            userData={userData}
+            isSidebarOpen={isSidebarOpen}
+          />
         </div>
       </aside>
     </>
   );
 });
-
 Sidebar.displayName = 'Sidebar';
 
 export default Sidebar;

@@ -9,7 +9,7 @@ export default function Week() {
   const startOfWeekString = useSelector((state) => state.scheduler.startOfWeek);
   const startOfWeek = dayjs(startOfWeekString);
   const hours = useSelector((state) => state.scheduler.hours);
-  const daysOfWeek = Array.from({ length: 7 }, (_, i) => startOfWeek.add(i, 'day'));
+  const daysOfWeek = Array.from({ length: 6 }, (_, i) => startOfWeek.add(i, 'day'));
   const assignments = useSelector((state) => state.scheduler.assignments);
   const selectedGroupe = useSelector((state) => state.scheduler.selectedGroupe);
   const selectedFormateur = useSelector((state) => state.scheduler.selectedFormateur);
@@ -25,14 +25,14 @@ export default function Week() {
       : assignments;
 
   return (
-    <div className="overflow-x-auto p-2 pt-5">
-      <div className="inline-block min-w-full overflow-hidden rounded-lg border border-gray-300 shadow-md">
-        <table className="table-fixed min-w-full border-collapse text-center text-xs">
+    <div className="overflow-x-auto p-2 pt-5 w-full ">
+    <div className="w-full overflow-hidden rounded-lg border border-gray-300 shadow-md">
+      <table className="w-full border-collapse text-center text-xs">
           <thead>
             <tr>
-              <th className="px-1 py-1 border rounded-tl-lg w-24 h-12">Day</th>
+              <th className="px-1 py-5 text-base border rounded-tl-lg w-24 h-12">Day</th>
               {hours.map((hour, index) => (
-                <th key={index} colSpan={2} className="px-1 py-1 border font-semibold w-24 h-12">
+                <th key={index} colSpan={2} className="px-1 py-1 text-sm border font-semibold w-24 h-12">
                   {hour.startTime} - {hour.endTime}
                 </th>
               ))}

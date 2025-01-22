@@ -5,8 +5,8 @@ export const LayoutContext = createContext();
 
 // LayoutProvider component
 export const LayoutProvider = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(!isMobile);
 
   // Handle screen resize
   useEffect(() => {
@@ -20,11 +20,9 @@ export const LayoutProvider = ({ children }) => {
 
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
-      if (window.innerWidth >= 1024) setIsSidebarOpen(false); // Close sidebar on desktop
     };
 
     const debouncedResize = debounce(handleResize, 100);
-    handleResize(); // Initial check
     window.addEventListener('resize', debouncedResize);
     return () => window.removeEventListener('resize', debouncedResize);
   }, []);

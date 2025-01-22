@@ -4,24 +4,17 @@ import AssignmentModal from './components/AssignmentModal';
 import Sidebar from './components/Sidebar';
 import SchedulerHeader from './components/SchedulerHeader';
 
-function App() {
+function SchedulerPage() {
   return (
-    <div className="flex h-screen">
-      {/* Weekly Calendar Section */}
-      <div className="flex-grow flex flex-col">
+    <div className="flex flex-col pr-10 ">
         <SchedulerHeader />
-        <div className="flex-grow p-4">
+        <div className="flex relative mt-5">
           <Week />
           <AssignmentModal />
         </div>
-      </div>
-
-      {/* Sidebar Section */}
-      <div className="w-1/5 p-4">
         <Sidebar />
-      </div>
     </div>
   );
 }
 
-export default App;
+export default SchedulerPage;
