@@ -159,12 +159,158 @@
   },
   "quizzes": [
     {
+      "quizID": "QZ101",
+      "coursequizID": "BIO101",
+      "courseName": "Introduction to Biology",
+      "teacherId": "T001",
+      "teacherName": "Dr. Alice Johnson",
+      "Deadline": "2024-11-30T23:59:59Z",
+      "status": "draft",
+      "questions": [
+        {
+          "id": "1",
+          "question": "Quelle est l'unité fondamentale de la vie ?",
+          "answers": [
+            "a) L'atome",
+            "b) La molécule",
+            "c) La cellule",
+            "d) L'organe"
+          ],
+          "correctAnswer": "c) La cellule"
+        },
+        {
+          "id": "2",
+          "question": "Laquelle de ces affirmations concernant la photosynthèse est FAUSSE ?",
+          "answers": [
+            "a) Elle utilise l'énergie solaire.",
+            "b) Elle produit du dioxyde de carbone.",
+            "c) Elle produit du glucose.",
+            "d) Elle se produit dans les chloroplastes des plantes."
+          ],
+          "correctAnswer": "b) Elle produit du dioxyde de carbone"
+        },
+        {
+          "id": "3",
+          "question": "Quel processus biologique produit de l'ATP ?",
+          "answers": [
+            "a) Photosynthèse uniquement",
+            "b) Respiration cellulaire uniquement",
+            "c) Photosynthèse et respiration cellulaire",
+            "d) Ni la photosynthèse ni la respiration cellulaire"
+          ],
+          "correctAnswer": "c) Photosynthèse et respiration cellulaire"
+        },
+        {
+          "id": "4",
+          "question": "Qu'est-ce que l'ADN ?",
+          "answers": [
+            "a) Une source d'énergie",
+            "b) Une molécule porteuse d'information génétique",
+            "c) Une protéine structurale",
+            "d) Un type de lipide"
+          ],
+          "correctAnswer": "b) Une molécule porteuse d'information génétique"
+        },
+        {
+          "id": "5",
+          "question": "Lequel de ces termes décrit le processus par lequel les organismes maintiennent un environnement interne stable ?",
+          "answers": [
+            "a) Métabolisme",
+            "b) Homéostasie",
+            "c) Reproduction",
+            "d) Croissance"
+          ],
+          "correctAnswer": "b) Homéostasie"
+        },
+        {
+          "id": "6",
+          "question": "Quelle est la différence principale entre la mitose et la méiose ?",
+          "answers": [
+            "a) La mitose produit des cellules haploïdes, la méiose produit des cellules diploïdes.",
+            "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes.",
+            "c) La mitose ne produit que des cellules somatiques, la méiose produit uniquement des gamètes.",
+            "d) La mitose est un processus asexué, la méiose est un processus sexué."
+          ],
+          "correctAnswer": "b) La mitose produit des cellules diploïdes, la méiose produit des cellules haploïdes."
+        },
+        {
+          "id": "7",
+          "question": "Que sont les enzymes ?",
+          "answers": [
+            "a) Des lipides",
+            "b) Des glucides",
+            "c) Des protéines qui catalysent les réactions biochimiques",
+            "d) Des acides nucléiques"
+          ],
+          "correctAnswer": "c) Des protéines qui catalysent les réactions biochimiques"
+        },
+        {
+          "id": "8",
+          "question": "Quel est le rôle principal du système circulatoire ?",
+          "answers": [
+            "a) La digestion des aliments",
+            "b) Le transport de substances dans le corps",
+            "c) La production d'hormones",
+            "d) La protection contre les maladies"
+          ],
+          "correctAnswer": "b) Le transport de substances dans le corps"
+        },
+        {
+          "id": "9",
+          "question": "Quel est le nom du processus par lequel les organismes produisent des descendants ?",
+          "answers": [
+            "a) Métabolisme",
+            "b) Croissance",
+            "c) Reproduction",
+            "d) Adaptation"
+          ],
+          "correctAnswer": "c) Reproduction"
+        },
+        {
+          "id": "10",
+          "question": "Laquelle de ces affirmations concernant l'évolution est VRAIE ?",
+          "answers": [
+            "a) L'évolution est un processus rapide et observable en quelques générations.",
+            "b) L'évolution se produit toujours vers une complexité accrue.",
+            "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps.",
+            "d) L'évolution est un processus dirigé vers un but précis."
+          ],
+          "correctAnswer": "c) L'évolution est le changement des caractéristiques héréditaires d'une population au fil du temps."
+        }
+      ],
+      "questionsSelected": [
+        {
+          "id": "8h",
+          "question": "What is the main pigment involved in photosynthesis?",
+          "answers": [
+            "Chlorophyll",
+            "Carotene",
+            "Xanthophyll",
+            "Hemoglobin"
+          ],
+          "correctAnswer": "Chlorophyll"
+        },
+        {
+          "id": "9i",
+          "question": "Which biological molecule is primarily responsible for catalyzing reactions in cells?",
+          "answers": [
+            "Lipids",
+            "Proteins",
+            "Carbohydrates",
+            "Nucleic acids"
+          ],
+          "correctAnswer": "Return on Investment"
+        }
+      ],
+      "id": "f4dc"
+    },
+    {
       "quizID": "QZ202",
       "coursequizID": "MKT201",
       "courseName": "Principles of Marketing",
       "teacherId": "T002",
       "teacherName": "Prof. Emily Green",
-      "deadline": "2024-12-05T22:00",
+      "Deadline": "2024-12-05T22:00",
       "status": "active",
       "questions": [
         {
@@ -497,7 +643,7 @@
       "courseName": "World History",
       "teacherId": "T003",
       "teacherName": "Dr. Sarah Davis",
-      "deadline": "2024-11-17T22:31",
+      "Deadline": "2024-11-17T22:31",
       "status": "active",
       "questions": [
         {
@@ -741,7 +887,7 @@
       "courseName": "World History",
       "coursequizID": "HIST201",
       "teacherName": "werek",
-      "deadline": "2024-11-16T09:41",
+      "Deadline": "2024-11-16T09:41",
       "status": "active",
       "questions": [
         {
@@ -831,7 +977,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "CHEM101",
       "teacherName": "qqqqq",
-      "deadline": "2024-11-13T01:59",
+      "Deadline": "2024-11-13T01:59",
       "status": "active",
       "questions": [
         {
@@ -1185,7 +1331,7 @@
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
       "teacherName": "Dr. Michael Smith",
-      "deadline": "2024-11-20T23:59",
+      "Deadline": "2024-11-20T23:59",
       "status": "draft",
       "questions": [
         {
@@ -1251,7 +1397,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "ECON101",
       "teacherName": "Dr. Emily Johnson",
-      "deadline": "2024-12-13T23:59",
+      "Deadline": "2024-12-13T23:59",
       "status": "draft",
       "questions": [],
       "id": "f11a",
@@ -1262,7 +1408,7 @@
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-10-31T11:57",
+      "Deadline": "2024-10-31T11:57",
       "status": "draft"
     },
     {
@@ -1270,7 +1416,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "106",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-05T12:02",
+      "Deadline": "2024-12-05T12:02",
       "status": "active"
     },
     {
@@ -1278,7 +1424,7 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-11-24T12:05",
+      "Deadline": "2024-11-24T12:05",
       "status": "active"
     },
     {
@@ -1286,7 +1432,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "104",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-07T12:09",
+      "Deadline": "2024-12-07T12:09",
       "status": "active",
       "questions": [
         {
@@ -7240,7 +7386,7 @@
       "courseName": "Introduction to Physics",
       "coursequizID": "PHYS101",
       "teacherName": "Dr. Michael Smith",
-      "deadline": "2024-11-20T23:59",
+      "Deadline": "2024-11-20T23:59",
       "status": "draft",
       "questions": [
         {
@@ -7306,7 +7452,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "ECON101",
       "teacherName": "Dr. Emily Johnson",
-      "deadline": "2024-12-13T23:59",
+      "Deadline": "2024-12-13T23:59",
       "status": "draft",
       "questions": [],
       "id": "f11a",
@@ -7317,7 +7463,7 @@
       "courseName": "General Chemistry",
       "coursequizID": "CHEM101",
       "teacherName": "khba",
-      "deadline": "2024-11-14T23:26",
+      "Deadline": "2024-11-14T23:26",
       "status": "active"
     },
     {
@@ -7325,7 +7471,7 @@
       "courseName": "Principles of Economics",
       "coursequizID": "106",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-05T12:02",
+      "Deadline": "2024-12-05T12:02",
       "status": "active"
     },
     {
@@ -7333,7 +7479,7 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-11-24T12:05",
+      "Deadline": "2024-11-24T12:05",
       "status": "active"
     },
     {
@@ -12012,11 +12158,11 @@
       "status": "active"
     },
     {
-      "id": "198z",
+      "id": "199a",
       "courseName": "General Chemistry",
       "coursequizID": "104",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-07T12:09",
+      "Deadline": "2024-12-07T12:09",
       "status": "active",
       "questions": [
         {
@@ -12479,7 +12625,7 @@
       "courseName": "World History",
       "coursequizID": "HIST201",
       "teacherName": "Jim Halpert",
-      "deadline": "2024-12-04T12:40",
+      "Deadline": "2024-12-04T12:40",
       "status": "draft",
       "questions": [],
       "questionsSelected": []
@@ -12489,7 +12635,7 @@
       "courseName": "Introduction to Biology",
       "coursequizID": "BIO101",
       "teacherName": "Carlos Martinez",
-      "deadline": "2025-01-02T23:31",
+      "Deadline": "2025-01-02T23:31",
       "status": "active"
     },
     {
@@ -12497,7 +12643,7 @@
       "courseName": "Introduction to Mathematics",
       "coursequizID": "105",
       "teacherName": "Carlos Martinez",
-      "deadline": "2025-01-17T23:42",
+      "Deadline": "2025-01-17T23:42",
       "status": "active",
       "questions": [
         {
@@ -16264,7 +16410,7 @@
       ],
       "pdfUrl": "https://docs.google.com/viewer?url=https://www.bestcours.com/pdf/0769-python-pour-la-biologie.pdf",
       "videoLink": "https://www.youtube.com/watch?v=2bJkE9Zf4Jg",
-      "status": "active"
+      "status": "completed"
     },
     {
       "id": "2",
@@ -17354,9 +17500,9 @@
   "documents": [
     {
       "id": "1",
-      "name": "Attestation de présence",
+      "name": "Convocation",
       "status": "En cours",
-      "description": "Document confirmant votre présence aux cours",
+      "description": "Convocation de l'OFPPT",
       "documentAttachment": [
         "Carte d'identité",
         "Lettre de demande de document"
@@ -17365,9 +17511,9 @@
     },
     {
       "id": "2",
-      "name": "Attestation de scolarité",
+      "name": "Mise en Garde",
       "status": "Disponible",
-      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
+      "description": "Mise en garde de l'OFPPT",
       "documentAttachment": [
         "Carte d'identité",
         "Lettre de demande de document"
@@ -17376,9 +17522,9 @@
     },
     {
       "id": "3",
-      "name": "Relevé de notes",
+      "name": "Tawbikh",
       "status": "En cours",
-      "description": "Résumé des notes obtenues durant les examens",
+      "description": "Tawbikh de l'OFPPT",
       "documentAttachment": [
         "Carte d'identité",
         "Lettre de demande de document"
@@ -17387,9 +17533,9 @@
     },
     {
       "id": "4",
-      "name": "Attestation de stage",
+      "name": "Retrait Bac Définitif",
       "status": "En attente",
-      "description": "Document confirmant la réalisation d'un stage pratique obligatoire",
+      "description": "Document pour Retrait Bac Definitif",
       "documentAttachment": [
         "Carte d'identité",
         "Convention de stage signée"
@@ -17398,148 +17544,111 @@
     },
     {
       "id": "5",
-      "name": "Certificat d'inscription",
+      "name": "Retrait Bac Provisoire",
       "status": "Disponible",
-      "description": "Utilisé pour prouver l'inscription à l'année en cours",
+      "description": "Document pour Retrait Bac Provisoire",
       "documentAttachment": [
         "Carte d'identité",
         "Lettre de demande de document"
       ],
       "processingTime": "1-2 jours"
-    },
-    {
-      "id": "6",
-      "name": "Demande de transfert",
-      "status": "En cours",
-      "description": "Permet de demander un transfert vers un autre établissement de l'OFPPT",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre explicative",
-        "Justificatif (le cas échéant)"
-      ],
-      "processingTime": "5-7 jours"
-    },
-    {
-      "id": "7",
-      "name": "Déclaration de perte de carte d'étudiant",
-      "status": "En attente",
-      "description": "Permet de demander une nouvelle carte d'étudiant après une perte",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Déclaration de perte (émise par les autorités)"
-      ],
-      "processingTime": "3-4 jours"
-    },
-    {
-      "id": "8",
-      "name": "Diplôme ou certificat de qualification",
-      "status": "En cours",
-      "description": "Document remis après la réussite de la formation",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre de demande de document",
-        "Relevé de notes final"
-      ],
-      "processingTime": "10-15 jours"
-    },
-    {
-      "id": "9",
-      "name": "Autorisation pour la participation à des concours ou activités externes",
-      "status": "Disponible",
-      "description": "Autorisation pour participer à des concours ou projets externes",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Lettre explicative"
-      ],
-      "processingTime": "2-3 jours"
-    },
-    {
-      "id": "10",
-      "name": "Certificat médical",
-      "status": "En attente",
-      "description": "Certificat médical justifiant une absence prolongée",
-      "documentAttachment": [
-        "Carte d'identité",
-        "Rapport médical"
-      ],
-      "processingTime": "1-2 jours"
-    },
-    {
-      "id": "11",
-      "name": "Regelement intérieur",
-      "status": "En cours",
-      "description": "Document de réglement interne de l'OFPPT",
-      "documentAttachment": [],
-      "processingTime": "En temps",
-      "documentLink": "https://drive.google.com/file/d/1288Ix_xlp7KDQTCHuhHE5lYjy84HR2MV/view"
     }
   ],
   "demandes": [
     {
-      "id": "e124",
+      "id": "31f3",
       "document": "Attestation de scolarité",
       "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
-      "requestDate": "2024-11-22",
+      "cef": "77fdefa0-6e9f-467d-bb0d-9f7c52a36227",
+      "group": "Unknown",
+      "requestDate": "2025-01-31",
       "files": [
         {
-          "name": "Capture d'écran 2024-10-10 190144.png",
-          "size": 59597,
-          "type": "image/png"
-        },
-        {
-          "name": "Capture d'écran 2024-10-14 095955.png",
-          "size": 649415,
-          "type": "image/png"
-        }
-      ],
-      "user": "Admin Admin",
-      "status": "en cours",
-      "submissionDate": "11/21/2024",
-      "processingTime": "1-2 jours"
-    },
-    {
-      "id": "d172",
-      "document": "Relevé de notes",
-      "description": "Résumé des notes obtenues durant les examens",
-      "requestDate": "2024-11-29",
-      "files": [
-        {
-          "name": "Capture d'écran 2024-10-10 190144.png",
-          "size": 59597,
-          "type": "image/png"
-        },
-        {
-          "name": "Capture d'écran 2024-10-14 095955.png",
-          "size": 649415,
-          "type": "image/png"
-        }
-      ],
-      "user": "Admin Admin",
-      "status": "en cours",
-      "submissionDate": "11/21/2024",
-      "processingTime": "3-5 jours"
-    },
-    {
-      "id": "75b7",
-      "document": "Relevé de notes",
-      "description": "Résumé des notes obtenues durant les examens",
-      "requestDate": "2024-12-04",
-      "files": [
-        {
-          "name": "tp_scrum.pdf",
-          "size": 333898,
+          "name": "ExercicesGant&Pert.pdf",
+          "size": 201697,
           "type": "application/pdf"
-        },
-        {
-          "name": "diagram.png",
-          "size": 141728,
-          "type": "image/png"
         }
       ],
       "user": "Alice Smith",
       "status": "en cours",
-      "submissionDate": "03/12/2024",
-      "processingTime": "3-5 jours"
+      "submissionDate": "22/01/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "fa08",
+      "document": "Attestation de présence",
+      "description": "Document confirmant votre présence aux cours",
+      "cef": "77fdefa0-6e9f-467d-bb0d-9f7c52a36227",
+      "group": "Unknown",
+      "requestDate": "2025-01-17",
+      "files": [
+        {
+          "name": "توبيخ.pdf",
+          "size": 390202,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Alice Smith",
+      "status": "effectuer",
+      "submissionDate": "22/01/2025",
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": "11b3",
+      "document": "Attestation de scolarité",
+      "description": "Justifie que le stagiaire est inscrit dans une filière de formation",
+      "cef": "bbd39c7e-b0ea-4f1a-9ef3-3d4fc184243b",
+      "group": "Unknown",
+      "requestDate": "2025-01-31",
+      "files": [
+        {
+          "name": "GestionBibliothéqueEnLigne.pdf",
+          "size": 192928,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Diana Lee",
+      "status": "rejeter",
+      "submissionDate": "22/01/2025",
+      "processingTime": "1-2 jours"
+    },
+    {
+      "id": "c91e",
+      "document": "Convocation",
+      "description": "Convocation de l'OFPPT",
+      "cef": "77fdefa0-6e9f-467d-bb0d-9f7c52a36227",
+      "group": "Unknown",
+      "requestDate": "2025-01-30",
+      "files": [
+        {
+          "name": "GestionBibliothéqueEnLigne.pdf",
+          "size": 192928,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Alice Smith",
+      "status": "en cours",
+      "submissionDate": "22/01/2025",
+      "processingTime": "2-3 jours"
+    },
+    {
+      "id": "04ac",
+      "document": "Mise en Garde",
+      "description": "Mise en garde de l'OFPPT",
+      "cef": "77fdefa0-6e9f-467d-bb0d-9f7c52a36227",
+      "group": "Unknown",
+      "requestDate": "2025-01-24",
+      "files": [
+        {
+          "name": "revisionLifeCycleClassComponent.pdf",
+          "size": 213431,
+          "type": "application/pdf"
+        }
+      ],
+      "user": "Alice Smith",
+      "status": "en cours",
+      "submissionDate": "22/01/2025",
+      "processingTime": "1-2 jours"
     }
   ],
   "trainees": [
@@ -18119,7 +18228,7 @@
   "scheduler": [
     {
       "id": "3",
-      "title": "Modern History Lecture",
+      "title": "History Class",
       "formateur": {
         "matricule": "H2345",
         "nom": "Ms. Davis",
@@ -18128,19 +18237,19 @@
       },
       "groupe": {
         "codeGroupe": "HIST201",
-        "intituleGroupe": "Histoire Moderne",
+        "intituleGroupe": "Histoire Générale",
         "filiere": "Humanities",
         "secteur": "social sciences"
       },
       "salle": "Room 103",
       "day": "2024-11-15",
-      "startTime": "09:00",
-      "endTime": "10:30",
-      "durée": "90"
+      "startTime": "09:30",
+      "endTime": "10:00",
+      "durée": "30"
     },
     {
       "id": "5",
-      "title": "Introduction to Painting",
+      "title": "Art Class",
       "formateur": {
         "matricule": "A5432",
         "nom": "Ms. Green",
@@ -18149,19 +18258,19 @@
       },
       "groupe": {
         "codeGroupe": "ART102",
-        "intituleGroupe": "Peinture de Base",
+        "intituleGroupe": "Arts Visuels",
         "filiere": "Fine Arts",
         "secteur": "arts"
       },
       "salle": "Room 105",
       "day": "2024-11-15",
-      "startTime": "11:00",
-      "endTime": "12:30",
-      "durée": "90"
+      "startTime": "10:30",
+      "endTime": "11:00",
+      "durée": "30"
     },
     {
       "id": "7",
-      "title": "Quantum Mechanics",
+      "title": "Physics Class",
       "formateur": {
         "matricule": "P6789",
         "nom": "Dr. Adams",
@@ -18169,20 +18278,20 @@
         "secteur": "sciences"
       },
       "groupe": {
-        "codeGroupe": "PHY301",
-        "intituleGroupe": "Physique Quantique",
-        "filiere": "Physics",
+        "codeGroupe": "PHY101",
+        "intituleGroupe": "Sciences Physiques",
+        "filiere": "Sciences",
         "secteur": "sciences"
       },
       "salle": "Room 107",
       "day": "2024-11-16",
       "startTime": "09:00",
-      "endTime": "10:30",
-      "durée": "90"
+      "endTime": "09:30",
+      "durée": "30"
     },
     {
       "id": "9",
-      "title": "World Geography Workshop",
+      "title": "Geography Class",
       "formateur": {
         "matricule": "G1234",
         "nom": "Mr. Black",
@@ -18191,19 +18300,19 @@
       },
       "groupe": {
         "codeGroupe": "GEO202",
-        "intituleGroupe": "Géographie Mondiale",
+        "intituleGroupe": "Géographie Appliquée",
         "filiere": "Geosciences",
         "secteur": "social sciences"
       },
       "salle": "Room 109",
       "day": "2024-11-16",
-      "startTime": "11:00",
-      "endTime": "12:30",
-      "durée": "90"
+      "startTime": "10:00",
+      "endTime": "10:30",
+      "durée": "30"
     },
     {
       "id": "11",
-      "title": "Cell Biology Seminar",
+      "title": "Biology Class",
       "formateur": {
         "matricule": "B4321",
         "nom": "Dr. Carter",
@@ -18212,19 +18321,19 @@
       },
       "groupe": {
         "codeGroupe": "BIO301",
-        "intituleGroupe": "Biologie Cellulaire",
+        "intituleGroupe": "Biologie Avancée",
         "filiere": "Life Sciences",
         "secteur": "sciences"
       },
       "salle": "Room 111",
       "day": "2024-11-17",
       "startTime": "08:30",
-      "endTime": "10:00",
-      "durée": "90"
+      "endTime": "09:00",
+      "durée": "30"
     },
     {
       "id": "13",
-      "title": "Ethics and Philosophy",
+      "title": "Philosophy Class",
       "formateur": {
         "matricule": "PH5678",
         "nom": "Mr. Harris",
@@ -18233,19 +18342,19 @@
       },
       "groupe": {
         "codeGroupe": "PHILO101",
-        "intituleGroupe": "Éthique et Philosophie",
+        "intituleGroupe": "Introduction à la Philosophie",
         "filiere": "Philosophy",
         "secteur": "humanities"
       },
       "salle": "Room 113",
       "day": "2024-11-17",
-      "startTime": "10:30",
-      "endTime": "12:00",
-      "durée": "90"
+      "startTime": "09:30",
+      "endTime": "10:00",
+      "durée": "30"
     },
     {
       "id": "15",
-      "title": "Advanced Political Theories",
+      "title": "Political Science",
       "formateur": {
         "matricule": "PS7890",
         "nom": "Ms. Miller",
@@ -18254,19 +18363,19 @@
       },
       "groupe": {
         "codeGroupe": "POLSCI301",
-        "intituleGroupe": "Théories Politiques Avancées",
+        "intituleGroupe": "Science Politique Avancée",
         "filiere": "Political Studies",
         "secteur": "social sciences"
       },
       "salle": "Room 115",
       "day": "2024-11-17",
-      "startTime": "13:30",
-      "endTime": "15:00",
-      "durée": "90"
+      "startTime": "10:30",
+      "endTime": "11:00",
+      "durée": "30"
     },
     {
       "id": "16",
-      "title": "French Grammar Workshop",
+      "title": "French Class",
       "formateur": {
         "matricule": "F0987",
         "nom": "Mr. Wilson",
@@ -18275,19 +18384,19 @@
       },
       "groupe": {
         "codeGroupe": "FR101",
-        "intituleGroupe": "Atelier de Grammaire Française",
-        "filiere": "Linguistics",
-        "secteur": "languages"
+        "intituleGroupe": "Français Langue Étrangère",
+        "filiere": "Semantics",
+        "secteur": "linguistics"
       },
       "salle": "Room 116",
       "day": "2024-11-18",
-      "startTime": "09:00",
-      "endTime": "10:30",
-      "durée": "90"
+      "startTime": "08:30",
+      "endTime": "09:00",
+      "durée": "30"
     },
     {
       "id": "17",
-      "title": "German Culture and Language",
+      "title": "German Class",
       "formateur": {
         "matricule": "G5678",
         "nom": "Ms. King",
@@ -18296,19 +18405,19 @@
       },
       "groupe": {
         "codeGroupe": "GER201",
-        "intituleGroupe": "Culture Allemande",
-        "filiere": "Linguistics",
-        "secteur": "languages"
+        "intituleGroupe": "Allemand Intermédiaire",
+        "filiere": "Historical linguistics",
+        "secteur": "linguistics"
       },
       "salle": "Room 117",
       "day": "2024-11-18",
-      "startTime": "11:00",
-      "endTime": "12:30",
-      "durée": "90"
+      "startTime": "09:00",
+      "endTime": "09:30",
+      "durée": "30"
     },
     {
       "id": "19",
-      "title": "Introduction to Programming",
+      "title": "Computer Science",
       "formateur": {
         "matricule": "C1234",
         "nom": "Ms. Wright",
@@ -18317,15 +18426,156 @@
       },
       "groupe": {
         "codeGroupe": "CS101",
-        "intituleGroupe": "Programmation de Base",
+        "intituleGroupe": "Informatique de Base",
         "filiere": "Information Technology",
         "secteur": "technology"
       },
       "salle": "Room 119",
       "day": "2024-11-18",
-      "startTime": "13:00",
-      "endTime": "14:30",
-      "durée": "90"
+      "startTime": "10:00",
+      "endTime": "10:30",
+      "durée": "30"
+    },
+    {
+      "id": "20",
+      "title": "Literature Class",
+      "formateur": {
+        "matricule": "L1234",
+        "nom": "Mr. Harris",
+        "email": "harris@gmail.com",
+        "secteur": "humanities"
+      },
+      "groupe": {
+        "codeGroupe": "LIT201",
+        "intituleGroupe": "Littérature Moderne",
+        "filiere": "Literature",
+        "secteur": "humanities"
+      },
+      "salle": "Room 120",
+      "day": "2024-11-18",
+      "startTime": "10:30",
+      "endTime": "11:00",
+      "durée": "30"
+    },
+    {
+      "id": "1731880174458",
+      "title": "addd",
+      "formateur": {
+        "matricule": "H2345",
+        "nom": "Ms. Davis",
+        "email": "davis@gmail.com",
+        "secteur": "social sciences"
+      },
+      "groupe": {
+        "codeGroupe": "HIST201",
+        "intituleGroupe": "Histoire Générale",
+        "filiere": "Humanities",
+        "secteur": "social sciences"
+      },
+      "salle": "",
+      "day": "2024-11-18",
+      "startTime": "08:30",
+      "endTime": "09:00"
+    },
+    {
+      "id": "1731951217732",
+      "title": "qqqq",
+      "formateur": {
+        "matricule": "L1234",
+        "nom": "Mr. Harris",
+        "email": "harris@gmail.com",
+        "secteur": "humanities"
+      },
+      "groupe": {
+        "codeGroupe": "LIT201",
+        "intituleGroupe": "Littérature Moderne",
+        "filiere": "Literature",
+        "secteur": "humanities"
+      },
+      "salle": "",
+      "day": "2024-11-19",
+      "startTime": "10:30",
+      "endTime": "12:00"
+    },
+    {
+      "id": "1732115104933",
+      "title": "rffr",
+      "formateur": {
+        "matricule": "P6789",
+        "nom": "Dr. Adams",
+        "email": "adams@gmail.com",
+        "secteur": "sciences"
+      },
+      "groupe": {
+        "codeGroupe": "PHY101",
+        "intituleGroupe": "Sciences Physiques",
+        "filiere": "Sciences",
+        "secteur": "sciences"
+      },
+      "salle": "",
+      "day": "2024-11-19",
+      "startTime": "14:30",
+      "endTime": "18:30"
+    },
+    {
+      "id": "1732217889182",
+      "title": "sss",
+      "formateur": {
+        "matricule": "H2345",
+        "nom": "Ms. Davis",
+        "email": "davis@gmail.com",
+        "secteur": "social sciences"
+      },
+      "groupe": {
+        "codeGroupe": "HIST201",
+        "intituleGroupe": "Histoire Générale",
+        "filiere": "Humanities",
+        "secteur": "social sciences"
+      },
+      "salle": "",
+      "day": "2024-11-21",
+      "startTime": "10:30",
+      "endTime": "11:30"
+    },
+    {
+      "id": "1732217896434",
+      "title": "ssssd",
+      "formateur": {
+        "matricule": "H2345",
+        "nom": "Ms. Davis",
+        "email": "davis@gmail.com",
+        "secteur": "social sciences"
+      },
+      "groupe": {
+        "codeGroupe": "HIST201",
+        "intituleGroupe": "Histoire Générale",
+        "filiere": "Humanities",
+        "secteur": "social sciences"
+      },
+      "salle": "",
+      "day": "2024-11-22",
+      "startTime": "10:30",
+      "endTime": "11:30"
+    },
+    {
+      "id": "1732350233929",
+      "title": "assignment",
+      "formateur": {
+        "matricule": "H2345",
+        "nom": "Ms. Davis",
+        "email": "davis@gmail.com",
+        "secteur": "social sciences"
+      },
+      "groupe": {
+        "codeGroupe": "HIST201",
+        "intituleGroupe": "Histoire Générale",
+        "filiere": "Humanities",
+        "secteur": "social sciences"
+      },
+      "salle": "salle2",
+      "day": "2024-11-20",
+      "startTime": "14:00",
+      "endTime": "16:00"
     }
   ]
 }
