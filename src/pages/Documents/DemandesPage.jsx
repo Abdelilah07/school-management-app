@@ -19,7 +19,6 @@ import {
     AlertTriangle,
     X
 } from 'lucide-react';
-import { fileService } from '../../utils/FileDrive/fileService';
 import { handleDocumentSelect } from '../../features/documents/documentSlice';
 
 const DemandesPage = () => {
@@ -91,27 +90,6 @@ const DemandesPage = () => {
         dispatch(deleteDemande(demande.id));
         const newDemandes = demandes.filter((d) => d.id !== demande.id);
         dispatch(fetchDemandes(newDemandes));
-    };
-
-    const handleDownload = async (fileId, fileName) => {
-        try {
-            const blob = await fileService.downloadFile(fileId);
-
-            // Create a temporary link and trigger download
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-
-            toast.success('File downloaded successfully');
-        } catch (error) {
-            console.error('Download error:', error);
-            toast.error('Failed to download file');
-        }
     };
 
     const handleView = (demande) => {
@@ -264,7 +242,7 @@ const DemandesPage = () => {
                                         <FileText className="w-4 h-4" />
                                         <div className="flex flex-col items-center gap-2">
                                             {demande.files.map((file, index) => (
-                                                <div key={index} className="badge badge-secondary" onClick={() => handleDownload(index, file.name)}>{file.name}</div>
+                                                <div key={index} className="badge badge-secondary">{file.name}</div>
                                             ))}
                                         </div>
                                     </td>
