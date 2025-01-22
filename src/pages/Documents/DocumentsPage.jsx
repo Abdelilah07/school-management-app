@@ -234,7 +234,7 @@ const DocumentsPage = () => {
                                         <label className="label">
                                             <span className="label-text">Required Documents</span>
                                         </label>
-                                        <div className="p-4 bg-neutral-100">
+                                        <div className="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-md">
                                             <ul className="list-disc list-inside">
                                                 {selectedDocument.documentAttachment.map((doc, index) => (
                                                     <li key={index} className="flex items-center gap-2">
