@@ -67,8 +67,16 @@ const prepareUserData = (laravelUser) => {
     id: laravelUser.id,
     name: laravelUser.name,
     email: laravelUser.email,
-    roles: laravelUser.roles || [], // Assuming roles are returned as an array
-    permissions: laravelUser.permissions || [], // Assuming permissions are returned as an array
+    roles: laravelUser.roles || [],
+    phone: laravelUser.phone || null,
+    address: laravelUser.address || null,
+    birthdate: laravelUser.birthdate || null,
+    gender: laravelUser.gender || null,
+    profile_picture: laravelUser.profile_picture || null,
+    is_active: laravelUser.is_active || true,
+    last_login: laravelUser.last_login || null,
+    created_at: laravelUser.created_at || null,
+    updated_at: laravelUser.updated_at || null,
     // Add other relevant user fields as returned by Laravel's /api/user endpoint
     // e.g., role: laravelUser.role, profile_picture: laravelUser.profile_picture,
   };

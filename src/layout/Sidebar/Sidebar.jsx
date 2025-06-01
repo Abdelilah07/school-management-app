@@ -1,4 +1,5 @@
 import { memo, useEffect, useRef, useContext, useCallback, useMemo } from 'react';
+import { cn } from '@/lib/utils';
 import { useLocation } from 'react-router';
 import { LayoutContext } from '../context/LayoutContext';
 import { MenuItem, Divider, UserProfile } from './components';
@@ -101,7 +102,7 @@ const SidebarContent = memo(({ menuItems, userData, isSidebarOpen }) => (
         <UserProfile
           name={userData?.name ?? 'Guest'}
           role={userData?.roles[0] ?? 'User'}
-          profile_picture={userData?.profile_picture}
+          profile_picture={`${import.meta.env.VITE_BACKEND_URL}/storage/${userData?.profile_picture}`}
         />
       </div>
     </div>
@@ -123,10 +124,16 @@ const Sidebar = memo(() => {
   useSidebarCloseHandlers(sidebarRef, isSidebarOpen, setIsSidebarOpen, isMobile);
 
   // Sidebar styling
-  const sidebarClasses = `
-    fixed left-2 top-20 bottom-2 rounded-box bg-base-100 transition-all duration-300 ease-in-out z-20 shadow-md
-    ${isMobile ? (isSidebarOpen ? 'w-64 shadow-lg' : '-translate-x-[16.5rem] w-0') : isSidebarOpen ? 'w-64' : 'w-20'}
-  `.trim();
+  const sidebarClasses = cn(
+    "fixed left-2 top-20 bottom-2 rounded-box bg-base-100 transition-all duration-300 ease-in-out z-20 shadow-md",
+    isMobile 
+      ? isSidebarOpen 
+        ? "w-64 shadow-lg" 
+        : "-translate-x-[16.5rem] w-0"
+      : isSidebarOpen 
+        ? "w-64" 
+        : "w-20"
+  );
 
   return (
     <>

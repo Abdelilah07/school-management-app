@@ -7,8 +7,8 @@ const getGreetingDetails = (user) => {
 
   const timeOfDay = hour < 12 ? 'Morning' : hour < 18 ? 'Afternoon' : 'Evening';
 
-  switch (user?.role) {
-    case 'super user':
+  switch (user?.roles[0]) {
+    case 'super-admin':
       return {
         icon: <Crown className="w-10 h-10 text-yellow-400" />,
         title: `Good ${timeOfDay}, ${name}`,
@@ -52,7 +52,7 @@ const GreetingHeader = () => {
           <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24 flex items-center justify-center">
             {user?.profile_picture ? (
               <img
-                src={user.profile_picture}
+                src={`${import.meta.env.VITE_BACKEND_URL}/storage/${user?.profile_picture}`}
                 alt={`${user.name}'s profile picture`}
                 className="rounded-full"
               />

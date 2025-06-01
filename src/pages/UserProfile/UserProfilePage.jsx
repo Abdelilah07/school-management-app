@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import { updateUser } from '../../services/userService';
-import { uploadImage } from '../../services/uploadService';
-import { getUserFromStorage, updateUserInStorage } from '../../utils'; // Add updateUserInStorage
+import { useState, useEffect } from 'react';
+import { updateMyProfile, getMyProfile } from '../../services/profileService';
+import { updateUserInStorage } from '../../utils';
 import {
   Camera,
   Mail,
   Phone,
-  Globe,
   MapPin,
   Building,
   Check,
@@ -16,56 +14,103 @@ import {
   User,
   Edit3,
 } from 'lucide-react';
+import { format } from 'date-fns';
+import { cn } from "@/lib/utils";
 
 const UserProfilePage = () => {
-  const user = getUserFromStorage('user');
+  const [user, setUser] = useState(null);
+  const [editableUser, setEditableUser] = useState(null);
+
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [imageHovered, setImageHovered] = useState(false);
-  const [editableUser, setEditableUser] = useState(user);
-  const [imageUrl, setImageUrl] = useState(user.profile_picture);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handlePhotoUpload = async (e) => {
+  // Backend URL for image display (assuming public storage)
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:80';
+
+  // imageUrl directly uses profile_picture from editableUser, construct full URL
+  const imageUrl = editableUser?.profile_picture
+    ? `${BACKEND_URL}/storage/${editableUser.profile_picture}`
+    : '/path/to/default/avatar.png'; // Provide a default image path
+
+  // --- Fetch User Profile on Component Mount ---
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const fetchedUser = await getMyProfile(); // Get the authenticated user's profile
+        setUser(fetchedUser); // Set the main user state
+        setEditableUser({ // Initialize editableUser with fetched data
+          id: fetchedUser.id,
+          name: fetchedUser.name || '',
+          email: fetchedUser.email || '',
+          phone: fetchedUser.phone || '',
+          address: fetchedUser.address || '',
+          birthdate: fetchedUser.birthdate || '',
+          gender: fetchedUser.gender || '',
+          profile_picture: fetchedUser.profile_picture || null,
+          is_active: fetchedUser.is_active,
+          last_login_at: fetchedUser.last_login_at,
+          created_at: fetchedUser.created_at,
+          updated_at: fetchedUser.updated_at,
+        });
+        updateUserInStorage(fetchedUser); // Keep local storage in sync
+      } catch (err) {
+        console.error('Failed to fetch user profile:', err);
+        setError('Failed to load profile. Please try again.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  // --- Handle Photo Upload (now directly updates editableUser with the File object) ---
+  const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      try {
-        const uploadedImageUrl = await uploadImage(file);
-        setEditableUser((prev) => ({ ...prev, profile_picture: uploadedImageUrl }));
-        setImageUrl(uploadedImageUrl);
-        setIsDirty(true);
-        console.log('Photo uploaded successfully');
-      } catch (error) {
-        console.error('Error uploading photo', error);
-      }
+      setEditableUser((prev) => ({ ...prev, profile_picture: file })); // Store the File object
+      setIsDirty(true);
+      // Optional: Set a temporary URL for immediate preview (e.g., URL.createObjectURL(file))
+      // setImageUrl(URL.createObjectURL(file)); // If you want a preview before saving
     }
   };
 
   const handleDeletePhoto = () => {
     setEditableUser((prev) => ({ ...prev, profile_picture: null }));
-    setImageUrl(null);
     setIsDirty(true);
     console.log('Photo removed successfully');
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name.startsWith('address.')) {
-      const field = name.split('.')[1];
-      setEditableUser((prev) => ({
-        ...prev,
-        address: { ...prev.address, [field]: value },
-      }));
-    } else {
-      setEditableUser((prev) => ({ ...prev, [name]: value }));
-    }
+    setEditableUser((prev) => ({ ...prev, [name]: value }));
     setIsDirty(true);
   };
 
   const handleCancel = () => {
     setIsEditing(false);
     setIsDirty(false);
-    setEditableUser(user);
-    setImageUrl(user.profile_picture);
+    if (user) {
+      setEditableUser({
+        id: user.id,
+        name: user.name || '',
+        email: user.email || '',
+        phone: user.phone || '',
+        address: user.address || '',
+        birthdate: user.birthdate || '',
+        gender: user.gender || '',
+        profile_picture: user.profile_picture || null, // Revert to backend's picture path
+        is_active: user.is_active,
+        last_login_at: user.last_login_at,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+      });
+    }
   };
 
   const handleEdit = () => {
@@ -73,21 +118,89 @@ const UserProfilePage = () => {
     setIsDirty(false);
   };
 
+  // --- handleSave now sends FormData if a file is present ---
   const handleSave = async () => {
+    if (!editableUser) return;
     try {
-      const { id, role, ...editableFields } = editableUser;
-      const updatedUser = await updateUser(user.id, editableFields);
-      if (updatedUser) {
-        setEditableUser(updatedUser);
-        updateUserInStorage(editableUser); // Synchronize local storage
+      const formData = new FormData();
+
+      // Append existing text fields
+      formData.append('name', editableUser.name || '');
+      formData.append('email', editableUser.email || '');
+      formData.append('phone', editableUser.phone || '');
+      formData.append('address', editableUser.address || '');
+      formData.append('birthdate', editableUser.birthdate || '');
+      formData.append('gender', editableUser.gender || '');
+
+      // Handle profile_picture:
+      if (editableUser.profile_picture instanceof File) {
+        // A new file was selected
+        formData.append('profile_picture', editableUser.profile_picture);
+      } else if (editableUser.profile_picture === null) {
+        // Photo was deleted/removed (explicitly send null or empty string to backend)
+        formData.append('profile_picture', ''); // Or 'null' depending on your Laravel validation/handling
+      } else {
+        // No new file, existing path (string) - append it back to ensure it's not lost
+        formData.append('profile_picture', editableUser.profile_picture);
+      }
+
+      // For PUT/PATCH requests with FormData, you usually need to spoof the method in Laravel
+      formData.append('_method', 'PUT'); // Or 'PATCH'
+
+      const updatedUserResponse = await updateMyProfile(formData); // Send FormData
+
+      if (updatedUserResponse) {
+        setUser(updatedUserResponse);
+        setEditableUser({
+          id: updatedUserResponse.id,
+          name: updatedUserResponse.name || '',
+          email: updatedUserResponse.email || '',
+          phone: updatedUserResponse.phone || '',
+          address: updatedUserResponse.address || '',
+          birthdate: updatedUserResponse.birthdate || '',
+          gender: updatedUserResponse.gender || '',
+          profile_picture: updatedUserResponse.profile_picture || null,
+          is_active: updatedUserResponse.is_active,
+          last_login_at: updatedUserResponse.last_login_at,
+          created_at: updatedUserResponse.created_at,
+          updated_at: updatedUserResponse.updated_at,
+        });
+
+        updateUserInStorage(updatedUserResponse);
         setIsEditing(false);
         setIsDirty(false);
-        console.log('User updated successfully');
+        setError(null);
+        console.log('Profile updated successfully', updatedUserResponse);
       }
-    } catch (error) {
-      console.error('Error updating user:', error);
+    } catch (err) {
+      console.error('Error updating profile:', err);
+      setError(err.message || 'Failed to update profile.');
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-base-200 flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-base-200 flex items-center justify-center text-error-content rounded-box p-6 shadow-lg m-4">
+        <p className="text-lg">{error}</p>
+      </div>
+    );
+  }
+
+  if (!user || !editableUser) {
+    return (
+      <div className="min-h-screen bg-base-200 flex items-center justify-center text-warning-content rounded-box p-6 shadow-lg m-4">
+        <p className="text-lg">No profile data available. Please log in.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-base-200 transition-all duration-300 ">
@@ -114,7 +227,7 @@ const UserProfilePage = () => {
                     >
                       <div className="relative">
                         <img
-                          src={imageUrl || ''}
+                          src={imageUrl}
                           alt="Profile"
                           className={`object-cover transition-all duration-300 ${imageHovered ? 'scale-105' : ''}`}
                         />
@@ -126,7 +239,7 @@ const UserProfilePage = () => {
                                 type="file"
                                 accept="image/*"
                                 className="hidden"
-                                onChange={handlePhotoUpload}
+                                onChange={handlePhotoUpload} // Now just sets the file to state
                               />
                             </label>
                           </div>
@@ -135,8 +248,8 @@ const UserProfilePage = () => {
                     </div>
                   </div>
                   {isEditing && (
-                    <div className="absolute -bottom-2 right-0 flex gap-2 scale-90 opacity-90 hover:scale-100 hover:opacity-100 transition-all duration-200">
-                      {user?.profile_picture && (
+                    <div className="absolute -bottom-2 right-0 flex gap-2 scale-90 opacity-90 hover:scale-100 hover:opacity-100 transition-all ">
+                      {editableUser?.profile_picture && (
                         <button
                           className="btn btn-circle btn-error btn-sm hover:btn-secondary tooltip tooltip-top"
                           data-tip="Remove profile picture"
@@ -172,12 +285,12 @@ const UserProfilePage = () => {
                     <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                       <div className="badge badge-primary gap-2 p-3 badge-lg">
                         <Building className="w-4 h-4" />
-                        {user?.role || 'Member'}
+                        {user?.roles[0] || 'Member'}
                       </div>
                       <div className="badge badge-ghost gap-2 p-3 badge-lg">
                         <Calendar className="w-4 h-4" />
                         Joined{' '}
-                        {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
+                        {user.created_at ? format(new Date(user.created_at), 'MMM dd, yyyy') : 'N/A'}
                       </div>
                     </div>
                   </div>
@@ -205,7 +318,7 @@ const UserProfilePage = () => {
                     </div>
                   ) : (
                     <button
-                      className="btn btn-primary gap-2 hover:btn-secondary transition-all duration-200"
+                      className="btn btn-primary gap-2 hover:btn-secondary transition-all "
                       onClick={handleEdit}
                     >
                       <Edit3 className="w-4 h-4" />
@@ -232,79 +345,71 @@ const UserProfilePage = () => {
                   {
                     icon: Phone,
                     label: 'Phone',
-                    value: isEditing ? editableUser?.phone_number : user?.phone_number,
-                    name: 'phone_number',
+                    value: isEditing ? editableUser?.phone : user?.phone,
+                    name: 'phone',
                     type: 'tel',
                   },
                   {
                     icon: MapPin,
-                    label: 'Location',
-                    value: isEditing ? editableUser?.address?.city : user?.address?.city,
+                    label: 'Address',
+                    value: isEditing ? editableUser?.address : user?.address,
                     name: 'address',
+                    type: 'text',
                   },
                   {
-                    icon: Globe,
-                    label: 'Website',
-                    value: isEditing ? editableUser?.website : user?.website,
-                    name: 'website',
-                    type: 'url',
+                    icon: Calendar,
+                    label: 'Birthdate',
+                    value: isEditing
+                      ? editableUser?.birthdate
+                      : (user?.birthdate ? format(new Date(user.birthdate), 'yyyy-MM-dd') : ''),
+                    name: 'birthdate',
+                    type: 'date',
+                  },
+                  {
+                    icon: User,
+                    label: 'Gender',
+                    value: isEditing ? editableUser?.gender : user?.gender,
+                    name: 'gender',
+                    type: 'text',
                   },
                 ].map(({ icon: Icon, label, value, name, type }) => (
-                  <div key={name} className="form-control group">
-                    <label className="label">
-                      <span className="label-text font-medium text-base-content/80 group-hover:text-primary transition-colors duration-200">
-                        {label}
-                      </span>
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Icon className="w-5 h-5 text-primary/60 group-hover:text-primary transition-colors duration-200" />
-                      </div>
+                  <div key={name} className='flex flex-col space-y-2'>
+                    <label className="label">{label}</label>
+                    <label className="input validator">
+                      <Icon className={cn(
+                        'w-5 h-5',
+                        isEditing ? 'text-primary' : 'text-primary/60'
+                      )} />
                       {isEditing ? (
-                        <input
-                          type={type || 'text'}
-                          name={name}
-                          value={value || ''}
-                          onChange={handleChange}
-                          className="input input-bordered w-full pl-10 focus:input-primary transition-all duration-200 hover:border-primary"
-                          placeholder={`Enter your ${label.toLowerCase()}`}
-                        />
+                        type === 'date' ? (
+                          <input
+                            type="date"
+                            name={name}
+                            value={value || ''}
+                            onChange={handleChange}
+                            className="grow"
+                          />
+                        ) : (
+                          <input
+                            type={type || 'text'}
+                            name={name}
+                            value={value || ''}
+                            onChange={handleChange}
+                            className="grow"
+                            placeholder={`Enter your ${label.toLowerCase()}`}
+                          />
+                        )
                       ) : (
-                        <div className="input input-bordered w-full pl-10 bg-base-200/50 text-base-content/80 flex items-center group-hover:text-primary group-hover:bg-base-200 transition-all duration-200">
-                          {value ? (
-                            <span className="">{value}</span>
-                          ) : (
-                            <span className="text-base-content/40">Not specified</span>
-                          )}
-                        </div>
+                        <input
+                          type="text"
+                          disabled
+                          value={type === 'date' && value ? format(new Date(value), 'MMM dd, yyyy') : value || ''}
+                          className="grow"
+                        />
                       )}
-                    </div>
+                    </label>
                   </div>
                 ))}
-              </div>
-
-              <div className="divider"></div>
-
-              {/* Biography Section */}
-              <div className="form-control w-full group">
-                <label className="label">
-                  <span className="label-text font-medium text-base-content/80 group-hover:text-primary transition-colors duration-200">
-                    Biography
-                  </span>
-                </label>
-                {isEditing ? (
-                  <textarea
-                    name="bio"
-                    value={editableUser?.bio || ''}
-                    onChange={handleChange}
-                    className="textarea textarea-bordered focus:textarea-primary min-h-32 transition-all duration-200 hover:border-primary"
-                    placeholder="Tell us about yourself..."
-                  ></textarea>
-                ) : (
-                  <div className="textarea textarea-bordered bg-base-200/50 min-h-32 group-hover:text-primary text-base-content/80 group-hover:bg-base-200 transition-all duration-200">
-                    {user?.bio || <span className="text-base-content/40">No bio available</span>}
-                  </div>
-                )}
               </div>
             </div>
           </div>

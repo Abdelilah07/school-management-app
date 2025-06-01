@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Tile from './Tile';
 import {
   MessageCircleQuestion,
@@ -9,18 +8,16 @@ import {
   TrendingUp,
   HelpCircle,
   FilePlus,
-  Zap,
 } from 'lucide-react';
 import { getUserFromStorage } from '../../../utils';
 
 const QuickActions = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
   const user = getUserFromStorage('user');
 
   // Dynamically generate tiles based on user role
   const getTiles = (role) => {
     const roleTiles = {
-      'super user': [
+      'super-admin': [
         {
           category: 'management',
           title: 'Manage Users',
@@ -149,7 +146,7 @@ const QuickActions = () => {
     return roleTiles[role] || roleTiles['default'];
   };
 
-  const tiles = getTiles(user?.role);
+  const tiles = getTiles(user?.roles[0]) || getTiles('default');
 
   return (
     <div className="flex flex-col gap-y-4 p-4 bg-base-100 rounded-2xl overflow-hidden w-full border border-base-200">
